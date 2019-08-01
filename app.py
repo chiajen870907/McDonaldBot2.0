@@ -56,14 +56,12 @@ def handle_message(event):
         path = ("Line_User/" + user_id)
         print(path)
         doc_ref = db.document(path)
-        try:
-            doc = doc_ref.get()
-            print("文件內容為：{}".format(doc.to_dict()))
-            check = True
-        except:
-            print("指定文件的路徑{}不存在，請檢查路徑是否正確".format(path))
-            check = False
+        doc = doc_ref.get()
 
+        if doc.to_dict()==None:
+            check = False
+        else:
+            check = True
 
         if check == False:
             temp = event.message.text
