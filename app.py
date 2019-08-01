@@ -64,7 +64,8 @@ def handle_message(event):
         t = temp.split('/')
         if len(t) > 2:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='請重新輸入-多打了斜線了'))
-        line_bot_api.push_message(user_id, '正在登入')
+        line_bot_api.push_message(user_id, TextSendMessage(text='帳號:{}\n密碼:{}\n'.format(t[0], t[1])))
+        
 
 
 
