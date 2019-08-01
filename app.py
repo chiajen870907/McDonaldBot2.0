@@ -49,41 +49,34 @@ def handle_message(event):
     # message = TextSendMessage(text=event.message.text)
     # line_bot_api.reply_message(event.reply_token, message)
     user_id = event.source.user_id
-
-    if event.message.text == "Login":
-        # ----------------Login-----------------------
-        path = ("Line_User/" + user_id)
-        print(path)
-        doc_ref = db.document(path)
-        doc = doc_ref.get()
-        result = doc.to_dict()
-        print(result)
-        if result == None:
-            print('Login First')
-        buttons_template = TemplateSendMessage(
-            alt_text='Buttons Template',
-            template=ButtonsTemplate(
-                title='這是ButtonsTemplate',
-                text='ButtonsTemplate可以傳送text,uri',
-                thumbnail_image_url='顯示在開頭的大圖片網址',
-                actions=[
-                    MessageTemplateAction(
-                        label='ButtonsTemplate',
-                        text='ButtonsTemplate'
-                    ),
-                    URITemplateAction(
-                        label='VIDEO1',
-                        uri='影片網址'
-                    ),
-                    PostbackTemplateAction(
-                        label='postback',
-                        text='postback text',
-                        data='postback1'
-                    )
-                ]
-            )
+    message = TemplateSendMessage(
+        alt_text='Buttons template',
+        template=ButtonsTemplate(
+            thumbnail_image_url='https://example.com/image.jpg',
+            title='Menu',
+            text='Please select',
+            actions=[
+                PostbackTemplateAction(
+                    label='postback',
+                    text='postback text',
+                    data='action=buy&itemid=1'
+                ),
+                MessageTemplateAction(
+                    label='message',
+                    text='message text'
+                ),
+                URITemplateAction(
+                    label='uri',
+                    uri='http://example.com/'
+                )
+            ]
         )
-        line_bot_api.reply_message(event.reply_token, buttons_template)
+    )
+    line_bot_api.reply_message(event.reply_token, message)
+
+
+
+
 
 
 
