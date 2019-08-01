@@ -59,26 +59,20 @@ def handle_message(event):
         print(result)
         if result == None:
             print('Login First')
+            temp = event.message.text
+            if '/' not in temp:
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='注意!!少了斜線(/)'))
+            t = temp.split('/')
+            if len(t) > 2:
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='請重新輸入-多打了斜線了'))
             message = TemplateSendMessage(
                 alt_text='Buttons template',
                 template=ButtonsTemplate(
-                    thumbnail_image_url='https://example.com/image.jpg',
-                    title='Menu',
-                    text='Please select',
+                    title='登入確認',
+                    text='帳號:{}\n密碼:{}\n請確定是否正確'.format(t[0], t[1]),
                     actions=[
-                        PostbackTemplateAction(
-                            label='postback',
-                            text='postback text',
-                            data='action=buy&itemid=1'
-                        ),
-                        MessageTemplateAction(
-                            label='message',
-                            text='message text'
-                        ),
-                        URITemplateAction(
-                            label='uri',
-                            uri='http://example.com/'
-                        )
+                        MessageTemplateAction(label='確認無誤',text='MENU'),
+                        PostbackTemplateAction(label='重新輸入',text='請再輸入一次，帳號與密買以斜線(/)區隔',data='revise'),
                     ]
                 )
             )
