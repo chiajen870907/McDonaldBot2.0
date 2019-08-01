@@ -56,10 +56,15 @@ def handle_message(event):
         path = "Line_User/" + user_id
         doc_ref = db.document(path)
         try:
-            check = doc_ref.get()
+            doc = doc_ref.get()
+            print("文件內容為：{}".format(doc.to_dict()))
+            check = True
         except:
-            check = None
-        if check == None:
+            print("指定文件的路徑{}不存在，請檢查路徑是否正確".format(path))
+            check = False
+
+
+        if check == False:
             temp = event.message.text
             if '/' not in temp:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='注意!!少了斜線(/)'))
