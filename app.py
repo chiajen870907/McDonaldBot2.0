@@ -58,35 +58,8 @@ def handle_message(event):
         doc_ref = db.document(path)
         doc = doc_ref.get()
         result = doc.to_dict()
-        print(result)
-
-        check =True
-        if check == False:
-            temp = event.message.text
-            if '/' not in temp:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='注意!!少了斜線(/)'))
-            t = temp.split('/')
-            if len(t) > 2:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='請重新輸入-多打了斜線了'))
-            buttons_template = TemplateSendMessage(
-                alt_text='Template',
-                template=ButtonsTemplate(
-                    title='登入確認',
-                    text='帳號:{}\n密碼:{}\n請確定是否正確'.format(t[0], t[1]),
-                    actions=[
-                        MessageTemplateAction(
-                            label='確認無誤',
-                            text='MENU'
-                        ),
-                        PostbackTemplateAction(
-                            label='重新輸入',
-                            text='請再輸入一次，帳號與密買以斜線(/)區隔',
-                            data='revise'
-                        )
-                    ]
-                )
-            )
-        line_bot_api.reply_message(event.reply_token,buttons_template)
+        if result == None:
+           print('RE')
 
     # t = fb.get('/{}/num'.format(user_id), None)
     # number = fb.get('/{}/temp'.format(user_id), None)
