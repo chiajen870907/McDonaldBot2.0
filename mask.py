@@ -1,7 +1,7 @@
 import hashlib
 import requests
-import app as mc
 from datetime import datetime
+
 class Mask(object):
     """docstring for Mask."""
 
@@ -101,10 +101,9 @@ class Mask(object):
 # Login example
 def Main():
     # User login page
-    # Username = input('Username : ')
-    # Password = input('Password : ')
-    Username = mc.MC_User_ID
-    Password = mc.MC_User_PASSWORD
+    Username = input('Username : ')
+    Password = input('Password : ')
+
     # Login and get the imformation
     Account = Mask(Username, Password)
     list = Account.Login()

@@ -1,3 +1,5 @@
 line-bot-sdk
 flask
 firebase_admin
+hashlib
+requests
