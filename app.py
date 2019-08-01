@@ -49,51 +49,54 @@ def handle_message(event):
     message = TextSendMessage(text=event.message.text)
     line_bot_api.reply_message(event.reply_token, message)
     user_id = event.source.user_id
-    #    ----------------Login-----------------------
-    path = "Line_User/"+user_id
-    doc_ref = db.document(path)
-    try:
-        check = doc_ref.get()
-    except:
-        check = None
-    if check == None:
-        temp = event.message.text
-        if '/' not in temp:
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text='注意!!少了斜線(/)'))
-        t = temp.split('/')
-        if len(t) > 2:
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請重新輸入-多打了斜線了'))
-        buttons_template = TemplateSendMessage(
-            alt_text='Template',
-            template=ButtonsTemplate(
-                title='登入確認',
-                text='帳號:{}\n密碼:{}\n請確定是否正確'.format(t[0], t[1]),
-                actions=[
-                    MessageTemplateAction(
-                        label='確認無誤',
-                        text='MENU'
-                    ),
-                    PostbackTemplateAction(
-                        label='重新輸入',
-                        text='請再輸入一次，帳號與密買以斜線(/)區隔',
-                        data='revise'
-                    )
-                ]
+
+    if event.message.text == "Login":
+        print('Login')
+        # ----------------Login-----------------------
+        path = "Line_User/" + user_id
+        doc_ref = db.document(path)
+        try:
+            check = doc_ref.get()
+        except:
+            check = None
+        if check == None:
+            temp = event.message.text
+            if '/' not in temp:
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='注意!!少了斜線(/)'))
+            t = temp.split('/')
+            if len(t) > 2:
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='請重新輸入-多打了斜線了'))
+            buttons_template = TemplateSendMessage(
+                alt_text='Template',
+                template=ButtonsTemplate(
+                    title='登入確認',
+                    text='帳號:{}\n密碼:{}\n請確定是否正確'.format(t[0], t[1]),
+                    actions=[
+                        MessageTemplateAction(
+                            label='確認無誤',
+                            text='MENU'
+                        ),
+                        PostbackTemplateAction(
+                            label='重新輸入',
+                            text='請再輸入一次，帳號與密買以斜線(/)區隔',
+                            data='revise'
+                        )
+                    ]
+                )
             )
-        )
-        line_bot_api.reply_message(event.reply_token,buttons_template)
+        #line_bot_api.reply_message(event.reply_token,buttons_template)
 
     # t = fb.get('/{}/num'.format(user_id), None)
     # number = fb.get('/{}/temp'.format(user_id), None)
 
 
-    doc = {
-        'Token': "abc@gmail.com"
-    }
-    # doc_ref = db.collection("集合名稱").document("文件id")
-    doc_ref = db.collection("Line_User").document(user_id)
-    # doc_ref提供一個set的方法，input必須是dictionary
-    doc_ref.set(doc)
+    # doc = {
+    #     'Token': "abc@gmail.com"
+    # }
+    # # doc_ref = db.collection("集合名稱").document("文件id")
+    # doc_ref = db.collection("Line_User").document(user_id)
+    # # doc_ref提供一個set的方法，input必須是dictionary
+    # doc_ref.set(doc)
 
 import os
 if __name__ == "__main__":
