@@ -15,8 +15,11 @@ line_bot_api = LineBotApi('a4ZRk4l00GSRM9haYsEAdV90WTEk+LMkWCI71MqObTkXFq8ygRUlb
 handler = WebhookHandler('62aab4cbbb8fe1efcfd845bc9211e748')
 # 引用私密金鑰
 cred = credentials.Certificate('/app/service-account.json')
-#default_app = firebase_admin.initialize_app()
-print(os.getcwd())
+# 初始化firebase，注意不能重複初始化
+firebase_admin.initialize_app(cred)
+# 初始化firestore
+db = firestore.client()
+#print(os.getcwd())
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
