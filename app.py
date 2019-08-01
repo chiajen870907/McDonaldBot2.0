@@ -129,9 +129,10 @@ def login_MC():
     list = Account.Login()
     # Print the results
     global MC_Status, MC_Token
-    MC_Status = (list['rm'])
+    MC_Status = list['rm']
     MC_Token = (list['results']+['member_info']+['access_token'])
-
+    print(MC_Status)
+    print(MC_Token)
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
