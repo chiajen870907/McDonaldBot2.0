@@ -175,8 +175,12 @@ def handle_message(event):
         login_MC()
         if MC_Status != "":
             line_bot_api.push_message(user_id, TextSendMessage(text=MC_Status))
-            print(MC_Status)
-            print(MC_Token)
+            if MC_Token != "":
+                doc={
+                    'Token': MC_Token
+                }
+                doc_ref = db.collection("Line_User").document(user_id)
+                doc_ref.set(doc)
 
 
 
