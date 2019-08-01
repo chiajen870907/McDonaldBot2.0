@@ -57,12 +57,10 @@ def handle_message(event):
         print(path)
         doc_ref = db.document(path)
         doc = doc_ref.get()
+        result = doc.to_dict()
+        print(result)
 
-        if doc.to_dict()==None:
-            check = False
-        else:
-            check = True
-
+        check =True
         if check == False:
             temp = event.message.text
             if '/' not in temp:
@@ -88,7 +86,7 @@ def handle_message(event):
                     ]
                 )
             )
-        #line_bot_api.reply_message(event.reply_token,buttons_template)
+        line_bot_api.reply_message(event.reply_token,buttons_template)
 
     # t = fb.get('/{}/num'.format(user_id), None)
     # number = fb.get('/{}/temp'.format(user_id), None)
