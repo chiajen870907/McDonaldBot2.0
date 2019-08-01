@@ -70,7 +70,7 @@ def handle_message(event):
                 title='登入確認',
                 text='帳號:{}\n密碼:{}\n請確定是否正確'.format(t[0], t[1]),
                 actions=[
-                    MessageTemplateAction(label='確認無誤'),
+                    MessageTemplateAction(label='確認無誤',text='Login'),
                     #PostbackTemplateAction(label='重新輸入',text='請再輸入一次，帳號與密買以斜線(/)區隔',data='revise'),
                 ]
             )
