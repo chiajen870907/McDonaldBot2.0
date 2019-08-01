@@ -133,8 +133,8 @@ def login_MC():
     print('')
     print('Login status : ' + list['rm'])
     print('Username     : ' + list['results']['member_info']['name']['last_name'] + list['results']['member_info']['name']['first_name'])
-    print('Token        : ' + list['results']['member_info']['access_token'])
-
+    MC_Token = (list['results']['member_info']['access_token'])
+    print(MC_Token)
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -173,11 +173,7 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='請重新輸入-多打了斜線了'))
         line_bot_api.push_message(user_id, TextSendMessage(text='帳號:{}\n密碼:{}\n正在嘗試登入OwO'.format(t[0], t[1])))
         global MC_User_ID, MC_User_PASSWORD
-        MC_User_ID = t[0]
-        MC_User_PASSWORD = t[1]
-        #os.system("python mask.py")
-        print(MC_User_ID)
-        print(MC_User_PASSWORD)
+        MC_User_ID = t[0], MC_User_PASSWORD = t[1]
         login_MC()
 
 
