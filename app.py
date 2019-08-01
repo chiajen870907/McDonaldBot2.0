@@ -44,6 +44,7 @@ def callback():
 
 
 # 處理訊息
+global MC_User_ID, MC_User_PASSWORD
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     # message = TextSendMessage(text=event.message.text)
@@ -69,7 +70,6 @@ def handle_message(event):
         MC_User_PASSWORD = t[1]
         print(MC_User_ID)
         print(MC_User_PASSWORD)
-
 
 
 
