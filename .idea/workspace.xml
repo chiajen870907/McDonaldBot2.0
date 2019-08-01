@@ -13,13 +13,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="170" column="27" lean-forward="true" selection-start-line="170" selection-start-column="27" selection-end-line="170" selection-end-column="27" />
+            <state relative-caret-position="297">
+              <caret line="134" column="125" selection-start-line="134" selection-start-column="125" selection-end-line="134" selection-end-column="125" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
-                <element signature="e#859#4572#0" />
-                <element signature="e#4653#5120#0" />
-                <element signature="e#940#1289#0" />
               </folding>
             </state>
           </provider>
@@ -28,7 +25,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mask.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
+            <state relative-caret-position="2525">
               <caret line="103" column="4" selection-start-line="103" selection-start-column="4" selection-end-line="103" selection-end-column="4" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
@@ -226,22 +223,23 @@
       <updated>1564654654536</updated>
       <workItem from="1564654658862" duration="24189000" />
       <workItem from="1564683600078" duration="772000" />
+      <workItem from="1564684456671" duration="252000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24961000" />
+    <option name="totallyTimeSpent" value="25213000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13270777" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13404825" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.33002833" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33002833" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.14305949" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -375,25 +373,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mask.py">
+    <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="103" column="4" selection-start-line="103" selection-start-column="4" selection-end-line="103" selection-end-column="4" />
+        <state relative-caret-position="297">
+          <caret line="134" column="125" selection-start-line="134" selection-start-column="125" selection-end-line="134" selection-end-column="125" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
+    <entry file="file://$PROJECT_DIR$/mask.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="170" column="27" lean-forward="true" selection-start-line="170" selection-start-column="27" selection-end-line="170" selection-end-column="27" />
+        <state relative-caret-position="2525">
+          <caret line="103" column="4" selection-start-line="103" selection-start-column="4" selection-end-line="103" selection-end-column="4" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#859#4572#0" />
-            <element signature="e#4653#5120#0" />
-            <element signature="e#940#1289#0" />
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
