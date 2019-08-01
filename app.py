@@ -49,34 +49,33 @@ def handle_message(event):
     # message = TextSendMessage(text=event.message.text)
     # line_bot_api.reply_message(event.reply_token, message)
     user_id = event.source.user_id
-    if event.message.text == "Login":
-        # ----------------Login-----------------------
-        path = ("Line_User/" + user_id)
-        print(path)
-        doc_ref = db.document(path)
-        doc = doc_ref.get()
-        result = doc.to_dict()
-        print(result)
-        if result == None:
-            print('Login First')
-            temp = event.message.text
-            if '/' not in temp:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='注意!!少了斜線(/)'))
-            t = temp.split('/')
-            if len(t) > 2:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='請重新輸入-多打了斜線了'))
-            message = TemplateSendMessage(
-                alt_text='Buttons template',
-                template=ButtonsTemplate(
-                    title='登入確認',
-                    text='帳號:{}\n密碼:{}\n請確定是否正確'.format(t[0], t[1]),
-                    actions=[
-                        MessageTemplateAction(label='確認無誤',text='MENU'),
-                        PostbackTemplateAction(label='重新輸入',text='請再輸入一次，帳號與密買以斜線(/)區隔',data='revise'),
-                    ]
-                )
+    # ----------------Login-----------------------
+    path = ("Line_User/" + user_id)
+    print(path)
+    doc_ref = db.document(path)
+    doc = doc_ref.get()
+    result = doc.to_dict()
+    print(result)
+    if result == None:
+        print('Login First')
+        temp = event.message.text
+        if '/' not in temp:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='注意!!少了斜線(/)'))
+        t = temp.split('/')
+        if len(t) > 2:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='請重新輸入-多打了斜線了'))
+        message = TemplateSendMessage(
+            alt_text='Buttons template',
+            template=ButtonsTemplate(
+                title='登入確認',
+                text='帳號:{}\n密碼:{}\n請確定是否正確'.format(t[0], t[1]),
+                actions=[
+                    MessageTemplateAction(label='確認無誤',text='MENU'),
+                    PostbackTemplateAction(label='重新輸入',text='請再輸入一次，帳號與密買以斜線(/)區隔',data='revise'),
+                ]
             )
-            line_bot_api.reply_message(event.reply_token, message)
+        )
+        line_bot_api.reply_message(event.reply_token, message)
 
 
 
