@@ -51,18 +51,21 @@ def handle_message(event):
     user_id = event.source.user_id
 
     if event.message.text == "Login":
-        print('Login')
         # ----------------Login-----------------------
         path = ("Line_User/" + user_id)
         print(path)
         doc_ref = db.document(path)
         doc = doc_ref.get()
         result = doc.to_dict()
+        print(result)
         if result == None:
            print('RE')
+        else:
+            print('NRE')
 
-    # t = fb.get('/{}/num'.format(user_id), None)
-    # number = fb.get('/{}/temp'.format(user_id), None)
+
+
+
 
 
     # doc = {
