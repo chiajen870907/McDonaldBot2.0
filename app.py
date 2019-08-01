@@ -178,6 +178,7 @@ def handle_message(event):
         #os.system("python mask.py")
         print(MC_User_ID)
         print(MC_User_PASSWORD)
+        login_MC()
 
 
 
