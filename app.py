@@ -20,6 +20,7 @@ firebase_admin.initialize_app(cred)
 # 初始化firestore
 db = firestore.client()
 #print(os.getcwd())
+
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -41,14 +42,15 @@ def handle_message(event):
     message = TextSendMessage(text=event.message.text)
     line_bot_api.reply_message(event.reply_token, message)
     user_id = event.source.user_id
+
     doc = {
-        'name': user_id,
-        'email': "abc@gmail.com"
+        'Token': "abc@gmail.com"
     }
     # doc_ref = db.collection("集合名稱").document("文件id")
-    doc_ref = db.collection("pyradise_students").document("student_01")
+    doc_ref = db.collection("Line_User").document(user_id)
     # doc_ref提供一個set的方法，input必須是dictionary
     doc_ref.set(doc)
+
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
