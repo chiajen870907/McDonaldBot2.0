@@ -133,6 +133,8 @@ def login_MC():
     #print('Username     : ' + list['results']['member_info']['name']['last_name'] + list['results']['member_info']['name']['first_name'])
     MC_Token=(list['results']['member_info']['access_token'])
     # print(MC_Token)
+    print(MC_Status)
+    print(MC_Token)
 
 
 
