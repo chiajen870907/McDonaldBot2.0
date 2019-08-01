@@ -173,8 +173,10 @@ def handle_message(event):
         MC_User_ID = t[0]
         MC_User_PASSWORD = t[1]
         login_MC()
-        print(MC_Status)
-        print(MC_Token)
+        if MC_Status != "":
+            line_bot_api.push_message(user_id, TextSendMessage(text=MC_Status))
+            print(MC_Status)
+            print(MC_Token)
 
 
 
