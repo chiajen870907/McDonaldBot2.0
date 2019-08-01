@@ -130,7 +130,7 @@ def login_MC():
     # Print the results
     global MC_Status, MC_Token
     MC_Status = list['rm']
-    MC_Token = (list['results']+['member_info']+['access_token'])
+    MC_Token = list['results']+['member_info']+['access_token']
     print(MC_Status)
     print(MC_Token)
 
@@ -175,13 +175,6 @@ def handle_message(event):
         MC_User_ID = t[0]
         MC_User_PASSWORD = t[1]
         login_MC()
-        line_bot_api.push_message(user_id, TextSendMessage(text=MC_Status))
-        if MC_Token != '':
-            doc = {
-                'Token' : MC_Token
-            }
-            doc_ref = db.collection("Line_User").document(user_id)
-            doc_ref.set(doc)
 
 
 
