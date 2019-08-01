@@ -164,41 +164,23 @@ def handle_message(event):
         print('Login First')
         temp = event.message.text
         if '/' not in temp:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='注意!!少了斜線(/)'))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='注意!!少了斜線(/) Σ( ° △ °|||)'))
         t = temp.split('/')
         if len(t) > 2:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='請重新輸入-多打了斜線了'))
-        line_bot_api.push_message(user_id, TextSendMessage(text='帳號:{}\n密碼:{}\n正在嘗試登入OwO'.format(t[0], t[1])))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='多打了斜線哦 Σ( ° △ °|||)'))
+        line_bot_api.push_message(user_id, TextSendMessage(text='帳號:{}\n密碼:{}\n正在嘗試登入 (●’ω`●）'.format(t[0], t[1])))
         global MC_User_ID, MC_User_PASSWORD
         MC_User_ID = t[0]
         MC_User_PASSWORD = t[1]
         login_MC()
         if MC_Status != "":
-            line_bot_api.push_message(user_id, TextSendMessage(text=MC_Status))
+            line_bot_api.push_message(user_id, TextSendMessage(text='(。_。) ' + MC_Status))
             if MC_Token != "":
                 doc={
                     'Token': MC_Token
                 }
                 doc_ref = db.collection("Line_User").document(user_id)
                 doc_ref.set(doc)
-
-
-
-
-
-
-
-
-
-
-
-    # doc = {
-    #     'Token': "abc@gmail.com"
-    # }
-    # # doc_ref = db.collection("集合名稱").document("文件id")
-    # doc_ref = db.collection("Line_User").document(user_id)
-    # # doc_ref提供一個set的方法，input必須是dictionary
-    # doc_ref.set(doc)
 
 import os
 if __name__ == "__main__":
