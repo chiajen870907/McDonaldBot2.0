@@ -67,26 +67,29 @@ def handle_message(event):
         if len(t) > 2:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='請重新輸入-多打了斜線了'))
         buttons_template = TemplateSendMessage(
-            alt_text='Template',
+            alt_text='Buttons Template',
             template=ButtonsTemplate(
-                title='登入確認',
-                text='帳號:{}\n密碼:{}\n請確定是否正確'.format(t[0], t[1]),
+                title='這是ButtonsTemplate',
+                text='ButtonsTemplate可以傳送text,uri',
+                thumbnail_image_url='顯示在開頭的大圖片網址',
                 actions=[
                     MessageTemplateAction(
-                        label='確認無誤',
-                        text='MENU'
+                        label='ButtonsTemplate',
+                        text='ButtonsTemplate'
+                    ),
+                    URITemplateAction(
+                        label='VIDEO1',
+                        uri='影片網址'
                     ),
                     PostbackTemplateAction(
-                        label='重新輸入',
-                        text='請再輸入一次，帳號與密買以斜線(/)區隔',
-                        data='revise'
+                        label='postback',
+                        text='postback text',
+                        data='postback1'
                     )
                 ]
             )
         )
-    line_bot_api.reply_message(event.reply_token, buttons_template)
-
-
+        line_bot_api.reply_message(event.reply_token, buttons_template)
 
 
 
