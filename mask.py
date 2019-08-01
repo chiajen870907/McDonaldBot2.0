@@ -1,6 +1,5 @@
 import hashlib
 import requests
-from
 from datetime import datetime
 
 class Mask(object):
