@@ -60,12 +60,6 @@ def handle_message(event):
         print(result)
         if result == None:
             print('Login First')
-            temp = event.message.text
-        if '/' not in temp:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='注意!!少了斜線(/)'))
-        t = temp.split('/')
-        if len(t) > 2:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='請重新輸入-多打了斜線了'))
         buttons_template = TemplateSendMessage(
             alt_text='Buttons Template',
             template=ButtonsTemplate(
