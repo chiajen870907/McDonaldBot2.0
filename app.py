@@ -124,17 +124,15 @@ class Mask(object):
 def login_MC():
     Username = MC_User_ID
     Password = MC_User_PASSWORD
-
     # Login and get the imformation
     Account = Mask(Username, Password)
     list = Account.Login()
-
     # Print the results
-    print('')
-    print('Login status : ' + list['rm'])
-    print('Username     : ' + list['results']['member_info']['name']['last_name'] + list['results']['member_info']['name']['first_name'])
-    MC_Token = (list['results']['member_info']['access_token'])
-    print(MC_Token)
+    global MC_Status, MC_Token
+    MC_Status = (list['rm'])
+    MC_Token = (list['results']+['member_info']+['access_token'])
+
+
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -176,6 +174,14 @@ def handle_message(event):
         MC_User_ID = t[0]
         MC_User_PASSWORD = t[1]
         login_MC()
+        line_bot_api.push_message(user_id, TextSendMessage(text=MC_Status))
+        if MC_Token != '':
+            doc = {
+                'Token' : MC_Token
+            }
+            doc_ref = db.collection("Line_User").document(user_id)
+            doc_ref.set(doc)
+
 
 
 
