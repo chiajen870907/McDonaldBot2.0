@@ -130,16 +130,7 @@ def login_MC():
     # Print the results
     global MC_Status, MC_Token
     MC_Status=(list['rm'])
-    #print('Username     : ' + list['results']['member_info']['name']['last_name'] + list['results']['member_info']['name']['first_name'])
     MC_Token=(list['results']['member_info']['access_token'])
-    # print(MC_Token)
-    print(MC_Status)
-    print(MC_Token)
-
-
-
-
-
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -182,7 +173,8 @@ def handle_message(event):
         MC_User_ID = t[0]
         MC_User_PASSWORD = t[1]
         login_MC()
-
+        print(MC_Status)
+        print(MC_Token)
 
 
 
