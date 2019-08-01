@@ -53,7 +53,7 @@ def handle_message(event):
     if event.message.text == "Login":
         print('Login')
         # ----------------Login-----------------------
-        path = "Line_User/" + user_id
+        path = ("Line_User/" + user_id)
         doc_ref = db.document(path)
         try:
             doc = doc_ref.get()
