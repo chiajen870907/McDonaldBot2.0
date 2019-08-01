@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="90c87167-b4d8-47e4-a470-9e442930dcf7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mask.py" beforeDir="false" afterPath="$PROJECT_DIR$/mask.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="516">
-              <caret line="70" column="24" selection-start-line="70" selection-start-column="24" selection-end-line="70" selection-end-column="24" />
+            <state relative-caret-position="425">
+              <caret line="68" column="15" selection-start-line="68" selection-start-column="15" selection-end-line="68" selection-end-column="15" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -26,10 +25,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://D:/Download/Google/line-bot-tutorial-master/line-bot-tutorial-master/clock.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mask.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="102" column="21" lean-forward="true" selection-start-line="102" selection-start-column="21" selection-end-line="102" selection-end-column="21" />
+            <state relative-caret-position="931">
+              <caret line="133" column="10" lean-forward="true" selection-start-line="133" selection-start-column="10" selection-end-line="133" selection-end-column="10" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
                 <element signature="e#86#3799#0" />
@@ -202,12 +213,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1564654654536</updated>
-      <workItem from="1564654658862" duration="22901000" />
+      <workItem from="1564654658862" duration="23267000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22901000" />
+    <option name="totallyTimeSpent" value="23267000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -317,16 +328,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Download/Google/line-bot-tutorial-master/line-bot-tutorial-master/clock.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="30" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
@@ -351,10 +352,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://D:/Download/Google/line-bot-tutorial-master/line-bot-tutorial-master/clock.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mask.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="102" column="21" lean-forward="true" selection-start-line="102" selection-start-column="21" selection-end-line="102" selection-end-column="21" />
+        <state relative-caret-position="931">
+          <caret line="133" column="10" lean-forward="true" selection-start-line="133" selection-start-column="10" selection-end-line="133" selection-end-column="10" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
             <element signature="e#86#3799#0" />
@@ -364,8 +375,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="70" column="24" selection-start-line="70" selection-start-column="24" selection-end-line="70" selection-end-column="24" />
+        <state relative-caret-position="425">
+          <caret line="68" column="15" selection-start-line="68" selection-start-column="15" selection-end-line="68" selection-end-column="15" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
