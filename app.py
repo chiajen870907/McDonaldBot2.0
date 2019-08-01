@@ -128,11 +128,10 @@ def login_MC():
     Account = Mask(Username, Password)
     list = Account.Login()
     # Print the results
-    print('')
-    print('Login status : ' + list['rm'])
-    print('Username     : ' + list['results']['member_info']['name']['last_name'] + list['results']['member_info']['name']['first_name'])
-    print('Token        : ' + list['results']['member_info']['access_token'])
-    # print(MC_Status)
+    global MC_Status, MC_Token
+    MC_Status=(list['rm'])
+    #print('Username     : ' + list['results']['member_info']['name']['last_name'] + list['results']['member_info']['name']['first_name'])
+    MC_Token=(list['results']['member_info']['access_token'])
     # print(MC_Token)
 
 
