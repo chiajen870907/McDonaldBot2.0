@@ -215,7 +215,6 @@ def Check_UserID():
         doc = doc_ref.get()
         result = str(doc.to_dict())
         stack = re.search(user_id, result)
-        print(stack)
         if stack is None:
             ex_stack = 0
             print('NotFind')
@@ -223,7 +222,6 @@ def Check_UserID():
             ex_stack = 1
             print('Find')
             break
-    print(ex_stack)
 
 
 def CrackDatabase_UserID():
@@ -245,7 +243,7 @@ def handle_message(event):
     user_id = event.source.user_id
     # ----------------Login-----------------------
     Check_UserID()
-    time.sleep(5)
+    #time.sleep(5)
     if ex_stack == 1:
         print('Exists')
         if event.message.text == 'DATA':
