@@ -252,7 +252,9 @@ def handle_message(event):
             line_bot_api.push_message(user_id, TextSendMessage(text='(。_。) ' + MC_Status))
             if MC_Token != "":
                 stackE=0
+
                 Count_Index = Database_Counter_GetCount()
+
                 doc = {
                     'Token' + Count_Index : MC_Token
                 }
@@ -263,7 +265,7 @@ def handle_message(event):
                 doc_ref = db.collection("Line_User").document('Info')
                 doc2_ref = db.collection("MD_Token").document(MC_Token)
 
-                doc_ref.set(doc)
+                doc_ref.update(doc)
                 doc2_ref.set(doc2)
                 line_bot_api.push_message(user_id,TextSendMessage(text='我知道喇~\n每天準時幫你抽\nヽ(‘ ∇‘ )ノ'))
                 Database_Counter_Increase()
