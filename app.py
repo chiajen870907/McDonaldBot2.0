@@ -277,7 +277,7 @@ def handle_message(event):
                 )
             )
             line_bot_api.reply_message(event.reply_token, date_picker)
-    else:
+    elif ex_stack_Token == 0:
         print('Login First')
         temp = event.message.text
         if temp != '':
