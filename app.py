@@ -7,6 +7,7 @@ import os
 import re
 import hashlib
 import requests
+from McDonald import McDonald
 from datetime import datetime
 from firebase_admin import credentials
 from firebase_admin import firestore
@@ -205,7 +206,9 @@ def Database_Counter_Decrease():
 
 
 def McDonald_Lottery():
-    print('fku')
+    print('test')
+    # Account = McDonald(Token)
+    # line_bot_api.push_message(user_id, TextSendMessage(text=Account.Lottery()))
 
 
 # 處理訊息
@@ -216,8 +219,6 @@ def handle_message(event):
     global user_id
     user_id = event.source.user_id
     # ----------------Login-----------------------
-
-    #A = db.collection("songs").whereField("singer", equalTo: "周興哲").getDocuments
 
     if db.collection('Line_User').document(user_id).get().exists:
         print('Exists')
@@ -249,14 +250,15 @@ def handle_message(event):
         if MC_Status != "":
             line_bot_api.push_message(user_id, TextSendMessage(text='(。_。) ' + MC_Status))
             if MC_Token != "":
+                Count_Index = Database_Counter_GetCount()
                 doc = {
-                    'Token': MC_Token
+                    'Token' + Count_Index : MC_Token
                 }
                 doc2 = {
                     'UserID': user_id
                 }
 
-                doc_ref = db.collection("Line_User").document(user_id)
+                doc_ref = db.collection("Line_User").document('Info')
                 doc_ref.set(doc)
 
                 doc2_ref = db.collection("MD_Token").document(MC_Token)
