@@ -168,14 +168,15 @@ def Database_Counter_Decrease():
     doc_ref = db.document(Count_path)
     doc = doc_ref.get()
     Count_result = str(doc.to_dict())
-    string = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）:{} Count]", "", Count_result)
-    string = int(string) - 1
-    doc = {
-        'Count': string
-    }
-    doc_ref = db.collection("Line_User").document('Counter')
-    doc_ref.set(doc)
-    print(string)
+    print(Count_result)
+    # string = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）:{} Count]", "", Count_result)
+    # string = int(string) - 1
+    # doc = {
+    #     'Count': string
+    # }
+    # doc_ref = db.collection("Line_User").document('Counter')
+    # doc_ref.set(doc)
+    # print(string)
 
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
