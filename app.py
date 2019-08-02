@@ -183,24 +183,14 @@ def Check_UserID():
         doc_ref = db.document(path)
         doc = doc_ref.get()
         result = str(doc.to_dict())
-        ex_Stack = re.search(user_id, result)
-        if ex_Stack==None:
+        Stack = re.search(user_id, result)
+        if Stack==None:
             print('NotFind')
+            ex_Stack = False
         else:
             print('Find')
+            ex_Stack = True
             break
-        # print('result',result)
-        # result2 = re.sub("[\']+|[:{} ]", "", str(result))
-        # result3 = result2.split(',')
-        # UserStack = result3[0][6:]
-        # print('UserStack',UserStack)
-        # if user_id==UserStack:
-        #     ex_Stack = True
-        #     print("Find")
-        #     break
-        # else:
-        #     ex_Stack = False
-        #     print("NotFind")
 
 
 def Database_Counter_GetCount():
@@ -235,6 +225,7 @@ def McDonald_Lottery():
     print('fku')
 
 
+
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -243,16 +234,44 @@ def handle_message(event):
     global user_id
     user_id = event.source.user_id
     # ----------------Login-----------------------
-    # Count_Index = int(Database_Counter_GetCount())
-    # for i in range(1, Count_Index):
-    #     path = ("Line_User/User" + str(i))
-    #     #print(path)
-    #     doc_ref = db.document(path)
-    #     doc = doc_ref.get()
-    #     result = doc.to_dict()
-    #     print(result)
-    if event.message.text == 'DATA':
-        Check_UserID()
+    Check_UserID()
+    if ex_Stack==True:
+        print('Exists')
+
+        if event.message.text == 'DATA':
+            date_picker = TemplateSendMessage(
+                alt_text='時間設定',
+                template=ButtonsTemplate(
+                    text=' 我每天幾點幫你抽呢  ヽ(‘ ∇‘ )ノ ',
+                    title='時間設定',
+                    actions=[
+                            DatetimePickerTemplateAction(label='設定', data='datetime_postback', mode='time')
+                    ]
+                )
+            )
+            line_bot_api.reply_message(event.reply_token, date_picker)
+    else:
+        print('Login First')
+        temp = event.message.text
+        if '/' not in temp:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='注意!!少了斜線(/)  Σ( ° △ °|||)'))
+        t = temp.split('/')
+        if len(t) > 2:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='多打了斜線哦  Σ( ° △ °|||)'))
+        line_bot_api.push_message(user_id, TextSendMessage(text='帳號:{}\n密碼:{}\n正在嘗試登入麥當勞  \n(●’ω`●）'.format(t[0], t[1])))
+        global MC_User_ID, MC_User_PASSWORD
+        MC_User_ID = t[0]
+        MC_User_PASSWORD = t[1]
+        login_MC()
+        if MC_Status != "":
+            line_bot_api.push_message(user_id, TextSendMessage(text='(。_。) ' + MC_Status))
+            if MC_Token != "":
+                doc={
+                    'Token': MC_Token
+                }
+                doc_ref = db.collection("Line_User").document(user_id)
+                doc_ref.set(doc)
+
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
