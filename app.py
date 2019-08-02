@@ -174,32 +174,6 @@ def handle_postback(event):
         doc_ref.update(doc)
         print(Set_Time)
 
-
-def Check_UserID():
-    global ex_Stack
-    Count_Index = int(Database_Counter_GetCount())
-    for i in range(1, Count_Index):
-        path = ("Line_User/User" + str(i))
-        doc_ref = db.document(path)
-        doc = doc_ref.get()
-        result = str(doc.to_dict())
-        Stack = re.search(user_id, result)
-        if Stack==None:
-            print('NotFind')
-            ex_Stack = 0
-        else:
-            print('Find')
-            ex_Stack = 1
-            break
-
-def CrackDatabase_UserID():
-    doc = {
-        'UserID': user_id
-    }
-    doc_ref = db.collection("Line_User").document('User' + Database_Counter_GetCount())
-    doc_ref.set(doc)
-    Database_Counter_Increase()
-
 def Database_Counter_GetCount():
     Count_path = ('Line_User/Counter')
     doc_ref = db.document(Count_path)
@@ -228,7 +202,30 @@ def Database_Counter_Decrease():
     doc_ref.set(doc)
     print(Count_Index)
 
+def Check_UserID():
+    global ex_Stack
+    Count_Index = int(Database_Counter_GetCount())
+    for i in range(1, Count_Index):
+        path = ("Line_User/User" + str(i))
+        doc_ref = db.document(path)
+        doc = doc_ref.get()
+        result = str(doc.to_dict())
+        Stack = re.search(user_id, result)
+        if Stack==None:
+            print('NotFind')
+            ex_Stack = 0
+        else:
+            print('Find')
+            ex_Stack = 1
+            break
 
+def CrackDatabase_UserID():
+    doc = {
+        'UserID': user_id
+    }
+    doc_ref = db.collection("Line_User").document('User' + Database_Counter_GetCount())
+    doc_ref.set(doc)
+    Database_Counter_Increase()
 
 
 # 處理訊息
