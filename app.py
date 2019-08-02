@@ -214,10 +214,10 @@ def Check_UserID():
         print(stack)
         if stack is None:
             print('NotFind')
-            ex_Stack = 0
+            ex_Stack = False
         else:
             print('Find')
-            ex_Stack = 1
+            ex_Stack = True
             break
 
 def CrackDatabase_UserID():
@@ -239,7 +239,7 @@ def handle_message(event):
     # ----------------Login-----------------------
     print(Database_Counter_GetCount)
     Check_UserID()
-    if ex_Stack == 1 :
+    if ex_Stack is True:
         print('Exists')
         if event.message.text == 'DATA':
             date_picker = TemplateSendMessage(
