@@ -154,14 +154,16 @@ def Database_Counter_Increase():
     doc_ref = db.document(Count_path)
     doc = doc_ref.get()
     Count_result = doc.to_dict()
-    string = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）:{} Count]", "", Count_result)
-    int(string) + 1
+    print(Count_result)
+    string = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）:{} Count]", "", str(Count_result))
+    string = int(string) + 1
     doc = {
         'Count': string
     }
     doc_ref = db.collection("Line_User").document('Counter')
     doc_ref.set(doc)
     print(string)
+
 
 def Database_Counter_Decrease():
     Count_path = ('Line_User/Counter')
@@ -170,14 +172,13 @@ def Database_Counter_Decrease():
     Count_result = doc.to_dict()
     print(Count_result)
     string = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）:{} Count]", "", str(Count_result))
+    string = int(string) - 1
+    doc = {
+        'Count': string
+    }
+    doc_ref = db.collection("Line_User").document('Counter')
+    doc_ref.set(doc)
     print(string)
-    # string = int(string) - 1
-    # doc = {
-    #     'Count': string
-    # }
-    # doc_ref = db.collection("Line_User").document('Counter')
-    # doc_ref.set(doc)
-    # print(string)
 
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
