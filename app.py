@@ -186,6 +186,10 @@ def Database_Counter_Decrease():
 
 
 
+@handler.add(PostbackEvent)
+def handle_postback(event):
+    if event.postback.data == 'Time_Postback':
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=event.postback.params['date']))
 
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
@@ -211,18 +215,11 @@ def handle_message(event):
                     text=' 我每天幾點幫你抽呢  ヽ(‘ ∇‘ )ノ ',
                     title='時間設定',
                     actions=[
-                        DatetimePickerTemplateAction(
-                            label='設定',
-                            data='action=buy&itemid=1',
-                            mode='time',
-                        )
+                            DatetimePickerTemplateAction(label='設定', data='Time_Postback', mode='time')
                     ]
                 )
             )
             line_bot_api.reply_message(event.reply_token, date_picker)
-        if isinstance(event, PostbackEvent):
-            a = event.postback.params['date']
-            print(a)
     else:
         print('Login First')
         temp = event.message.text
@@ -244,8 +241,6 @@ def handle_message(event):
                 }
                 doc_ref = db.collection("Line_User").document(user_id)
                 doc_ref.set(doc)
-
-
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
