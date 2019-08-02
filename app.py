@@ -224,6 +224,24 @@ def Check_UserID():
             break
 
 
+def Check_UserToken():
+    global ex_stack_Token
+    Count_Index = int(Database_Counter_GetCount())
+    for i in range(1, Count_Index):
+        path = ("Line_User/User" + str(i))
+        doc_ref = db.document(path)
+        doc = doc_ref.get()
+        result = str(doc.to_dict())
+        stack = re.search('Token', result)
+        if stack is None:
+            ex_stack_Token = 0
+            print('NotFind')
+        else:
+            ex_stack_Token = 1
+            print('Find')
+            break
+
+
 def CrackDatabase_UserID():
     doc = {
         'UserID': user_id
@@ -243,8 +261,8 @@ def handle_message(event):
     user_id = event.source.user_id
     # ----------------Login-----------------------
     Check_UserID()
-    #time.sleep(5)
-    if ex_stack == 1:
+    time.sleep(1)
+    if ex_stack_Token == 1:
         print('Exists')
         if event.message.text == 'DATA':
             date_picker = TemplateSendMessage(
