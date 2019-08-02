@@ -186,10 +186,7 @@ def Database_Counter_Decrease():
 
 
 
-@handler.add(PostbackEvent)
-def handle_postback(event):
-    if event.postback.data == 'Time_Postback':
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=event.postback.params['date']))
+
 
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
@@ -220,6 +217,10 @@ def handle_message(event):
                 )
             )
             line_bot_api.reply_message(event.reply_token, date_picker)
+        if isinstance(event, PostbackEvent):
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=event.postback.params['Time_Postback']))
+            # event.postback.params['date']
+
     else:
         print('Login First')
         temp = event.message.text
