@@ -261,6 +261,7 @@ def handle_message(event):
     user_id = event.source.user_id
     # ----------------Login-----------------------
     Check_UserID()
+    Check_UserToken()
     time.sleep(1)
     if ex_stack_Token == 1:
         print('Exists')
