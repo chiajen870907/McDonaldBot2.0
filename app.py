@@ -7,6 +7,7 @@ import os
 import re
 import hashlib
 import requests
+import time
 from datetime import datetime
 from firebase_admin import credentials
 from firebase_admin import firestore
@@ -139,7 +140,6 @@ def login_MC():
     MC_Status = (list['rm'])
     MC_Token = (list['results']['member_info']['access_token'])
 
-
 # --------------------------
 
 # 監聽所有來自 /callback 的 Post Request
@@ -174,6 +174,7 @@ def handle_postback(event):
         doc_ref.update(doc)
         print(Set_Time)
 
+
 def Database_Counter_GetCount():
     Count_path = ('Line_User/Counter')
     doc_ref = db.document(Count_path)
@@ -181,6 +182,7 @@ def Database_Counter_GetCount():
     Count_result = doc.to_dict()
     Count_Index = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）:{} Count]", "", str(Count_result))
     return Count_Index
+
 
 def Database_Counter_Increase():
     Count_Index = Database_Counter_GetCount()
@@ -192,6 +194,7 @@ def Database_Counter_Increase():
     doc_ref.set(doc)
     print(Count_Index)
 
+
 def Database_Counter_Decrease():
     Count_Index = Database_Counter_GetCount()
     Count_Index = int(Count_Index) - 1
@@ -201,6 +204,7 @@ def Database_Counter_Decrease():
     doc_ref = db.collection("Line_User").document('Counter')
     doc_ref.set(doc)
     print(Count_Index)
+
 
 def Check_UserID():
     global ex_stack
@@ -220,6 +224,8 @@ def Check_UserID():
             print('Find')
             break
     print(ex_stack)
+
+
 def CrackDatabase_UserID():
     doc = {
         'UserID': user_id
@@ -238,7 +244,8 @@ def handle_message(event):
     global user_id
     user_id = event.source.user_id
     # ----------------Login-----------------------
-
+    Check_UserID()
+    time.sleep(5)
     if ex_stack == 1:
         print('Exists')
         if event.message.text == 'DATA':
