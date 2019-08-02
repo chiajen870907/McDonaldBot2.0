@@ -194,19 +194,16 @@ def handle_message(event):
     # line_bot_api.reply_message(event.reply_token, message)
     user_id = event.source.user_id
     # ----------------Login-----------------------
-    path = ("Line_User/"+user_id)
-    #print(path)
-    doc_ref = db.document(path)
-    doc = doc_ref.get()
-    result = doc.to_dict()
-    print(result)
-
+    # path = ("Line_User/"+user_id)
+    # #print(path)
+    # doc_ref = db.document(path)
+    # doc = doc_ref.get()
+    # result = doc.to_dict()
+    # print(result)
+    # if result == None:
     if db.collection('Line_User').document(user_id).get().exists:
-        print('ex')
+        print('Exists')
     else:
-        print('Notex')
-
-    if result == None:
         print('Login First')
         temp = event.message.text
         if '/' not in temp:
@@ -232,8 +229,6 @@ def handle_message(event):
         Database_Counter_Increase()
     elif event.message.text == 'DEC':
         Database_Counter_Decrease()
-
-
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
