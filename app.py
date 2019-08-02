@@ -182,21 +182,24 @@ def Check_UserID():
         path = ("Line_User/User" + str(i))
         doc_ref = db.document(path)
         doc = doc_ref.get()
-        result = doc.to_dict()
-        print('result',result)
-        result2 = re.sub("[\']+|[:{} ]", "", str(result))
-        print('result2',result2)
-        result3 = result2.split(',')
-        print('result3',result3)
-        UserStack = result3[0][6:]
-        print('UserStack',UserStack)
-        if user_id==UserStack:
-            ex_Stack = True
-            print("Find")
-            break
+        result = str(doc.to_dict())
+        ex_Stack = re.search(user_id, result)
+        if ex_Stack==None:
+            print('NotFind')
         else:
-            ex_Stack = False
-            print("NotFind")
+            print('Find')
+        # print('result',result)
+        # result2 = re.sub("[\']+|[:{} ]", "", str(result))
+        # result3 = result2.split(',')
+        # UserStack = result3[0][6:]
+        # print('UserStack',UserStack)
+        # if user_id==UserStack:
+        #     ex_Stack = True
+        #     print("Find")
+        #     break
+        # else:
+        #     ex_Stack = False
+        #     print("NotFind")
 
 
 def Database_Counter_GetCount():
