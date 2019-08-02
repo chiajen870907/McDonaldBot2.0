@@ -174,6 +174,8 @@ def handle_postback(event):
         doc_ref.update(doc)
         print(Set_Time)
 
+
+
 def Database_Counter_GetCount():
     Count_path = ('Line_User/Counter')
     doc_ref = db.document(Count_path)
@@ -213,12 +215,13 @@ def Check_UserID():
         Stack = re.search(user_id, result)
         if Stack==None:
             print('NotFind')
-            ex_Stack = 0
         else:
             print('Find')
-            ex_Stack = 1
             break
-
+    if Stack==None:
+        ex_Stack = 0
+    else:
+        ex_Stack = 1
 def CrackDatabase_UserID():
     doc = {
         'UserID': user_id
