@@ -151,13 +151,15 @@ def callback():
         abort(400)
     return 'OK'
 
+# 等待伺服器回傳資料
 @handler.add(PostbackEvent)
 def handle_postback(event):
     if event.postback.data == 'datetime_postback':
+        global Set_Time
         Set_Time = event.postback.params['time']
         print(Set_Time)
         line_bot_api.reply_message(
-            event.reply_token, TextSendMessage(text='我知道喇~~\n每天' + event.postback.params['time'] + '幫你抽\n （〜^∇^)〜'))
+            event.reply_token, TextSendMessage(text='我知道喇~~\n每天' + event.postback.params['time'] + '準時幫你抽\n （〜^∇^)〜'))
 
 
 
@@ -224,7 +226,7 @@ def handle_message(event):
                 )
             )
             line_bot_api.reply_message(event.reply_token, date_picker)
-            # event.postback.params['date']
+            print(Set_Time)
 
     else:
         print('Login First')
