@@ -134,6 +134,8 @@ def login_MC():
     MC_Status=(list['rm'])
     MC_Token=(list['results']['member_info']['access_token'])
 
+#--------------------------
+
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -149,6 +151,9 @@ def callback():
         abort(400)
     return 'OK'
 
+
+
+
 def Database_Counter_GetCount():
     Count_path = ('Line_User/Counter')
     doc_ref = db.document(Count_path)
@@ -157,8 +162,6 @@ def Database_Counter_GetCount():
     print(Count_result)
     Count_Index = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）:{} Count]", "", str(Count_result))
     return Count_Index
-
-
 
 def Database_Counter_Increase():
     Count_Index = Database_Counter_GetCount()
@@ -180,6 +183,10 @@ def Database_Counter_Decrease():
     doc_ref.set(doc)
     print(Count_Index)
 
+
+
+
+
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -187,12 +194,12 @@ def handle_message(event):
     # line_bot_api.reply_message(event.reply_token, message)
     user_id = event.source.user_id
     # ----------------Login-----------------------
-    path = ("Line_User/" + user_id)
+    path = ("Line_User/")
     #print(path)
     doc_ref = db.document(path)
     doc = doc_ref.get()
     result = doc.to_dict()
-    #print(result)
+    print(result)
     if result == None:
         print('Login First')
         temp = event.message.text
