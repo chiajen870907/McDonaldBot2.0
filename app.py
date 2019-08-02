@@ -158,9 +158,11 @@ def Database_Counter_GetCount():
     Count_Index = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）:{} Count]", "", str(Count_result))
     return Count_Index
 
-def Database_Counter_Increase(self):
-    Database_Counter_GetCount()
-    print(self.Count_Index)
+
+
+def Database_Counter_Increase():
+    Count_Index = Database_Counter_GetCount()
+    print(Count_Index)
     # string = int(string) + 1
     # doc = {
     #     'Count': string
