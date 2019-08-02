@@ -174,8 +174,6 @@ def handle_postback(event):
         doc_ref.update(doc)
         print(Set_Time)
 
-
-
 def Database_Counter_GetCount():
     Count_path = ('Line_User/Counter')
     doc_ref = db.document(Count_path)
@@ -212,9 +210,9 @@ def Check_UserID():
         doc_ref = db.document(path)
         doc = doc_ref.get()
         result = str(doc.to_dict())
-        Stack = re.search(user_id, result)
-        print(Stack)
-        if Stack==None:
+        stack = re.search(user_id, result)
+        print(stack)
+        if stack is None:
             print('NotFind')
             ex_Stack = 0
         else:
@@ -226,7 +224,8 @@ def CrackDatabase_UserID():
     doc = {
         'UserID': user_id
     }
-    doc_ref = db.collection("Line_User").document('User' + Database_Counter_GetCount())
+    Database_Counter_GetCount()
+    doc_ref = db.collection("Line_User").document('User' + )
     doc_ref.set(doc)
     Database_Counter_Increase()
 
@@ -275,8 +274,8 @@ def handle_message(event):
                 doc={
                     'Token': MC_Token
                 }
-
-                doc_ref = db.collection("Line_User").document('User' + Database_Counter_GetCount())
+                Count_Index = Database_Counter_GetCount
+                doc_ref = db.collection("Line_User").document('User' + Count_Index)
                 doc_ref.set(doc)
 
 

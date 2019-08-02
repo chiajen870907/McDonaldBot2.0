@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90c87167-b4d8-47e4-a470-9e442930dcf7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,18 +16,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1385">
-              <caret line="260" column="27" lean-forward="true" selection-start-line="260" selection-start-column="27" selection-end-line="260" selection-end-column="27" />
+            <state relative-caret-position="304">
+              <caret line="214" column="18" selection-start-line="214" selection-start-column="18" selection-end-line="214" selection-end-column="18" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
-                <element signature="e#931#4644#0" />
-                <element signature="e#4666#4965#0" />
-                <element signature="e#5063#5412#0" />
-                <element signature="e#5515#5983#0" />
+                <element signature="e#1047#1793#0" />
+                <element signature="e#1824#3361#0" />
+                <element signature="e#3393#4209#0" />
                 <element signature="e#5595#5854#0" />
                 <element signature="e#5893#6125#0" />
                 <element signature="e#6164#6396#0" />
-                <element signature="e#8463#8542#0" />
               </folding>
             </state>
           </provider>
@@ -44,8 +43,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rttrr.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="252" column="32" lean-forward="true" selection-start-line="214" selection-end-line="252" selection-end-column="32" />
+            <state relative-caret-position="3150">
+              <caret line="252" column="32" selection-start-line="214" selection-end-line="252" selection-end-column="32" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="e#962#4675#0" />
@@ -53,11 +52,6 @@
                 <element signature="e#5123#5472#0" />
                 <element signature="e#5546#6014#0" />
                 <element signature="e#5601#6014#0" />
-                <element signature="e#6054#6337#0" />
-                <element signature="e#6376#6608#0" />
-                <element signature="e#6647#6879#0" />
-                <element signature="e#6909#6921#0" />
-                <element signature="e#8994#9073#0" />
               </folding>
             </state>
           </provider>
@@ -75,6 +69,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>DATATBASE_URL</find>
+      <find>CrackDatabase_UserID</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -107,7 +102,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -119,6 +113,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -127,6 +122,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -280,23 +276,24 @@
       <workItem from="1564654658862" duration="24189000" />
       <workItem from="1564683600078" duration="772000" />
       <workItem from="1564684456671" duration="2803000" />
-      <workItem from="1564705611508" duration="23499000" />
+      <workItem from="1564705611508" duration="23914000" />
+      <workItem from="1564733959466" duration="449000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51263000" />
+    <option name="totallyTimeSpent" value="52127000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13538875" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13672923" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33002833" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33002833" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.23937677" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -401,16 +398,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mask.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1625">
-          <caret line="107" column="11" selection-start-line="107" selection-start-column="4" selection-end-line="107" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/mask.py" />
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/firebase_admin/credentials.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -463,22 +451,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rttrr.py">
+    <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="252" column="32" lean-forward="true" selection-start-line="214" selection-end-line="252" selection-end-column="32" />
+        <state relative-caret-position="304">
+          <caret line="214" column="18" selection-start-line="214" selection-start-column="18" selection-end-line="214" selection-end-column="18" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#962#4675#0" />
-            <element signature="e#4697#4996#0" />
-            <element signature="e#5123#5472#0" />
-            <element signature="e#5546#6014#0" />
-            <element signature="e#5601#6014#0" />
-            <element signature="e#6054#6337#0" />
-            <element signature="e#6376#6608#0" />
-            <element signature="e#6647#6879#0" />
-            <element signature="e#6909#6921#0" />
-            <element signature="e#8994#9073#0" />
+            <element signature="e#1047#1793#0" />
+            <element signature="e#1824#3361#0" />
+            <element signature="e#3393#4209#0" />
+            <element signature="e#5595#5854#0" />
+            <element signature="e#5893#6125#0" />
+            <element signature="e#6164#6396#0" />
           </folding>
         </state>
       </provider>
@@ -490,20 +474,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
+    <entry file="file://$PROJECT_DIR$/rttrr.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1385">
-          <caret line="260" column="27" lean-forward="true" selection-start-line="260" selection-start-column="27" selection-end-line="260" selection-end-column="27" />
+        <state relative-caret-position="3150">
+          <caret line="252" column="32" selection-start-line="214" selection-end-line="252" selection-end-column="32" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#931#4644#0" />
-            <element signature="e#4666#4965#0" />
-            <element signature="e#5063#5412#0" />
-            <element signature="e#5515#5983#0" />
-            <element signature="e#5595#5854#0" />
-            <element signature="e#5893#6125#0" />
-            <element signature="e#6164#6396#0" />
-            <element signature="e#8463#8542#0" />
+            <element signature="e#962#4675#0" />
+            <element signature="e#4697#4996#0" />
+            <element signature="e#5123#5472#0" />
+            <element signature="e#5546#6014#0" />
+            <element signature="e#5601#6014#0" />
           </folding>
         </state>
       </provider>
