@@ -198,7 +198,7 @@ def CrackDatabase_UserID():
     }
     doc_ref = db.collection("Line_User").document('User' + Database_Counter_GetCount())
     doc_ref.set(doc)
-    Database_Counter_Increase();
+    Database_Counter_Increase()
 
 def Database_Counter_GetCount():
     Count_path = ('Line_User/Counter')
@@ -228,8 +228,6 @@ def Database_Counter_Decrease():
     doc_ref.set(doc)
     print(Count_Index)
 
-def McDonald_Lottery():
-    print('fku')
 
 
 
