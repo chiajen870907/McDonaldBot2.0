@@ -153,12 +153,12 @@ def Database_Counter_Increase():
     doc_ref = db.document(Count_path)
     doc = doc_ref.get()
     Count_result = doc.to_dict()
-    Count_result = Count_result + 1
-    doc = {
-        'Count': Count_result
-    }
-    doc_ref = db.collection("Line_User").document('Counter')
-    doc_ref.set(doc)
+    # Count_result = Count_result + 1
+    # doc = {
+    #     'Count': Count_result
+    # }
+    # doc_ref = db.collection("Line_User").document('Counter')
+    # doc_ref.set(doc)
     print(Count_result)
 
 def Database_Counter_Decrease():
@@ -166,12 +166,12 @@ def Database_Counter_Decrease():
     doc_ref = db.document(Count_path)
     doc = doc_ref.get()
     Count_result = doc.to_dict()
-    Count_result = Count_result - 1
-    doc = {
-        'Count': Count_result
-    }
-    doc_ref = db.collection("Line_User").document('Counter')
-    doc_ref.set(doc)
+    # Count_result = Count_result - 1
+    # doc = {
+    #     'Count': Count_result
+    # }
+    # doc_ref = db.collection("Line_User").document('Counter')
+    # doc_ref.set(doc)
     print(Count_result)
 
 # 處理訊息
