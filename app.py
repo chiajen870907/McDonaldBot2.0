@@ -218,7 +218,7 @@ def McDonald_Lottery():
         TokenList = Index.replace('Token' + str(i), '')
     print(TokenList)
     GetToken = Index.split(',')
-    print(GetToken[int(Count_Index)])
+    print(GetToken[nCount_Index])
 
 
 # 處理訊息
