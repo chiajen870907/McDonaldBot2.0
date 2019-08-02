@@ -4,6 +4,7 @@ from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import *
 import firebase_admin
 import os
+import re
 import hashlib
 import requests
 from datetime import datetime
@@ -153,26 +154,28 @@ def Database_Counter_Increase():
     doc_ref = db.document(Count_path)
     doc = doc_ref.get()
     Count_result = doc.to_dict()
-    # Count_result = Count_result + 1
-    # doc = {
-    #     'Count': Count_result
-    # }
-    # doc_ref = db.collection("Line_User").document('Counter')
-    # doc_ref.set(doc)
-    print(Count_result)
-
+    string = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）:{} Count]", "", Count_result)
+    int(string) + 1
+    doc = {
+        'Count': string
+    }
+    doc_ref = db.collection("Line_User").document('Counter')
+    doc_ref.set(doc)
+    print(string)
+    
 def Database_Counter_Decrease():
     Count_path = ('Line_User/Counter')
     doc_ref = db.document(Count_path)
     doc = doc_ref.get()
     Count_result = doc.to_dict()
-    # Count_result = Count_result - 1
-    # doc = {
-    #     'Count': Count_result
-    # }
-    # doc_ref = db.collection("Line_User").document('Counter')
-    # doc_ref.set(doc)
-    print(Count_result)
+    string = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）:{} Count]", "", Count_result)
+    int(string) + 1
+    doc = {
+        'Count': string
+    }
+    doc_ref = db.collection("Line_User").document('Counter')
+    doc_ref.set(doc)
+    print(string)
 
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
@@ -182,11 +185,11 @@ def handle_message(event):
     user_id = event.source.user_id
     # ----------------Login-----------------------
     path = ("Line_User/" + user_id)
-    print(path)
+    #print(path)
     doc_ref = db.document(path)
     doc = doc_ref.get()
     result = doc.to_dict()
-    print(result)
+    #print(result)
     if result == None:
         print('Login First')
         temp = event.message.text
@@ -215,7 +218,7 @@ def handle_message(event):
         Database_Counter_Decrease()
 
 
-import os
+
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
