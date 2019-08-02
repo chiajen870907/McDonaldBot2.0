@@ -194,12 +194,18 @@ def handle_message(event):
     # line_bot_api.reply_message(event.reply_token, message)
     user_id = event.source.user_id
     # ----------------Login-----------------------
-    path = ("Line_User/")
+    path = ("Line_User/"+user_id)
     #print(path)
     doc_ref = db.document(path)
     doc = doc_ref.get()
     result = doc.to_dict()
     print(result)
+
+    if db.collection('Line_User').document(user_id).get().exists:
+        print('ex')
+    else:
+        print('Notex')
+
     if result == None:
         print('Login First')
         temp = event.message.text
