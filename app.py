@@ -167,9 +167,10 @@ def Database_Counter_Decrease():
     Count_path = ('Line_User/Counter')
     doc_ref = db.document(Count_path)
     doc = doc_ref.get()
-    Count_result = str(doc.to_dict())
+    Count_result = doc.to_dict()
     print(Count_result)
-    # string = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）:{} Count]", "", Count_result)
+    string = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）:{} Count]", "", str(Count_result))
+    print(string)
     # string = int(string) - 1
     # doc = {
     #     'Count': string
