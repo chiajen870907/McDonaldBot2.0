@@ -160,6 +160,12 @@ def handle_postback(event):
         print(Set_Time)
         line_bot_api.reply_message(
             event.reply_token, TextSendMessage(text='我知道喇~~\n每天' + event.postback.params['time'] + '準時幫你抽\n （〜^∇^)〜'))
+        doc = {
+            'Time': Set_Time
+        }
+        doc_ref = db.collection("Line_User").document(user_id)
+        doc_ref.update(doc)
+        print(Set_Time)
 
 
 
@@ -202,6 +208,7 @@ def Database_Counter_Decrease():
 def handle_message(event):
     # message = TextSendMessage(text=event.message.text)
     # line_bot_api.reply_message(event.reply_token, message)
+    global user_id
     user_id = event.source.user_id
     # ----------------Login-----------------------
     # path = ("Line_User/"+user_id)
@@ -226,12 +233,7 @@ def handle_message(event):
                 )
             )
             line_bot_api.reply_message(event.reply_token, date_picker)
-            doc = {
-                'Time': Set_Time
-            }
-            doc_ref = db.collection("Line_User").document(user_id)
-            doc_ref.update(doc)
-            print(Set_Time)
+
 
     else:
         print('Login First')
