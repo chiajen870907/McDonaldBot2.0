@@ -175,6 +175,19 @@ def handle_postback(event):
         print(Set_Time)
 
 
+def Check_User():
+    Count_Index = int(Database_Counter_GetCount())
+    # for i in range(1, Count_Index):
+    #     path = ("Line_User/User" + str(i))
+    #     #print(path)
+    #     doc_ref = db.document(path)
+    #     doc = doc_ref.get()
+    #     result = doc.to_dict()
+    #     UserStack = re.sub("[\']", "", str(result))
+    #
+    #     return UserStack
+    #     # # if result == None:
+
 def Database_Counter_GetCount():
     Count_path = ('Line_User/Counter')
     doc_ref = db.document(Count_path)
@@ -182,7 +195,6 @@ def Database_Counter_GetCount():
     Count_result = doc.to_dict()
     Count_Index = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）:{} Count]", "", str(Count_result))
     return Count_Index
-
 
 def Database_Counter_Increase():
     Count_Index = Database_Counter_GetCount()
@@ -194,7 +206,6 @@ def Database_Counter_Increase():
     doc_ref.set(doc)
     print(Count_Index)
 
-
 def Database_Counter_Decrease():
     Count_Index = Database_Counter_GetCount()
     Count_Index = int(Count_Index) - 1
@@ -204,7 +215,6 @@ def Database_Counter_Decrease():
     doc_ref = db.collection("Line_User").document('Counter')
     doc_ref.set(doc)
     print(Count_Index)
-
 
 def McDonald_Lottery():
     print('fku')
@@ -220,13 +230,13 @@ def handle_message(event):
     # ----------------Login-----------------------
     Count_Index = int(Database_Counter_GetCount())
     for i in range(1, Count_Index):
-        path = ("Line_User/User" + str(i))
+        path = ("Line_User/User" + str(i)+'/Token')
         #print(path)
         doc_ref = db.document(path)
         doc = doc_ref.get()
         result = doc.to_dict()
         print(result)
-        # # if result == None:
+
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
