@@ -153,9 +153,9 @@ def callback():
 
 @handler.add(PostbackEvent)
 def handle_postback(event):
-    if event.postback.data == 'Time_Postback':
+    if event.postback.data == 'datetime_postback':
         line_bot_api.reply_message(
-            event.reply_token, TextSendMessage(text=event.postback.params['Time']))
+            event.reply_token, TextSendMessage(text=event.postback.params['datetime']))
 
 
 
@@ -217,13 +217,11 @@ def handle_message(event):
                     text=' 我每天幾點幫你抽呢  ヽ(‘ ∇‘ )ノ ',
                     title='時間設定',
                     actions=[
-                            DatetimePickerTemplateAction(label='設定', data='Time_Postback', mode='time')
+                            DatetimePickerTemplateAction(label='設定', data='datetime_postback', mode='datetime')
                     ]
                 )
             )
             line_bot_api.reply_message(event.reply_token, date_picker)
-        if isinstance(event, PostbackEvent):
-            line_bot_api.push_message(user_id, TextSendMessage(text=event.postback.params['Time_Postback']))
             # event.postback.params['date']
 
     else:
