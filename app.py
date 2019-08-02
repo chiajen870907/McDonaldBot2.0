@@ -264,6 +264,7 @@ def handle_message(event):
                 doc2_ref = db.collection("MD_Token").document(MC_Token)
                 doc2_ref.set(doc2)
                 line_bot_api.push_message(user_id,TextSendMessage(text='我知道喇~\n每天準時幫你抽\nヽ(‘ ∇‘ )ノ'))
+                Database_Counter_Increase()
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
