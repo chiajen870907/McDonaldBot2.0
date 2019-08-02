@@ -188,7 +188,7 @@ def Check_UserID():
         print('result2',result2)
         result3 = result2.split(',')
         print('result3',result3)
-        UserStack = result3[0][7:]
+        UserStack = result3[0][6:]
         print('UserStack',UserStack)
         if user_id==UserStack:
             ex_Stack = True
