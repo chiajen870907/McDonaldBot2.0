@@ -218,7 +218,7 @@ def handle_message(event):
             )
             line_bot_api.reply_message(event.reply_token, date_picker)
         if isinstance(event, PostbackEvent):
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=event.postback.params['Time_Postback']))
+            line_bot_api.push_message(user_id, TextSendMessage(text=event.postback.params['Time_Postback']))
             # event.postback.params['date']
 
     else:
