@@ -203,12 +203,13 @@ def handle_message(event):
     # if result == None:
     if db.collection('Line_User').document(user_id).get().exists:
         print('Exists')
+
         if event.message.text == 'DATA':
             date_picker = TemplateSendMessage(
-                alt_text='予定日を設定',
+                alt_text='時間設定',
                 template=ButtonsTemplate(
-                    text='予定日を設定',
-                    title='YYYY-MM-dd',
+                    text=' 我每天幾點幫你抽呢  ヽ(‘ ∇‘ )ノ ',
+                    title='時間設定',
                     actions=[
                         DatetimePickerTemplateAction(
                             label='設定',
@@ -218,16 +219,10 @@ def handle_message(event):
                     ]
                 )
             )
-
-            line_bot_api.reply_message(
-                event.reply_token,
-                date_picker
-            )
-
-    elif event.message.text == 'DEC':
-            Database_Counter_Decrease()
-
-
+            line_bot_api.reply_message(event.reply_token, date_picker)
+            if isinstance(event, PostbackEvent):
+                a = event.postback.params['date']
+                print(a)
     else:
         print('Login First')
         temp = event.message.text
