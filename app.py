@@ -230,7 +230,7 @@ def handle_message(event):
     # ----------------Login-----------------------
     Count_Index = int(Database_Counter_GetCount())
     for i in range(1, Count_Index):
-        path = ("Line_User/User" + str(i)+'/Token')
+        path = ("Line_User/User" + str(i))
         #print(path)
         doc_ref = db.document(path)
         doc = doc_ref.get()
