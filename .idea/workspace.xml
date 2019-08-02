@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="90c87167-b4d8-47e4-a470-9e442930dcf7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mask.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,17 +16,18 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="234" lean-forward="true" selection-start-line="234" selection-end-line="234" />
+            <state relative-caret-position="300">
+              <caret line="228" column="21" lean-forward="true" selection-start-line="228" selection-start-column="21" selection-end-line="228" selection-end-column="21" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="e#931#4644#0" />
                 <element signature="e#4666#4965#0" />
                 <element signature="e#5063#5412#0" />
-                <element signature="e#5515#5789#0" />
-                <element signature="e#5451#5724#0" />
-                <element signature="e#5775#6043#0" />
-                <element signature="e#7630#8551#0" />
+                <element signature="e#5515#5983#0" />
+                <element signature="e#6053#6336#0" />
+                <element signature="e#6375#6607#0" />
+                <element signature="e#6646#6878#0" />
+                <element signature="e#6908#6920#0" />
                 <element signature="e#8463#8542#0" />
               </folding>
             </state>
@@ -33,10 +35,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/firebase_admin/TEST.py">
+        <entry file="file://$PROJECT_DIR$/rttrr.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="278">
+              <caret line="222" column="21" lean-forward="true" selection-end-line="279" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#962#4675#0" />
+                <element signature="e#4697#4996#0" />
+                <element signature="e#5123#5472#0" />
+                <element signature="e#5546#6014#0" />
+                <element signature="e#6054#6337#0" />
+                <element signature="e#6376#6608#0" />
+                <element signature="e#6647#6879#0" />
+                <element signature="e#6909#6921#0" />
+                <element signature="e#7494#8021#0" />
+                <element signature="e#8040#8961#0" />
+                <element signature="e#8994#9073#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -67,6 +83,8 @@
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/mask.py" />
         <option value="$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/firebase_admin/TEST.py" />
+        <option value="D:/Download/Google/line-bot-tutorial-master/line-bot-tutorial-master/clock.py" />
+        <option value="$PROJECT_DIR$/rttrr.py" />
         <option value="$PROJECT_DIR$/app.py" />
       </list>
     </option>
@@ -255,12 +273,12 @@
       <workItem from="1564654658862" duration="24189000" />
       <workItem from="1564683600078" duration="772000" />
       <workItem from="1564684456671" duration="2803000" />
-      <workItem from="1564705611508" duration="12293000" />
+      <workItem from="1564705611508" duration="13875000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40057000" />
+    <option name="totallyTimeSpent" value="41639000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -361,26 +379,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Download/Google/line-bot-tutorial-master/line-bot-tutorial-master/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="28" column="106" lean-forward="true" selection-start-line="28" selection-start-column="67" selection-end-line="28" selection-end-column="106" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Download/Google/line-bot-tutorial-master/line-bot-tutorial-master/clock.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -425,13 +423,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/firebase_admin/TEST.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/firebase_admin/credentials.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -439,19 +430,68 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/firebase_admin/TEST.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Download/Google/line-bot-tutorial-master/line-bot-tutorial-master/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Download/Google/line-bot-tutorial-master/line-bot-tutorial-master/clock.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rttrr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="222" column="21" lean-forward="true" selection-end-line="279" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#962#4675#0" />
+            <element signature="e#4697#4996#0" />
+            <element signature="e#5123#5472#0" />
+            <element signature="e#5546#6014#0" />
+            <element signature="e#6054#6337#0" />
+            <element signature="e#6376#6608#0" />
+            <element signature="e#6647#6879#0" />
+            <element signature="e#6909#6921#0" />
+            <element signature="e#7494#8021#0" />
+            <element signature="e#8040#8961#0" />
+            <element signature="e#8994#9073#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="234" lean-forward="true" selection-start-line="234" selection-end-line="234" />
+        <state relative-caret-position="300">
+          <caret line="228" column="21" lean-forward="true" selection-start-line="228" selection-start-column="21" selection-end-line="228" selection-end-column="21" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="e#931#4644#0" />
             <element signature="e#4666#4965#0" />
             <element signature="e#5063#5412#0" />
-            <element signature="e#5515#5789#0" />
-            <element signature="e#5451#5724#0" />
-            <element signature="e#5775#6043#0" />
-            <element signature="e#7630#8551#0" />
+            <element signature="e#5515#5983#0" />
+            <element signature="e#6053#6336#0" />
+            <element signature="e#6375#6607#0" />
+            <element signature="e#6646#6878#0" />
+            <element signature="e#6908#6920#0" />
             <element signature="e#8463#8542#0" />
           </folding>
         </state>
