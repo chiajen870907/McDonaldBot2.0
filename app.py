@@ -177,15 +177,16 @@ def handle_postback(event):
 
 def Check_User():
     Count_Index = int(Database_Counter_GetCount())
-    # for i in range(1, Count_Index):
-    #     path = ("Line_User/User" + str(i))
-    #     #print(path)
-    #     doc_ref = db.document(path)
-    #     doc = doc_ref.get()
-    #     result = doc.to_dict()
-    #     UserStack = re.sub("[\']", "", str(result))
-    #
-    #     return UserStack
+    for i in range(1, Count_Index):
+        path = ("Line_User/User" + str(i))
+        doc_ref = db.document(path)
+        doc = doc_ref.get()
+        result = doc.to_dict()
+        result2 = re.sub("[\']+|[:{} ]", "", str(result))
+        result3 = result2.split(',')
+        UserStack = result2[0][5:]
+        print(UserStack)
+        return UserStack
     #     # # if result == None:
 
 def Database_Counter_GetCount():
@@ -228,15 +229,15 @@ def handle_message(event):
     global user_id
     user_id = event.source.user_id
     # ----------------Login-----------------------
-    Count_Index = int(Database_Counter_GetCount())
-    for i in range(1, Count_Index):
-        path = ("Line_User/User" + str(i))
-        #print(path)
-        doc_ref = db.document(path)
-        doc = doc_ref.get()
-        result = doc.to_dict()
-        print(result)
-
+    # Count_Index = int(Database_Counter_GetCount())
+    # for i in range(1, Count_Index):
+    #     path = ("Line_User/User" + str(i))
+    #     #print(path)
+    #     doc_ref = db.document(path)
+    #     doc = doc_ref.get()
+    #     result = doc.to_dict()
+    #     print(result)
+    Check_User()
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
