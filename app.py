@@ -221,7 +221,7 @@ def handle_message(event):
 
     if db.collection('Line_User').document(user_id).get().exists:
         print('Exists')
-        if event.message.text == 'DATA':
+        if event.message.text == 'DATA123456':
             date_picker = TemplateSendMessage(
                 alt_text='時間設定',
                 template=ButtonsTemplate(
@@ -254,12 +254,14 @@ def handle_message(event):
                 }
                 doc_ref = db.collection("Line_User").document(user_id)
                 doc_ref.set(doc)
-
                 doc2 = {
                     'UserID': user_id
                 }
                 doc2_ref = db.collection("MD_Token").document(MC_Token)
                 doc2_ref.set(doc2)
+                line_bot_api.reply_message(
+                    event.reply_token,
+                    TextSendMessage(text='我知道喇~~\n每天準時12點幫你抽\n （〜^∇^)〜'))
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
