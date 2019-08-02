@@ -188,6 +188,7 @@ def Check_UserID():
             print('NotFind')
         else:
             print('Find')
+            break
         # print('result',result)
         # result2 = re.sub("[\']+|[:{} ]", "", str(result))
         # result3 = result2.split(',')
