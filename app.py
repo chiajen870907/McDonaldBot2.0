@@ -25,6 +25,7 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 #McDonald------------------
+
 class Mask(object):
     """docstring for Mask."""
 
@@ -147,6 +148,32 @@ def callback():
         abort(400)
     return 'OK'
 
+def Database_Counter_Increase():
+    Count_path = ('Line_User/Counter')
+    doc_ref = db.document(Count_path)
+    doc = doc_ref.get()
+    Count_result = doc.to_dict()
+    Count_result = Count_result + 1
+    doc = {
+        'Count': Count_result
+    }
+    doc_ref = db.collection("Line_User").document('Counter')
+    doc_ref.set(doc)
+    print(Count_result)
+
+def Database_Counter_Decrease():
+    Count_path = ('Line_User/Counter')
+    doc_ref = db.document(Count_path)
+    doc = doc_ref.get()
+    Count_result = doc.to_dict()
+    Count_result = Count_result - 1
+    doc = {
+        'Count': Count_result
+    }
+    doc_ref = db.collection("Line_User").document('Counter')
+    doc_ref.set(doc)
+    print(Count_result)
+
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -164,11 +191,11 @@ def handle_message(event):
         print('Login First')
         temp = event.message.text
         if '/' not in temp:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='注意!!少了斜線(/) Σ( ° △ °|||)'))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='注意!!少了斜線(/)  Σ( ° △ °|||)'))
         t = temp.split('/')
         if len(t) > 2:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='多打了斜線哦 Σ( ° △ °|||)'))
-        line_bot_api.push_message(user_id, TextSendMessage(text='帳號:{}\n密碼:{}\n正在嘗試登入 (●’ω`●）'.format(t[0], t[1])))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='多打了斜線哦  Σ( ° △ °|||)'))
+        line_bot_api.push_message(user_id, TextSendMessage(text='帳號:{}\n密碼:{}\n正在嘗試登入麥當勞  \n(●’ω`●）'.format(t[0], t[1])))
         global MC_User_ID, MC_User_PASSWORD
         MC_User_ID = t[0]
         MC_User_PASSWORD = t[1]
@@ -181,6 +208,12 @@ def handle_message(event):
                 }
                 doc_ref = db.collection("Line_User").document(user_id)
                 doc_ref.set(doc)
+
+    if event.message.text == 'INS':
+        Database_Counter_Increase()
+    elif event.message.text == 'DEC':
+        Database_Counter_Decrease()
+
 
 import os
 if __name__ == "__main__":
