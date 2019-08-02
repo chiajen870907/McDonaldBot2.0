@@ -261,9 +261,9 @@ def handle_message(event):
 
                 doc_ref = db.collection("Line_User").document('Info')
                 doc2_ref = db.collection("MD_Token").document(MC_Token)
-                time.sleep(1)
+
                 doc_ref.set(doc)
-                doc2_ref.update(doc2)
+                doc2_ref.add(doc2)
                 line_bot_api.push_message(user_id,TextSendMessage(text='我知道喇~\n每天準時幫你抽\nヽ(‘ ∇‘ )ノ'))
                 Database_Counter_Increase()
 
