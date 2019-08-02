@@ -186,10 +186,10 @@ def Check_UserID():
         Stack = re.search(user_id, result)
         if Stack==None:
             print('NotFind')
-            ex_Stack = False
+            ex_Stack = 0
         else:
             print('Find')
-            ex_Stack = True
+            ex_Stack = 1
             break
 
 def CrackDatabase_UserID():
@@ -199,7 +199,7 @@ def CrackDatabase_UserID():
     doc_ref = db.collection("Line_User").document('User' + Database_Counter_GetCount())
     doc_ref.set(doc)
     Database_Counter_Increase();
-    
+
 def Database_Counter_GetCount():
     Count_path = ('Line_User/Counter')
     doc_ref = db.document(Count_path)
@@ -242,7 +242,7 @@ def handle_message(event):
     user_id = event.source.user_id
     # ----------------Login-----------------------
     Check_UserID()
-    if ex_Stack==True:
+    if ex_Stack == 1 :
         print('Exists')
         if event.message.text == 'DATA':
             date_picker = TemplateSendMessage(
