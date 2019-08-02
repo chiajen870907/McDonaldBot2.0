@@ -209,7 +209,7 @@ def Database_Counter_Decrease():
 def Check_UserID():
     global ex_stack
     Count_Index = int(Database_Counter_GetCount())
-    for i in range(1, Count_Index):
+    for i in range(0, Count_Index):
         path = ("Line_User/User" + str(i))
         doc_ref = db.document(path)
         doc = doc_ref.get()
@@ -227,7 +227,7 @@ def Check_UserID():
 def Check_UserToken():
     global ex_stack_Token
     Count_Index = int(Database_Counter_GetCount())
-    for i in range(1, Count_Index):
+    for i in range(0, Count_Index):
         path = ("Line_User/User" + str(i))
         doc_ref = db.document(path)
         doc = doc_ref.get()
