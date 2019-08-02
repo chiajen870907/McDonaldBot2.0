@@ -226,6 +226,11 @@ def handle_message(event):
                 )
             )
             line_bot_api.reply_message(event.reply_token, date_picker)
+            doc = {
+                'Time': Set_Time
+            }
+            doc_ref = db.collection("Line_User").document(user_id)
+            doc_ref.update(doc)
             print(Set_Time)
 
     else:
