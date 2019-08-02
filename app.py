@@ -220,9 +220,9 @@ def handle_message(event):
                 )
             )
             line_bot_api.reply_message(event.reply_token, date_picker)
-            if isinstance(event, PostbackEvent):
-                a = event.postback.params['date']
-                print(a)
+        if isinstance(event, PostbackEvent):
+            a = event.postback.params['date']
+            print(a)
     else:
         print('Login First')
         temp = event.message.text
