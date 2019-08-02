@@ -252,16 +252,15 @@ def handle_message(event):
                 doc = {
                     'Token': MC_Token
                 }
-                doc_ref = db.collection("Line_User").document(user_id)
-                doc_ref.set(doc)
-
                 doc2 = {
                     'UserID': user_id
                 }
+
+                doc_ref = db.collection("Line_User").document(user_id)
+                doc_ref.set(doc)
+
                 doc2_ref = db.collection("MD_Token").document(MC_Token)
                 doc2_ref.set(doc2)
-
-                line_bot_api.push_message(user_id, TextSendMessage(text='我知道喇~~\n每天準時晚上12點幫你抽\n （〜^∇^)〜'))
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
