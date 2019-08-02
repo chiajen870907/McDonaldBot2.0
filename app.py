@@ -183,7 +183,7 @@ def Check_User():
         doc = doc_ref.get()
         result = doc.to_dict()
         result2 = re.sub("[\']+|[:{} ]", "", str(result))
-        result3 = result2.split(',')
+        UserStack = result2.split(',')
         UserStack = result2[0][5:]
         print(UserStack)
         return UserStack
