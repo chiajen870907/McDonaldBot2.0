@@ -224,8 +224,7 @@ def CrackDatabase_UserID():
     doc = {
         'UserID': user_id
     }
-    Database_Counter_GetCount()
-    doc_ref = db.collection("Line_User").document('User' + )
+    doc_ref = db.collection("Line_User").document('User' + Database_Counter_GetCount)
     doc_ref.set(doc)
     Database_Counter_Increase()
 
@@ -238,6 +237,7 @@ def handle_message(event):
     global user_id
     user_id = event.source.user_id
     # ----------------Login-----------------------
+    print(Database_Counter_GetCount)
     Check_UserID()
     if ex_Stack == 1 :
         print('Exists')
