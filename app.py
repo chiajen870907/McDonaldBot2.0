@@ -7,7 +7,6 @@ import os
 import re
 import hashlib
 import requests
-import time
 from datetime import datetime
 from firebase_admin import credentials
 from firebase_admin import firestore
@@ -18,8 +17,7 @@ from McDonald import McDonald
 app = Flask(__name__)
 
 # Channel Access Token
-line_bot_api = LineBotApi(
-    'a4ZRk4l00GSRM9haYsEAdV90WTEk+LMkWCI71MqObTkXFq8ygRUlbwD7qxeS0+vNX+bMN0FvnTP91dASCXNBuxw5HdN0/vCKcSQxIw+QE4u09ARZUmxg9Cg7NMBfn2EBCpfxNXN70UIDg+YwAs130wdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi('a4ZRk4l00GSRM9haYsEAdV90WTEk+LMkWCI71MqObTkXFq8ygRUlbwD7qxeS0+vNX+bMN0FvnTP91dASCXNBuxw5HdN0/vCKcSQxIw+QE4u09ARZUmxg9Cg7NMBfn2EBCpfxNXN70UIDg+YwAs130wdB04t89/1O/w1cDnyilFU=')
 # Channel Secret
 handler = WebhookHandler('62aab4cbbb8fe1efcfd845bc9211e748')
 # 引用私密金鑰
@@ -29,27 +27,26 @@ firebase_admin.initialize_app(cred)
 # 初始化firestore
 db = firestore.client()
 
-
-# McDonald------------------
+#McDonald------------------
 
 class Mask(object):
     """docstring for Mask."""
 
     def __init__(self, account, password):
         super(Mask, self).__init__()
-        self.paramString = account + password  # Just Username + Password
-        self.account = account  # Username
-        self.password = password  # Password
-        self.access_token = ""  # Token
-        self.str1 = datetime.strftime(datetime.now(), '%Y/%m/%d %H:%M:%S')  # Device Time
-        self.str2 = '2.2.0'  # App Version
-        self.str3 = datetime.strftime(datetime.now(), '%Y%m%d%H%M%S')  # Call time
-        self.ModelId = 'MIX 3'  # Model ID
-        self.OsVersion = '9'  # Android OS Version
-        self.Platform = 'Android'  # Platform
-        self.DeviceUuid = 'device_uuid'  # Device Uuid
-        self.OrderNo = self.DeviceUuid + self.str3  # Order No
-        self.cardNo = 'cardNo'  # Card NO
+        self.paramString = account + password                              # Just Username + Password
+        self.account = account                                             # Username
+        self.password = password                                           # Password
+        self.access_token = ""                                             # Token
+        self.str1 = datetime.strftime(datetime.now(), '%Y/%m/%d %H:%M:%S') # Device Time
+        self.str2 = '2.2.0'                                                # App Version
+        self.str3 = datetime.strftime(datetime.now(), '%Y%m%d%H%M%S')      # Call time
+        self.ModelId = 'MIX 3'                                             # Model ID
+        self.OsVersion = '9'                                               # Android OS Version
+        self.Platform = 'Android'                                          # Platform
+        self.DeviceUuid = 'device_uuid'                                    # Device Uuid
+        self.OrderNo = self.DeviceUuid + self.str3                         # Order No
+        self.cardNo = 'cardNo'                                             # Card NO
 
     def Login(self):
         # Mask = MD5('Mc' + OrderNo + Platform + OsVersion + ModelId + DeviceUuid + str1 + str2 + paramString + 'Donalds')
@@ -68,22 +65,22 @@ class Mask(object):
 
         # Form data
         json = {
-            "account": self.account,
+            "account" : self.account,
             "password": self.password,
-            "OrderNo": self.OrderNo,
-            "mask": mask.hexdigest(),
+            "OrderNo" : self.OrderNo,
+            "mask"    : mask.hexdigest(),
             "source_info": {
                 "app_version": self.str2,
                 "device_time": self.str1,
                 "device_uuid": self.DeviceUuid,
-                "model_id": self.ModelId,
-                "os_version": self.OsVersion,
-                "platform": self.Platform,
+                "model_id"   : self.ModelId,
+                "os_version" : self.OsVersion,
+                "platform"   : self.Platform,
             }
         }
 
         # Get the response
-        response = requests.post('https://api.mcddaily.com.tw/login_by_mobile', json=json).text
+        response = requests.post('https://api.mcddaily.com.tw/login_by_mobile', json = json).text
 
         # Clean the garbage date
         response = response.replace('null', '""')
@@ -94,7 +91,7 @@ class Mask(object):
         response = eval(response)
 
         # Get the token
-        self.access_token = response['results']['member_info']['access_token']
+        self.access_token =  response['results']['member_info']['access_token']
 
         # Return the dictionary type of response
         return response
@@ -112,22 +109,21 @@ class Mask(object):
 
         # From data
         json = {
-            "OrderNo": self.OrderNo,
+            "OrderNo"     : self.OrderNo,
             "access_token": self.access_token,
-            "callTime": self.str3,
-            "cardNo": self.cardNo,
-            "mask": mask.hexdigest(),
+            "callTime"    : self.str3,
+            "cardNo"      : self.cardNo,
+            "mask"        : mask.hexdigest(),
         }
 
         # Get the response
-        response = requests.post('https://api.mcddaily.com.tw/queryBonus', json=json).text
+        response = requests.post('https://api.mcddaily.com.tw/queryBonus', json = json).text
 
         # Convert the string to dictionary type
         response = eval(response)
 
         # Return the dictionary type of response
         return response
-
 
 def login_MC():
     Username = MC_User_ID
@@ -137,10 +133,10 @@ def login_MC():
     list = Account.Login()
     # Print the results
     global MC_Status, MC_Token
-    MC_Status = (list['rm'])
-    MC_Token = (list['results']['member_info']['access_token'])
+    MC_Status=(list['rm'])
+    MC_Token=(list['results']['member_info']['access_token'])
 
-# --------------------------
+#--------------------------
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -156,7 +152,6 @@ def callback():
     except InvalidSignatureError:
         abort(400)
     return 'OK'
-
 
 # 等待伺服器回傳資料
 @handler.add(PostbackEvent)
@@ -174,15 +169,14 @@ def handle_postback(event):
         doc_ref.update(doc)
         print(Set_Time)
 
-
 def Database_Counter_GetCount():
     Count_path = ('Line_User/Counter')
     doc_ref = db.document(Count_path)
     doc = doc_ref.get()
     Count_result = doc.to_dict()
+    print(Count_result)
     Count_Index = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）:{} Count]", "", str(Count_result))
     return Count_Index
-
 
 def Database_Counter_Increase():
     Count_Index = Database_Counter_GetCount()
@@ -194,7 +188,6 @@ def Database_Counter_Increase():
     doc_ref.set(doc)
     print(Count_Index)
 
-
 def Database_Counter_Decrease():
     Count_Index = Database_Counter_GetCount()
     Count_Index = int(Count_Index) - 1
@@ -205,51 +198,10 @@ def Database_Counter_Decrease():
     doc_ref.set(doc)
     print(Count_Index)
 
-
-def Check_UserID():
-    global ex_stack
-    Count_Index = int(Database_Counter_GetCount())
-    for i in range(0, Count_Index):
-        path = ("Line_User/User" + str(i))
-        doc_ref = db.document(path)
-        doc = doc_ref.get()
-        result = str(doc.to_dict())
-        stack = re.search(user_id, result)
-        if stack is None:
-            ex_stack = 0
-            print('NotFind')
-        else:
-            ex_stack = 1
-            print('Find')
-            break
+def McDonald_Lottery():
+    print('fku')
 
 
-def Check_UserToken():
-    global ex_stack_Token
-    Count_Index = int(Database_Counter_GetCount())
-    for i in range(0, Count_Index):
-        path = ("Line_User/User" + str(i))
-        doc_ref = db.document(path)
-        doc = doc_ref.get()
-        result = str(doc.to_dict())
-        stack = re.search('Token', result)
-        if stack is None:
-            ex_stack_Token = 0
-            print('NotFind')
-        else:
-            ex_stack_Token = 1
-            print('Find')
-            break
-
-
-def CrackDatabase_UserID():
-    doc = {
-        'UserID': user_id
-    }
-    Count_Index = Database_Counter_GetCount()
-    doc_ref = db.collection("Line_User").document('User' + Count_Index)
-    doc_ref.set(doc)
-    Database_Counter_Increase()
 
 
 # 處理訊息
@@ -260,11 +212,12 @@ def handle_message(event):
     global user_id
     user_id = event.source.user_id
     # ----------------Login-----------------------
-    Check_UserID()
-    Check_UserToken()
-    time.sleep(1)
-    if ex_stack_Token == 1:
+
+
+
+    if db.collection('Line_User').document(user_id).get().exists:
         print('Exists')
+
         if event.message.text == 'DATA':
             date_picker = TemplateSendMessage(
                 alt_text='時間設定',
@@ -277,11 +230,9 @@ def handle_message(event):
                 )
             )
             line_bot_api.reply_message(event.reply_token, date_picker)
-    elif ex_stack_Token == 0:
+    else:
         print('Login First')
         temp = event.message.text
-        if temp != '':
-            CrackDatabase_UserID()
         if '/' not in temp:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='注意!!少了斜線(/)  Σ( ° △ °|||)'))
         t = temp.split('/')
@@ -298,10 +249,8 @@ def handle_message(event):
                 doc={
                     'Token': MC_Token
                 }
-                Count_Index = Database_Counter_GetCount
-                doc_ref = db.collection("Line_User").document('User' + Count_Index)
+                doc_ref = db.collection("Line_User").document(user_id)
                 doc_ref.set(doc)
-
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
