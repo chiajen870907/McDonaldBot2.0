@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="90c87167-b4d8-47e4-a470-9e442930dcf7" name="Default Changelist" comment="" />
+    <list default="true" id="90c87167-b4d8-47e4-a470-9e442930dcf7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -10,14 +12,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="163" column="30" lean-forward="true" selection-start-line="163" selection-start-column="30" selection-end-line="163" selection-end-column="30" />
+            <state relative-caret-position="256">
+              <caret line="181" lean-forward="true" selection-start-line="181" selection-end-line="181" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
-                <element signature="e#5878#6318#0" />
+                <element signature="e#5063#5412#0" />
               </folding>
             </state>
           </provider>
@@ -28,18 +30,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
               <caret line="6" selection-start-line="6" selection-end-line="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mask.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1175">
-              <caret line="107" column="11" selection-start-line="107" selection-start-column="4" selection-end-line="107" selection-end-column="11" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -258,12 +248,12 @@
       <workItem from="1564654658862" duration="24189000" />
       <workItem from="1564683600078" duration="772000" />
       <workItem from="1564684456671" duration="2803000" />
-      <workItem from="1564705611508" duration="6386000" />
+      <workItem from="1564705611508" duration="6691000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34150000" />
+    <option name="totallyTimeSpent" value="34455000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -425,6 +415,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mask.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1625">
+          <caret line="107" column="11" selection-start-line="107" selection-start-column="4" selection-end-line="107" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/firebase_admin/TEST.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -434,21 +434,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="163" column="30" lean-forward="true" selection-start-line="163" selection-start-column="30" selection-end-line="163" selection-end-column="30" />
+        <state relative-caret-position="256">
+          <caret line="181" lean-forward="true" selection-start-line="181" selection-end-line="181" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#5878#6318#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mask.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1175">
-          <caret line="107" column="11" selection-start-line="107" selection-start-column="4" selection-end-line="107" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#5063#5412#0" />
           </folding>
         </state>
       </provider>
