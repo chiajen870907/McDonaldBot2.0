@@ -7,6 +7,7 @@ import os
 import re
 import hashlib
 import requests
+import time
 from McDonald import McDonald
 from datetime import datetime
 from firebase_admin import credentials
@@ -259,10 +260,10 @@ def handle_message(event):
                 }
 
                 doc_ref = db.collection("Line_User").document('Info')
-                doc_ref.set(doc)
-
                 doc2_ref = db.collection("MD_Token").document(MC_Token)
-                doc2_ref.set(doc2)
+                time.sleep(1)
+                doc_ref.set(doc)
+                doc2_ref.update(doc2)
                 line_bot_api.push_message(user_id,TextSendMessage(text='我知道喇~\n每天準時幫你抽\nヽ(‘ ∇‘ )ノ'))
                 Database_Counter_Increase()
 
