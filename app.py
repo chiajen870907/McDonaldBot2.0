@@ -192,7 +192,14 @@ def Check_UserID():
             ex_Stack = True
             break
 
-
+def CrackDatabase_UserID():
+    doc = {
+        'UserID': user_id
+    }
+    doc_ref = db.collection("Line_User").document('User' + Database_Counter_GetCount())
+    doc_ref.set(doc)
+    Database_Counter_Increase();
+    
 def Database_Counter_GetCount():
     Count_path = ('Line_User/Counter')
     doc_ref = db.document(Count_path)
@@ -237,7 +244,6 @@ def handle_message(event):
     Check_UserID()
     if ex_Stack==True:
         print('Exists')
-
         if event.message.text == 'DATA':
             date_picker = TemplateSendMessage(
                 alt_text='時間設定',
@@ -269,7 +275,8 @@ def handle_message(event):
                 doc={
                     'Token': MC_Token
                 }
-                doc_ref = db.collection("Line_User").document(user_id)
+
+                doc_ref = db.collection("Line_User").document('User' + Database_Counter_GetCount())
                 doc_ref.set(doc)
 
 
