@@ -154,8 +154,10 @@ def callback():
 @handler.add(PostbackEvent)
 def handle_postback(event):
     if event.postback.data == 'datetime_postback':
+        Set_Time = event.postback.params['time']
+        print(Set_Time)
         line_bot_api.reply_message(
-            event.reply_token, TextSendMessage(text=event.postback.params['time']))
+            event.reply_token, TextSendMessage(text='我知道喇~~\n每天' + event.postback.params['time'] + '幫你抽\n （〜^∇^)〜'))
 
 
 
