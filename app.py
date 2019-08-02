@@ -151,6 +151,11 @@ def callback():
         abort(400)
     return 'OK'
 
+@handler.add(PostbackEvent)
+def handle_postback(event):
+    if event.postback.data == 'Time_Postback':
+        line_bot_api.reply_message(
+            event.reply_token, TextSendMessage(text=event.postback.params['Time']))
 
 
 
