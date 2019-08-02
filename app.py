@@ -203,6 +203,31 @@ def handle_message(event):
     # if result == None:
     if db.collection('Line_User').document(user_id).get().exists:
         print('Exists')
+        if event.message.text == 'DATA':
+            date_picker = TemplateSendMessage(
+                alt_text='予定日を設定',
+                template=ButtonsTemplate(
+                    text='予定日を設定',
+                    title='YYYY-MM-dd',
+                    actions=[
+                        DatetimePickerTemplateAction(
+                            label='設定',
+                            data='action=buy&itemid=1',
+                            mode='time',
+                        )
+                    ]
+                )
+            )
+
+            line_bot_api.reply_message(
+                event.reply_token,
+                date_picker
+            )
+
+    elif event.message.text == 'DEC':
+            Database_Counter_Decrease()
+
+
     else:
         print('Login First')
         temp = event.message.text
@@ -225,10 +250,7 @@ def handle_message(event):
                 doc_ref = db.collection("Line_User").document(user_id)
                 doc_ref.set(doc)
 
-    if event.message.text == 'INS':
-        Database_Counter_Increase()
-    elif event.message.text == 'DEC':
-        Database_Counter_Decrease()
+
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
