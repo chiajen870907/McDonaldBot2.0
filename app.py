@@ -243,7 +243,7 @@ def handle_message(event):
         t = temp.split('/')
         if len(t) > 2:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='多打了斜線哦  Σ( ° △ °|||)'))
-        line_bot_api.push_message(user_id, TextSendMessage(text='帳號:{}\n密碼:{}\n正在嘗試登入麥當勞  \n(●’ω`●）'.format(t[0], t[1])))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text='帳號:{}\n密碼:{}\n正在嘗試登入麥當勞  \n(●’ω`●）'.format(t[0], t[1])))
         global MC_User_ID, MC_User_PASSWORD
         MC_User_ID = t[0]
         MC_User_PASSWORD = t[1]
@@ -252,9 +252,8 @@ def handle_message(event):
             line_bot_api.push_message(user_id, TextSendMessage(text='(。_。) ' + MC_Status))
             if MC_Token != "":
                 stackE=0
-
+                Database_Counter_Increase()
                 Count_Index = Database_Counter_GetCount()
-
                 doc = {
                     'Token' + Count_Index : MC_Token
                 }
@@ -268,7 +267,6 @@ def handle_message(event):
                 doc_ref.update(doc)
                 doc2_ref.set(doc2)
                 line_bot_api.push_message(user_id,TextSendMessage(text='我知道喇~\n每天準時幫你抽\nヽ(‘ ∇‘ )ノ'))
-                Database_Counter_Increase()
                 stackE = 1
                 if stackE == 0:
                     line_bot_api.push_message(user_id, TextSendMessage(text='錯誤請重新登入\n 〒.〒 '))
