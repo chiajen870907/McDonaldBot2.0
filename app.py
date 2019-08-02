@@ -27,7 +27,8 @@ firebase_admin.initialize_app(cred)
 # 初始化firestore
 db = firestore.client()
 
-#McDonald------------------
+# McDonald------------------
+
 
 class Mask(object):
     """docstring for Mask."""
@@ -125,6 +126,7 @@ class Mask(object):
         # Return the dictionary type of response
         return response
 
+
 def login_MC():
     Username = MC_User_ID
     Password = MC_User_PASSWORD
@@ -136,7 +138,7 @@ def login_MC():
     MC_Status=(list['rm'])
     MC_Token=(list['results']['member_info']['access_token'])
 
-#--------------------------
+# --------------------------
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -169,6 +171,7 @@ def handle_postback(event):
         doc_ref.update(doc)
         print(Set_Time)
 
+
 def Database_Counter_GetCount():
     Count_path = ('Line_User/Counter')
     doc_ref = db.document(Count_path)
@@ -177,6 +180,7 @@ def Database_Counter_GetCount():
     print(Count_result)
     Count_Index = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）:{} Count]", "", str(Count_result))
     return Count_Index
+
 
 def Database_Counter_Increase():
     Count_Index = Database_Counter_GetCount()
@@ -188,6 +192,7 @@ def Database_Counter_Increase():
     doc_ref.set(doc)
     print(Count_Index)
 
+
 def Database_Counter_Decrease():
     Count_Index = Database_Counter_GetCount()
     Count_Index = int(Count_Index) - 1
@@ -198,10 +203,9 @@ def Database_Counter_Decrease():
     doc_ref.set(doc)
     print(Count_Index)
 
+
 def McDonald_Lottery():
     print('fku')
-
-
 
 
 # 處理訊息
@@ -213,11 +217,10 @@ def handle_message(event):
     user_id = event.source.user_id
     # ----------------Login-----------------------
 
-
+    #A = db.collection("songs").whereField("singer", equalTo: "周興哲").getDocuments
 
     if db.collection('Line_User').document(user_id).get().exists:
         print('Exists')
-
         if event.message.text == 'DATA':
             date_picker = TemplateSendMessage(
                 alt_text='時間設定',
@@ -246,11 +249,17 @@ def handle_message(event):
         if MC_Status != "":
             line_bot_api.push_message(user_id, TextSendMessage(text='(。_。) ' + MC_Status))
             if MC_Token != "":
-                doc={
+                doc = {
                     'Token': MC_Token
                 }
                 doc_ref = db.collection("Line_User").document(user_id)
                 doc_ref.set(doc)
+
+                doc2 = {
+                    'UserID': user_id
+                }
+                doc2_ref = db.collection("MD_Token").document(MC_Token)
+                doc2_ref.set(doc2)
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="90c87167-b4d8-47e4-a470-9e442930dcf7" name="Default Changelist" comment="" />
+    <list default="true" id="90c87167-b4d8-47e4-a470-9e442930dcf7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,23 +15,19 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-500">
-              <caret line="225" lean-forward="true" selection-start-line="225" selection-end-line="225" />
+            <state relative-caret-position="311">
+              <caret line="256" lean-forward="true" selection-start-line="256" selection-end-line="256" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
-                <element signature="e#969#4209#0" />
-                <element signature="e#1047#1793#0" />
-                <element signature="e#1824#3361#0" />
-                <element signature="e#3393#4209#0" />
-                <element signature="e#4232#4535#0" />
-                <element signature="e#4664#5013#0" />
-                <element signature="e#5088#5556#0" />
-                <element signature="e#5595#5854#0" />
-                <element signature="e#5893#6125#0" />
-                <element signature="e#6164#6396#0" />
-                <element signature="e#6437#6888#0" />
-                <element signature="e#6926#7111#0" />
-                <element signature="e#7508#8034#0" />
+                <element signature="e#962#4675#0" />
+                <element signature="e#4697#4996#0" />
+                <element signature="e#5123#5472#0" />
+                <element signature="e#5546#6014#0" />
+                <element signature="e#5601#6014#0" />
+                <element signature="e#6053#6336#0" />
+                <element signature="e#6375#6607#0" />
+                <element signature="e#6646#6878#0" />
+                <element signature="e#6908#6920#0" />
               </folding>
             </state>
           </provider>
@@ -47,15 +45,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rttrr.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1037">
-              <caret line="252" column="32" selection-start-line="214" selection-end-line="252" selection-end-column="32" />
+            <state relative-caret-position="373">
+              <caret line="320" selection-start-line="320" selection-end-line="320" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
-                <element signature="e#962#4675#0" />
-                <element signature="e#4697#4996#0" />
-                <element signature="e#5123#5472#0" />
-                <element signature="e#5546#6014#0" />
-                <element signature="e#5601#6014#0" />
               </folding>
             </state>
           </provider>
@@ -74,6 +67,8 @@
     <findStrings>
       <find>DATATBASE_URL</find>
       <find>CrackDatabase_UserID</find>
+      <find>lINE_USER</find>
+      <find>token</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -88,9 +83,9 @@
         <option value="$PROJECT_DIR$/mask.py" />
         <option value="$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/firebase_admin/TEST.py" />
         <option value="D:/Download/Google/line-bot-tutorial-master/line-bot-tutorial-master/clock.py" />
-        <option value="$PROJECT_DIR$/rttrr.py" />
         <option value="$PROJECT_DIR$/../../../McDonald-s-APP-master/mask.py" />
         <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/rttrr.py" />
         <option value="$PROJECT_DIR$/app.py" />
       </list>
     </option>
@@ -287,12 +282,12 @@
       <workItem from="1564683600078" duration="772000" />
       <workItem from="1564684456671" duration="2803000" />
       <workItem from="1564705611508" duration="23914000" />
-      <workItem from="1564733959466" duration="2722000" />
+      <workItem from="1564733959466" duration="7260000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54400000" />
+    <option name="totallyTimeSpent" value="58938000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -461,21 +456,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rttrr.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="252" column="32" selection-start-line="214" selection-end-line="252" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#962#4675#0" />
-            <element signature="e#4697#4996#0" />
-            <element signature="e#5123#5472#0" />
-            <element signature="e#5546#6014#0" />
-            <element signature="e#5601#6014#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -483,25 +463,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
+    <entry file="file://$PROJECT_DIR$/rttrr.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-500">
-          <caret line="225" lean-forward="true" selection-start-line="225" selection-end-line="225" />
+        <state relative-caret-position="373">
+          <caret line="320" selection-start-line="320" selection-end-line="320" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#969#4209#0" />
-            <element signature="e#1047#1793#0" />
-            <element signature="e#1824#3361#0" />
-            <element signature="e#3393#4209#0" />
-            <element signature="e#4232#4535#0" />
-            <element signature="e#4664#5013#0" />
-            <element signature="e#5088#5556#0" />
-            <element signature="e#5595#5854#0" />
-            <element signature="e#5893#6125#0" />
-            <element signature="e#6164#6396#0" />
-            <element signature="e#6437#6888#0" />
-            <element signature="e#6926#7111#0" />
-            <element signature="e#7508#8034#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="256" lean-forward="true" selection-start-line="256" selection-end-line="256" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#962#4675#0" />
+            <element signature="e#4697#4996#0" />
+            <element signature="e#5123#5472#0" />
+            <element signature="e#5546#6014#0" />
+            <element signature="e#5601#6014#0" />
+            <element signature="e#6053#6336#0" />
+            <element signature="e#6375#6607#0" />
+            <element signature="e#6646#6878#0" />
+            <element signature="e#6908#6920#0" />
           </folding>
         </state>
       </provider>
