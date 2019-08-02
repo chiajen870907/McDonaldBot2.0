@@ -251,6 +251,7 @@ def handle_message(event):
         if MC_Status != "":
             line_bot_api.push_message(user_id, TextSendMessage(text='(。_。) ' + MC_Status))
             if MC_Token != "":
+                stackE=0
                 Count_Index = Database_Counter_GetCount()
                 doc = {
                     'Token' + Count_Index : MC_Token
@@ -263,9 +264,13 @@ def handle_message(event):
                 doc2_ref = db.collection("MD_Token").document(MC_Token)
 
                 doc_ref.set(doc)
-                doc2_ref.add(doc2)
+                doc2_ref.set(doc2)
                 line_bot_api.push_message(user_id,TextSendMessage(text='我知道喇~\n每天準時幫你抽\nヽ(‘ ∇‘ )ノ'))
                 Database_Counter_Increase()
+                stackE = 1
+                if stackE == 0:
+                    line_bot_api.push_message(user_id, TextSendMessage(text='錯誤請重新登入\n 〒.〒 '))
+
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
