@@ -149,21 +149,24 @@ def callback():
         abort(400)
     return 'OK'
 
-def Database_Counter_Increase():
+def Database_Counter_GetCount():
     Count_path = ('Line_User/Counter')
     doc_ref = db.document(Count_path)
     doc = doc_ref.get()
     Count_result = doc.to_dict()
     print(Count_result)
-    string = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）:{} Count]", "", str(Count_result))
-    string = int(string) + 1
-    doc = {
-        'Count': string
-    }
-    doc_ref = db.collection("Line_User").document('Counter')
-    doc_ref.set(doc)
-    print(string)
+    Count_Index = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）:{} Count]", "", str(Count_result))
+    return Count_Index
 
+def Database_Counter_Increase(Count_Index):
+    print(Count_Index)
+    # string = int(string) + 1
+    # doc = {
+    #     'Count': string
+    # }
+    # doc_ref = db.collection("Line_User").document('Counter')
+    # doc_ref.set(doc)
+    # print(string)
 
 def Database_Counter_Decrease():
     Count_path = ('Line_User/Counter')
