@@ -180,7 +180,6 @@ def Database_Counter_GetCount():
     doc_ref = db.document(Count_path)
     doc = doc_ref.get()
     Count_result = doc.to_dict()
-    print(Count_result)
     Count_Index = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）:{} Count]", "", str(Count_result))
     return Count_Index
 
@@ -220,16 +219,15 @@ def handle_message(event):
     user_id = event.source.user_id
     # ----------------Login-----------------------
     Count_Index = int(Database_Counter_GetCount())
-    print('Count_Index={}',format(Count_Index))
-
-    # for i in range(Count_Index):
-    #     path = ("Line_User/User" + str(Count_Index))
-    #     print(path)
-    #     doc_ref = db.document(path)
-    #     doc = doc_ref.get()
-    #     result = doc.to_dict()
-    #     print(result)
-    #     # if result == None:
+    for i in range(Count_Index):
+        print(Count_Index)
+        # path = ("Line_User/User" + str(Count_Index))
+        # print(path)
+        # doc_ref = db.document(path)
+        # doc = doc_ref.get()
+        # result = doc.to_dict()
+        # print(result)
+        # # if result == None:
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
