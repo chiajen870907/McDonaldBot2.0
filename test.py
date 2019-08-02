@@ -6,4 +6,6 @@ Index = re.sub("[{} \' :]", "", str(result))
 
 for i in range(3):
     Index = Index.replace('Token' + str(i), '')
-    print(Index)
+print(Index)
+t = Index.split(',')
+print(t[0])
