@@ -213,15 +213,15 @@ def Check_UserID():
         doc = doc_ref.get()
         result = str(doc.to_dict())
         Stack = re.search(user_id, result)
+        print(Stack)
         if Stack==None:
             print('NotFind')
+            ex_Stack = 0
         else:
             print('Find')
+            ex_Stack = 1
             break
-    if Stack==None:
-        ex_Stack = 0
-    else:
-        ex_Stack = 1
+
 def CrackDatabase_UserID():
     doc = {
         'UserID': user_id
@@ -257,6 +257,8 @@ def handle_message(event):
     else:
         print('Login First')
         temp = event.message.text
+        if temp != '':
+            CrackDatabase_UserID()
         if '/' not in temp:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='注意!!少了斜線(/)  Σ( ° △ °|||)'))
         t = temp.split('/')

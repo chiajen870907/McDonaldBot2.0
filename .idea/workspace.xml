@@ -15,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-165">
-              <caret line="177" selection-start-line="177" selection-end-line="177" />
+            <state relative-caret-position="1385">
+              <caret line="260" column="27" lean-forward="true" selection-start-line="260" selection-start-column="27" selection-end-line="260" selection-end-column="27" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="e#931#4644#0" />
@@ -26,7 +26,6 @@
                 <element signature="e#5595#5854#0" />
                 <element signature="e#5893#6125#0" />
                 <element signature="e#6164#6396#0" />
-                <element signature="e#6073#6254#0" />
                 <element signature="e#8463#8542#0" />
               </folding>
             </state>
@@ -281,12 +280,12 @@
       <workItem from="1564654658862" duration="24189000" />
       <workItem from="1564683600078" duration="772000" />
       <workItem from="1564684456671" duration="2803000" />
-      <workItem from="1564705611508" duration="23131000" />
+      <workItem from="1564705611508" duration="23499000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50895000" />
+    <option name="totallyTimeSpent" value="51263000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -493,8 +492,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-165">
-          <caret line="177" selection-start-line="177" selection-end-line="177" />
+        <state relative-caret-position="1385">
+          <caret line="260" column="27" lean-forward="true" selection-start-line="260" selection-start-column="27" selection-end-line="260" selection-end-column="27" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="e#931#4644#0" />
@@ -504,7 +503,6 @@
             <element signature="e#5595#5854#0" />
             <element signature="e#5893#6125#0" />
             <element signature="e#6164#6396#0" />
-            <element signature="e#6073#6254#0" />
             <element signature="e#8463#8542#0" />
           </folding>
         </state>
