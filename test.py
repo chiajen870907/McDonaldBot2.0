@@ -1,6 +1,6 @@
 import re
-result = " {'Token': 'xxxx', 'Time': '15:22'} "
+result = "  ['UserID1234', 'Token123456789', 'Time1231'] "
 result2 = re.sub("[\']+|[:{} ]", "", str(result))
 result3 = result2.split(',')
-result3 = temp2[0][5:]
-print('{}'.format(temp3))
+result4 = result3[0][7:]
+print('{}'.format(result4))

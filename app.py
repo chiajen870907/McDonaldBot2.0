@@ -175,7 +175,8 @@ def handle_postback(event):
         print(Set_Time)
 
 
-def Check_User():
+def Check_User_Token():
+    global ex_Stack
     Count_Index = int(Database_Counter_GetCount())
     for i in range(1, Count_Index):
         path = ("Line_User/User" + str(i))
@@ -183,12 +184,18 @@ def Check_User():
         doc = doc_ref.get()
         result = doc.to_dict()
         result2 = re.sub("[\']+|[:{} ]", "", str(result))
-        print(result2)
         result3 = result2.split(',')
-        print(result3)
-        UserStack = result3[0][5:]
-        print(UserStack)
-        return UserStack
+        UserStack = result3[0][7:]
+        if user_id==UserStack:
+            ex_Stack = True
+            print("Find")
+            break
+        else:
+            ex_Stack = False
+            print("NotFind")
+
+
+
     #     # # if result == None:
 
 def Database_Counter_GetCount():
@@ -240,7 +247,7 @@ def handle_message(event):
     #     result = doc.to_dict()
     #     print(result)
     if event.message.text == 'DATA':
-        Check_User()
+        Check_User_Token()
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
