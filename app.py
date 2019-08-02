@@ -207,7 +207,13 @@ def Database_Counter_Decrease():
 
 
 def McDonald_Lottery():
-    print('test')
+    Count_path = ('Line_User/Info')
+    doc_ref = db.document(Count_path)
+    doc = doc_ref.get()
+    result = doc.to_dict()
+    print(result)
+    Index = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）:{} Count]", "", str(result))
+    print('Index')
     # Account = McDonald(Token)
     # line_bot_api.push_message(user_id, TextSendMessage(text=Account.Lottery()))
 
@@ -235,6 +241,8 @@ def handle_message(event):
                 )
             )
             line_bot_api.reply_message(event.reply_token, date_picker)
+        elif event.message.text =="Lottery":
+            McDonald_Lottery()
     else:
         print('Login First')
         temp = event.message.text
