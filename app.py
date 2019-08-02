@@ -237,7 +237,8 @@ def handle_message(event):
     #     doc = doc_ref.get()
     #     result = doc.to_dict()
     #     print(result)
-    Check_User()
+    if event.message.text == 'DATA':
+        Check_User()
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
