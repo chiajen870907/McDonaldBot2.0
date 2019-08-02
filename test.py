@@ -1,6 +1,9 @@
 import re
 
-for i in range(1, 10):
-    result = 'Token:asfasfasfasf'
-    stack = re.search("Token", result)
-    print(stack)
+
+result = "{'Token1': 'ElwCo9+jfBwATACG', 'Token2': 'zwAlTgDIEwIiYi08'}"
+Index = re.sub("[{} \' :]", "", str(result))
+
+for i in range(10):
+    Index = Index.replace('Token' + str(i), '')
+    print(Index)

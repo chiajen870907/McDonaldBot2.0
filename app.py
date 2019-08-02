@@ -207,15 +207,16 @@ def Database_Counter_Decrease():
 
 
 def McDonald_Lottery():
+    Count_Index = Database_Counter_GetCount
     Count_path = ('Line_User/Info')
     doc_ref = db.document(Count_path)
     doc = doc_ref.get()
     result = doc.to_dict()
-    print(result)
-    Index = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）:{} Count]", "", str(result))
-    print('Index')
-    # Account = McDonald(Token)
-    # line_bot_api.push_message(user_id, TextSendMessage(text=Account.Lottery()))
+    Index = re.sub("[{} \' :]", "", str(result))
+    nCount_Index = int(Count_Index) * 2
+    for i in range(nCount_Index):
+        TokenList = Index.replace('Token' + str(i), '')
+        print(TokenList)
 
 
 # 處理訊息
