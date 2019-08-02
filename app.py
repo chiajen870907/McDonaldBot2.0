@@ -220,14 +220,16 @@ def handle_message(event):
     user_id = event.source.user_id
     # ----------------Login-----------------------
     Count_Index = int(Database_Counter_GetCount())
-    for i in range(Count_Index):
-        path = ("Line_User/User" + str(Count_Index))
-        print(path)
-        doc_ref = db.document(path)
-        doc = doc_ref.get()
-        result = doc.to_dict()
-        print(result)
-        # if result == None:
+    print('Count_Index={}',format(Count_Index))
+
+    # for i in range(Count_Index):
+    #     path = ("Line_User/User" + str(Count_Index))
+    #     print(path)
+    #     doc_ref = db.document(path)
+    #     doc = doc_ref.get()
+    #     result = doc.to_dict()
+    #     print(result)
+    #     # if result == None:
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
