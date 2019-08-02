@@ -212,16 +212,6 @@ def handle_message(event):
     global user_id
     user_id = event.source.user_id
     # ----------------Login-----------------------
-    Count_Index = int(Database_Counter_GetCount())
-
-    for i in Count_Index:
-        path = ("Line_User/User"+ Count_Index )
-        #print(path)
-        doc_ref = db.document(path)
-        doc = doc_ref.get()
-        result = doc.to_dict()
-        print(result)
-        #if result == None:
 
 
 
