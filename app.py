@@ -207,16 +207,16 @@ def Database_Counter_Decrease():
 
 
 def McDonald_Lottery():
-    Count_Index = int(Database_Counter_GetCount)
+    Count_Index = Database_Counter_GetCount()
     Count_path = ('Line_User/Info')
     doc_ref = db.document(Count_path)
     doc = doc_ref.get()
     result = doc.to_dict()
     Index = re.sub("[{} \' :]", "", str(result))
-    nCount_Index = Count_Index + 1
+    nCount_Index = int(Count_Index) + 1
     for i in range(nCount_Index):
         TokenList = Index.replace('Token' + str(i), '')
-        print(TokenList)
+    print(TokenList)
 
 
 # 處理訊息
