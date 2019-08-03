@@ -1,20 +1,10 @@
-import re
-Count_Index = 2
-nCount_Index = int(Count_Index) + 5
-# result = "{'Token1': 'ElwCo9+jfBwATACG', 'Token2': 'zwAlTgDIEwIiYi08'}"
-# # Index = re.sub("[{} \' :]", "", str(result))
-Index = 'Token1ElwCo9+jfBwATACG,Token2zwAlTgDIEwIiYi08'
-for i in range(nCount_Index):
-    TokenList = Index.replace('Token' + str(i), '')
-    print(TokenList)
-print('Database_Check_UserID() ', TokenList)
-GetToken = Index.split(',')
-print('GetToken:', GetToken[0])
-A = re.search('5', GetToken[0])
-print(A)
-if A is None:
-    print('None')
-else:
-    print('Yes')
-# t = Index.split(',')
-# print(t[0])
+
+def test():
+    x = 0
+    for i in range(10):
+        if i==5:
+            x = 1 + 2;
+            print(x)
+    return x
+a = test()
+print(a)

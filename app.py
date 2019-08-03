@@ -209,8 +209,7 @@ def Database_Counter_Decrease():
 def McDonald_Lottery():
     print('F')
 
-
-def Database_Check_UserID():
+def Database_Check_Token():
     Count_Index = Database_Counter_GetCount()
     Count_path = ('Line_User/Info')
     doc_ref = db.document(Count_path)
@@ -226,8 +225,25 @@ def Database_Check_UserID():
     # print('Database_Check_UserID() ', Index)
 
     GetToken = Index.split(',')
+    return GetToken
+def Database_Check_UserID():
+    Count_Index = Database_Counter_GetCount()
+    # Count_path = ('Line_User/Info')
+    # doc_ref = db.document(Count_path)
+    # doc = doc_ref.get()
+    # result = doc.to_dict()
+    # Index = re.sub("[{} \' :]", "", str(result))
+    # print('Index', Index)
+
+    GetToken = Database_Check_Token()
+
+    nCount_Index = int(Count_Index) + 5
+    for i in range(nCount_Index):
+        Index = Index.replace('Token' + str(i), '')
+    # print('Database_Check_UserID() ', Index)
+
+    GetToken = Index.split(',')
     # print('GetToken:' , GetToken[0])
-    global UserID_Exists
     for i in range(int(Count_Index)):
         path_ID = ("MD_Token/" + GetToken[i])
         # print('path_ID', path_ID)
@@ -238,13 +254,14 @@ def Database_Check_UserID():
         result_ID = re.search(user_id, temp_ID)
         #print('result_ID', result_ID)
         if result_ID is None:
-            UserID_Exists = 0
+            # UserID_Exists = 0
             print('CantFind')
         else:
-            UserID_Exists = 1
+            # UserID_Exists = 1
             #re.search(user_id, result)
             print('Find_UserID')
             break
+    return 'OK'
 
 
 
@@ -262,10 +279,10 @@ def handle_message(event):
     user_id = event.source.user_id
     # ----------------Login-----------------------
 
-    Database_Check_UserID()
+    Check = Database_Check_UserID()
     #print('UserID_Exists:', UserID_Exists)
     #if db.collection('Line_User').document(user_id).get().exists:
-    if UserID_Exists == 1:
+    if Check == 'OK':
         print('Exists')
         if event.message.text == 'DATA123456':
             date_picker = TemplateSendMessage(
@@ -281,7 +298,7 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, date_picker)
         elif event.message.text =="Lottery":
             McDonald_Lottery()
-    elif UserID_Exists == 0:
+    else:
         #print('Login First')
         temp = event.message.text
         if '/' not in temp:
