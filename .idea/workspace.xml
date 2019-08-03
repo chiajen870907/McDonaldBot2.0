@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="90c87167-b4d8-47e4-a470-9e442930dcf7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-259">
-              <caret line="267" lean-forward="true" selection-start-line="267" selection-end-line="267" />
+            <state relative-caret-position="230">
+              <caret line="217" column="27" selection-start-line="217" selection-start-column="27" selection-end-line="217" selection-end-column="27" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="e#1006#4719#0" />
@@ -25,7 +26,24 @@
                 <element signature="e#5592#6060#0" />
                 <element signature="e#6100#6383#0" />
                 <element signature="e#6423#6655#0" />
+                <element signature="e#6695#6927#0" />
+                <element signature="e#7159#7663#0" />
+                <element signature="e#7845#8410#0" />
                 <element signature="e#8425#8882#0" />
+                <element signature="e#9959#11357#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="279">
+              <caret line="121" column="11" lean-forward="true" selection-start-line="121" selection-start-column="11" selection-end-line="121" selection-end-column="11" />
+              <folding>
+                <element signature="e#0#29#0" expanded="true" />
+                <element signature="e#54#3767#0" />
               </folding>
             </state>
           </provider>
@@ -38,19 +56,6 @@
               <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="105" column="23" selection-start-line="105" selection-start-column="23" selection-end-line="105" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
-                <element signature="e#54#3767#0" />
               </folding>
             </state>
           </provider>
@@ -291,12 +296,12 @@
       <workItem from="1564684456671" duration="2803000" />
       <workItem from="1564705611508" duration="23914000" />
       <workItem from="1564733959466" duration="13136000" />
-      <workItem from="1564800133757" duration="10133000" />
+      <workItem from="1564800133757" duration="10771000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74947000" />
+    <option name="totallyTimeSpent" value="75585000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -352,7 +357,7 @@
     <option name="version" value="1" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/McDonaldBot$test.coverage" NAME="test Coverage Results" MODIFIED="1564826005265" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/McDonaldBot$test.coverage" NAME="test Coverage Results" MODIFIED="1564826488084" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/McDonaldBot$mask__1_.coverage" NAME="mask (1) Coverage Results" MODIFIED="1564728966073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../McDonald-s-APP-master" />
     <SUITE FILE_PATH="coverage/McDonaldBot$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1564800612357" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/McDonaldBot$mask.coverage" NAME="mask Coverage Results" MODIFIED="1564672486277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -484,8 +489,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="105" column="23" selection-start-line="105" selection-start-column="23" selection-end-line="105" selection-end-column="23" />
+        <state relative-caret-position="279">
+          <caret line="121" column="11" lean-forward="true" selection-start-line="121" selection-start-column="11" selection-end-line="121" selection-end-column="11" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
             <element signature="e#54#3767#0" />
@@ -495,8 +500,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-259">
-          <caret line="267" lean-forward="true" selection-start-line="267" selection-end-line="267" />
+        <state relative-caret-position="230">
+          <caret line="217" column="27" selection-start-line="217" selection-start-column="27" selection-end-line="217" selection-end-column="27" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="e#1006#4719#0" />
@@ -505,7 +510,11 @@
             <element signature="e#5592#6060#0" />
             <element signature="e#6100#6383#0" />
             <element signature="e#6423#6655#0" />
+            <element signature="e#6695#6927#0" />
+            <element signature="e#7159#7663#0" />
+            <element signature="e#7845#8410#0" />
             <element signature="e#8425#8882#0" />
+            <element signature="e#9959#11357#0" />
           </folding>
         </state>
       </provider>

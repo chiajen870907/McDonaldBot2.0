@@ -207,10 +207,12 @@ def Database_Counter_Decrease():
 
 
 def McDonald_Lottery():
-
-    Account = McDonald('AOpv/Hs7B85tRQAA')
-    line_bot_api.push_message('Uea249350320c7cd2401b3667ed9abdc3', TextSendMessage(text=Account.Lottery()))
-    # print('F')
+    Token_List = Database_Check_Token()
+    Count = int(Database_Counter_GetCount())
+    for i in range(Count):
+        Account = McDonald(Token_List[i])
+        line_bot_api.push_message('Uea249350320c7cd2401b3667ed9abdc3', TextSendMessage(text=Account.Lottery()))
+        # print('F')
 
 
 def Database_Check_Token():
@@ -227,24 +229,13 @@ def Database_Check_Token():
         Index = Index.replace('Token' + str(i), '')
     # print('Database_Check_UserID() ', Index)
     GetToken = Index.split(',')
+    print(type(GetToken))
     return GetToken
 
 
 def Database_Check_UserID():
     Count_Index = Database_Counter_GetCount()
-    Count_path = ('Line_User/Info')
-    doc_ref = db.document(Count_path)
-    doc = doc_ref.get()
-    result = doc.to_dict()
-    Index = re.sub("[{} \' :]", "", str(result))
-    # print('Index', Index)
     GetToken = Database_Check_Token()
-    nCount_Index = int(Count_Index) + 5
-    for i in range(nCount_Index):
-        Index = Index.replace('Token' + str(i), '')
-    # print('Database_Check_UserID() ', Index)
-    GetToken = Index.split(',')
-    # print('GetToken:' , GetToken[0])
     for i in range(int(Count_Index)):
         path_ID = ("MD_Token/" + GetToken[i])
         # print('path_ID', path_ID)
@@ -278,10 +269,7 @@ def handle_message(event):
     global user_id
     user_id = event.source.user_id
     # ----------------Login-----------------------
-
     Check = Database_Check_UserID()
-    R = Database_Check_Token()
-    print(R)
     #print('UserID_Exists:', UserID_Exists)
     #if db.collection('Line_User').document(user_id).get().exists:
     if Check == 1:

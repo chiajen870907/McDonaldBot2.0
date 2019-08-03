@@ -112,7 +112,15 @@ def login_MC():
     MC_Token=(list['results']['member_info']['access_token'])
     return MC_Status, MC_Token
 
-MC_Status, MC_Token = login_MC()
 
-if MC_Status == '登入成功' and MC_Token!='':
-    print(" *\(^_^)/*")
+def test():
+    Index = 'assfasfasf,asfasgasgas'
+    GetToken = Index.split(',')
+    return GetToken
+
+a = test()
+print(a[1])
+# MC_Status, MC_Token = login_MC()
+#
+# if MC_Status == '登入成功' and MC_Token!='':
+#     print(" *\(^_^)/*")
