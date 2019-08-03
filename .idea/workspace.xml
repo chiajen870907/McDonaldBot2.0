@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="90c87167-b4d8-47e4-a470-9e442930dcf7" name="Default Changelist" comment="Add Code">
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,13 +16,34 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-128">
-              <caret line="212" column="44" lean-forward="true" selection-start-line="212" selection-start-column="44" selection-end-line="212" selection-end-column="44" />
+            <state relative-caret-position="327">
+              <caret line="339" lean-forward="true" selection-start-line="339" selection-end-line="339" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#1096#4809#0" />
+                <element signature="e#4832#5131#0" />
+                <element signature="e#5133#5161#0" />
+                <element signature="e#5259#5608#0" />
+                <element signature="e#5682#6152#0" />
                 <element signature="e#6192#6471#0" />
                 <element signature="e#6511#6744#0" />
                 <element signature="e#6784#7018#0" />
+                <element signature="e#7021#7494#0" />
+                <element signature="e#7559#8093#0" />
+                <element signature="e#7883#8901#0" />
+                <element signature="e#8990#11212#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://D:/Download/Google/line-bot-tutorial-master/line-bot-tutorial-master/clock.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="275">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -56,8 +78,8 @@
       <find>MC_Token</find>
       <find>MC_Status</find>
       <find>print</find>
-      <find>Database_Check_Token</find>
       <find>McDonald_Lottery</find>
+      <find>Database_Check_Token</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -72,10 +94,10 @@
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/mask.py" />
         <option value="$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/firebase_admin/TEST.py" />
-        <option value="D:/Download/Google/line-bot-tutorial-master/line-bot-tutorial-master/clock.py" />
         <option value="$PROJECT_DIR$/../../../McDonald-s-APP-master/mask.py" />
         <option value="$PROJECT_DIR$/rttrr.py" />
         <option value="$PROJECT_DIR$/test.py" />
+        <option value="D:/Download/Google/line-bot-tutorial-master/line-bot-tutorial-master/clock.py" />
         <option value="$PROJECT_DIR$/app.py" />
       </list>
     </option>
@@ -278,16 +300,15 @@
       <workItem from="1564705611508" duration="23914000" />
       <workItem from="1564733959466" duration="13136000" />
       <workItem from="1564800133757" duration="13159000" />
-      <workItem from="1564829297783" duration="2312000" />
+      <workItem from="1564829297783" duration="2915000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80285000" />
+    <option name="totallyTimeSpent" value="80888000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14075068" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -339,7 +360,7 @@
     <option name="version" value="1" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/McDonaldBot$test.coverage" NAME="test Coverage Results" MODIFIED="1564833438030" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/McDonaldBot$test.coverage" NAME="test Coverage Results" MODIFIED="1564834935264" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/McDonaldBot$mask__1_.coverage" NAME="mask (1) Coverage Results" MODIFIED="1564728966073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../McDonald-s-APP-master" />
     <SUITE FILE_PATH="coverage/McDonaldBot$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1564833301578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/McDonaldBot$mask.coverage" NAME="mask Coverage Results" MODIFIED="1564672486277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -443,16 +464,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Download/Google/line-bot-tutorial-master/line-bot-tutorial-master/clock.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/firebase_admin/credentials.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
@@ -467,15 +478,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://D:/Download/Google/line-bot-tutorial-master/line-bot-tutorial-master/clock.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-128">
-          <caret line="212" column="44" lean-forward="true" selection-start-line="212" selection-start-column="44" selection-end-line="212" selection-end-column="44" />
+        <state relative-caret-position="327">
+          <caret line="339" lean-forward="true" selection-start-line="339" selection-end-line="339" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#1096#4809#0" />
+            <element signature="e#4832#5131#0" />
+            <element signature="e#5133#5161#0" />
+            <element signature="e#5259#5608#0" />
+            <element signature="e#5682#6152#0" />
             <element signature="e#6192#6471#0" />
             <element signature="e#6511#6744#0" />
             <element signature="e#6784#7018#0" />
+            <element signature="e#7021#7494#0" />
+            <element signature="e#7559#8093#0" />
+            <element signature="e#7883#8901#0" />
+            <element signature="e#8990#11212#0" />
           </folding>
         </state>
       </provider>

@@ -2,6 +2,7 @@ from flask import Flask, request, abort
 from linebot import (LineBotApi, WebhookHandler)
 from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import *
+from apscheduler.schedulers.blocking import BlockingScheduler
 import firebase_admin
 import os
 import re
@@ -327,6 +328,12 @@ def handle_message(event):
 
 
 if __name__ == "__main__":
+    # 实例化一个调度器
+    scheduler = BlockingScheduler()
+    # 添加任务并设置触发方式为3s一次
+    scheduler.add_job(McDonald_Lottery, 'interval', minute=1)
+    # 开始运行调度器
+    scheduler.start()
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
 
