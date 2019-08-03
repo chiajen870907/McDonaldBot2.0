@@ -174,7 +174,30 @@ def handle_postback(event):
         doc_ref.update(doc)
         #print(Set_Time)
     elif temp == 'Login':
-        print('f')
+        MC_Status, MC_Token = login_MC()
+        if MC_Status == '登入成功' and MC_Token != '':
+            line_bot_api.reply_message(user_id, TextSendMessage(text= MC_Status + " *\(^_^)/* "))
+            Database_Counter_Increase()
+            Count = Database_Counter_GetCount()
+            doc = {
+                'Token' + Count: MC_Token
+            }
+            doc2 = {
+                'UserID': user_id
+            }
+            doc3 = {
+                'Token': MC_Token
+            }
+            doc_ref = db.collection("Line_User").document('Info')
+            doc2_ref = db.collection("MD_Token").document(MC_Token)
+            doc3_ref = db.collection("Check").document(user_id)
+            doc_ref.update(doc)
+            doc2_ref.set(doc2)
+            doc3_ref.set(doc3)
+            line_bot_api.reply_message(user_id, TextSendMessage(text='我知道喇~\n每天準時晚上12點幫你抽\nヽ(‘ ∇‘ )ノ'))
+        else:
+            line_bot_api.reply_message(user_id, TextSendMessage(text='錯誤請重新登入\n 〒.〒 '))
+
 
 
 def Database_Read_Data(Read_path):
@@ -301,17 +324,13 @@ def handle_message(event):
             buttons_template = TemplateSendMessage(
                 alt_text='Template',
                 template=ButtonsTemplate(
-                    title='註冊成功',
-                    text='姓名:{}\nemail:{}\n請確定是否正確'.format(t[0], t[1]),
+                    title='登入確認',
+                    text='帳號:{}\n密碼:{}\n請確定是否正確'.format(t[0], t[1]),
                     actions=[
-                        MessageTemplateAction(
-                            label='確認無誤',
-                            text='MENU'
-                        ),
                         PostbackTemplateAction(
-                            label='重新輸入',
-                            text='請再輸入一次，名字與email以斜線(/)區隔',
-                            data='revise'
+                            label='確認無誤',
+                            text='登入',
+                            data='Login'
                         )
                     ]
                 )
