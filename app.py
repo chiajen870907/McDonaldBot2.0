@@ -130,16 +130,18 @@ class Mask(object):
 
 
 def login_MC():
-    Old_Token = user_id
-    Username = t[0]
-    Password = t[1]
-    # Login and get the imformation
-    Account = Mask(Username, Password)
-    list = Account.Login()
-    # Print the results
-    MC_Status=(list['rm'])
-    MC_Token=(list['results']['member_info']['access_token'])
-    return MC_Status, MC_Token, Old_Token
+    global lag
+    if lag == 0:
+        Old_Token = user_id
+        Username = t[0]
+        Password = t[1]
+        # Login and get the imformation
+        Account = Mask(Username, Password)
+        list = Account.Login()
+        # Print the results
+        MC_Status = (list['rm'])
+        MC_Token = (list['results']['member_info']['access_token'])
+        return MC_Status, MC_Token, Old_Token
 
 # --------------------------
 
@@ -253,6 +255,7 @@ def McDonald_Get_State():
     result = result.replace('Token', '')
     return result
 
+
 def McDonald_Get_Sticker():
     result = McDonald_Get_State()
     Account = McDonald(result)
@@ -326,6 +329,7 @@ def handle_message(event):
         # global MC_User_ID, MC_User_PASSWORD
         # MC_User_ID = t[0]
         # MC_User_PASSWORD = t[1]
+        lag = 1
         MC_Status, MC_Token, Old_Token = login_MC()
         if MC_Status == '登入成功' and MC_Token != '':
             line_bot_api.push_message(Old_Token, TextSendMessage(text= MC_Status + " *\(^_^)/* "))
@@ -347,7 +351,9 @@ def handle_message(event):
             doc2_ref.set(doc2)
             doc3_ref.set(doc3)
             line_bot_api.push_message(Old_Token, TextSendMessage(text='我知道喇~\n每天準時晚上12點幫你抽\nヽ(‘ ∇‘ )ノ'))
+            lag = 0
         else:
+            lag = 0
             line_bot_api.push_message(Old_Token, TextSendMessage(text='錯誤請重新登入\n 〒.〒 '))
 
 
