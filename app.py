@@ -18,9 +18,9 @@ from McDonald import McDonald
 app = Flask(__name__)
 
 # Channel Access Token
-line_bot_api = LineBotApi('a4ZRk4l00GSRM9haYsEAdV90WTEk+LMkWCI71MqObTkXFq8ygRUlbwD7qxeS0+vNX+bMN0FvnTP91dASCXNBuxw5HdN0/vCKcSQxIw+QE4u09ARZUmxg9Cg7NMBfn2EBCpfxNXN70UIDg+YwAs130wdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi('i3MY/ddSyAqnc9JG/Sbce2EH7N1A48HRWE1NCokvL3w00hNGZPVud1buRLuwkSL9rP8860UKkQTo3h2flGoSijgeZ/LvaepXs/t4x/T/X39BZuJ/wBrS9O43luJDHSa4Tl7OMcuy4TYBuo2nLbiv4AdB04t89/1O/w1cDnyilFU=')
 # Channel Secret
-handler = WebhookHandler('62aab4cbbb8fe1efcfd845bc9211e748')
+handler = WebhookHandler('22a4d312cd87888ee4ae3e8c79b989ea')
 # 引用私密金鑰
 cred = credentials.Certificate('/app/service-account.json')
 #cred = credentials.Certificate('C:/Users\HsiehCJ/Desktop/Project/PyCharm/McDonaldBot/service-account.json')
