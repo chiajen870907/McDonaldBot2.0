@@ -314,7 +314,7 @@ def handle_message(event):
         t = temp.split('/')
         if len(t) > 2:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='多打了斜線哦  Σ( ° △ °|||)'))
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text='帳號:{}\n密碼:{********}\n正在嘗試登入麥當勞  \n(●’ω`●）'.format(t[0])))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text='帳號:{}\n密碼:{}\n正在嘗試登入麥當勞  \n(●’ω`●）'.format(t[0], t[1])))
         global MC_User_ID, MC_User_PASSWORD
         MC_User_ID = t[0]
         MC_User_PASSWORD = t[1]
