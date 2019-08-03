@@ -235,8 +235,8 @@ def Database_Check_UserID():
         doc = ref.get()
         temp_ID = doc.to_dict()
         # print('temp_ID ', temp_ID)
-        result_ID = re.search(user_id, str(temp_ID))
-
+        result_ID = re.search(user_id, temp_ID)
+        print('result_ID', result_ID)
         if result_ID is None:
             UserID_Exists = 0
             print('CantFind')
