@@ -264,7 +264,8 @@ def handle_message(event):
 
     Database_Check_UserID()
     #print('UserID_Exists:', UserID_Exists)
-    if db.collection('Line_User').document(user_id).get().exists:
+    #if db.collection('Line_User').document(user_id).get().exists:
+    if UserID_Exists == 1:
         print('Exists')
         if event.message.text == 'DATA123456':
             date_picker = TemplateSendMessage(
@@ -280,7 +281,7 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, date_picker)
         elif event.message.text =="Lottery":
             McDonald_Lottery()
-    else:
+    elif UserID_Exists == 0:
         #print('Login First')
         temp = event.message.text
         if '/' not in temp:
