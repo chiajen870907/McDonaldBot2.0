@@ -300,7 +300,7 @@ def handle_message(event):
             McDonald_Lottery()
         elif event.message.text == 'test':
             Token = Database_Get_Token()
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Token))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Token[0]))
 
         # elif event.message.text == '優惠卷123456':
         #     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=McDonald.Coupon_List()))
