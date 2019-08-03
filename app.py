@@ -207,6 +207,10 @@ def Database_Counter_Decrease():
 
 
 def McDonald_Lottery():
+    print('F')
+
+
+def Database_Check_UserID():
     Count_Index = Database_Counter_GetCount()
     Count_path = ('Line_User/Info')
     doc_ref = db.document(Count_path)
@@ -218,7 +222,19 @@ def McDonald_Lottery():
         TokenList = Index.replace('Token' + str(i), '')
     print(TokenList)
     GetToken = Index.split(',')
-    print(GetToken[nCount_Index])
+    global UserID_Exists
+    for i in range(nCount_Index):
+        if db.collection('Info').document(GetToken[i]).get().exists:
+            UserID_Exists = 1
+            print('Find_Token')
+        else:
+            UserID_Exists = 0
+            print('CantFind')
+
+
+
+
+
 
 
 # 處理訊息
@@ -230,6 +246,8 @@ def handle_message(event):
     user_id = event.source.user_id
     # ----------------Login-----------------------
 
+    Database_Check_UserID()
+    print(UserID_Exists)
     if db.collection('Line_User').document(user_id).get().exists:
         print('Exists')
         if event.message.text == 'DATA123456':
@@ -247,7 +265,7 @@ def handle_message(event):
         elif event.message.text =="Lottery":
             McDonald_Lottery()
     else:
-        print('Login First')
+        #print('Login First')
         temp = event.message.text
         if '/' not in temp:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='注意!!少了斜線(/)  Σ( ° △ °|||)'))
