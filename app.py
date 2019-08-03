@@ -176,7 +176,7 @@ def handle_postback(event):
     elif temp == 'Login':
         MC_Status, MC_Token = login_MC()
         if MC_Status == '登入成功' and MC_Token != '':
-            line_bot_api.reply_message(user_id, TextSendMessage(text= MC_Status + " *\(^_^)/* "))
+            line_bot_api.reply_message(event.reply_token,, TextSendMessage(text= MC_Status + " *\(^_^)/* "))
             Database_Counter_Increase()
             Count = Database_Counter_GetCount()
             doc = {
@@ -194,9 +194,9 @@ def handle_postback(event):
             doc_ref.update(doc)
             doc2_ref.set(doc2)
             doc3_ref.set(doc3)
-            line_bot_api.reply_message(user_id, TextSendMessage(text='我知道喇~\n每天準時晚上12點幫你抽\nヽ(‘ ∇‘ )ノ'))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='我知道喇~\n每天準時晚上12點幫你抽\nヽ(‘ ∇‘ )ノ'))
         else:
-            line_bot_api.reply_message(user_id, TextSendMessage(text='錯誤請重新登入\n 〒.〒 '))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='錯誤請重新登入\n 〒.〒 '))
 
 
 
