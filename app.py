@@ -220,16 +220,26 @@ def Database_Check_UserID():
     nCount_Index = int(Count_Index) + 1
     for i in range(nCount_Index):
         TokenList = Index.replace('Token' + str(i), '')
-    print(TokenList)
+    print('Database_Check_UserID() ',TokenList)
     GetToken = Index.split(',')
     global UserID_Exists
     for i in range(int(Count_Index)):
-        if db.collection('Info').document(GetToken[i]).get().exists:
-            UserID_Exists = 1
-            print('Find_UserID')
-        else:
+        path_ID = ("MD_Token/" + GetToken[i])
+        ref = db.document(path_ID)
+        doc = ref.get()
+        temp_ID = str(doc.to_dict())
+        print('temp_ID ' ,temp_ID)
+        result_ID = re.search(user_id, temp_ID)
+        print('result_ID ', result_ID)
+        if result_ID is None:
             UserID_Exists = 0
             print('CantFind')
+        else:
+            UserID_Exists = 1
+            re.search(user_id, result)
+            print('Find_UserID')
+            break;
+
 
 
 
@@ -247,7 +257,7 @@ def handle_message(event):
     # ----------------Login-----------------------
 
     Database_Check_UserID()
-    print(UserID_Exists)
+    print('UserID_Exists:', UserID_Exists)
     if db.collection('Line_User').document(user_id).get().exists:
         print('Exists')
         if event.message.text == 'DATA123456':
