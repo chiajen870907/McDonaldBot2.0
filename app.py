@@ -14,8 +14,7 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 from McDonald import McDonald
 
-
-sys.setrecursionlimit(2000)
+sys.setrecursionlimit(10000)
 
 app = Flask(__name__)
 
@@ -230,7 +229,7 @@ def Database_Check_Token():
         Index = Index.replace('Token' + str(i), '')
     # print('Database_Check_UserID() ', Index)
     GetToken = Index.split(',')
-    print(type(GetToken))
+    # print(type(GetToken))
     return GetToken
 
 
@@ -256,12 +255,6 @@ def Database_Check_UserID():
         return UserID_Exists
 
 
-
-
-
-
-
-
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -271,26 +264,21 @@ def handle_message(event):
     user_id = event.source.user_id
     # ----------------Login-----------------------
     Check = Database_Check_UserID()
-    #print('UserID_Exists:', UserID_Exists)
-    #if db.collection('Line_User').document(user_id).get().exists:
     if Check == 1:
-        #print('Exists')
-        if event.message.text == 'DATA123456':
-            date_picker = TemplateSendMessage(
-                alt_text='時間設定',
-                template=ButtonsTemplate(
-                    text=' 我每天幾點幫你抽呢  ヽ(‘ ∇‘ )ノ ',
-                    title='時間設定',
-                    actions=[
-                            DatetimePickerTemplateAction(label='設定', data='datetime_postback', mode='time')
-                    ]
-                )
-            )
-            line_bot_api.reply_message(event.reply_token, date_picker)
-        elif event.message.text =="Lottery":
-            McDonald_Lottery()
+        print('OK')
+        # if event.message.text == 'DATA123456':
+        #     date_picker = TemplateSendMessage(
+        #         alt_text='時間設定',
+        #         template=ButtonsTemplate(
+        #             text=' 我每天幾點幫你抽呢  ヽ(‘ ∇‘ )ノ ',
+        #             title='時間設定',
+        #             actions=[
+        #                     DatetimePickerTemplateAction(label='設定', data='datetime_postback', mode='time')
+        #             ]
+        #         )
+        #     )
+        #     line_bot_api.reply_message(event.reply_token, date_picker)
     else:
-        #print('Login First')
         temp = event.message.text
         if '/' not in temp:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='注意!!少了斜線(/)  Σ( ° △ °|||)'))
