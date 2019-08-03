@@ -130,15 +130,16 @@ class Mask(object):
 
 
 def login_MC():
-    Username = MC_User_ID
-    Password = MC_User_PASSWORD
+    Old_Token = user_id
+    Username = t[0]
+    Password = t[1]
     # Login and get the imformation
     Account = Mask(Username, Password)
     list = Account.Login()
     # Print the results
     MC_Status=(list['rm'])
     MC_Token=(list['results']['member_info']['access_token'])
-    return MC_Status, MC_Token
+    return MC_Status, MC_Token, Old_Token
 
 # --------------------------
 
@@ -173,11 +174,13 @@ def handle_postback(event):
         doc_ref.update(doc)
         #print(Set_Time)
 
+
 def Database_Read_Data(Read_path):
     doc_ref = db.document(Read_path)
     doc = doc_ref.get()
     Read_result = doc.to_dict()
     return Read_result
+
 
 def Database_Counter_GetCount():
     Path = 'Line_User/Counter'
@@ -313,16 +316,19 @@ def handle_message(event):
         temp = event.message.text
         if '/' not in temp:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='注意!!少了斜線(/)  Σ( ° △ °|||)'))
+        global t
         t = temp.split('/')
         if len(t) > 2:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='多打了斜線哦  Σ( ° △ °|||)'))
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text='帳號:{}\n密碼:{}\n正在嘗試登入麥當勞  \n(●’ω`●）'.format(t[0], t[1])))
-        global MC_User_ID, MC_User_PASSWORD
-        MC_User_ID = t[0]
-        MC_User_PASSWORD = t[1]
-        MC_Status, MC_Token = login_MC()
+
+        # Old_Token = user_id
+        # global MC_User_ID, MC_User_PASSWORD
+        # MC_User_ID = t[0]
+        # MC_User_PASSWORD = t[1]
+        MC_Status, MC_Token, Old_Token = login_MC()
         if MC_Status == '登入成功' and MC_Token != '':
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text= MC_Status + " *\(^_^)/* "))
+            line_bot_api.push_message(Old_Token, TextSendMessage(text= MC_Status + " *\(^_^)/* "))
             Database_Counter_Increase()
             Count = Database_Counter_GetCount()
             doc = {
@@ -340,9 +346,9 @@ def handle_message(event):
             doc_ref.update(doc)
             doc2_ref.set(doc2)
             doc3_ref.set(doc3)
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='我知道喇~\n每天準時晚上12點幫你抽\nヽ(‘ ∇‘ )ノ'))
+            line_bot_api.push_message(Old_Token, TextSendMessage(text='我知道喇~\n每天準時晚上12點幫你抽\nヽ(‘ ∇‘ )ノ'))
         else:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='錯誤請重新登入\n 〒.〒 '))
+            line_bot_api.push_message(Old_Token, TextSendMessage(text='錯誤請重新登入\n 〒.〒 '))
 
 
 if __name__ == "__main__":
