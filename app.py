@@ -8,8 +8,6 @@ import os
 import re
 import hashlib
 import requests
-import sys
-import time
 from datetime import datetime
 from firebase_admin import credentials
 from firebase_admin import firestore
@@ -24,8 +22,8 @@ line_bot_api = LineBotApi('a4ZRk4l00GSRM9haYsEAdV90WTEk+LMkWCI71MqObTkXFq8ygRUlb
 # Channel Secret
 handler = WebhookHandler('62aab4cbbb8fe1efcfd845bc9211e748')
 # 引用私密金鑰
-cred = credentials.Certificate('/app/service-account.json')
-#cred = credentials.Certificate('C:/Users\HsiehCJ/Desktop/Project/PyCharm/McDonaldBot/service-account.json')
+#cred = credentials.Certificate('/app/service-account.json')
+cred = credentials.Certificate('C:/Users\HsiehCJ/Desktop/Project/PyCharm/McDonaldBot/service-account.json')
 
 # 初始化firebase，注意不能重複初始化
 firebase_admin.initialize_app(cred)
@@ -272,6 +270,9 @@ def Database_Check_UserID():
         return UserID_Exists
 
 
+def test():
+    print('Hello')
+
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -334,9 +335,6 @@ if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
 
-sched = BlockingScheduler()
-sched.add_job(McDonald_Lottery, 'interval', seconds=5)
-sched.start()
 
 
 
