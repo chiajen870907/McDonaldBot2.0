@@ -209,31 +209,29 @@ def Database_Counter_Decrease():
 
 
 def McDonald_Lottery():
-    # Token_List = Database_Check_Token()
-    # Count = int(Database_Counter_GetCount())
-    # for i in range(Count):
-    #     Account = McDonald(Token_List[i])
-    #     line_bot_api.push_message('f', TextSendMessage(text=Account.Lottery()))
-    #     # print('F')
-    print('t')
+    Token_List = Database_Check_Token()
+    Count = int(Database_Counter_GetCount())
+    for i in range(Count):
+        Account = McDonald(Token_List[i])
+        line_bot_api.push_message('f', TextSendMessage(text=Account.Lottery()))
+
 
 def Database_Check_Token():
-    print('t')
-    # Count_Index = Database_Counter_GetCount()
-    # Count_path = ('Line_User/Info')
-    # doc_ref = db.document(Count_path)
-    # doc = doc_ref.get()
-    # result = doc.to_dict()
-    # Index = re.sub("[{} \' :]", "", str(result))
-    # # print('Index', Index)
-    # GetToken = Database_Check_Token()
-    # nCount_Index = int(Count_Index) + 5
-    # for i in range(nCount_Index):
-    #     Index = Index.replace('Token' + str(i), '')
-    # # print('Database_Check_UserID() ', Index)
-    # GetToken = Index.split(',')
-    # # print(type(GetToken))
-    # return GetToken
+    Count_Index = Database_Counter_GetCount()
+    Count_path = ('Line_User/Info')
+    doc_ref = db.document(Count_path)
+    doc = doc_ref.get()
+    result = doc.to_dict()
+    Index = re.sub("[{} \' :]", "", str(result))
+    # print('Index', Index)
+    GetToken = Database_Check_Token()
+    nCount_Index = int(Count_Index) + 5
+    for i in range(nCount_Index):
+        Index = Index.replace('Token' + str(i), '')
+    # print('Database_Check_UserID() ', Index)
+    GetToken = Index.split(',')
+    # print(type(GetToken))
+    return GetToken
 
 
 def Database_Check_UserID():
@@ -244,7 +242,6 @@ def Database_Check_UserID():
     result = doc.to_dict()
     Index = re.sub("[{} \' :]", "", str(result))
     # print('Index', Index)
-    GetToken = Database_Check_Token()
     nCount_Index = int(Count_Index) + 5
     for i in range(nCount_Index):
         Index = Index.replace('Token' + str(i), '')
