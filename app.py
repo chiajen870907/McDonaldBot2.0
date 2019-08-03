@@ -327,18 +327,18 @@ def handle_message(event):
             line_bot_api.push_message(user_id, TextSendMessage(text='錯誤請重新登入\n 〒.〒 '))
 
 
+
+
 if __name__ == "__main__":
     # 实例化一个调度器
-    scheduler = BlockingScheduler()
-    # 添加任务并设置触发方式为3s一次
-    scheduler.add_job(McDonald_Lottery, 'interval', minute=1)
-    # 开始运行调度器
-    scheduler.start()
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
 
-
-
+scheduler = BlockingScheduler()
+# 添加任务并设置触发方式为3s一次
+scheduler.add_job(McDonald_Lottery, 'interval', minute = 1)
+# 开始运行调度器
+scheduler.start()
 
 
 
