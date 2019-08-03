@@ -272,6 +272,7 @@ def McDonald_Get_Stack():
 def McDonald_Lottery():
     Token_List = Database_Get_Token()
     Count = int(Database_Counter_GetCount())
+
     for i in range(Count):
         path_ID = ("MD_Token/" + Token_List[i])
         ref = db.document(path_ID)
@@ -291,11 +292,16 @@ def handle_message(event):
     global user_id
     user_id = event.source.user_id
     # ----------------Login-----------------------
-    Check = Database_Check_UserID()
+    # Check = Database_Check_UserID()
+    Check  = 1
     if Check == 1:
         print('存在')
         if event.message.text == 'Lottery':
             McDonald_Lottery()
+        elif event.message.text == 'test':
+            Token = Database_Get_Token()
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Token))
+
         # elif event.message.text == '優惠卷123456':
         #     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=McDonald.Coupon_List()))
         # elif event.message.text == '貼紙123456':
@@ -320,7 +326,7 @@ def handle_message(event):
         t = temp.split('/')
         if len(t) > 2:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='多打了斜線哦  Σ( ° △ °|||)'))
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text='帳號:{}\n密碼:{}\n正在嘗試登入麥當勞  \n(●’ω`●）'.format(t[0], t[1])))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text='帳號:{}\n密碼:{********}\n正在嘗試登入麥當勞  \n(●’ω`●）'.format(t[0])))
         global MC_User_ID, MC_User_PASSWORD
         MC_User_ID = t[0]
         MC_User_PASSWORD = t[1]
