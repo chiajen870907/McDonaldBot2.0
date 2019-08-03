@@ -176,7 +176,7 @@ def handle_postback(event):
     elif temp == 'Login':
         MC_Status, MC_Token = login_MC()
         if MC_Status == '登入成功' and MC_Token != '':
-            line_bot_api.reply_message(event.reply_token,, TextSendMessage(text= MC_Status + " *\(^_^)/* "))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text= MC_Status + " *\(^_^)/* "))
             Database_Counter_Increase()
             Count = Database_Counter_GetCount()
             doc = {
