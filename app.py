@@ -176,7 +176,7 @@ def handle_postback(event):
     elif temp == 'Login':
         MC_Status, MC_Token = login_MC()
         if MC_Status == '登入成功' and MC_Token != '':
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text= MC_Status + " *\(^_^)/* "))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text= MC_Status + '\n每天準時晚上12點幫你抽\nヽ(‘ ∇‘ )ノ'))
             Database_Counter_Increase()
             Count = Database_Counter_GetCount()
             doc = {
@@ -194,7 +194,6 @@ def handle_postback(event):
             doc_ref.update(doc)
             doc2_ref.set(doc2)
             doc3_ref.set(doc3)
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='我知道喇~\n每天準時晚上12點幫你抽\nヽ(‘ ∇‘ )ノ'))
         else:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='錯誤請重新登入\n 〒.〒 '))
 
@@ -321,21 +320,8 @@ def handle_message(event):
             Token = Database_Get_Token()
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Token[0]))
         elif event.message.text == 'test2':
-            buttons_template = TemplateSendMessage(
-                alt_text='Template',
-                template=ButtonsTemplate(
-                    title='登入確認',
-                    text='帳號:{}\n密碼:{}\n請確定是否正確'.format(t[0], t[1]),
-                    actions=[
-                        PostbackTemplateAction(
-                            label='確認無誤',
-                            text='登入',
-                            data='Login'
-                        )
-                    ]
-                )
-            )
-            line_bot_api.reply_message(event.reply_token, buttons_template)
+            print('2')
+
         # elif event.message.text == '優惠卷123456':
         #     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=McDonald.Coupon_List()))
         # elif event.message.text == '貼紙123456':
@@ -360,30 +346,33 @@ def handle_message(event):
         t = temp.split('/')
         if len(t) > 2:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='多打了斜線哦  Σ( ° △ °|||)'))
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text='帳號:{}\n密碼:{}\n正在嘗試登入麥當勞  \n(●’ω`●）'.format(t[0], t[1])))
-        MC_Status, MC_Token = login_MC()
-        if MC_Status == '登入成功' and MC_Token != '':
-            line_bot_api.push_message(user_id, TextSendMessage(text= MC_Status + " *\(^_^)/* "))
-            Database_Counter_Increase()
-            Count = Database_Counter_GetCount()
-            doc = {
-                'Token' + Count: MC_Token
-            }
-            doc2 = {
-                'UserID': user_id
-            }
-            doc3 = {
-                'Token': MC_Token
-            }
-            doc_ref = db.collection("Line_User").document('Info')
-            doc2_ref = db.collection("MD_Token").document(MC_Token)
-            doc3_ref = db.collection("Check").document(user_id)
-            doc_ref.update(doc)
-            doc2_ref.set(doc2)
-            doc3_ref.set(doc3)
-            line_bot_api.push_message(user_id, TextSendMessage(text='我知道喇~\n每天準時晚上12點幫你抽\nヽ(‘ ∇‘ )ノ'))
-        else:
-            line_bot_api.push_message(user_id, TextSendMessage(text='錯誤請重新登入\n 〒.〒 '))
+        buttons_template = TemplateSendMessage(alt_text='Template', template=ButtonsTemplate(title='登入確認', text='帳號:{}\n密碼:{}\n請確定是否正確'.format(t[0], t[1]), actions=[PostbackTemplateAction(label='確認無誤', text='登入', data='Login')]))
+        line_bot_api.reply_message(event.reply_token, buttons_template)
+
+        # line_bot_api.reply_message(event.reply_token, TextSendMessage(text='帳號:{}\n密碼:{}\n正在嘗試登入麥當勞  \n(●’ω`●）'.format(t[0], t[1])))
+        # MC_Status, MC_Token = login_MC()
+        # if MC_Status == '登入成功' and MC_Token != '':
+        #     line_bot_api.push_message(user_id, TextSendMessage(text= MC_Status + " *\(^_^)/* "))
+        #     Database_Counter_Increase()
+        #     Count = Database_Counter_GetCount()
+        #     doc = {
+        #         'Token' + Count: MC_Token
+        #     }
+        #     doc2 = {
+        #         'UserID': user_id
+        #     }
+        #     doc3 = {
+        #         'Token': MC_Token
+        #     }
+        #     doc_ref = db.collection("Line_User").document('Info')
+        #     doc2_ref = db.collection("MD_Token").document(MC_Token)
+        #     doc3_ref = db.collection("Check").document(user_id)
+        #     doc_ref.update(doc)
+        #     doc2_ref.set(doc2)
+        #     doc3_ref.set(doc3)
+        #     line_bot_api.push_message(user_id, TextSendMessage(text='我知道喇~\n每天準時晚上12點幫你抽\nヽ(‘ ∇‘ )ノ'))
+        # else:
+        #     line_bot_api.push_message(user_id, TextSendMessage(text='錯誤請重新登入\n 〒.〒 '))
 
 
 if __name__ == "__main__":
