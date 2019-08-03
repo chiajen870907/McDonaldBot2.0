@@ -217,26 +217,26 @@ def Database_Check_UserID():
     doc = doc_ref.get()
     result = doc.to_dict()
     Index = re.sub("[{} \' :]", "", str(result))
-    print('Index', Index)
+    # print('Index', Index)
 
     nCount_Index = int(Count_Index) + 5
 
     for i in range(nCount_Index):
         Index = Index.replace('Token' + str(i), '')
-    print('Database_Check_UserID() ', Index)
+    # print('Database_Check_UserID() ', Index)
 
     GetToken = Index.split(',')
-    print('GetToken:' , GetToken[0])
+    # print('GetToken:' , GetToken[0])
     global UserID_Exists
     for i in range(int(Count_Index)):
         path_ID = ("MD_Token/" + GetToken[i])
-        print('path_ID', path_ID)
+        # print('path_ID', path_ID)
         ref = db.document(path_ID)
         doc = ref.get()
         temp_ID = str(doc.to_dict())
-        print('temp_ID ', temp_ID)
+        # print('temp_ID ', temp_ID)
         result_ID = re.search(user_id, temp_ID)
-        
+
         if result_ID is None:
             UserID_Exists = 0
             print('CantFind')
@@ -244,7 +244,7 @@ def Database_Check_UserID():
             UserID_Exists = 1
             re.search(user_id, result)
             print('Find_UserID')
-            break;
+            break
 
 
 

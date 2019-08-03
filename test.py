@@ -10,5 +10,11 @@ for i in range(nCount_Index):
 print('Database_Check_UserID() ', TokenList)
 GetToken = Index.split(',')
 print('GetToken:', GetToken[0])
+A = re.search('5', GetToken[0])
+print(A)
+if A is None:
+    print('None')
+else:
+    print('Yes')
 # t = Index.split(',')
 # print(t[0])
