@@ -163,7 +163,7 @@ def handle_postback(event):
     if event.postback.data == 'datetime_postback':
         global Set_Time
         Set_Time = event.postback.params['time']
-        print(Set_Time)
+        #print(Set_Time)
         line_bot_api.reply_message(
             event.reply_token, TextSendMessage(text='我知道喇~~\n每天' + event.postback.params['time'] + '準時幫你抽\n （〜^∇^)〜'))
         doc = {
@@ -171,7 +171,7 @@ def handle_postback(event):
         }
         doc_ref = db.collection("Line_User").document(user_id)
         doc_ref.update(doc)
-        print(Set_Time)
+        #print(Set_Time)
 
 
 def Database_Counter_GetCount():
@@ -179,7 +179,7 @@ def Database_Counter_GetCount():
     doc_ref = db.document(Count_path)
     doc = doc_ref.get()
     Count_result = doc.to_dict()
-    print(Count_result)
+    #(Count_result)
     Count_Index = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）:{} Count]", "", str(Count_result))
     return Count_Index
 
@@ -192,7 +192,7 @@ def Database_Counter_Increase():
     }
     doc_ref = db.collection("Line_User").document('Counter')
     doc_ref.set(doc)
-    print(Count_Index)
+    #print(Count_Index)
 
 
 def Database_Counter_Decrease():
@@ -203,15 +203,31 @@ def Database_Counter_Decrease():
     }
     doc_ref = db.collection("Line_User").document('Counter')
     doc_ref.set(doc)
-    print(Count_Index)
+    # print(Count_Index)
 
 
 def McDonald_Lottery():
-    print('F')
+
+    Account = McDonald('AOpv/Hs7B85tRQAA')
+    line_bot_api.push_message('Uea249350320c7cd2401b3667ed9abdc3', TextSendMessage(text=Account.Lottery()))
+    # print('F')
 
 
 def Database_Check_Token():
-    print('')
+    Count_Index = Database_Counter_GetCount()
+    Count_path = ('Line_User/Info')
+    doc_ref = db.document(Count_path)
+    doc = doc_ref.get()
+    result = doc.to_dict()
+    Index = re.sub("[{} \' :]", "", str(result))
+    # print('Index', Index)
+    GetToken = Database_Check_Token()
+    nCount_Index = int(Count_Index) + 5
+    for i in range(nCount_Index):
+        Index = Index.replace('Token' + str(i), '')
+    # print('Database_Check_UserID() ', Index)
+    GetToken = Index.split(',')
+    return GetToken
 
 
 def Database_Check_UserID():
@@ -221,7 +237,7 @@ def Database_Check_UserID():
     doc = doc_ref.get()
     result = doc.to_dict()
     Index = re.sub("[{} \' :]", "", str(result))
-    print('Index', Index)
+    # print('Index', Index)
     GetToken = Database_Check_Token()
     nCount_Index = int(Count_Index) + 5
     for i in range(nCount_Index):
@@ -240,11 +256,11 @@ def Database_Check_UserID():
         #print('result_ID', result_ID)
         if result_ID is None:
             UserID_Exists = 0
-            print('CantFind')
+            # ('CantFind')
         else:
             UserID_Exists = 1
             #re.search(user_id, result)
-            print('Find_UserID')
+            # ('Find_UserID')
         return UserID_Exists
 
 
@@ -264,10 +280,12 @@ def handle_message(event):
     # ----------------Login-----------------------
 
     Check = Database_Check_UserID()
+    R = Database_Check_Token()
+    print(R)
     #print('UserID_Exists:', UserID_Exists)
     #if db.collection('Line_User').document(user_id).get().exists:
     if Check == 1:
-        print('Exists')
+        #print('Exists')
         if event.message.text == 'DATA123456':
             date_picker = TemplateSendMessage(
                 alt_text='時間設定',
