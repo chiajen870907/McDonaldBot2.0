@@ -210,38 +210,20 @@ def McDonald_Lottery():
     print('F')
 
 def Database_Check_Token():
+    print('')
+def Database_Check_UserID():
     Count_Index = Database_Counter_GetCount()
     Count_path = ('Line_User/Info')
     doc_ref = db.document(Count_path)
     doc = doc_ref.get()
     result = doc.to_dict()
     Index = re.sub("[{} \' :]", "", str(result))
-    # print('Index', Index)
-
-    nCount_Index = int(Count_Index) + 5
-
-    for i in range(nCount_Index):
-        Index = Index.replace('Token' + str(i), '')
-    # print('Database_Check_UserID() ', Index)
-
-    GetToken = Index.split(',')
-    return GetToken
-def Database_Check_UserID():
-    Count_Index = Database_Counter_GetCount()
-    # Count_path = ('Line_User/Info')
-    # doc_ref = db.document(Count_path)
-    # doc = doc_ref.get()
-    # result = doc.to_dict()
-    # Index = re.sub("[{} \' :]", "", str(result))
-    # print('Index', Index)
-
+    print('Index', Index)
     GetToken = Database_Check_Token()
-
     nCount_Index = int(Count_Index) + 5
     for i in range(nCount_Index):
         Index = Index.replace('Token' + str(i), '')
     # print('Database_Check_UserID() ', Index)
-
     GetToken = Index.split(',')
     # print('GetToken:' , GetToken[0])
     for i in range(int(Count_Index)):
