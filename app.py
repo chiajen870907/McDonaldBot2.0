@@ -130,19 +130,16 @@ class Mask(object):
 
 
 def login_MC():
-    global lag
-    lag = 0
-    if lag == 0:
-        Old_Token = user_id
-        Username = t[0]
-        Password = t[1]
-        # Login and get the imformation
-        Account = Mask(Username, Password)
-        list = Account.Login()
-        # Print the results
-        MC_Status = (list['rm'])
-        MC_Token = (list['results']['member_info']['access_token'])
-        return MC_Status, MC_Token, Old_Token
+    Old_Token = user_id
+    Username = t[0]
+    Password = t[1]
+    # Login and get the imformation
+    Account = Mask(Username, Password)
+    list = Account.Login()
+    # Print the results
+    MC_Status = (list['rm'])
+    MC_Token = (list['results']['member_info']['access_token'])
+    return MC_Status, MC_Token, Old_Token
 
 # --------------------------
 
@@ -164,7 +161,8 @@ def callback():
 # 等待伺服器回傳資料
 @handler.add(PostbackEvent)
 def handle_postback(event):
-    if event.postback.data == 'datetime_postback':
+    temp = event.postback.data
+    if temp == 'datetime_postback':
         global Set_Time
         Set_Time = event.postback.params['time']
         #print(Set_Time)
@@ -176,6 +174,8 @@ def handle_postback(event):
         doc_ref = db.collection("Line_User").document(user_id)
         doc_ref.update(doc)
         #print(Set_Time)
+    elif temp== 'Login':
+        print('f')
 
 
 def Database_Read_Data(Read_path):
@@ -298,7 +298,25 @@ def handle_message(event):
             Token = Database_Get_Token()
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Token[0]))
         elif event.message.text == 'test2':
-            Token = Database_Get_Token()
+            buttons_template = TemplateSendMessage(
+                alt_text='Template',
+                template=ButtonsTemplate(
+                    title='註冊成功',
+                    text='姓名:{}\nemail:{}\n請確定是否正確'.format(t[0], t[1]),
+                    actions=[
+                        MessageTemplateAction(
+                            label='確認無誤',
+                            text='MENU'
+                        ),
+                        PostbackTemplateAction(
+                            label='重新輸入',
+                            text='請再輸入一次，名字與email以斜線(/)區隔',
+                            data='revise'
+                        )
+                    ]
+                )
+            )
+            line_bot_api.reply_message(event.reply_token, buttons_template)
         # elif event.message.text == '優惠卷123456':
         #     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=McDonald.Coupon_List()))
         # elif event.message.text == '貼紙123456':
@@ -325,15 +343,7 @@ def handle_message(event):
         if len(t) > 2:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='多打了斜線哦  Σ( ° △ °|||)'))
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text='帳號:{}\n密碼:{}\n正在嘗試登入麥當勞  \n(●’ω`●）'.format(t[0], t[1])))
-        # Old_Token = user_id
-        # global MC_User_ID, MC_User_PASSWORD
-        # MC_User_ID = t[0]
-        # MC_User_PASSWORD = t[1]
-        lag = 0
-        if lag == 0:
-            MC_Status, MC_Token, Old_Token = login_MC()
-            lag = 1
-
+        MC_Status, MC_Token, Old_Token = login_MC()
         if MC_Status == '登入成功' and MC_Token != '':
             line_bot_api.push_message(Old_Token, TextSendMessage(text= MC_Status + " *\(^_^)/* "))
             Database_Counter_Increase()
@@ -354,9 +364,7 @@ def handle_message(event):
             doc2_ref.set(doc2)
             doc3_ref.set(doc3)
             line_bot_api.push_message(Old_Token, TextSendMessage(text='我知道喇~\n每天準時晚上12點幫你抽\nヽ(‘ ∇‘ )ノ'))
-            lag = 0
         else:
-            lag = 0
             line_bot_api.push_message(Old_Token, TextSendMessage(text='錯誤請重新登入\n 〒.〒 '))
 
 
