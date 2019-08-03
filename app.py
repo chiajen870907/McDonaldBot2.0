@@ -236,14 +236,14 @@ def Database_Check_UserID():
         result_ID = re.search(user_id, temp_ID)
         #print('result_ID', result_ID)
         if result_ID is None:
-            # UserID_Exists = 0
+            UserID_Exists = 0
             print('CantFind')
         else:
-            # UserID_Exists = 1
+            UserID_Exists = 1
             #re.search(user_id, result)
             print('Find_UserID')
             break
-    return 'OK'
+    return UserID_Exists
 
 
 
@@ -264,7 +264,7 @@ def handle_message(event):
     Check = Database_Check_UserID()
     #print('UserID_Exists:', UserID_Exists)
     #if db.collection('Line_User').document(user_id).get().exists:
-    if Check == 'OK':
+    if Check == 1:
         print('Exists')
         if event.message.text == 'DATA123456':
             date_picker = TemplateSendMessage(
