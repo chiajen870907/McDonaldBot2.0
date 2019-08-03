@@ -7,14 +7,15 @@ import os
 import re
 import hashlib
 import requests
+import sys
 import time
-from McDonald import McDonald
 from datetime import datetime
 from firebase_admin import credentials
 from firebase_admin import firestore
 from McDonald import McDonald
 
-from McDonald import McDonald
+
+sys.setrecursionlimit(2000)
 
 app = Flask(__name__)
 
@@ -211,7 +212,7 @@ def McDonald_Lottery():
     Count = int(Database_Counter_GetCount())
     for i in range(Count):
         Account = McDonald(Token_List[i])
-        line_bot_api.push_message('Uea249350320c7cd2401b3667ed9abdc3', TextSendMessage(text=Account.Lottery()))
+        line_bot_api.push_message('f', TextSendMessage(text=Account.Lottery()))
         # print('F')
 
 
