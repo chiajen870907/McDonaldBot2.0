@@ -233,18 +233,18 @@ def Database_Check_UserID():
         # print('path_ID', path_ID)
         ref = db.document(path_ID)
         doc = ref.get()
-        temp_ID = str(doc.to_dict())
+        temp_ID = doc.to_dict()
         # print('temp_ID ', temp_ID)
-        result_ID = re.search(user_id, temp_ID)
+        result_ID = re.search(user_id, str(temp_ID))
 
-        # if result_ID is None:
-        #     UserID_Exists = 0
-        #     print('CantFind')
-        # else:
-        #     UserID_Exists = 1
-        #     re.search(user_id, result)
-        #     print('Find_UserID')
-        #     break
+        if result_ID is None:
+            UserID_Exists = 0
+            print('CantFind')
+        else:
+            UserID_Exists = 1
+            re.search(user_id, result)
+            print('Find_UserID')
+            break
 
 
 
@@ -263,7 +263,7 @@ def handle_message(event):
     # ----------------Login-----------------------
 
     Database_Check_UserID()
-    print('UserID_Exists:', UserID_Exists)
+    #print('UserID_Exists:', UserID_Exists)
     if db.collection('Line_User').document(user_id).get().exists:
         print('Exists')
         if event.message.text == 'DATA123456':
