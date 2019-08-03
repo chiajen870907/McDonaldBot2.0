@@ -209,8 +209,11 @@ def Database_Counter_Decrease():
 def McDonald_Lottery():
     print('F')
 
+
 def Database_Check_Token():
     print('')
+
+
 def Database_Check_UserID():
     Count_Index = Database_Counter_GetCount()
     Count_path = ('Line_User/Info')
@@ -292,7 +295,7 @@ def handle_message(event):
         MC_User_ID = t[0]
         MC_User_PASSWORD = t[1]
         MC_Status, MC_Token = login_MC()
-        if MC_Status == '登入成功' & MC_Token != '':
+        if MC_Status == '登入成功' and MC_Token != '':
             line_bot_api.push_message(user_id, TextSendMessage(text= MC_Status + "*\(^_^)/*"))
             Database_Counter_Increase()
             Count = Database_Counter_GetCount()
