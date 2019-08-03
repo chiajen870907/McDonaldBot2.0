@@ -233,18 +233,18 @@ def Database_Check_UserID():
         # print('path_ID', path_ID)
         ref = db.document(path_ID)
         doc = ref.get()
-        temp_ID = doc.to_dict()
+        temp_ID = str(doc.to_dict())
         # print('temp_ID ', temp_ID)
         result_ID = re.search(user_id, temp_ID)
         print('result_ID', result_ID)
-        if result_ID is None:
-            UserID_Exists = 0
-            print('CantFind')
-        else:
-            UserID_Exists = 1
-            re.search(user_id, result)
-            print('Find_UserID')
-            break
+        # if result_ID is None:
+        #     UserID_Exists = 0
+        #     print('CantFind')
+        # else:
+        #     UserID_Exists = 1
+        #     re.search(user_id, result)
+        #     print('Find_UserID')
+        #     break
 
 
 
