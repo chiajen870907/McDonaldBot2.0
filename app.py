@@ -22,8 +22,8 @@ line_bot_api = LineBotApi('a4ZRk4l00GSRM9haYsEAdV90WTEk+LMkWCI71MqObTkXFq8ygRUlb
 # Channel Secret
 handler = WebhookHandler('62aab4cbbb8fe1efcfd845bc9211e748')
 # 引用私密金鑰
-#cred = credentials.Certificate('/app/service-account.json')
-cred = credentials.Certificate('C:/Users\HsiehCJ/Desktop/Project/PyCharm/McDonaldBot/service-account.json')
+cred = credentials.Certificate('/app/service-account.json')
+#cred = credentials.Certificate('C:/Users\HsiehCJ/Desktop/Project/PyCharm/McDonaldBot/service-account.json')
 
 # 初始化firebase，注意不能重複初始化
 firebase_admin.initialize_app(cred)
