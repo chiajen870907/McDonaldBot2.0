@@ -243,18 +243,16 @@ def Database_Check_UserID():
         return UserID_Exists
 
 
-def McDonald_Get_Stack():
-    Token_List = Database_Get_Token()
-    Count = int(Database_Counter_GetCount())
-    for i in range(Count):
-        path_ID = ("MD_Token/" + Token_List[i])
-        ref = db.document(path_ID)
-        doc = ref.get()
-        PushID = str(doc.to_dict())
-        PushID = re.sub("[{} \' :]", "", str(PushID))
-        PushID = PushID.replace('UserID', '')
-        Account = McDonald(Token_List[i])
-        line_bot_api.push_message(PushID, TextSendMessage(text=Account.Lottery()))
+def McDonald_Get_Sticker():
+    Path = 'Check/' + user_id
+    result = Database_Read_Data(Path)
+    result = re.sub("[{} \' :]", "", str(result))
+    result = result.replace('Token', '')
+    Account = McDonald(result)
+    Sticker_List = Account.Sticker_List()
+    Sticker_List = re.sub("[()]", "", str(Sticker_List))
+    Sticker_List_result = Sticker_List.split(',')
+    return Sticker_List_result
 
 
 def Auto_Coupon_Lottery():
@@ -280,11 +278,11 @@ def handle_message(event):
     global user_id
     user_id = event.source.user_id
     # ----------------Login-----------------------
-
     if db.collection('Check').document(user_id).get().exists == True:
         print('存在')
-        if event.message.text == 'Lottery':
-            Auto_Coupon_Lottery()
+        if event.message.text == 'Sticker':
+            result = McDonald_Get_Sticker()
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您目前擁有歡樂貼:{}\n月底即將到期歡樂貼\n:{}'.format(result[0], result[1])))
         elif event.message.text == 'test':
             Token = Database_Get_Token()
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Token[0]))
@@ -329,12 +327,15 @@ def handle_message(event):
             doc2 = {
                 'UserID': user_id
             }
+            doc3 = {
+                'Token': MC_Token
+            }
             doc_ref = db.collection("Line_User").document('Info')
             doc2_ref = db.collection("MD_Token").document(MC_Token)
-            doc3_ref = db.collection("Check").document(user_id)
+            doc3_ref = db.collection("Check").document(MC_Token)
             doc_ref.update(doc)
             doc2_ref.set(doc2)
-            doc3_ref.set(doc2)
+            doc3_ref.set(doc3)
             line_bot_api.push_message(user_id, TextSendMessage(text='我知道喇~\n每天準時晚上12點幫你抽\nヽ(‘ ∇‘ )ノ'))
         else:
             line_bot_api.push_message(user_id, TextSendMessage(text='錯誤請重新登入\n 〒.〒 '))
