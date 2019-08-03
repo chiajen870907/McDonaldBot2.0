@@ -223,10 +223,10 @@ def Database_Check_UserID():
     print(TokenList)
     GetToken = Index.split(',')
     global UserID_Exists
-    for i in range(nCount_Index):
+    for i in range(int(Count_Index)):
         if db.collection('Info').document(GetToken[i]).get().exists:
             UserID_Exists = 1
-            print('Find_Token')
+            print('Find_UserID')
         else:
             UserID_Exists = 0
             print('CantFind')
