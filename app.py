@@ -341,13 +341,14 @@ def handle_message(event):
         #     line_bot_api.reply_message(event.reply_token, date_picker)
     else:
         temp = event.message.text
-        if '/' not in temp:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='注意!!少了斜線(/)  Σ( ° △ °|||)'))
-        t = temp.split('/')
-        if len(t) > 2:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='多打了斜線哦  Σ( ° △ °|||)'))
-        buttons_template = TemplateSendMessage(alt_text='Template', template=ButtonsTemplate(title='登入確認', text='帳號:{}\n密碼:{}\n請確定是否正確'.format(t[0], t[1]), actions=[PostbackTemplateAction(label='確認無誤', text='登入', data='Login')]))
-        line_bot_api.reply_message(event.reply_token, buttons_template)
+        if temp != '登入':
+            if '/' not in temp:
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='注意!!少了斜線(/)  Σ( ° △ °|||)'))
+            t = temp.split('/')
+            if len(t) > 2:
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='多打了斜線哦  Σ( ° △ °|||)'))
+            buttons_template = TemplateSendMessage(alt_text='Template', template=ButtonsTemplate(title='登入確認', text='帳號:{}\n密碼:{}\n請確定是否正確'.format(t[0], t[1]), actions=[PostbackTemplateAction(label='確認無誤', text='登入', data='Login')]))
+            line_bot_api.reply_message(event.reply_token, buttons_template)
 
         # line_bot_api.reply_message(event.reply_token, TextSendMessage(text='帳號:{}\n密碼:{}\n正在嘗試登入麥當勞  \n(●’ω`●）'.format(t[0], t[1])))
         # MC_Status, MC_Token = login_MC()
