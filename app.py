@@ -174,7 +174,7 @@ def handle_postback(event):
         doc_ref = db.collection("Line_User").document(user_id)
         doc_ref.update(doc)
         #print(Set_Time)
-    elif temp== 'Login':
+    elif temp == 'Login':
         print('f')
 
 
@@ -338,6 +338,7 @@ def handle_message(event):
         temp = event.message.text
         if '/' not in temp:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='注意!!少了斜線(/)  Σ( ° △ °|||)'))
+        global t
         t = temp.split('/')
         if len(t) > 2:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='多打了斜線哦  Σ( ° △ °|||)'))
