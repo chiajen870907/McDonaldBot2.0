@@ -131,6 +131,7 @@ class Mask(object):
 
 def login_MC():
     global lag
+    lag = 0
     if lag == 0:
         Old_Token = user_id
         Username = t[0]

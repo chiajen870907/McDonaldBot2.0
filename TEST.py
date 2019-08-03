@@ -121,17 +121,23 @@ def Database_Read_Data(Read_path):
     Read_result = doc.to_dict()
     return Read_result
 
-def test():
-    Path = 'Check/Ufde98f2320ec7dcf8fe292ba4615f310'
-    result = Database_Read_Data(Path)
-    result = re.sub("[{} \' :]", "", str(result))
-    result = result.replace('Token', '')
-    Account = McDonald(result)
-    Sticker_List = Account.Sticker_List()
-    Sticker_List = re.sub("[()]", "", str(Sticker_List))
-    Sticker_List_result = Sticker_List.split(',')
-    return Sticker_List_result
+def login_MC():
+    global lag
+    if lag == 0:
+        print('here1')
+        Old_Token = 'Uea249350320c7cd2401b3667ed9abdc3'
+        Username = '0973060201'
+        Password = 'break77520'
+        # Login and get the imformation
+        print('here2')
+        Account = Mask(Username, Password)
+        list = Account.Login()
+        # Print the results
+        MC_Status = (list['rm'])
+        MC_Token = (list['results']['member_info']['access_token'])
+        return MC_Status, MC_Token, Old_Token
 
-a= test()
-print(a[0])
+MC_Status, MC_Token, Old_Token = login_MC()
+lag = 1
+print(Old_Token)
 
