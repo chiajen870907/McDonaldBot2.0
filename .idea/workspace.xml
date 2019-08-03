@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="90c87167-b4d8-47e4-a470-9e442930dcf7" name="Default Changelist" comment="Add Code">
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-    </list>
+    <list default="true" id="90c87167-b4d8-47e4-a470-9e442930dcf7" name="Default Changelist" comment="Add Code" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,8 +13,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="299" column="30" lean-forward="true" selection-start-line="299" selection-start-column="30" selection-end-line="299" selection-end-column="30" />
+            <state relative-caret-position="1202">
+              <caret line="304" column="49" lean-forward="true" selection-start-line="304" selection-start-column="49" selection-end-line="304" selection-end-column="49" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="e#1096#4809#0" />
@@ -320,12 +318,12 @@
       <workItem from="1564705611508" duration="23914000" />
       <workItem from="1564733959466" duration="13136000" />
       <workItem from="1564800133757" duration="13159000" />
-      <workItem from="1564829297783" duration="10281000" />
+      <workItem from="1564829297783" duration="10598000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88254000" />
+    <option name="totallyTimeSpent" value="88571000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -530,8 +528,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="299" column="30" lean-forward="true" selection-start-line="299" selection-start-column="30" selection-end-line="299" selection-end-column="30" />
+        <state relative-caret-position="1202">
+          <caret line="304" column="49" lean-forward="true" selection-start-line="304" selection-start-column="49" selection-end-line="304" selection-end-column="49" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="e#1096#4809#0" />
