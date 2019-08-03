@@ -2,4 +2,4 @@ line-bot-sdk
 flask
 firebase_admin
 requests
-apscheduler
+APScheduler
