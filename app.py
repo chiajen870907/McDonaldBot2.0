@@ -243,11 +243,15 @@ def Database_Check_UserID():
         return UserID_Exists
 
 
-def McDonald_Get_Sticker():
+def McDonald_Get_State():
     Path = 'Check/' + user_id
     result = Database_Read_Data(Path)
     result = re.sub("[{} \' :]", "", str(result))
     result = result.replace('Token', '')
+    return result
+
+def McDonald_Get_Sticker():
+    result = McDonald_Get_State()
     Account = McDonald(result)
     Sticker_List = Account.Sticker_List()
     Sticker_List = re.sub("[()]", "", str(Sticker_List))
@@ -282,7 +286,7 @@ def handle_message(event):
         print('存在')
         if event.message.text == 'Sticker':
             result = McDonald_Get_Sticker()
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您目前擁有歡樂貼:{}\n月底即將到期歡樂貼\n:{}'.format(result[0], result[1])))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='\n目前擁有歡樂貼:{}\n月底即將到期歡樂貼:{}\n'.format(result[0], result[1])))
         elif event.message.text == 'test':
             Token = Database_Get_Token()
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Token[0]))
@@ -318,7 +322,7 @@ def handle_message(event):
         MC_User_PASSWORD = t[1]
         MC_Status, MC_Token = login_MC()
         if MC_Status == '登入成功' and MC_Token != '':
-            line_bot_api.push_message(user_id, TextSendMessage(text= MC_Status + " *\(^_^)/* "))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text= MC_Status + " *\(^_^)/* "))
             Database_Counter_Increase()
             Count = Database_Counter_GetCount()
             doc = {
@@ -336,9 +340,9 @@ def handle_message(event):
             doc_ref.update(doc)
             doc2_ref.set(doc2)
             doc3_ref.set(doc3)
-            line_bot_api.push_message(user_id, TextSendMessage(text='我知道喇~\n每天準時晚上12點幫你抽\nヽ(‘ ∇‘ )ノ'))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='我知道喇~\n每天準時晚上12點幫你抽\nヽ(‘ ∇‘ )ノ'))
         else:
-            line_bot_api.push_message(user_id, TextSendMessage(text='錯誤請重新登入\n 〒.〒 '))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='錯誤請重新登入\n 〒.〒 '))
 
 
 if __name__ == "__main__":
