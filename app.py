@@ -332,7 +332,7 @@ def handle_message(event):
             }
             doc_ref = db.collection("Line_User").document('Info')
             doc2_ref = db.collection("MD_Token").document(MC_Token)
-            doc3_ref = db.collection("Check").document(MC_Token)
+            doc3_ref = db.collection("Check").document(user_id)
             doc_ref.update(doc)
             doc2_ref.set(doc2)
             doc3_ref.set(doc3)
