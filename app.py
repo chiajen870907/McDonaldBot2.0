@@ -325,7 +325,6 @@ def handle_message(event):
         if len(t) > 2:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='多打了斜線哦  Σ( ° △ °|||)'))
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text='帳號:{}\n密碼:{}\n正在嘗試登入麥當勞  \n(●’ω`●）'.format(t[0], t[1])))
-
         # Old_Token = user_id
         # global MC_User_ID, MC_User_PASSWORD
         # MC_User_ID = t[0]
@@ -333,7 +332,8 @@ def handle_message(event):
         lag = 0
         if lag == 0:
             MC_Status, MC_Token, Old_Token = login_MC()
-        lag = 1
+            lag = 1
+
         if MC_Status == '登入成功' and MC_Token != '':
             line_bot_api.push_message(Old_Token, TextSendMessage(text= MC_Status + " *\(^_^)/* "))
             Database_Counter_Increase()
