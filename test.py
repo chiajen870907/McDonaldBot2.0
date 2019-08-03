@@ -5,6 +5,7 @@
 # print(PushID)
 def McDonald_Lottery():
     print('f')
+
 from apscheduler.schedulers.blocking import BlockingScheduler
 scheduler = BlockingScheduler()
 # 添加任务并设置触发方式为3s一次
