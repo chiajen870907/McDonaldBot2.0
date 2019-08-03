@@ -17,10 +17,10 @@ sched.start()
 # # 初始化firestore
 # db = firestore.client()
 #
-# Count_path = ('Line_User/Counter')
-# doc_ref = db.document(Count_path)
-# doc = doc_ref.get()
-# Count_result = doc.to_dict()
+# def t():
+#     a=  db.collection('Line_User').document('Info').get().exists
+#     print(a)
+#
 #
 # def test(Count_path):
 #     doc_ref = db.document(Count_path)
@@ -32,9 +32,8 @@ sched.start()
 #     a = 'Line_User/Counter'
 #     b = test(a)
 #     print(b)
-# test2()
-
-
+#
+# t()
 
 
 

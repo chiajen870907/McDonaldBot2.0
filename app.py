@@ -280,8 +280,8 @@ def handle_message(event):
     global user_id
     user_id = event.source.user_id
     # ----------------Login-----------------------
-    Check = Database_Check_UserID()
-    if Check == 1:
+
+    if db.collection('Check').document(user_id).get().exists == True:
         print('存在')
         if event.message.text == 'Lottery':
             Auto_Coupon_Lottery()
@@ -331,8 +331,10 @@ def handle_message(event):
             }
             doc_ref = db.collection("Line_User").document('Info')
             doc2_ref = db.collection("MD_Token").document(MC_Token)
+            doc3_ref = db.collection("Check").document(user_id)
             doc_ref.update(doc)
             doc2_ref.set(doc2)
+            doc3_ref.set(doc2)
             line_bot_api.push_message(user_id, TextSendMessage(text='我知道喇~\n每天準時晚上12點幫你抽\nヽ(‘ ∇‘ )ノ'))
         else:
             line_bot_api.push_message(user_id, TextSendMessage(text='錯誤請重新登入\n 〒.〒 '))
