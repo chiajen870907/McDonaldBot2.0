@@ -217,7 +217,7 @@ def Database_Check_UserID():
     doc = doc_ref.get()
     result = doc.to_dict()
     Index = re.sub("[{} \' :]", "", str(result))
-    nCount_Index = int(Count_Index) + 1
+    nCount_Index = int(Count_Index) + 5
     for i in range(nCount_Index):
         TokenList = Index.replace('Token' + str(i), '')
     print('Database_Check_UserID() ', TokenList)
