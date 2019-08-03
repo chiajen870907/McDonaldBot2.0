@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90c87167-b4d8-47e4-a470-9e442930dcf7" name="Default Changelist" comment="Add Code">
+      <change beforePath="$PROJECT_DIR$/Clock.py" beforeDir="false" afterPath="$PROJECT_DIR$/Clock.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="271" column="82" lean-forward="true" selection-start-line="271" selection-start-column="82" selection-end-line="271" selection-end-column="82" />
+            <state relative-caret-position="134">
+              <caret line="296" column="36" selection-start-line="296" selection-start-column="34" selection-end-line="296" selection-end-column="36" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="e#1096#4809#0" />
@@ -29,18 +30,9 @@
                 <element signature="e#6784#7018#0" />
                 <element signature="e#7559#8093#0" />
                 <element signature="e#7883#8901#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../../McDonald-s-APP-master/McDonald.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="700">
-              <caret line="79" column="75" selection-start-line="79" selection-start-column="75" selection-end-line="79" selection-end-column="75" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#8571#9044#0" />
+                <element signature="e#8569#9042#0" />
+                <element signature="e#10338#11713#0" />
               </folding>
             </state>
           </provider>
@@ -49,8 +41,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Clock.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state>
+              <caret selection-end-line="8" selection-end-column="13" />
+              <folding>
+                <element signature="e#0#61#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -327,12 +322,12 @@
       <workItem from="1564705611508" duration="23914000" />
       <workItem from="1564733959466" duration="13136000" />
       <workItem from="1564800133757" duration="13159000" />
-      <workItem from="1564829297783" duration="7125000" />
+      <workItem from="1564829297783" duration="8304000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85098000" />
+    <option name="totallyTimeSpent" value="86277000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -515,13 +510,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Clock.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../../McDonald-s-APP-master/McDonald.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="700">
@@ -532,10 +520,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Clock.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="271" column="82" lean-forward="true" selection-start-line="271" selection-start-column="82" selection-end-line="271" selection-end-column="82" />
+        <state relative-caret-position="134">
+          <caret line="296" column="36" selection-start-line="296" selection-start-column="34" selection-end-line="296" selection-end-column="36" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="e#1096#4809#0" />
@@ -548,6 +546,9 @@
             <element signature="e#6784#7018#0" />
             <element signature="e#7559#8093#0" />
             <element signature="e#7883#8901#0" />
+            <element signature="e#8571#9044#0" />
+            <element signature="e#8569#9042#0" />
+            <element signature="e#10338#11713#0" />
           </folding>
         </state>
       </provider>

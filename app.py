@@ -268,6 +268,7 @@ def McDonald_Get_Stack():
         Account = McDonald(Token_List[i])
         line_bot_api.push_message(PushID, TextSendMessage(text=Account.Lottery()))
 
+
 def McDonald_Lottery():
     Token_List = Database_Get_Token()
     Count = int(Database_Counter_GetCount())
@@ -293,12 +294,13 @@ def handle_message(event):
     Check = Database_Check_UserID()
     if Check == 1:
         print('存在')
-        if event.message.text == '抽獎':
+        if event.message.text == 'Lottery':
             McDonald_Lottery()
-        elif event.message.text == '優惠卷123456':
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=McDonald.Coupon_List()))
-        elif event.message.text == '貼紙123456':
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=McDonald.Sticker_List()))
+        # elif event.message.text == '優惠卷123456':
+        #     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=McDonald.Coupon_List()))
+        # elif event.message.text == '貼紙123456':
+        #     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=McDonald.Sticker_List()))
+
         # if event.message.text == 'DATA123456':
         #     date_picker = TemplateSendMessage(
         #         alt_text='時間設定',
