@@ -2,7 +2,6 @@ from flask import Flask, request, abort
 from linebot import (LineBotApi, WebhookHandler)
 from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import *
-from apscheduler.schedulers.blocking import BlockingScheduler
 import firebase_admin
 import os
 import re
@@ -269,10 +268,6 @@ def Database_Check_UserID():
             # ('Find_UserID')
         return UserID_Exists
 
-
-def test():
-    print('Hello')
-
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -283,8 +278,12 @@ def handle_message(event):
     # ----------------Login-----------------------
     Check = Database_Check_UserID()
     if Check == 1:
-        if event.message.text == 'Lottery':
-            McDonald_Lottery()
+        if event.message.text == '抽獎':
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=McDonald_Lottery()))
+        elif event.message.text == '優惠卷':
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=McDonald.Coupon_List()))
+        elif event.message.text == '貼紙':
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=McDonald.Sticker_List()))
         # if event.message.text == 'DATA123456':
         #     date_picker = TemplateSendMessage(
         #         alt_text='時間設定',
@@ -328,10 +327,7 @@ def handle_message(event):
             line_bot_api.push_message(user_id, TextSendMessage(text='錯誤請重新登入\n 〒.〒 '))
 
 
-
-
 if __name__ == "__main__":
-    # 实例化一个调度器
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
 
