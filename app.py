@@ -24,6 +24,8 @@ line_bot_api = LineBotApi('a4ZRk4l00GSRM9haYsEAdV90WTEk+LMkWCI71MqObTkXFq8ygRUlb
 handler = WebhookHandler('62aab4cbbb8fe1efcfd845bc9211e748')
 # 引用私密金鑰
 cred = credentials.Certificate('/app/service-account.json')
+#cred = credentials.Certificate('C:/Users\HsiehCJ/Desktop/Project/PyCharm/McDonaldBot/service-account.json')
+
 # 初始化firebase，注意不能重複初始化
 firebase_admin.initialize_app(cred)
 # 初始化firestore
@@ -207,30 +209,31 @@ def Database_Counter_Decrease():
 
 
 def McDonald_Lottery():
-    Token_List = Database_Check_Token()
-    Count = int(Database_Counter_GetCount())
-    for i in range(Count):
-        Account = McDonald(Token_List[i])
-        line_bot_api.push_message('f', TextSendMessage(text=Account.Lottery()))
-        # print('F')
-
+    # Token_List = Database_Check_Token()
+    # Count = int(Database_Counter_GetCount())
+    # for i in range(Count):
+    #     Account = McDonald(Token_List[i])
+    #     line_bot_api.push_message('f', TextSendMessage(text=Account.Lottery()))
+    #     # print('F')
+    print('t')
 
 def Database_Check_Token():
-    Count_Index = Database_Counter_GetCount()
-    Count_path = ('Line_User/Info')
-    doc_ref = db.document(Count_path)
-    doc = doc_ref.get()
-    result = doc.to_dict()
-    Index = re.sub("[{} \' :]", "", str(result))
-    # print('Index', Index)
-    GetToken = Database_Check_Token()
-    nCount_Index = int(Count_Index) + 5
-    for i in range(nCount_Index):
-        Index = Index.replace('Token' + str(i), '')
-    # print('Database_Check_UserID() ', Index)
-    GetToken = Index.split(',')
-    # print(type(GetToken))
-    return GetToken
+    print('t')
+    # Count_Index = Database_Counter_GetCount()
+    # Count_path = ('Line_User/Info')
+    # doc_ref = db.document(Count_path)
+    # doc = doc_ref.get()
+    # result = doc.to_dict()
+    # Index = re.sub("[{} \' :]", "", str(result))
+    # # print('Index', Index)
+    # GetToken = Database_Check_Token()
+    # nCount_Index = int(Count_Index) + 5
+    # for i in range(nCount_Index):
+    #     Index = Index.replace('Token' + str(i), '')
+    # # print('Database_Check_UserID() ', Index)
+    # GetToken = Index.split(',')
+    # # print(type(GetToken))
+    # return GetToken
 
 
 def Database_Check_UserID():
