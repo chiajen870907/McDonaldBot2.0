@@ -14,7 +14,7 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 from McDonald import McDonald
 
-sys.setrecursionlimit(10000)
+
 
 app = Flask(__name__)
 
@@ -209,7 +209,7 @@ def Database_Counter_Decrease():
 
 
 def McDonald_Lottery():
-    Token_List = Database_Check_Token()
+    Token_List = Database_Get_Token()
     Count = int(Database_Counter_GetCount())
     for i in range(Count):
         path_ID = ("MD_Token/" + Token_List[i])
@@ -222,16 +222,15 @@ def McDonald_Lottery():
         line_bot_api.push_message(PushID, TextSendMessage(text=Account.Lottery()))
 
 
-def Database_Check_Token():
-    Count_Index = Database_Counter_GetCount()
+def Database_Get_Token():
+    Count = Database_Counter_GetCount()
     Count_path = ('Line_User/Info')
     doc_ref = db.document(Count_path)
     doc = doc_ref.get()
     result = doc.to_dict()
     Index = re.sub("[{} \' :]", "", str(result))
     # print('Index', Index)
-    GetToken = Database_Check_Token()
-    nCount_Index = int(Count_Index) + 1
+    nCount_Index = int(Count) + 1
     for i in range(nCount_Index):
         Index = Index.replace('Token' + str(i), '')
     # print('Database_Check_UserID() ', Index)
@@ -309,11 +308,11 @@ def handle_message(event):
         MC_User_PASSWORD = t[1]
         MC_Status, MC_Token = login_MC()
         if MC_Status == '登入成功' and MC_Token != '':
-            line_bot_api.push_message(user_id, TextSendMessage(text= MC_Status + "*\(^_^)/*"))
+            line_bot_api.push_message(user_id, TextSendMessage(text= MC_Status + " *\(^_^)/* "))
             Database_Counter_Increase()
             Count = Database_Counter_GetCount()
             doc = {
-                'Token' + Count : MC_Token
+                'Token' + Count: MC_Token
             }
             doc2 = {
                 'UserID': user_id
