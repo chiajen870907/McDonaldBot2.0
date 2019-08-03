@@ -29,11 +29,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25">
-              <caret line="339" column="108" selection-start-line="339" selection-start-column="108" selection-end-line="339" selection-end-column="108" />
+            <state relative-caret-position="154">
+              <caret line="288" column="12" selection-start-line="288" selection-start-column="12" selection-end-line="288" selection-end-column="12" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="e#1096#4809#0" />
+                <element signature="e#4781#5170#0" />
                 <element signature="e#5259#5608#0" />
                 <element signature="e#5737#6152#0" />
                 <element signature="e#6142#6291#0" />
@@ -45,6 +46,7 @@
                 <element signature="e#8132#8304#0" />
                 <element signature="e#8132#8497#0" />
                 <element signature="e#8569#9042#0" />
+                <element signature="e#9393#10744#0" />
                 <element signature="e#9623#9741#0" />
               </folding>
             </state>
@@ -363,12 +365,12 @@
       <workItem from="1564705611508" duration="23914000" />
       <workItem from="1564733959466" duration="13136000" />
       <workItem from="1564800133757" duration="13159000" />
-      <workItem from="1564829297783" duration="22648000" />
+      <workItem from="1564829297783" duration="23442000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100621000" />
+    <option name="totallyTimeSpent" value="101415000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -589,11 +591,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="339" column="108" selection-start-line="339" selection-start-column="108" selection-end-line="339" selection-end-column="108" />
+        <state relative-caret-position="154">
+          <caret line="288" column="12" selection-start-line="288" selection-start-column="12" selection-end-line="288" selection-end-column="12" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="e#1096#4809#0" />
+            <element signature="e#4781#5170#0" />
             <element signature="e#5259#5608#0" />
             <element signature="e#5737#6152#0" />
             <element signature="e#6142#6291#0" />
@@ -605,6 +608,7 @@
             <element signature="e#8132#8304#0" />
             <element signature="e#8132#8497#0" />
             <element signature="e#8569#9042#0" />
+            <element signature="e#9393#10744#0" />
             <element signature="e#9623#9741#0" />
           </folding>
         </state>
