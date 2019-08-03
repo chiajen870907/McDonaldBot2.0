@@ -220,11 +220,13 @@ def Database_Check_UserID():
     nCount_Index = int(Count_Index) + 1
     for i in range(nCount_Index):
         TokenList = Index.replace('Token' + str(i), '')
-    print('Database_Check_UserID() ',TokenList)
+    print('Database_Check_UserID() ', TokenList)
     GetToken = Index.split(',')
+    print('GetToken:' , GetToken[0])
     global UserID_Exists
     for i in range(int(Count_Index)):
         path_ID = ("MD_Token/" + GetToken[i])
+        print('path_ID', path_ID)
         ref = db.document(path_ID)
         doc = ref.get()
         temp_ID = str(doc.to_dict())
