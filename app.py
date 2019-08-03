@@ -173,33 +173,34 @@ def handle_postback(event):
         doc_ref.update(doc)
         #print(Set_Time)
 
+def Database_Read_Data(Read_path):
+    doc_ref = db.document(Read_path)
+    doc = doc_ref.get()
+    Read_result = doc.to_dict()
+    return Read_result
 
 def Database_Counter_GetCount():
-    Count_path = ('Line_User/Counter')
-    doc_ref = db.document(Count_path)
-    doc = doc_ref.get()
-    Count_result = doc.to_dict()
-    #(Count_result)
-    Count_Index = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）:{} Count]", "", str(Count_result))
-    return Count_Index
+    Path = 'Line_User/Counter'
+    result = Database_Read_Data(Path)
+    result = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）:{} Count]", "", str(result))
+    return result
 
 
 def Database_Counter_Increase():
-    Count_Index = Database_Counter_GetCount()
-    Count_Index = int(Count_Index) + 1
+    Count = Database_Counter_GetCount()
+    Count = int(Count) + 1
     doc = {
-        'Count': Count_Index
+        'Count': Count
     }
     doc_ref = db.collection("Line_User").document('Counter')
     doc_ref.set(doc)
-    #print(Count_Index)
 
 
 def Database_Counter_Decrease():
-    Count_Index = Database_Counter_GetCount()
-    Count_Index = int(Count_Index) - 1
+    Count = Database_Counter_GetCount()
+    Count= int(Count) - 1
     doc = {
-        'Count': Count_Index
+        'Count': Count
     }
     doc_ref = db.collection("Line_User").document('Counter')
     doc_ref.set(doc)
@@ -207,43 +208,30 @@ def Database_Counter_Decrease():
 
 
 def Database_Get_Token():
+    Path = 'Line_User/Info'
     Count = Database_Counter_GetCount()
-    Count_path = ('Line_User/Info')
-    doc_ref = db.document(Count_path)
-    doc = doc_ref.get()
-    result = doc.to_dict()
+    result = Database_Read_Data(Path)
     Index = re.sub("[{} \' :]", "", str(result))
-    # print('Index', Index)
     nCount_Index = int(Count) + 1
     for i in range(nCount_Index):
         Index = Index.replace('Token' + str(i), '')
-    # print('Database_Check_UserID() ', Index)
     GetToken = Index.split(',')
-    # print(type(GetToken))
     return GetToken
 
 
 def Database_Check_UserID():
     Count_Index = Database_Counter_GetCount()
-    Count_path = ('Line_User/Info')
-    doc_ref = db.document(Count_path)
-    doc = doc_ref.get()
-    result = doc.to_dict()
+    Path = 'Line_User/Info'
+    result = Database_Read_Data(Path)
     Index = re.sub("[{} \' :]", "", str(result))
-    # print('Index', Index)
     nCount_Index = int(Count_Index) + 1
     for i in range(nCount_Index):
         Index = Index.replace('Token' + str(i), '')
-    # print('Database_Check_UserID() ', Index)
     GetToken = Index.split(',')
     for i in range(int(Count_Index)):
-        path_ID = ("MD_Token/" + GetToken[i])
-        # print('path_ID', path_ID)
-        ref = db.document(path_ID)
-        doc = ref.get()
-        temp_ID = str(doc.to_dict())
-        # print('temp_ID ', temp_ID)
-        result_ID = re.search(user_id, temp_ID)
+        Path_ID = ("MD_Token/" + GetToken[i])
+        result = Database_Read_Data(Path_ID)
+        result_ID = re.search(user_id, str(result))
         #print('result_ID', result_ID)
         if result_ID is None:
             UserID_Exists = 0
@@ -291,17 +279,18 @@ def handle_message(event):
     # line_bot_api.reply_message(event.reply_token, message)
     global user_id
     user_id = event.source.user_id
+    global Token
     # ----------------Login-----------------------
     # Check = Database_Check_UserID()
-    Check  = 1
+    Check = 1
     if Check == 1:
         print('存在')
         if event.message.text == 'Lottery':
             McDonald_Lottery()
         elif event.message.text == 'test':
-            Token = Database_Get_Token()
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Token[0]))
-
+        elif event.message.text == 'test2':
+            Token = Database_Get_Token()
         # elif event.message.text == '優惠卷123456':
         #     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=McDonald.Coupon_List()))
         # elif event.message.text == '貼紙123456':
