@@ -218,10 +218,13 @@ def Database_Check_UserID():
     result = doc.to_dict()
     Index = re.sub("[{} \' :]", "", str(result))
     print('Index', Index)
+
     nCount_Index = int(Count_Index) + 5
-    for f in range(nCount_Index):
-        TokenList = Index.replace('Token' + str(f), '')
-    print('Database_Check_UserID() ', TokenList)
+
+    for i in range(nCount_Index):
+        Index = Index.replace('Token' + str(i), '')
+    print('Database_Check_UserID() ', Index)
+
     GetToken = Index.split(',')
     print('GetToken:' , GetToken[0])
     global UserID_Exists
