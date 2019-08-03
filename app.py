@@ -315,7 +315,7 @@ def handle_message(event):
             doc2_ref = db.collection("MD_Token").document(MC_Token)
             doc_ref.update(doc)
             doc2_ref.set(doc2)
-            line_bot_api.push_message(user_id,TextSendMessage(text='我知道喇~\n每天準時幫你抽\nヽ(‘ ∇‘ )ノ'))
+            line_bot_api.push_message(user_id, TextSendMessage(text='我知道喇~\n每天準時幫你抽\nヽ(‘ ∇‘ )ノ'))
         else:
             line_bot_api.push_message(user_id, TextSendMessage(text='錯誤請重新登入\n 〒.〒 '))
 
