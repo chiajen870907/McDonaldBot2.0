@@ -206,20 +206,6 @@ def Database_Counter_Decrease():
     # print(Count_Index)
 
 
-def McDonald_Lottery():
-    Token_List = Database_Get_Token()
-    Count = int(Database_Counter_GetCount())
-    for i in range(Count):
-        path_ID = ("MD_Token/" + Token_List[i])
-        ref = db.document(path_ID)
-        doc = ref.get()
-        PushID = str(doc.to_dict())
-        PushID = re.sub("[{} \' :]", "", str(PushID))
-        PushID = PushID.replace('UserID', '')
-        Account = McDonald(Token_List[i])
-        line_bot_api.push_message(PushID, TextSendMessage(text=Account.Lottery()))
-
-
 def Database_Get_Token():
     Count = Database_Counter_GetCount()
     Count_path = ('Line_User/Info')
@@ -268,6 +254,34 @@ def Database_Check_UserID():
             # ('Find_UserID')
         return UserID_Exists
 
+
+def McDonald_Get_Stack():
+    Token_List = Database_Get_Token()
+    Count = int(Database_Counter_GetCount())
+    for i in range(Count):
+        path_ID = ("MD_Token/" + Token_List[i])
+        ref = db.document(path_ID)
+        doc = ref.get()
+        PushID = str(doc.to_dict())
+        PushID = re.sub("[{} \' :]", "", str(PushID))
+        PushID = PushID.replace('UserID', '')
+        Account = McDonald(Token_List[i])
+        line_bot_api.push_message(PushID, TextSendMessage(text=Account.Lottery()))
+
+def McDonald_Lottery():
+    Token_List = Database_Get_Token()
+    Count = int(Database_Counter_GetCount())
+    for i in range(Count):
+        path_ID = ("MD_Token/" + Token_List[i])
+        ref = db.document(path_ID)
+        doc = ref.get()
+        PushID = str(doc.to_dict())
+        PushID = re.sub("[{} \' :]", "", str(PushID))
+        PushID = PushID.replace('UserID', '')
+        Account = McDonald(Token_List[i])
+        line_bot_api.push_message(PushID, TextSendMessage(text=Account.Lottery()))
+
+
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -278,11 +292,12 @@ def handle_message(event):
     # ----------------Login-----------------------
     Check = Database_Check_UserID()
     if Check == 1:
+        print('存在')
         if event.message.text == '抽獎':
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=McDonald_Lottery()))
-        elif event.message.text == '優惠卷':
+            McDonald_Lottery()
+        elif event.message.text == '優惠卷123456':
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=McDonald.Coupon_List()))
-        elif event.message.text == '貼紙':
+        elif event.message.text == '貼紙123456':
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=McDonald.Sticker_List()))
         # if event.message.text == 'DATA123456':
         #     date_picker = TemplateSendMessage(
