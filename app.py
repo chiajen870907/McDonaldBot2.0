@@ -136,9 +136,9 @@ def login_MC():
     Account = Mask(Username, Password)
     list = Account.Login()
     # Print the results
-    global MC_Status, MC_Token
     MC_Status=(list['rm'])
     MC_Token=(list['results']['member_info']['access_token'])
+    return MC_Status, MC_Token
 
 # --------------------------
 
@@ -291,29 +291,24 @@ def handle_message(event):
         global MC_User_ID, MC_User_PASSWORD
         MC_User_ID = t[0]
         MC_User_PASSWORD = t[1]
-        login_MC()
-        if MC_Status != "":
-            line_bot_api.push_message(user_id, TextSendMessage(text='(。_。) ' + MC_Status))
-            if MC_Token != "":
-                stackE=0
-                Database_Counter_Increase()
-                Count_Index = Database_Counter_GetCount()
-                doc = {
-                    'Token' + Count_Index : MC_Token
-                }
-                doc2 = {
-                    'UserID': user_id
-                }
-
-                doc_ref = db.collection("Line_User").document('Info')
-                doc2_ref = db.collection("MD_Token").document(MC_Token)
-
-                doc_ref.update(doc)
-                doc2_ref.set(doc2)
-                line_bot_api.push_message(user_id,TextSendMessage(text='我知道喇~\n每天準時幫你抽\nヽ(‘ ∇‘ )ノ'))
-                stackE = 1
-                if stackE == 0:
-                    line_bot_api.push_message(user_id, TextSendMessage(text='錯誤請重新登入\n 〒.〒 '))
+        MC_Status, MC_Token = login_MC()
+        if MC_Status == '登入成功' & MC_Token != '':
+            line_bot_api.push_message(user_id, TextSendMessage(text= MC_Status + "*\(^_^)/*"))
+            Database_Counter_Increase()
+            Count = Database_Counter_GetCount()
+            doc = {
+                'Token' + Count : MC_Token
+            }
+            doc2 = {
+                'UserID': user_id
+            }
+            doc_ref = db.collection("Line_User").document('Info')
+            doc2_ref = db.collection("MD_Token").document(MC_Token)
+            doc_ref.update(doc)
+            doc2_ref.set(doc2)
+            line_bot_api.push_message(user_id,TextSendMessage(text='我知道喇~\n每天準時幫你抽\nヽ(‘ ∇‘ )ノ'))
+        else:
+            line_bot_api.push_message(user_id, TextSendMessage(text='錯誤請重新登入\n 〒.〒 '))
 
 
 if __name__ == "__main__":
