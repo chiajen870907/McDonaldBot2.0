@@ -329,8 +329,8 @@ def handle_message(event):
         # global MC_User_ID, MC_User_PASSWORD
         # MC_User_ID = t[0]
         # MC_User_PASSWORD = t[1]
-        lag = 1
         MC_Status, MC_Token, Old_Token = login_MC()
+        lag = 1
         if MC_Status == '登入成功' and MC_Token != '':
             line_bot_api.push_message(Old_Token, TextSendMessage(text= MC_Status + " *\(^_^)/* "))
             Database_Counter_Increase()
