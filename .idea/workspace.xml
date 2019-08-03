@@ -27,14 +27,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1369">
-              <caret line="133" column="11" lean-forward="true" selection-start-line="133" selection-start-column="11" selection-end-line="133" selection-end-column="11" />
+            <state relative-caret-position="256">
+              <caret line="333" column="8" selection-start-line="333" selection-start-column="8" selection-end-line="333" selection-end-column="20" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="e#1096#4809#0" />
+                <element signature="e#4781#5170#0" />
                 <element signature="e#5259#5608#0" />
                 <element signature="e#5682#6152#0" />
                 <element signature="e#6142#6291#0" />
@@ -53,37 +54,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Clock.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-              <folding>
-                <element signature="e#0#61#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TEST.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="58">
-              <caret line="124" column="14" selection-start-line="124" selection-start-column="14" selection-end-line="124" selection-end-column="14" />
+            <state relative-caret-position="144">
+              <caret line="139" selection-start-line="139" selection-end-line="142" selection-end-column="7" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/McDonald.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="67" column="20" selection-start-line="67" selection-start-column="8" selection-end-line="67" selection-end-column="20" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -138,8 +115,8 @@
         <option value="D:/Download/Google/line-bot-tutorial-master/line-bot-tutorial-master/clock.py" />
         <option value="$PROJECT_DIR$/../../../McDonald-s-APP-master/example.py" />
         <option value="$PROJECT_DIR$/Clock.py" />
-        <option value="$PROJECT_DIR$/TEST.py" />
         <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/TEST.py" />
       </list>
     </option>
   </component>
@@ -392,12 +369,12 @@
       <workItem from="1564705611508" duration="23914000" />
       <workItem from="1564733959466" duration="13136000" />
       <workItem from="1564800133757" duration="13159000" />
-      <workItem from="1564829297783" duration="20613000" />
+      <workItem from="1564829297783" duration="21373000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98586000" />
+    <option name="totallyTimeSpent" value="99346000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -457,7 +434,7 @@
     <SUITE FILE_PATH="coverage/McDonaldBot$mask__1_.coverage" NAME="mask (1) Coverage Results" MODIFIED="1564728966073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../McDonald-s-APP-master" />
     <SUITE FILE_PATH="coverage/McDonaldBot$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1564835871744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/McDonaldBot$example.coverage" NAME="example Coverage Results" MODIFIED="1564850121669" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../McDonald-s-APP-master" />
-    <SUITE FILE_PATH="coverage/McDonaldBot$TEST__1_.coverage" NAME="TEST (1) Coverage Results" MODIFIED="1564854092117" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/McDonaldBot$TEST__1_.coverage" NAME="TEST (1) Coverage Results" MODIFIED="1564854966044" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/McDonaldBot$mask.coverage" NAME="mask Coverage Results" MODIFIED="1564672486277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/McDonaldBot$Clock.coverage" NAME="Clock Coverage Results" MODIFIED="1564847092044" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/McDonaldBot$TEST.coverage" NAME="TEST Coverage Results" MODIFIED="1564711265848" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/firebase_admin" />
@@ -609,23 +586,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TEST.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="124" column="14" selection-start-line="124" selection-start-column="14" selection-end-line="124" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1369">
-          <caret line="133" column="11" lean-forward="true" selection-start-line="133" selection-start-column="11" selection-end-line="133" selection-end-column="11" />
+        <state relative-caret-position="256">
+          <caret line="333" column="8" selection-start-line="333" selection-start-column="8" selection-end-line="333" selection-end-column="20" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="e#1096#4809#0" />
+            <element signature="e#4781#5170#0" />
             <element signature="e#5259#5608#0" />
             <element signature="e#5682#6152#0" />
             <element signature="e#6142#6291#0" />
@@ -639,6 +607,16 @@
             <element signature="e#8569#9042#0" />
             <element signature="e#9393#10744#0" />
             <element signature="e#9623#9741#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TEST.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="139" selection-start-line="139" selection-end-line="142" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
