@@ -212,8 +212,14 @@ def McDonald_Lottery():
     Token_List = Database_Check_Token()
     Count = int(Database_Counter_GetCount())
     for i in range(Count):
+        path_ID = ("MD_Token/" + Token_List[i])
+        ref = db.document(path_ID)
+        doc = ref.get()
+        PushID = str(doc.to_dict())
+        PushID = re.sub("[{} \' :]", "", str(PushID))
+        PushID = PushID.replace('UserID', '')
         Account = McDonald(Token_List[i])
-        line_bot_api.push_message('f', TextSendMessage(text=Account.Lottery()))
+        line_bot_api.push_message(PushID, TextSendMessage(text=Account.Lottery()))
 
 
 def Database_Check_Token():
@@ -225,7 +231,7 @@ def Database_Check_Token():
     Index = re.sub("[{} \' :]", "", str(result))
     # print('Index', Index)
     GetToken = Database_Check_Token()
-    nCount_Index = int(Count_Index) + 5
+    nCount_Index = int(Count_Index) + 1
     for i in range(nCount_Index):
         Index = Index.replace('Token' + str(i), '')
     # print('Database_Check_UserID() ', Index)
@@ -242,7 +248,7 @@ def Database_Check_UserID():
     result = doc.to_dict()
     Index = re.sub("[{} \' :]", "", str(result))
     # print('Index', Index)
-    nCount_Index = int(Count_Index) + 5
+    nCount_Index = int(Count_Index) + 1
     for i in range(nCount_Index):
         Index = Index.replace('Token' + str(i), '')
     # print('Database_Check_UserID() ', Index)
@@ -276,7 +282,8 @@ def handle_message(event):
     # ----------------Login-----------------------
     Check = Database_Check_UserID()
     if Check == 1:
-        print('OK')
+        if event.message.text == 'Lottery':
+            McDonald_Lottery()
         # if event.message.text == 'DATA123456':
         #     date_picker = TemplateSendMessage(
         #         alt_text='時間設定',
@@ -315,7 +322,7 @@ def handle_message(event):
             doc2_ref = db.collection("MD_Token").document(MC_Token)
             doc_ref.update(doc)
             doc2_ref.set(doc2)
-            line_bot_api.push_message(user_id, TextSendMessage(text='我知道喇~\n每天準時幫你抽\nヽ(‘ ∇‘ )ノ'))
+            line_bot_api.push_message(user_id, TextSendMessage(text='我知道喇~\n每天準時晚上12點幫你抽\nヽ(‘ ∇‘ )ノ'))
         else:
             line_bot_api.push_message(user_id, TextSendMessage(text='錯誤請重新登入\n 〒.〒 '))
 
