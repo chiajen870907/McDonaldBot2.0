@@ -1,12 +1,16 @@
-
+import re
 def test():
-    x = 0
+    result_ID = re.search('1', '5')
     for i in range(10):
-        if i==1:
-            x = 1
-            break
-        print('r')
-    return x
+        if result_ID is None:
+            UserID_Exists = 0
+        else:
+            UserID_Exists = 1
 
-a = test()
-print(a)
+        return UserID_Exists
+
+def main():
+
+    a = test()
+    print(a)
+main()
