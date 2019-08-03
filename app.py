@@ -242,7 +242,6 @@ def Database_Check_UserID():
             UserID_Exists = 1
             #re.search(user_id, result)
             print('Find_UserID')
-            break
     return UserID_Exists
 
 
