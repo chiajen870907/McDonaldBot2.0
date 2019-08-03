@@ -237,14 +237,14 @@ def Database_Check_UserID():
         # print('temp_ID ', temp_ID)
         result_ID = re.search(user_id, temp_ID)
 
-        if result_ID is None:
-            UserID_Exists = 0
-            print('CantFind')
-        else:
-            UserID_Exists = 1
-            re.search(user_id, result)
-            print('Find_UserID')
-            break
+        # if result_ID is None:
+        #     UserID_Exists = 0
+        #     print('CantFind')
+        # else:
+        #     UserID_Exists = 1
+        #     re.search(user_id, result)
+        #     print('Find_UserID')
+        #     break
 
 
 
