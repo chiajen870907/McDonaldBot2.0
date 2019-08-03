@@ -257,7 +257,7 @@ def McDonald_Get_Stack():
         line_bot_api.push_message(PushID, TextSendMessage(text=Account.Lottery()))
 
 
-def McDonald_Lottery():
+def Auto_Coupon_Lottery():
     Token_List = Database_Get_Token()
     Count = int(Database_Counter_GetCount())
 
@@ -279,15 +279,14 @@ def handle_message(event):
     # line_bot_api.reply_message(event.reply_token, message)
     global user_id
     user_id = event.source.user_id
-    global Token
     # ----------------Login-----------------------
-    # Check = Database_Check_UserID()
-    Check = 1
+    Check = Database_Check_UserID()
     if Check == 1:
         print('存在')
         if event.message.text == 'Lottery':
-            McDonald_Lottery()
+            Auto_Coupon_Lottery()
         elif event.message.text == 'test':
+            Token = Database_Get_Token()
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Token[0]))
         elif event.message.text == 'test2':
             Token = Database_Get_Token()

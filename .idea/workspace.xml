@@ -16,21 +16,21 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="281" lean-forward="true" selection-start-line="281" selection-end-line="281" />
+            <state relative-caret-position="867">
+              <caret line="309" column="9" selection-start-line="309" selection-start-column="9" selection-end-line="309" selection-end-column="9" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="e#1096#4809#0" />
                 <element signature="e#4832#5131#0" />
                 <element signature="e#5259#5608#0" />
                 <element signature="e#5682#6152#0" />
+                <element signature="e#6142#6291#0" />
+                <element signature="e#6334#6636#0" />
                 <element signature="e#6510#6695#0" />
                 <element signature="e#6784#7018#0" />
-                <element signature="e#6982#7504#0" />
                 <element signature="e#7339#8103#0" />
                 <element signature="e#8571#9044#0" />
-                <element signature="e#8569#9042#0" />
-                <element signature="e#8683#9042#0" />
+                <element signature="e#10338#11713#0" />
               </folding>
             </state>
           </provider>
@@ -39,10 +39,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Clock.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="27" column="32" lean-forward="true" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+            <state relative-caret-position="225">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
               <folding>
-                <element signature="e#239#260#0" expanded="true" />
+                <element signature="e#0#61#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -68,10 +68,10 @@
       <find>MC_Token</find>
       <find>MC_Status</find>
       <find>print</find>
-      <find>McDonald_Lottery</find>
       <find>Database_Check_Token</find>
       <find>JSON</find>
       <find>PUSH</find>
+      <find>McDonald_Lottery</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -90,8 +90,8 @@
         <option value="$PROJECT_DIR$/rttrr.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="D:/Download/Google/line-bot-tutorial-master/line-bot-tutorial-master/clock.py" />
-        <option value="$PROJECT_DIR$/Clock.py" />
         <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/Clock.py" />
       </list>
     </option>
   </component>
@@ -321,12 +321,12 @@
       <workItem from="1564705611508" duration="23914000" />
       <workItem from="1564733959466" duration="13136000" />
       <workItem from="1564800133757" duration="13159000" />
-      <workItem from="1564829297783" duration="12187000" />
+      <workItem from="1564829297783" duration="12809000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90160000" />
+    <option name="totallyTimeSpent" value="90782000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -521,31 +521,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Clock.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="27" column="32" lean-forward="true" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+        <state relative-caret-position="225">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
           <folding>
-            <element signature="e#239#260#0" expanded="true" />
+            <element signature="e#0#61#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="281" lean-forward="true" selection-start-line="281" selection-end-line="281" />
+        <state relative-caret-position="867">
+          <caret line="309" column="9" selection-start-line="309" selection-start-column="9" selection-end-line="309" selection-end-column="9" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="e#1096#4809#0" />
             <element signature="e#4832#5131#0" />
             <element signature="e#5259#5608#0" />
             <element signature="e#5682#6152#0" />
+            <element signature="e#6142#6291#0" />
+            <element signature="e#6334#6636#0" />
             <element signature="e#6510#6695#0" />
             <element signature="e#6784#7018#0" />
-            <element signature="e#6982#7504#0" />
             <element signature="e#7339#8103#0" />
             <element signature="e#8571#9044#0" />
-            <element signature="e#8569#9042#0" />
-            <element signature="e#8683#9042#0" />
+            <element signature="e#10338#11713#0" />
           </folding>
         </state>
       </provider>
