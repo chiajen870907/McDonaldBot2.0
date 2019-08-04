@@ -173,7 +173,7 @@ def handle_postback(event):
         doc_ref = db.collection("Line_User").document(user_id)
         doc_ref.update(doc)
         #print(Set_Time)
-    elif temp == 'Login':
+    elif temp == 'Login' and db.collection('Check').document(user_id).get().exists == False:
         MC_Status, MC_Token = login_MC()
         if MC_Status == '登入成功' and MC_Token != '':
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=MC_Status + '\n每天準時晚上12點幫你抽\nヽ(‘ ∇‘ )ノ'))
