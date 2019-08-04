@@ -348,13 +348,13 @@ def handle_message(event):
             if Random_type == 1:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你可以試試輸入【優惠卷】 \n(・∀・)'))
             elif Random_type == 2:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='說不定輸入【歡樂貼】會有事情發生呢 \no(^▽^)o'))
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='說不定輸入【歡樂貼】會有事情發生呢 \n(ノ^o^)ノ'))
             elif Random_type == 3:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='【抽獎】是神秘指令 \no(^▽^)o'))
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='【抽獎】是未知神秘指令 \nლ(｀∀´ლ) '))
             elif Random_type == 4:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='【抽獎】是神秘指令 \no(^▽^)o'))
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='我好累，不想工作。\n罷工拉 \n(-。-;'))
             elif Random_type == 5:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='【抽獎】是神秘指令 \no(^▽^)o'))
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='看我施展魔法 \n(∩｀-´)⊃━炎炎炎炎炎'))
 
 
         # elif event.message.text == '優惠卷123456':
