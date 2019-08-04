@@ -152,9 +152,6 @@ def McDonald_Get_CouponList():
     Coupon_List = re.sub("[\s+\.\!\/_$%^*(+\"\']+|[+——！。？、~@#￥%……&*（）:{}\[\] ]", "", str(Coupon_List))
     Coupon_List = Coupon_List.replace(',', "\n")
     return Coupon_List
-a = McDonald_Get_CouponList()
-if a == '':
 
-    print('g')
-
-print(a)
+import random
+print(random.randint(1, 3))

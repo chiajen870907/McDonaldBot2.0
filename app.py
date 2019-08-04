@@ -7,6 +7,7 @@ import os
 import re
 import hashlib
 import requests
+import random
 from datetime import datetime
 from firebase_admin import credentials
 from firebase_admin import firestore
@@ -342,6 +343,19 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='o_O ||\n你沒有任何優惠卷ㅇㅁㅇ'))
             else:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Coupon_List_result))
+        else:
+            Random_type = random.randint(1, 3)
+            if Random_type == 1:
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你可以試試輸入【優惠卷】 \n(・∀・)'))
+            elif Random_type == 2:
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='說不定輸入【歡樂貼】會有事情發生呢 \no(^▽^)o'))
+            elif Random_type == 3:
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='【抽獎】是神秘指令 \no(^▽^)o'))
+            elif Random_type == 4:
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='【抽獎】是神秘指令 \no(^▽^)o'))
+            elif Random_type == 5:
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='【抽獎】是神秘指令 \no(^▽^)o'))
+
 
         # elif event.message.text == '優惠卷123456':
         #     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=McDonald.Coupon_List()))
