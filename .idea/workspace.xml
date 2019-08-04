@@ -29,15 +29,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="162" column="30" lean-forward="true" selection-start-line="162" selection-start-column="30" selection-end-line="162" selection-end-column="30" />
+            <state relative-caret-position="211">
+              <caret line="227" column="22" selection-start-line="227" selection-start-column="22" selection-end-line="227" selection-end-column="22" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="e#5688#6103#0" />
                 <element signature="e#7096#7207#0" />
                 <element signature="e#7247#7425#0" />
-                <element signature="e#7465#7650#0" />
-                <element signature="e#7690#7899#0" />
                 <element signature="e#7932#8254#0" />
                 <element signature="e#8290#9054#0" />
                 <element signature="e#9087#9259#0" />
@@ -360,12 +358,12 @@
       <workItem from="1564733959466" duration="13136000" />
       <workItem from="1564800133757" duration="13159000" />
       <workItem from="1564829297783" duration="25067000" />
-      <workItem from="1564881312215" duration="1043000" />
+      <workItem from="1564881312215" duration="1694000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104083000" />
+    <option name="totallyTimeSpent" value="104734000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -579,15 +577,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="162" column="30" lean-forward="true" selection-start-line="162" selection-start-column="30" selection-end-line="162" selection-end-column="30" />
+        <state relative-caret-position="211">
+          <caret line="227" column="22" selection-start-line="227" selection-start-column="22" selection-end-line="227" selection-end-column="22" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="e#5688#6103#0" />
             <element signature="e#7096#7207#0" />
             <element signature="e#7247#7425#0" />
-            <element signature="e#7465#7650#0" />
-            <element signature="e#7690#7899#0" />
             <element signature="e#7932#8254#0" />
             <element signature="e#8290#9054#0" />
             <element signature="e#9087#9259#0" />

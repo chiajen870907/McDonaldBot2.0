@@ -214,8 +214,8 @@ def Database_Counter_GetCount():
 
 
 def Database_Counter_Increase():
-    Count = int(Database_Counter_GetCount())
-    Count = Count + 1
+    Count = Database_Counter_GetCount()
+    Count = int(Count) + 1
     doc = {
         'Count': Count
     }
@@ -224,8 +224,8 @@ def Database_Counter_Increase():
 
 
 def Database_Counter_Decrease():
-    Count = int(Database_Counter_GetCount())
-    Count = Count - 1
+    Count = Database_Counter_GetCount()
+    Count = int(Count) - 1
     doc = {
         'Count': Count
     }
