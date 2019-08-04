@@ -139,18 +139,19 @@ def login_MC():
         return MC_Status, MC_Token, Old_Token
 
 def McDonald_Get_State():
-    Path = 'Check/2tMANgBBll+VAHVT'
+    Path = 'Check/FdEjegADAOCxAHw6'
     result = Database_Read_Data(Path)
     result = re.sub("[{} \' :]", "", str(result))
     result = result.replace('Token', '')
     return result
 
 def McDonald_Get_CouponList():
-    result = McDonald_Get_State()
-    Account = McDonald(result)
+    #result = McDonald_Get_State()
+    Account = McDonald('FdEjegADAOCxAHw6')
     Coupon_List = Account.Coupon_List()
-    Coupon_List = re.sub(" [()/'] ", "", str(Coupon_List))
+    Coupon_List = re.sub("[\s+\.\!\/_$%^*(+\"\']+|[+——！。？、~@#￥%……&*（）:{}\[\] ]", "", str(Coupon_List))
+    Coupon_List = Coupon_List.replace(',', "\n")
     return Coupon_List
 
 a = McDonald_Get_CouponList()
-print(type(a))
+print(a)

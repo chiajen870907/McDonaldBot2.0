@@ -291,7 +291,8 @@ def McDonald_Get_CouponList():
     result = McDonald_Get_State()
     Account = McDonald(result)
     Coupon_List = Account.Coupon_List()
-    Coupon_List = re.sub(" [()/'] ", "", str(Coupon_List))
+    Coupon_List = re.sub("[\s+\.\!\/_$%^*(+\"\']+|[+——！。？、~@#￥%……&*（）:{}\[\] ]", "", str(Coupon_List))
+    Coupon_List = Coupon_List.replace(',', "\n")
     return Coupon_List
 
 
