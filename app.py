@@ -282,7 +282,7 @@ def McDonald_Get_StickerList():
     result = McDonald_Get_State()
     Account = McDonald(result)
     Sticker_List = Account.Sticker_List()
-    Sticker_List = re.sub("[/']", "", str(Sticker_List))
+    Sticker_List = re.sub("[/'()]", "", str(Sticker_List))
     Sticker_List_result = Sticker_List.split(',')
     return Sticker_List_result
 

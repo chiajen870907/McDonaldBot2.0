@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90c87167-b4d8-47e4-a470-9e442930dcf7" name="Default Changelist" comment="Add Code">
-      <change beforePath="$PROJECT_DIR$/TEST.py" beforeDir="false" afterPath="$PROJECT_DIR$/TEST.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,11 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="244" column="4" selection-start-line="244" selection-start-column="4" selection-end-line="244" selection-end-column="31" />
+            <state relative-caret-position="25">
+              <caret line="284" column="32" selection-start-line="284" selection-start-column="32" selection-end-line="284" selection-end-column="32" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="e#5617#7053#0" />
@@ -45,11 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TEST.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="154" lean-forward="true" selection-start-line="154" selection-end-line="154" />
+            <state relative-caret-position="119">
+              <caret line="151" selection-start-line="151" selection-end-line="152" selection-end-column="48" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="e#4503#4995#0" />
@@ -113,8 +113,8 @@
         <option value="D:/Download/Google/line-bot-tutorial-master/line-bot-tutorial-master/clock.py" />
         <option value="$PROJECT_DIR$/../../../McDonald-s-APP-master/example.py" />
         <option value="$PROJECT_DIR$/Clock.py" />
-        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/TEST.py" />
+        <option value="$PROJECT_DIR$/app.py" />
       </list>
     </option>
   </component>
@@ -368,12 +368,12 @@
       <workItem from="1564733959466" duration="13136000" />
       <workItem from="1564800133757" duration="13159000" />
       <workItem from="1564829297783" duration="25067000" />
-      <workItem from="1564881312215" duration="5218000" />
+      <workItem from="1564881312215" duration="5504000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108258000" />
+    <option name="totallyTimeSpent" value="108544000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -585,10 +585,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/TEST.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="151" selection-start-line="151" selection-end-line="152" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#4503#4995#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="244" column="4" selection-start-line="244" selection-start-column="4" selection-end-line="244" selection-end-column="31" />
+        <state relative-caret-position="25">
+          <caret line="284" column="32" selection-start-line="284" selection-start-column="32" selection-end-line="284" selection-end-column="32" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="e#5617#7053#0" />
@@ -598,17 +609,6 @@
             <element signature="e#7532#7712#0" />
             <element signature="e#9846#9963#0" />
             <element signature="e#9621#10090#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TEST.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="154" lean-forward="true" selection-start-line="154" selection-end-line="154" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#4503#4995#0" />
           </folding>
         </state>
       </provider>
