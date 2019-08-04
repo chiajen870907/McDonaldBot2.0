@@ -2,6 +2,7 @@ import re
 import requests
 from datetime import datetime, timedelta
 
+
 class McDonald(object):
     """docstring for McDonald."""
 
@@ -18,15 +19,23 @@ class McDonald(object):
             "platform": "Android"
           }
         }
+
+        self.headers = {
+            'Connection': 'close'
+        }
+
         self.respones = ""
         self.coupons = []
         self.stickers = 0
         self.expire_stickers = 0
 
+
+
+
     # Basic lottery function
     def Lottery(self):
         # Request to get a lottery
-        self.respones = requests.post('https://api1.mcddailyapp.com/lottery/get_item', json = self.json).text
+        self.respones = requests.post('https://api1.mcddailyapp.com/lottery/get_item', json=self.json, headers=self.headers).text
 
         # If you don't like to have the return value which lottery event , you can delete all the code below
 
@@ -45,7 +54,7 @@ class McDonald(object):
     # Get the coupon list
     def Coupon_List(self):
         # Request to get the coupon list
-        self.respones = requests.post('https://api1.mcddailyapp.com/coupon/get_list', json = self.json).text
+        self.respones = requests.post('https://api1.mcddailyapp.com/coupon/get_list', json=self.json, headers=self.headers).text
         count = self.respones.count('coupon_id') # Count the number of coupons
         self.respones = eval(self.respones)      # Convert string to dictionary
 
@@ -70,7 +79,7 @@ class McDonald(object):
         self.expire_stickers = 0
 
         # Request to get the sticker list
-        self.respones = requests.post('https://api1.mcddailyapp.com/sticker/get_list', json = self.json).text
+        self.respones = requests.post('https://api1.mcddailyapp.com/sticker/get_list', json=self.json, headers=self.headers).text
         self.stickers = self.respones.count('歡樂貼') # Count the number of stickers
         self.respones = eval(self.respones)          # Convert string to dictionary
 
@@ -112,7 +121,7 @@ class McDonald(object):
                 self.json['sticker_ids'] = sticker_ids
 
                 # Get a sticker lottery
-                self.respones = requests.post('https://api1.mcddailyapp.com/sticker/redeem', json = self.json).text
+                self.respones = requests.post('https://api1.mcddailyapp.com/sticker/redeem', json=self.json, headers=self.headers).text
                 self.respones = eval(self.respones) # Convert string to dictionary
 
                 # Print the results of coupon imformation
@@ -126,3 +135,4 @@ class McDonald(object):
         coupon = re.sub(r'鷄', '雞', coupon)
         coupon = re.sub(r'\(G.*\)|_.*|\(新.*', '', coupon)
         return coupon
+

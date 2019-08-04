@@ -119,9 +119,12 @@ class Mask(object):
             "cardNo"      : self.cardNo,
             "mask"        : mask.hexdigest(),
         }
+        headers = {
+            'Connection': 'close'
+        }
 
         # Get the response
-        response = requests.post('https://api.mcddaily.com.tw/queryBonus', json = json).text
+        response = requests.post('https://api.mcddaily.com.tw/queryBonus', json=json, headers=headers).text
 
         # Convert the string to dictionary type
         response = eval(response)
