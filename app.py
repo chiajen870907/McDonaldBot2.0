@@ -210,12 +210,12 @@ def Database_Counter_GetCount():
     Path = 'Line_User/Counter'
     result = Database_Read_Data(Path)
     result = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）:{} Count]", "", str(result))
-    return result
+    return int(result)
 
 
 def Database_Counter_Increase():
     Count = Database_Counter_GetCount()
-    Count = int(Count) + 1
+    Count = Count + 1
     doc = {
         'Count': Count
     }
@@ -225,7 +225,7 @@ def Database_Counter_Increase():
 
 def Database_Counter_Decrease():
     Count = Database_Counter_GetCount()
-    Count = int(Count) - 1
+    Count = Count - 1
     doc = {
         'Count': Count
     }
@@ -239,7 +239,7 @@ def Database_Get_Token():
     Count = Database_Counter_GetCount()
     result = Database_Read_Data(Path)
     Index = re.sub("[{} \' :]", "", str(result))
-    nCount_Index = int(Count) + 1
+    nCount_Index = Count + 1
     for i in range(nCount_Index):
         Index = Index.replace('Token' + str(i), '')
     GetToken = Index.split(',')
@@ -251,7 +251,7 @@ def Database_Check_UserID():
     Path = 'Line_User/Info'
     result = Database_Read_Data(Path)
     Index = re.sub("[{} \' :]", "", str(result))
-    nCount_Index = int(Count_Index) + 1
+    nCount_Index = Count_Index + 1
     for i in range(nCount_Index):
         Index = Index.replace('Token' + str(i), '')
     GetToken = Index.split(',')
@@ -278,18 +278,33 @@ def McDonald_Get_State():
     return result
 
 
-def McDonald_Get_Sticker():
+def McDonald_Get_StickerList():
     result = McDonald_Get_State()
     Account = McDonald(result)
     Sticker_List = Account.Sticker_List()
-    Sticker_List = re.sub("[()]", "", str(Sticker_List))
+    Sticker_List = re.sub("[/']", "", str(Sticker_List))
     Sticker_List_result = Sticker_List.split(',')
     return Sticker_List_result
 
 
+def McDonald_Get_CouponList():
+    result = McDonald_Get_State()
+    Account = McDonald(result)
+    Coupon_List = Account.Coupon_List()
+    Coupon_List = re.sub(" [/'] ", "", str(Coupon_List))
+    return Coupon_List
+
+
+def Request_Coupon_Lottery():
+    result = McDonald_Get_State()
+    Account = McDonald(result)
+    Get_Coupon = Account.Lottery()
+    return Get_Coupon
+
+
 def Auto_Coupon_Lottery():
     Token_List = Database_Get_Token()
-    Count = int(Database_Counter_GetCount())
+    Count = Database_Counter_GetCount()
 
     for i in range(Count):
         path_ID = ("MD_Token/" + Token_List[i])
@@ -313,14 +328,16 @@ def handle_message(event):
     # ----------------Login-----------------------
     if db.collection('Check').document(user_id).get().exists == True:
         print('存在')
-        if event.message.text == 'Sticker':
-            result = McDonald_Get_Sticker()
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='\n目前擁有歡樂貼:{}\n月底即將到期歡樂貼:{}\n'.format(result[0], result[1])))
-        elif event.message.text == 'test':
-            Token = Database_Get_Token()
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Token[0]))
-        elif event.message.text == 'test2':
-            print('2')
+        if event.message.text == '歡樂貼':
+            result = McDonald_Get_StickerList()
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='目前擁有歡樂貼:{}\n月底即將到期歡樂貼:{}'.format(result[0], result[1])))
+        elif event.message.text == '抽獎':
+            Coupon_result = Request_Coupon_Lottery()
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Coupon_result))
+
+        elif event.message.text == '優惠卷':
+            Coupon_List_result = McDonald_Get_CouponList()
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Coupon_List_result))
 
         # elif event.message.text == '優惠卷123456':
         #     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=McDonald.Coupon_List()))

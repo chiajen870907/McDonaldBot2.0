@@ -138,10 +138,10 @@
 #         MC_Token = (list['results']['member_info']['access_token'])
 #         return MC_Status, MC_Token, Old_Token
 #
-# lag = 0
-# if lag == 0:
-#     a,b,c = login_MC()
-# if a != '':
-#     print('f')
-
-
+#
+# Account = McDonald('AM0aW1EnAMIGjKXD')
+# s = Account.Coupon_List()
+# s = re.sub(" [/'] ", "", str(s))
+# print(s)
+#
+#
