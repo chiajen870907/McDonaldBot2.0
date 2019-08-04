@@ -344,7 +344,7 @@ def handle_message(event):
             else:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Coupon_List_result))
         else:
-            Random_type = random.randint(1, 3)
+            Random_type = random.randint(1, 5)
             if Random_type == 1:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你可以試試輸入【優惠卷】 \n(・∀・)'))
             elif Random_type == 2:
