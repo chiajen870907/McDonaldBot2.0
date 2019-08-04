@@ -147,11 +147,14 @@ def McDonald_Get_State():
 
 def McDonald_Get_CouponList():
     #result = McDonald_Get_State()
-    Account = McDonald('FdEjegADAOCxAHw6')
+    Account = McDonald('jwACKcigZ0lhAwAn')
     Coupon_List = Account.Coupon_List()
     Coupon_List = re.sub("[\s+\.\!\/_$%^*(+\"\']+|[+——！。？、~@#￥%……&*（）:{}\[\] ]", "", str(Coupon_List))
     Coupon_List = Coupon_List.replace(',', "\n")
     return Coupon_List
-
 a = McDonald_Get_CouponList()
+if a == '':
+
+    print('g')
+
 print(a)

@@ -338,7 +338,10 @@ def handle_message(event):
 
         elif event.message.text == '優惠卷':
             Coupon_List_result = McDonald_Get_CouponList()
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Coupon_List_result))
+            if Coupon_List_result == '':
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='o_O ||\n你沒有任何優惠卷ㅇㅁㅇ'))
+            else:
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Coupon_List_result))
 
         # elif event.message.text == '優惠卷123456':
         #     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=McDonald.Coupon_List()))
