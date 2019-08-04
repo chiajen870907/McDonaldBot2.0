@@ -180,7 +180,7 @@ def handle_postback(event):
             Database_Counter_Increase()
             Count = Database_Counter_GetCount()
             doc = {
-                'Token' + Count: MC_Token
+                'Token' + str(Count): MC_Token
             }
             doc2 = {
                 'UserID': user_id
