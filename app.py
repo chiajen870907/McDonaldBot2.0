@@ -52,6 +52,8 @@ class Mask(object):
         self.OrderNo = self.DeviceUuid + self.str3                         # Order No
         self.cardNo = 'cardNo'                                             # Card NO
 
+
+
     def Login(self):
         # Mask = MD5('Mc' + OrderNo + Platform + OsVersion + ModelId + DeviceUuid + str1 + str2 + paramString + 'Donalds')
         data = 'Mc%s%s%s%s%s%s%s%sDonalds' % (
@@ -82,9 +84,11 @@ class Mask(object):
                 "platform"   : self.Platform,
             }
         }
-
+        headers = {
+            'Connection': 'close'
+        }
         # Get the response
-        response = requests.post('https://api.mcddaily.com.tw/login_by_mobile', json = json).text
+        response = requests.post('https://api.mcddaily.com.tw/login_by_mobile', json=json, headers=headers).text
 
         # Clean the garbage date
         response = response.replace('null', '""')
@@ -119,12 +123,10 @@ class Mask(object):
             "cardNo"      : self.cardNo,
             "mask"        : mask.hexdigest(),
         }
-        headers = {
-            'Connection': 'close'
-        }
+
 
         # Get the response
-        response = requests.post('https://api.mcddaily.com.tw/queryBonus', json=json, headers=headers).text
+        response = requests.post('https://api.mcddaily.com.tw/queryBonus', json=json).text
 
         # Convert the string to dictionary type
         response = eval(response)
@@ -200,7 +202,6 @@ def handle_postback(event):
             doc3_ref.set(doc3)
         else:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=MC_Status + '\n 〒.〒 '))
-
 
 
 def Database_Read_Data(Read_path):
@@ -348,6 +349,13 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='o_O ||\n你沒有任何優惠卷ㅇㅁㅇ'))
             else:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Coupon_List_result))
+        elif event.message.text == '貼紙抽獎':
+            Coupon_List_result = McDonald_Get_CouponList()
+            if Coupon_List_result == '':
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='o_O ||\n你沒有任何優惠卷ㅇㅁㅇ'))
+            else:
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Coupon_List_result))
+
         else:
             Random_type = random.randint(1, 5)
             if Random_type == 1:
