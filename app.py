@@ -355,69 +355,102 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='o_O ||\n你沒有任何優惠卷ㅇㅁㅇ'))
             else:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Coupon_List_result))
-        elif event.message.text == "Carousel template":
-            Carousel_template = {
-  "type": "bubble",
-  "header": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "box",
-        "layout": "horizontal",
-        "contents": [
-          {
-            "type": "image",
-            "url": "https://mcdapp1.azureedge.net/P_S148.jpg",
-            "size": "full",
-            "aspectMode": "cover",
-            "aspectRatio": "1:1",
-            "gravity": "center",
-            "flex": 1
-          }
-        ]
-      }
-    ],
-    "paddingAll": "0px"
-  },
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "text",
-                "contents": [],
-                "size": "md",
-                "wrap": true,
-                "text": "2019/10/25",
-                "color": "#00BD00",
-                "weight": "bold"
-              },
 
-              {
-                "type": "text",
-                "text": "截止時間",
-                "color": "#000000",
-                "size": "md",
-                "weight": "bold"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "paddingAll": "20px",
-    "backgroundColor": "#F5F5F5"
-  }
-}
+        elif event.message.text == "Carousel template":
+            Carousel_template = TemplateSendMessage({
+                "type": "carousel",
+                "contents": [
+                    {
+                        "type": "bubble",
+                        "hero": {
+                            "type": "image",
+                            "url": "https://mcdapp1.azureedge.net/P_S148.jpg",
+                            "size": "full",
+                            "aspectRatio": "1:1",
+                            "aspectMode": "cover",
+                            "action": {
+                                "type": "uri",
+                                "uri": "http://linecorp.com/"
+                            }
+                        },
+                        "body": {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                                {
+                                    "type": "text",
+                                    "text": "2019/10/25",
+                                    "weight": "bold",
+                                    "size": "xl",
+                                    "color": "#00BD00"
+                                },
+                                {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "margin": "lg",
+                                    "spacing": "sm",
+                                    "contents": [
+                                        {
+                                            "type": "box",
+                                            "layout": "baseline",
+                                            "spacing": "sm",
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "text": "截止日期  ",
+                                                    "color": "#aaaaaa",
+                                                    "size": "sm",
+                                                    "flex": 1
+                                                },
+                                                {
+                                                    "type": "text",
+                                                    "text": "2019/10/25 23:59:59",
+                                                    "wrap": true,
+                                                    "size": "sm",
+                                                    "weight": "regular",
+                                                    "style": "normal",
+                                                    "decoration": "none",
+                                                    "position": "relative",
+                                                    "flex": 2,
+                                                    "color": "#FF1212"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "box",
+                                            "layout": "baseline",
+                                            "spacing": "sm",
+                                            "contents": [
+                                                {
+                                                    "type": "text",
+                                                    "text": "CouponID",
+                                                    "color": "#aaaaaa",
+                                                    "size": "sm",
+                                                    "flex": 1,
+                                                    "align": "start"
+                                                },
+                                                {
+                                                    "type": "text",
+                                                    "text": "1074495258",
+                                                    "align": "start",
+                                                    "flex": 2,
+                                                    "size": "sm"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "styles": {
+                            "footer": {
+                                "separator": "true"
+                            }
+                        }
+                    }
+                ]
+            }
+            )
             line_bot_api.reply_message(event.reply_token, Carousel_template)
 
         else:
