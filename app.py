@@ -356,7 +356,68 @@ def handle_message(event):
             else:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Coupon_List_result))
         elif event.message.text == "Carousel template":
-            Carousel_template = TemplateSendMessage(alt_text='Carousel template', template=CarouselTemplate(columns=[CarouselColumn(thumbnail_image_url='https://mcdapp1.azureedge.net/P_S148.jpg', title='this is menu1', text='description1', actions=[MessageTemplateAction(label='message1', text='message text1')])]))
+            Carousel_template = {
+  "type": "bubble",
+  "header": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://mcdapp1.azureedge.net/P_S148.jpg",
+            "size": "full",
+            "aspectMode": "cover",
+            "aspectRatio": "1:1",
+            "gravity": "center",
+            "flex": 1
+          }
+        ]
+      }
+    ],
+    "paddingAll": "0px"
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "contents": [],
+                "size": "md",
+                "wrap": true,
+                "text": "2019/10/25",
+                "color": "#00BD00",
+                "weight": "bold"
+              },
+
+              {
+                "type": "text",
+                "text": "截止時間",
+                "color": "#000000",
+                "size": "md",
+                "weight": "bold"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "paddingAll": "20px",
+    "backgroundColor": "#F5F5F5"
+  }
+}
             line_bot_api.reply_message(event.reply_token, Carousel_template)
 
         else:
