@@ -405,7 +405,7 @@ def handle_message(event):
                                                 {
                                                     "type": "text",
                                                     "text": "2019/10/25 23:59:59",
-                                                    "wrap": true,
+                                                    "wrap": 'true',
                                                     "size": "sm",
                                                     "weight": "regular",
                                                     "style": "normal",
