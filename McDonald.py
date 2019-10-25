@@ -1,6 +1,7 @@
-import re
+import re, os
 import requests
 from datetime import datetime, timedelta
+from urllib.request import urlretrieve
 
 
 class McDonald(object):
@@ -64,8 +65,16 @@ class McDonald(object):
             # Status code is 1 also redeem_end_datetime is not yet
             if status == 1 and redeem_end_datetime - datetime.now() > timedelta():
                 coupon = self.respones['results']['coupons'][value]['object_info']['title']
+                id = self.respones['results']['coupons'][value]['coupon_id']
+                pic = self.respones['results']['coupons'][value]['object_info']['image']['url']
                 coupon = self.Re(coupon)
-                self.coupons.append(coupon + '剩餘天數:' + str((redeem_end_datetime - datetime.now()).days))
+                self.coupons.append(coupon + 'E:' + str((redeem_end_datetime - datetime.now()).days))
+
+                if os.path.isfile('/app/%s.jpg'%id):
+                    print('exist')
+                else:
+                    local = os.path.join('/app/%s.jpg'%id)  # 檔案儲存位置 /app/
+                    urlretrieve(pic, local)
 
         # Return coupon list
         return self.coupons

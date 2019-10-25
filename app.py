@@ -355,6 +355,25 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='o_O ||\n你沒有任何優惠卷ㅇㅁㅇ'))
             else:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Coupon_List_result))
+        elif event.message.text == "Carousel template":
+            Carousel_template = TemplateSendMessage(
+                alt_text='Carousel template',
+                template=CarouselTemplate(
+                    columns=[
+                        CarouselColumn(
+                            thumbnail_image_url='顯示在開頭的大圖片網址',
+                            title='this is menu1',
+                            text='description1',
+                            actions=[
+                                MessageTemplateAction(
+                                    label='message1',
+                                    text='message text1'
+                                )
+                            ]
+                        )
+                    ]
+                )
+            )
 
         else:
             Random_type = random.randint(1, 5)
