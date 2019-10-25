@@ -358,7 +358,8 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Coupon_List_result))
 
         elif event.message.text == 't':
-            bubble_string = ({
+            bubble_string = """"
+    {
   "type": "carousel",
   "contents": [
     {
@@ -421,7 +422,7 @@ def handle_message(event):
       }
     }
   ]
-})
+}"""
             message = FlexSendMessage(alt_text="hello", contents=json.loads(bubble_string))
             line_bot_api.reply_message(event.reply_token, message)
 
