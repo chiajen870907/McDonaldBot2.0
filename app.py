@@ -359,252 +359,271 @@ def handle_message(event):
 
         elif event.message.text == 'flex_update_1':
             bubble_string = """
-            
-            {
-            
-              "type": "bubble",
-            
-              "body": {
-            
+{
+  "type": "carousel",
+  "contents": [
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/flexsnapshot/clip/clip1.jpg",
+            "size": "full",
+            "aspectMode": "cover",
+            "aspectRatio": "2:3",
+            "gravity": "top"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
                 "type": "box",
-            
                 "layout": "vertical",
-            
                 "contents": [
-            
                   {
-            
-                    "type": "image",
-            
-                    "url": "https://line-objects-dev.com/flex/bg/eiji-k-1360395-unsplash.jpg",
-            
-                    "position": "relative",
-            
-                    "size": "full",
-            
-                    "aspectMode": "cover",
-            
-                    "aspectRatio": "1:1",
-            
-                    "gravity": "center"
-            
-                  },
-            
-                  {
-            
-                    "type": "box",
-            
-                    "layout": "horizontal",
-            
-                    "contents": [
-            
-                      {
-            
-                        "type": "box",
-            
-                        "layout": "vertical",
-            
-                        "contents": [
-            
-                          {
-            
-                            "type": "text",
-            
-                            "text": "Brown Hotel",
-            
-                            "weight": "bold",
-            
-                            "size": "xl",
-            
-                            "color": "#ffffff"
-            
-                          },
-            
-                          {
-            
-                            "type": "box",
-            
-                            "layout": "baseline",
-            
-                            "margin": "md",
-            
-                            "contents": [
-            
-                              {
-            
-                                "type": "icon",
-            
-                                "size": "sm",
-            
-                                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-            
-                              },
-            
-                              {
-            
-                                "type": "icon",
-            
-                                "size": "sm",
-            
-                                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-            
-                              },
-            
-                              {
-            
-                                "type": "icon",
-            
-                                "size": "sm",
-            
-                                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-            
-                              },
-            
-                              {
-            
-                                "type": "icon",
-            
-                                "size": "sm",
-            
-                                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-            
-                              },
-            
-                              {
-            
-                                "type": "icon",
-            
-                                "size": "sm",
-            
-                                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gray_star_28.png"
-            
-                              },
-            
-                              {
-            
-                                "type": "text",
-            
-                                "text": "4.0",
-            
-                                "size": "sm",
-            
-                                "color": "#d6d6d6",
-            
-                                "margin": "md",
-            
-                                "flex": 0
-            
-                              }
-            
-                            ]
-            
-                          }
-            
-                        ]
-            
-                      },
-            
-                      {
-            
-                        "type": "box",
-            
-                        "layout": "vertical",
-            
-                        "contents": [
-            
-                          {
-            
-                            "type": "text",
-            
-                            "text": "¥62,000",
-            
-                            "color": "#a9a9a9",
-            
-                            "decoration": "line-through",
-            
-                            "align": "end"
-            
-                          },
-            
-                          {
-            
-                            "type": "text",
-            
-                            "text": "¥42,000",
-            
-                            "color": "#ebebeb",
-            
-                            "size": "xl",
-            
-                            "align": "end"
-            
-                          }
-            
-                        ]
-            
-                      }
-            
-                    ],
-            
-                    "position": "absolute",
-            
-                    "offsetBottom": "0px",
-            
-                    "offsetStart": "0px",
-            
-                    "offsetEnd": "0px",
-            
-                    "backgroundColor": "#00000099",
-            
-                    "paddingAll": "20px"
-            
-                  },
-            
-                  {
-            
-                    "type": "box",
-            
-                    "layout": "vertical",
-            
-                    "contents": [
-            
-                      {
-            
-                        "type": "text",
-            
-                        "text": "SALE",
-            
-                        "color": "#ffffff"
-            
-                      }
-            
-                    ],
-            
-                    "position": "absolute",
-            
-                    "backgroundColor": "#ff2600",
-            
-                    "cornerRadius": "20px",
-            
-                    "paddingAll": "5px",
-            
-                    "offsetTop": "10px",
-            
-                    "offsetEnd": "10px",
-            
-                    "paddingStart": "10px",
-            
-                    "paddingEnd": "10px"
-            
+                    "type": "text",
+                    "text": "Brown's T-shirts",
+                    "size": "xl",
+                    "color": "#ffffff",
+                    "weight": "bold"
                   }
-            
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "¥35,800",
+                    "color": "#ebebeb",
+                    "size": "sm",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "¥75,000",
+                    "color": "#ffffffcc",
+                    "decoration": "line-through",
+                    "gravity": "bottom",
+                    "flex": 0,
+                    "size": "sm"
+                  }
                 ],
-            
-                "paddingAll": "0px"
-            
+                "spacing": "lg"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "filler"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "contents": [
+                      {
+                        "type": "filler"
+                      },
+                      {
+                        "type": "icon",
+                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/flexsnapshot/clip/clip14.png"
+                      },
+                      {
+                        "type": "text",
+                        "text": "Add to cart",
+                        "color": "#ffffff",
+                        "flex": 0,
+                        "offsetTop": "-2px"
+                      },
+                      {
+                        "type": "filler"
+                      }
+                    ],
+                    "spacing": "sm"
+                  },
+                  {
+                    "type": "filler"
+                  }
+                ],
+                "borderWidth": "1px",
+                "cornerRadius": "4px",
+                "spacing": "sm",
+                "borderColor": "#ffffff",
+                "margin": "xxl",
+                "height": "40px"
               }
-            
-            }
+            ],
+            "position": "absolute",
+            "offsetBottom": "0px",
+            "offsetStart": "0px",
+            "offsetEnd": "0px",
+            "backgroundColor": "#03303Acc",
+            "paddingAll": "20px",
+            "paddingTop": "18px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "SALE",
+                "color": "#ffffff",
+                "align": "center",
+                "size": "xs",
+                "offsetTop": "3px"
+              }
+            ],
+            "position": "absolute",
+            "cornerRadius": "20px",
+            "offsetTop": "18px",
+            "backgroundColor": "#ff334b",
+            "offsetStart": "18px",
+            "height": "25px",
+            "width": "53px"
+          }
+        ],
+        "paddingAll": "0px"
+      }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/flexsnapshot/clip/clip2.jpg",
+            "size": "full",
+            "aspectMode": "cover",
+            "aspectRatio": "2:3",
+            "gravity": "top"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "Cony's T-shirts",
+                    "size": "xl",
+                    "color": "#ffffff",
+                    "weight": "bold"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "¥35,800",
+                    "color": "#ebebeb",
+                    "size": "sm",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "¥75,000",
+                    "color": "#ffffffcc",
+                    "decoration": "line-through",
+                    "gravity": "bottom",
+                    "flex": 0,
+                    "size": "sm"
+                  }
+                ],
+                "spacing": "lg"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "filler"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "contents": [
+                      {
+                        "type": "filler"
+                      },
+                      {
+                        "type": "icon",
+                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/flexsnapshot/clip/clip14.png"
+                      },
+                      {
+                        "type": "text",
+                        "text": "Add to cart",
+                        "color": "#ffffff",
+                        "flex": 0,
+                        "offsetTop": "-2px"
+                      },
+                      {
+                        "type": "filler"
+                      }
+                    ],
+                    "spacing": "sm"
+                  },
+                  {
+                    "type": "filler"
+                  }
+                ],
+                "borderWidth": "1px",
+                "cornerRadius": "4px",
+                "spacing": "sm",
+                "borderColor": "#ffffff",
+                "margin": "xxl",
+                "height": "40px"
+              }
+            ],
+            "position": "absolute",
+            "offsetBottom": "0px",
+            "offsetStart": "0px",
+            "offsetEnd": "0px",
+            "backgroundColor": "#9C8E7Ecc",
+            "paddingAll": "20px",
+            "paddingTop": "18px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "SALE",
+                "color": "#ffffff",
+                "align": "center",
+                "size": "xs",
+                "offsetTop": "3px"
+              }
+            ],
+            "position": "absolute",
+            "cornerRadius": "20px",
+            "offsetTop": "18px",
+            "backgroundColor": "#ff334b",
+            "offsetStart": "18px",
+            "height": "25px",
+            "width": "53px"
+          }
+        ],
+        "paddingAll": "0px"
+      }
+    }
+  ]
+}
             """
             message = FlexSendMessage(alt_text="hello", contents=json.loads(bubble_string))
             line_bot_api.reply_message(event.reply_token, message)
