@@ -358,7 +358,12 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Coupon_List_result))
 
         elif event.message.text == "Carousel template":
-            Carousel_template = TemplateSendMessage([{
+            Carousel_template = TemplateSendMessage([
+{
+"type":"flex",
+"altText:":"This is a Flex Message",
+"contents":
+{
   "type": "bubble",
   "hero": {
     "type": "image",
@@ -445,7 +450,9 @@ def handle_message(event):
       "separator": "false"
     }
   }
-}])
+}
+}
+])
             line_bot_api.reply_message(event.reply_token, Carousel_template)
 
         else:
