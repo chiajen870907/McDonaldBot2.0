@@ -27,6 +27,7 @@ class McDonald(object):
 
         self.respones = ""
         self.coupons = []
+        self.urls = []
         self.stickers = 0
         self.expire_stickers = 0
 
