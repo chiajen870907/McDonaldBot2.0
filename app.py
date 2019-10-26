@@ -357,26 +357,12 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Coupon_List_result))
 
         elif event.message.text == 'flex':
-            message = TemplateSendMessage(
-                alt_text='ImageCarousel template',
-                template=ImageCarouselTemplate(
-                    columns=[
-                        ImageCarouselColumn(
-                            image_url='https://mcdapp1.azureedge.net/P_S148.jpg',
+            message = TemplateSendMessage(alt_text='ImageCarousel template',template=ImageCarouselTemplate(
+                    columns=[ ImageCarouselColumn(image_url='https://mcdapp1.azureedge.net/P_S148.jpg',
                             action=PostbackTemplateAction(
-                                label='postback1',
-                                text='postback text1',
-                                data='action=buy&itemid=1'
+                                label='截止日期:2019/10/28 23:59:59'
                             )
                         ),
-                        ImageCarouselColumn(
-                            image_url='https://mcdapp1.azureedge.net/P_S148.jpg',
-                            action=PostbackTemplateAction(
-                                label='postback2',
-                                text='postback text2',
-                                data='action=buy&itemid=2'
-                            )
-                        )
                     ]
                 )
             )
