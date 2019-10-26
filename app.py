@@ -364,8 +364,8 @@ def handle_message(event):
                                     image_url=URLS_List[0],
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
-                                        text='',
-                                        data=''
+                                        text='歡樂貼',
+                                        data='action=buy&itemid=1'
                                     )
                                 )
                             ]
