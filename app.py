@@ -360,7 +360,7 @@ def handle_message(event):
             message = TemplateSendMessage(alt_text='ImageCarousel template',template=ImageCarouselTemplate(
                     columns=[ ImageCarouselColumn(image_url='https://mcdapp1.azureedge.net/P_S148.jpg',
                             action=PostbackTemplateAction(
-                                label='截止日期:2019/10/28 23:59:59',
+                                label='Learn more',
                                 text='優惠卷',
                                 data='action=buy&itemid=1'
                             )
