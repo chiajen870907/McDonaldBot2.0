@@ -371,6 +371,7 @@ def handle_message(event):
                             ]
                         )
                     )
+                    line_bot_api.reply_message(event.reply_token, message)
                 elif URLS_Items == 2:
                     message = TemplateSendMessage(
                         alt_text='圖片訊息',
@@ -395,6 +396,7 @@ def handle_message(event):
                             ]
                         )
                     )
+                    line_bot_api.reply_message(event.reply_token, message)
                 elif URLS_Items == 3:
                     message = TemplateSendMessage(
                         alt_text='圖片訊息',
@@ -427,6 +429,7 @@ def handle_message(event):
                             ]
                         )
                     )
+                    line_bot_api.reply_message(event.reply_token, message)
                 elif URLS_Items == 4:
                     message = TemplateSendMessage(
                         alt_text='圖片訊息',
@@ -467,6 +470,7 @@ def handle_message(event):
                             ]
                         )
                     )
+                    line_bot_api.reply_message(event.reply_token, message)
                 elif URLS_Items == 5:
                     message = TemplateSendMessage(
                         alt_text='圖片訊息',
@@ -515,6 +519,7 @@ def handle_message(event):
                             ]
                         )
                     )
+                    line_bot_api.reply_message(event.reply_token, message)
                 elif URLS_Items == 6:
                     message = TemplateSendMessage(
                         alt_text='圖片訊息',
@@ -571,7 +576,7 @@ def handle_message(event):
                             ]
                         )
                     )
-                line_bot_api.reply_message(event.reply_token, message)
+                    line_bot_api.reply_message(event.reply_token, message)
 
         # elif event.message.text == '貼紙抽獎':
         #     Coupon_List_result = McDonald_Get_CouponList()
