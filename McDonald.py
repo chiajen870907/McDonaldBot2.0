@@ -43,12 +43,16 @@ class McDonald(object):
         # Check the return value of lottery
         if 'coupon' in self.respones['results']:
             result = self.respones['results']['coupon']['object_info']['title']
+            id = self.respones['results']['coupon']['coupon_id']
+            url = self.respones['results']['coupon']['object_info']['image']['url']
+            # if not os.path.isfile('/app/%s.jpg' % id):
+            #     local = os.path.join('/app/%s.jpg' % id)  # 檔案儲存位置 /app/
+            #     urlretrieve(url, local)
         else:
             result = self.respones['results']['sticker']['object_info']['title']
 
         # Return the result of lottery
-        return self.Re(result)
-
+        return self.Re(result), url
     # Get the coupon list
     def Coupon_List(self):
         # Request to get the coupon list

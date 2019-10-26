@@ -296,7 +296,7 @@ def McDonald_Get_CouponList():
     result = McDonald_Get_State()
     Account = McDonald(result)
     Coupon_List = Account.Coupon_List()
-    Coupon_List = re.sub("[\s+\.\!\/_$%^*(+\"\']+|[+——！。？、~@#￥%……&*（）:{}\[\] ]", "", str(Coupon_List))
+    Coupon_List = re.sub("[\s+\.\!\/_$%^*(+\"\']+|[+——！。？、~@#￥%……&*（):{}\[\] ]", "", str(Coupon_List))
     Coupon_List = Coupon_List.replace(',', "\n")
     return Coupon_List
 
@@ -304,8 +304,8 @@ def McDonald_Get_CouponList():
 def Request_Coupon_Lottery():
     result = McDonald_Get_State()
     Account = McDonald(result)
-    Get_Coupon = Account.Lottery()
-    return Get_Coupon
+    Get_Coupon, url = Account.Lottery()
+    return Get_Coupon, url
 
 
 def Auto_Coupon_Lottery():
@@ -339,7 +339,9 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='目前擁有歡樂貼:{}\n月底即將到期歡樂貼:{}'.format(result[0], result[1])))
 
         elif event.message.text == '抽獎':
-            Coupon_result = Request_Coupon_Lottery()
+            Coupon_result, url = Request_Coupon_Lottery()
+            message = TemplateSendMessage(alt_text='ImageCarousel template', template=ImageCarouselTemplate(columns=[ ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='Learn more',text='優惠卷',data='action=buy&itemid=1')),]))
+            line_bot_api.reply_message(event.reply_token, message)
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Coupon_result))
 
         elif event.message.text == '優惠卷':
@@ -355,20 +357,6 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='o_O ||\n你沒有任何優惠卷ㅇㅁㅇ'))
             else:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Coupon_List_result))
-
-        elif event.message.text == 'flex':
-            message = TemplateSendMessage(alt_text='ImageCarousel template',template=ImageCarouselTemplate(
-                    columns=[ ImageCarouselColumn(image_url='https://mcdapp1.azureedge.net/P_S148.jpg',
-                            action=PostbackTemplateAction(
-                                label='Learn more',
-                                text='優惠卷',
-                                data='action=buy&itemid=1'
-                            )
-                        ),
-                    ]
-                )
-            )
-            line_bot_api.reply_message(event.reply_token, message)
 
 
 
