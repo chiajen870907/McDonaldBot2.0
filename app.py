@@ -320,7 +320,10 @@ def Auto_Coupon_Lottery():
         PushID = re.sub("[{} \' :]", "", str(PushID))
         PushID = PushID.replace('UserID', '')
         Account = McDonald(Token_List[i])
-        line_bot_api.push_message(PushID, TextSendMessage(text=Account.Lottery()))
+        url = Account.Lottery()[1]
+        message = TemplateSendMessage(alt_text='ImageCarousel template', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠眷', text='優惠卷',data='action=buy&itemid=1')), ]))
+        line_bot_api.push_message(PushID, message)
+
 
 
 # 處理訊息
@@ -340,7 +343,7 @@ def handle_message(event):
 
         elif event.message.text == '抽獎':
             Coupon_result, url = Request_Coupon_Lottery()
-            message = TemplateSendMessage(alt_text='ImageCarousel template', template=ImageCarouselTemplate(columns=[ ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='Learn more',text='優惠卷',data='action=buy&itemid=1')),]))
+            message = TemplateSendMessage(alt_text='ImageCarousel template', template=ImageCarouselTemplate(columns=[ ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠眷',text='優惠卷',data='action=buy&itemid=1')),]))
             line_bot_api.reply_message(event.reply_token, message)
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Coupon_result))
 
