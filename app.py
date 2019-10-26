@@ -353,6 +353,8 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='o_O ||\n你沒有任何優惠卷ㅇㅁㅇ'))
             else:
                 URLS_Items = len(URLS_List)
+                print(URLS_Items)
+                print(URLS_List)
                 if URLS_Items == 1:
                     message = TemplateSendMessage(
                         alt_text='圖片訊息',
@@ -379,7 +381,7 @@ def handle_message(event):
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
                                         text='歡樂貼',
-                                        data=''
+                                        data='action=buy&itemid=1'
                                     )
                                 ),
                                 ImageCarouselColumn(
