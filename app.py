@@ -338,7 +338,7 @@ def handle_message(event):
     # ----------------Login-----------------------
     if db.collection('Check').document(user_id).get().exists == True:
         # print('存在')
-        if event.message.text == '歡樂貼':
+        if event.message.text == '我的歡樂貼':
             result = McDonald_Get_StickerList()
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='目前擁有歡樂貼:{}\n月底即將到期歡樂貼:{}'.format(result[0], result[1])))
 
@@ -347,7 +347,7 @@ def handle_message(event):
             message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷',text='優惠卷',data='action=buy&itemid=1')),]))
             line_bot_api.reply_message(event.reply_token, message)
 
-        elif event.message.text == '優惠卷':
+        elif event.message.text == '我的優惠卷':
             URLS_List = McDonald_Get_CouponList()
             if URLS_List == '':
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='o_O ||\n你沒有任何優惠卷ㅇㅁㅇ'))
@@ -591,9 +591,9 @@ def handle_message(event):
 
             Random_type = random.randint(1, 5)
             if Random_type == 1:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你可以試試輸入【優惠卷】 \n(・∀・)'))
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你可以試試輸入【我的優惠卷】 \n(・∀・)'))
             elif Random_type == 2:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='說不定輸入【歡樂貼】會有事情發生呢 \n(ノ^o^)ノ'))
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='說不定輸入【我的歡樂貼】會有事情發生呢 \n(ノ^o^)ノ'))
             elif Random_type == 3:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='【抽獎】是未知神秘指令 \nლ(｀∀´ლ) '))
             elif Random_type == 4:
