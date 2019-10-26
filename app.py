@@ -405,7 +405,7 @@ def handle_message(event):
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
                                         text='歡樂貼',
-                                        data=''
+                                        data='action=buy&itemid=1'
                                     )
                                 ),
                                 ImageCarouselColumn(
@@ -421,7 +421,7 @@ def handle_message(event):
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
                                         text='歡樂貼',
-                                        data='action=buy&itemid=2'
+                                        data='action=buy&itemid=3'
                                     )
                                 )
                             ]
@@ -437,7 +437,7 @@ def handle_message(event):
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
                                         text='歡樂貼',
-                                        data=''
+                                        data='action=buy&itemid=1'
                                     )
                                 ),
                                 ImageCarouselColumn(
@@ -445,7 +445,7 @@ def handle_message(event):
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
                                         text='歡樂貼',
-                                        data=''
+                                        data='action=buy&itemid=2'
                                     )
                                 ),
                                 ImageCarouselColumn(
@@ -453,7 +453,7 @@ def handle_message(event):
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
                                         text='歡樂貼',
-                                        data=''
+                                        data='action=buy&itemid=3'
                                     )
                                 ),
                                 ImageCarouselColumn(
@@ -461,7 +461,7 @@ def handle_message(event):
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
                                         text='歡樂貼',
-                                        data=''
+                                        data='action=buy&itemid=4'
                                     )
                                 )
                             ]
@@ -477,7 +477,7 @@ def handle_message(event):
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
                                         text='歡樂貼',
-                                        data=''
+                                        data='action=buy&itemid=1'
                                     )
                                 ),
                                 ImageCarouselColumn(
@@ -485,7 +485,7 @@ def handle_message(event):
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
                                         text='歡樂貼',
-                                        data=''
+                                        data='action=buy&itemid=2'
                                     )
                                 ),
                                 ImageCarouselColumn(
@@ -493,7 +493,7 @@ def handle_message(event):
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
                                         text='歡樂貼',
-                                        data=''
+                                        data='action=buy&itemid=3'
                                     )
                                 ),
                                 ImageCarouselColumn(
@@ -501,7 +501,7 @@ def handle_message(event):
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
                                         text='歡樂貼',
-                                        data=''
+                                        data='action=buy&itemid=4'
                                     )
                                 ),
                                 ImageCarouselColumn(
@@ -509,7 +509,7 @@ def handle_message(event):
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
                                         text='歡樂貼',
-                                        data=''
+                                        data='action=buy&itemid=5'
                                     )
                                 )
                             ]
@@ -525,7 +525,7 @@ def handle_message(event):
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
                                         text='歡樂貼',
-                                        data=''
+                                        data='action=buy&itemid=1'
                                     )
                                 ),
                                 ImageCarouselColumn(
@@ -533,7 +533,7 @@ def handle_message(event):
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
                                         text='歡樂貼',
-                                        data=''
+                                        data='action=buy&itemid=2'
                                     )
                                 ),
                                 ImageCarouselColumn(
@@ -541,7 +541,7 @@ def handle_message(event):
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
                                         text='歡樂貼',
-                                        data=''
+                                        data='action=buy&itemid=3'
                                     )
                                 ),
                                 ImageCarouselColumn(
@@ -549,7 +549,7 @@ def handle_message(event):
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
                                         text='歡樂貼',
-                                        data=''
+                                        data='action=buy&itemid=4'
                                     )
                                 ),
                                 ImageCarouselColumn(
@@ -557,7 +557,7 @@ def handle_message(event):
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
                                         text='歡樂貼',
-                                        data=''
+                                        data='action=buy&itemid=5'
                                     )
                                 ),
                                 ImageCarouselColumn(
@@ -565,7 +565,7 @@ def handle_message(event):
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
                                         text='歡樂貼',
-                                        data=''
+                                        data='action=buy&itemid=6'
                                     )
                                 )
                             ]
