@@ -293,12 +293,13 @@ def McDonald_Get_StickerList():
 
 
 def McDonald_Get_CouponList():
+
     result = McDonald_Get_State()
     Account = McDonald(result)
-    Coupon_List = Account.Coupon_List()
-    Coupon_List = re.sub("[\s+\.\!\/_$%^*(+\"\']+|[+——！。？、~@#￥%……&*（):{}\[\] ]", "", str(Coupon_List))
-    Coupon_List = Coupon_List.replace(',', "\n")
-    return Coupon_List
+    URLS_List = Account.Coupon_List()
+    # Coupon_List = re.sub("[\s+\.\!\/_$%^*(+\"\']+|[+——！。？、~@#￥%……&*（):{}\[\] ]", "", str(Coupon_List))
+    # Coupon_List = Coupon_List.replace(',', "\n")
+    return URLS_List
 
 
 def Request_Coupon_Lottery():
@@ -321,7 +322,7 @@ def Auto_Coupon_Lottery():
         PushID = PushID.replace('UserID', '')
         Account = McDonald(Token_List[i])
         url = Account.Lottery()[1]
-        message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠眷', text='優惠卷',data='action=buy&itemid=1')), ]))
+        message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='優惠卷',data='action=buy&itemid=1')), ]))
         line_bot_api.push_message(PushID, message)
 
 
@@ -343,22 +344,239 @@ def handle_message(event):
 
         elif event.message.text == '抽獎':
             url = Request_Coupon_Lottery()[1]
-            message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠眷',text='優惠卷',data='action=buy&itemid=1')),]))
+            message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷',text='優惠卷',data='action=buy&itemid=1')),]))
             line_bot_api.reply_message(event.reply_token, message)
 
         elif event.message.text == '優惠卷':
-            Coupon_List_result = McDonald_Get_CouponList()
-            if Coupon_List_result == '':
+            URLS_List = McDonald_Get_CouponList()
+            if URLS_List == '':
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='o_O ||\n你沒有任何優惠卷ㅇㅁㅇ'))
             else:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Coupon_List_result))
+                URLS_Items = len(URLS_List)
+                if URLS_Items == 1:
+                    message = TemplateSendMessage(
+                        alt_text='圖片訊息',
+                        template=ImageCarouselTemplate(
+                            columns=[
+                                ImageCarouselColumn(
+                                    image_url=URLS_List[0],
+                                    action=PostbackTemplateAction(
+                                        label='查看我的歡樂貼',
+                                        text='',
+                                        data=''
+                                    )
+                                )
+                            ]
+                        )
+                    )
+                elif URLS_Items == 2:
+                    message = TemplateSendMessage(
+                        alt_text='圖片訊息',
+                        template=ImageCarouselTemplate(
+                            columns=[
+                                ImageCarouselColumn(
+                                    image_url=URLS_List[0],
+                                    action=PostbackTemplateAction(
+                                        label='查看我的歡樂貼',
+                                        text='歡樂貼',
+                                        data=''
+                                    )
+                                ),
+                                ImageCarouselColumn(
+                                    image_url=URLS_List[1],
+                                    action=PostbackTemplateAction(
+                                        label='查看我的歡樂貼',
+                                        text='歡樂貼',
+                                        data='action=buy&itemid=2'
+                                    )
+                                )
+                            ]
+                        )
+                    )
+                elif URLS_Items == 3:
+                    message = TemplateSendMessage(
+                        alt_text='圖片訊息',
+                        template=ImageCarouselTemplate(
+                            columns=[
+                                ImageCarouselColumn(
+                                    image_url=URLS_List[0],
+                                    action=PostbackTemplateAction(
+                                        label='查看我的歡樂貼',
+                                        text='歡樂貼',
+                                        data=''
+                                    )
+                                ),
+                                ImageCarouselColumn(
+                                    image_url=URLS_List[1],
+                                    action=PostbackTemplateAction(
+                                        label='查看我的歡樂貼',
+                                        text='歡樂貼',
+                                        data='action=buy&itemid=2'
+                                    )
+                                ),
+                                ImageCarouselColumn(
+                                    image_url=URLS_List[2],
+                                    action=PostbackTemplateAction(
+                                        label='查看我的歡樂貼',
+                                        text='歡樂貼',
+                                        data='action=buy&itemid=2'
+                                    )
+                                )
+                            ]
+                        )
+                    )
+                elif URLS_Items == 4:
+                    message = TemplateSendMessage(
+                        alt_text='圖片訊息',
+                        template=ImageCarouselTemplate(
+                            columns=[
+                                ImageCarouselColumn(
+                                    image_url=URLS_List[0],
+                                    action=PostbackTemplateAction(
+                                        label='查看我的歡樂貼',
+                                        text='歡樂貼',
+                                        data=''
+                                    )
+                                ),
+                                ImageCarouselColumn(
+                                    image_url=URLS_List[1],
+                                    action=PostbackTemplateAction(
+                                        label='查看我的歡樂貼',
+                                        text='歡樂貼',
+                                        data=''
+                                    )
+                                ),
+                                ImageCarouselColumn(
+                                    image_url=URLS_List[2],
+                                    action=PostbackTemplateAction(
+                                        label='查看我的歡樂貼',
+                                        text='歡樂貼',
+                                        data=''
+                                    )
+                                ),
+                                ImageCarouselColumn(
+                                    image_url=URLS_List[3],
+                                    action=PostbackTemplateAction(
+                                        label='查看我的歡樂貼',
+                                        text='歡樂貼',
+                                        data=''
+                                    )
+                                )
+                            ]
+                        )
+                    )
+                elif URLS_Items == 5:
+                    message = TemplateSendMessage(
+                        alt_text='圖片訊息',
+                        template=ImageCarouselTemplate(
+                            columns=[
+                                ImageCarouselColumn(
+                                    image_url=URLS_List[0],
+                                    action=PostbackTemplateAction(
+                                        label='查看我的歡樂貼',
+                                        text='歡樂貼',
+                                        data=''
+                                    )
+                                ),
+                                ImageCarouselColumn(
+                                    image_url=URLS_List[1],
+                                    action=PostbackTemplateAction(
+                                        label='查看我的歡樂貼',
+                                        text='歡樂貼',
+                                        data=''
+                                    )
+                                ),
+                                ImageCarouselColumn(
+                                    image_url=URLS_List[2],
+                                    action=PostbackTemplateAction(
+                                        label='查看我的歡樂貼',
+                                        text='歡樂貼',
+                                        data=''
+                                    )
+                                ),
+                                ImageCarouselColumn(
+                                    image_url=URLS_List[3],
+                                    action=PostbackTemplateAction(
+                                        label='查看我的歡樂貼',
+                                        text='歡樂貼',
+                                        data=''
+                                    )
+                                ),
+                                ImageCarouselColumn(
+                                    image_url=URLS_List[4],
+                                    action=PostbackTemplateAction(
+                                        label='查看我的歡樂貼',
+                                        text='歡樂貼',
+                                        data=''
+                                    )
+                                )
+                            ]
+                        )
+                    )
+                elif URLS_Items == 6:
+                    message = TemplateSendMessage(
+                        alt_text='圖片訊息',
+                        template=ImageCarouselTemplate(
+                            columns=[
+                                ImageCarouselColumn(
+                                    image_url=URLS_List[0],
+                                    action=PostbackTemplateAction(
+                                        label='查看我的歡樂貼',
+                                        text='歡樂貼',
+                                        data=''
+                                    )
+                                ),
+                                ImageCarouselColumn(
+                                    image_url=URLS_List[1],
+                                    action=PostbackTemplateAction(
+                                        label='查看我的歡樂貼',
+                                        text='歡樂貼',
+                                        data=''
+                                    )
+                                ),
+                                ImageCarouselColumn(
+                                    image_url=URLS_List[2],
+                                    action=PostbackTemplateAction(
+                                        label='查看我的歡樂貼',
+                                        text='歡樂貼',
+                                        data=''
+                                    )
+                                ),
+                                ImageCarouselColumn(
+                                    image_url=URLS_List[3],
+                                    action=PostbackTemplateAction(
+                                        label='查看我的歡樂貼',
+                                        text='歡樂貼',
+                                        data=''
+                                    )
+                                ),
+                                ImageCarouselColumn(
+                                    image_url=URLS_List[4],
+                                    action=PostbackTemplateAction(
+                                        label='查看我的歡樂貼',
+                                        text='歡樂貼',
+                                        data=''
+                                    )
+                                ),
+                                ImageCarouselColumn(
+                                    image_url=URLS_List[5],
+                                    action=PostbackTemplateAction(
+                                        label='查看我的歡樂貼',
+                                        text='歡樂貼',
+                                        data=''
+                                    )
+                                )
+                            ]
+                        )
+                    )
+                line_bot_api.reply_message(event.reply_token, message)
 
-        elif event.message.text == '貼紙抽獎':
-            Coupon_List_result = McDonald_Get_CouponList()
-            if Coupon_List_result == '':
-                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='o_O ||\n你沒有任何優惠卷ㅇㅁㅇ'))
-            else:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Coupon_List_result))
+        # elif event.message.text == '貼紙抽獎':
+        #     Coupon_List_result = McDonald_Get_CouponList()
+        #     if Coupon_List_result == '':
+        #         line_bot_api.reply_message(event.reply_token, TextSendMessage(text='o_O ||\n你沒有任何優惠卷ㅇㅁㅇ'))
+        #     else:
+        #         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Coupon_List_result))
 
 
 

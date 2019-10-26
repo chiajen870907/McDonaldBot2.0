@@ -54,14 +54,15 @@ class McDonald(object):
 
         # Return the result of lottery
         return self.Re(result), url
+
     # Get the coupon list
     def Coupon_List(self):
         # Request to get the coupon list
         self.respones = requests.post('https://api1.mcddailyapp.com/coupon/get_list', json=self.json).text
-        count = self.respones.count('coupon_id') # Count the number of coupons
-        self.respones = eval(self.respones)      # Convert string to dictionary
+        count = self.respones.count('coupon_id')  # Count the number of coupons
+        self.respones = eval(self.respones)  # Convert string to dictionary
 
-        # Every coupons are going to be checked the status is unused and not expired
+        # Check the status of the coupons to make sure that they are not used or expired
         for value in range(count):
             status = self.respones['results']['coupons'][value]['status']
             redeem_end_datetime = self.respones['results']['coupons'][value]['object_info']['redeem_end_datetime']
@@ -69,17 +70,20 @@ class McDonald(object):
 
             # Status code is 1 also redeem_end_datetime is not yet
             if status == 1 and redeem_end_datetime - datetime.now() > timedelta():
-                coupon = self.respones['results']['coupons'][value]['object_info']['title']
-                id = self.respones['results']['coupons'][value]['coupon_id']
-                pic = self.respones['results']['coupons'][value]['object_info']['image']['url']
-                coupon = self.Re(coupon)
-                self.coupons.append(coupon + 'E:' + str((redeem_end_datetime - datetime.now()).days))
+                # coupon = self.respones['results']['coupons'][value]['object_info']['title']
+                # id = self.respones['results']['coupons'][value]['coupon_id']
+                url = self.respones['results']['coupons'][value]['object_info']['image']['url']
+                self.urls.append(url)
+                # coupon = self.Re(coupon)
+                # self.coupons.append(coupon + '剩餘:' + str((redeem_end_datetime - datetime.now()).days))
 
-                if os.path.isfile('/app/%s.jpg'%id):
-                    print('exist')
-                else:
-                    local = os.path.join('/app/%s.jpg'%id)  # 檔案儲存位置 /app/
-                    urlretrieve(pic, local)
+                # if not os.path.isfile('D:\\%s.jpg' % id):
+                #     local = os.path.join('D:\\%s.jpg' % id)  # 檔案儲存位置 /app/
+                #     urlretrieve(url, local)
+
+        # Return coupon list
+        # return self.coupons, url, redeem_end_datetime
+        return self.urls
 
         # Return coupon list
         return self.coupons
