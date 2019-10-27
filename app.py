@@ -322,7 +322,7 @@ def Auto_Coupon_Lottery():
         PushID = PushID.replace('UserID', '')
         Account = McDonald(Token_List[i])
         url = Account.Lottery()[1]
-        message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='優惠卷',data='action=buy&itemid=1')), ]))
+        message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
         line_bot_api.push_message(PushID, message)
 
 
@@ -344,7 +344,7 @@ def handle_message(event):
 
         elif event.message.text == '抽獎':
             url = Request_Coupon_Lottery()[1]
-            message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷',text='優惠卷',data='action=buy&itemid=1')),]))
+            message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷',text='我的優惠卷',data='action=buy&itemid=1')),]))
             line_bot_api.reply_message(event.reply_token, message)
 
         elif event.message.text == '我的優惠卷':
@@ -364,7 +364,7 @@ def handle_message(event):
                                     image_url=URLS_List[0],
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
-                                        text='歡樂貼',
+                                        text='我的歡樂貼',
                                         data='action=buy&itemid=1'
                                     )
                                 )
@@ -381,7 +381,7 @@ def handle_message(event):
                                     image_url=URLS_List[0],
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
-                                        text='歡樂貼',
+                                        text='我的歡樂貼',
                                         data='action=buy&itemid=1'
                                     )
                                 ),
@@ -389,7 +389,7 @@ def handle_message(event):
                                     image_url=URLS_List[1],
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
-                                        text='歡樂貼',
+                                        text='我的歡樂貼',
                                         data='action=buy&itemid=2'
                                     )
                                 )
@@ -406,7 +406,7 @@ def handle_message(event):
                                     image_url=URLS_List[0],
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
-                                        text='歡樂貼',
+                                        text='我的歡樂貼',
                                         data='action=buy&itemid=1'
                                     )
                                 ),
@@ -414,7 +414,7 @@ def handle_message(event):
                                     image_url=URLS_List[1],
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
-                                        text='歡樂貼',
+                                        text='我的歡樂貼',
                                         data='action=buy&itemid=2'
                                     )
                                 ),
@@ -422,7 +422,7 @@ def handle_message(event):
                                     image_url=URLS_List[2],
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
-                                        text='歡樂貼',
+                                        text='我的歡樂貼',
                                         data='action=buy&itemid=3'
                                     )
                                 )
@@ -439,7 +439,7 @@ def handle_message(event):
                                     image_url=URLS_List[0],
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
-                                        text='歡樂貼',
+                                        text='我的歡樂貼',
                                         data='action=buy&itemid=1'
                                     )
                                 ),
@@ -447,7 +447,7 @@ def handle_message(event):
                                     image_url=URLS_List[1],
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
-                                        text='歡樂貼',
+                                        text='我的歡樂貼',
                                         data='action=buy&itemid=2'
                                     )
                                 ),
@@ -455,7 +455,7 @@ def handle_message(event):
                                     image_url=URLS_List[2],
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
-                                        text='歡樂貼',
+                                        text='我的歡樂貼',
                                         data='action=buy&itemid=3'
                                     )
                                 ),
@@ -463,7 +463,7 @@ def handle_message(event):
                                     image_url=URLS_List[3],
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
-                                        text='歡樂貼',
+                                        text='我的歡樂貼',
                                         data='action=buy&itemid=4'
                                     )
                                 )
@@ -480,7 +480,7 @@ def handle_message(event):
                                     image_url=URLS_List[0],
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
-                                        text='歡樂貼',
+                                        text='我的歡樂貼',
                                         data='action=buy&itemid=1'
                                     )
                                 ),
@@ -488,7 +488,7 @@ def handle_message(event):
                                     image_url=URLS_List[1],
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
-                                        text='歡樂貼',
+                                        text='我的歡樂貼',
                                         data='action=buy&itemid=2'
                                     )
                                 ),
@@ -496,7 +496,7 @@ def handle_message(event):
                                     image_url=URLS_List[2],
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
-                                        text='歡樂貼',
+                                        text='我的歡樂貼',
                                         data='action=buy&itemid=3'
                                     )
                                 ),
@@ -504,7 +504,7 @@ def handle_message(event):
                                     image_url=URLS_List[3],
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
-                                        text='歡樂貼',
+                                        text='我的歡樂貼',
                                         data='action=buy&itemid=4'
                                     )
                                 ),
@@ -512,7 +512,7 @@ def handle_message(event):
                                     image_url=URLS_List[4],
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
-                                        text='歡樂貼',
+                                        text='我的歡樂貼',
                                         data='action=buy&itemid=5'
                                     )
                                 )
@@ -529,7 +529,7 @@ def handle_message(event):
                                     image_url=URLS_List[0],
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
-                                        text='歡樂貼',
+                                        text='我的歡樂貼',
                                         data='action=buy&itemid=1'
                                     )
                                 ),
@@ -537,7 +537,7 @@ def handle_message(event):
                                     image_url=URLS_List[1],
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
-                                        text='歡樂貼',
+                                        text='我的歡樂貼',
                                         data='action=buy&itemid=2'
                                     )
                                 ),
@@ -545,7 +545,7 @@ def handle_message(event):
                                     image_url=URLS_List[2],
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
-                                        text='歡樂貼',
+                                        text='我的歡樂貼',
                                         data='action=buy&itemid=3'
                                     )
                                 ),
@@ -553,7 +553,7 @@ def handle_message(event):
                                     image_url=URLS_List[3],
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
-                                        text='歡樂貼',
+                                        text='我的歡樂貼',
                                         data='action=buy&itemid=4'
                                     )
                                 ),
@@ -561,7 +561,7 @@ def handle_message(event):
                                     image_url=URLS_List[4],
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
-                                        text='歡樂貼',
+                                        text='我的歡樂貼',
                                         data='action=buy&itemid=5'
                                     )
                                 ),
@@ -569,7 +569,7 @@ def handle_message(event):
                                     image_url=URLS_List[5],
                                     action=PostbackTemplateAction(
                                         label='查看我的歡樂貼',
-                                        text='歡樂貼',
+                                        text='我的歡樂貼',
                                         data='action=buy&itemid=6'
                                     )
                                 )
