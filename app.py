@@ -22,7 +22,7 @@ line_bot_api = LineBotApi('i3MY/ddSyAqnc9JG/Sbce2EH7N1A48HRWE1NCokvL3w00hNGZPVud
 # Channel Secret
 handler = WebhookHandler('22a4d312cd87888ee4ae3e8c79b989ea')
 # 引用私密金鑰
-cred = credentials.Certificate(''/app/service-account.json'')
+cred = credentials.Certificate('/app/service-account.json')
 
 
 # 初始化firebase，注意不能重複初始化
@@ -329,7 +329,6 @@ def Auto_Coupon_Lottery():
             doc_ref = db.collection("Coupons").document(Filename)
             doc_ref.set(doc)
             #不存在
-
         message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
         Message2 = TextSendMessage(text='恭喜你獲得~')
         line_bot_api.push_message('Uea249350320c7cd2401b3667ed9abdc3', Message2)
