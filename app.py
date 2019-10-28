@@ -323,6 +323,8 @@ def Auto_Coupon_Lottery():
         Account = McDonald(Token_List[i])
         url = Account.Lottery()[1]
         message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
+        Message2 = TextSendMessage(text='抽獎訊息測試')
+        line_bot_api.push_message(PushID, Message2)
         line_bot_api.push_message(PushID, message)
 
 
@@ -345,8 +347,6 @@ def handle_message(event):
         elif event.message.text == '抽獎':
             url = Request_Coupon_Lottery()[1]
             message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷',text='我的優惠卷',data='action=buy&itemid=1')),]))
-            message2 = TextSendMessage(text='抽獎訊息')
-            line_bot_api.reply_message(event.reply_token, message2)
             line_bot_api.reply_message(event.reply_token, message)
 
         elif event.message.text == '我的優惠卷':
@@ -579,6 +579,9 @@ def handle_message(event):
                         )
                     )
                     line_bot_api.reply_message(event.reply_token, message)
+        elif event.message.text == '測試':
+            Auto_Coupon_Lottery()
+
 
         # elif event.message.text == '貼紙抽獎':
         #     Coupon_List_result = McDonald_Get_CouponList()
@@ -586,8 +589,6 @@ def handle_message(event):
         #         line_bot_api.reply_message(event.reply_token, TextSendMessage(text='o_O ||\n你沒有任何優惠卷ㅇㅁㅇ'))
         #     else:
         #         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Coupon_List_result))
-
-
 
         else:
 
