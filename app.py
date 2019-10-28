@@ -306,6 +306,12 @@ def Request_Coupon_Lottery():
     result = McDonald_Get_State()
     Account = McDonald(result)
     Get_Coupon, url = Account.Lottery()
+    temp = url.split('/')[3]
+    Filename = temp.split('.')[0]
+    if db.collection('Coupons').document(Filename).get().exists == False:
+        doc = {'Title': Get_Coupon}
+        doc_ref = db.collection("Coupons").document(Filename)
+        doc_ref.set(doc)
     return Get_Coupon, url
 
 
@@ -331,8 +337,8 @@ def Auto_Coupon_Lottery():
             #不存在
         message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
         Message2 = TextSendMessage(text='恭喜你獲得~')
-        line_bot_api.push_message('Uea249350320c7cd2401b3667ed9abdc3', Message2)
-        line_bot_api.push_message('Uea249350320c7cd2401b3667ed9abdc3', message)
+        line_bot_api.push_message(PushID, Message2)
+        line_bot_api.push_message(PushID, message)
 
     print("OK")
 
