@@ -22,8 +22,8 @@ line_bot_api = LineBotApi('i3MY/ddSyAqnc9JG/Sbce2EH7N1A48HRWE1NCokvL3w00hNGZPVud
 # Channel Secret
 handler = WebhookHandler('22a4d312cd87888ee4ae3e8c79b989ea')
 # 引用私密金鑰
-cred = credentials.Certificate('/app/service-account.json')
-#cred = credentials.Certificate('C:/Users\HsiehCJ/Desktop/Project/PyCharm/McDonaldBot/service-account.json')
+cred = credentials.Certificate(''/app/service-account.json'')
+
 
 # 初始化firebase，注意不能重複初始化
 firebase_admin.initialize_app(cred)
@@ -321,11 +321,20 @@ def Auto_Coupon_Lottery():
         PushID = re.sub("[{} \' :]", "", str(PushID))
         PushID = PushID.replace('UserID', '')
         Account = McDonald(Token_List[i])
-        url = Account.Lottery()[1]
+        title, url = Account.Lottery()
+        temp = url.split('/')[3]
+        Filename = temp.split('.')[0]
+        if db.collection('Coupons').document(Filename).get().exists == False:
+            doc = {'Title': title}
+            doc_ref = db.collection("Coupons").document(Filename)
+            doc_ref.set(doc)
+            #不存在
+
         message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
         Message2 = TextSendMessage(text='恭喜你獲得~')
-        line_bot_api.push_message(PushID, Message2)
-        line_bot_api.push_message(PushID, message)
+        line_bot_api.push_message('Uea249350320c7cd2401b3667ed9abdc3', Message2)
+        line_bot_api.push_message('Uea249350320c7cd2401b3667ed9abdc3', message)
+
     print("OK")
 
 
@@ -355,8 +364,8 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='o_O ||\n你沒有任何優惠卷ㅇㅁㅇ'))
             else:
                 URLS_Items = len(URLS_List)
-                print(URLS_Items)
-                print(URLS_List)
+                # print(URLS_Items)
+                # print(URLS_List)
                 if URLS_Items == 1:
                     message = TemplateSendMessage(
                         alt_text='圖片訊息',
@@ -579,12 +588,11 @@ def handle_message(event):
                         )
                     )
                     line_bot_api.reply_message(event.reply_token, message)
+
         elif event.message.text == '測試':
             Auto_Coupon_Lottery()
 
-
         else:
-
             Random_type = random.randint(1, 5)
             if Random_type == 1:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你可以試試輸入【我的優惠卷】 \n(・∀・)'))
