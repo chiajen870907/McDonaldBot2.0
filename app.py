@@ -345,11 +345,12 @@ def handle_message(event):
         elif event.message.text == '抽獎':
             url = Request_Coupon_Lottery()[1]
             message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷',text='我的優惠卷',data='action=buy&itemid=1')),]))
-            line_bot_api.reply_message(event.reply_token, message)
+            message2 = TextSendMessage(text='抽獎訊息')
+            line_bot_api.reply_message(event.reply_token, message2,message)
 
         elif event.message.text == '我的優惠卷':
             URLS_List = McDonald_Get_CouponList()
-            if URLS_List == '':
+            if URLS_List == 0:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='o_O ||\n你沒有任何優惠卷ㅇㅁㅇ'))
             else:
                 URLS_Items = len(URLS_List)
