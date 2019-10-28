@@ -344,9 +344,10 @@ def handle_message(event):
 
         elif event.message.text == '抽獎':
             url = Request_Coupon_Lottery()[1]
-            #message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷',text='我的優惠卷',data='action=buy&itemid=1')),]))
+            message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷',text='我的優惠卷',data='action=buy&itemid=1')),]))
             message2 = TextSendMessage(text='抽獎訊息')
             line_bot_api.reply_message(event.reply_token, message2)
+            line_bot_api.reply_message(event.reply_token, message)
 
         elif event.message.text == '我的優惠卷':
             URLS_List = McDonald_Get_CouponList()
