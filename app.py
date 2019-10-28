@@ -351,7 +351,7 @@ def handle_message(event):
 
         elif event.message.text == '我的優惠卷':
             URLS_List = McDonald_Get_CouponList()
-            print('URLS_List' + URLS_List)
+            print(URLS_List)
             # if URLS_List == None:
             #     line_bot_api.reply_message(event.reply_token, TextSendMessage(text='o_O ||\n你沒有任何優惠卷ㅇㅁㅇ'))
             # else:
@@ -584,13 +584,6 @@ def handle_message(event):
             Auto_Coupon_Lottery()
 
 
-        # elif event.message.text == '貼紙抽獎':
-        #     Coupon_List_result = McDonald_Get_CouponList()
-        #     if Coupon_List_result == '':
-        #         line_bot_api.reply_message(event.reply_token, TextSendMessage(text='o_O ||\n你沒有任何優惠卷ㅇㅁㅇ'))
-        #     else:
-        #         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=Coupon_List_result))
-
         else:
 
             Random_type = random.randint(1, 5)
@@ -606,23 +599,6 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='看我施展魔法 \n(∩｀-´)⊃━炎炎炎炎炎'))
 
 
-        # elif event.message.text == '優惠卷123456':
-        #     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=McDonald.Coupon_List()))
-        # elif event.message.text == '貼紙123456':
-        #     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=McDonald.Sticker_List()))
-
-        # if event.message.text == 'DATA123456':
-        #     date_picker = TemplateSendMessage(
-        #         alt_text='時間設定',
-        #         template=ButtonsTemplate(
-        #             text=' 我每天幾點幫你抽呢  ヽ(‘ ∇‘ )ノ ',
-        #             title='時間設定',
-        #             actions=[
-        #                     DatetimePickerTemplateAction(label='設定', data='datetime_postback', mode='time')
-        #             ]
-        #         )
-        #     )
-        #     line_bot_api.reply_message(event.reply_token, date_picker)
     else:
         temp = event.message.text
         if temp != '登入':
@@ -634,30 +610,6 @@ def handle_message(event):
             buttons_template = TemplateSendMessage(alt_text='Template', template=ButtonsTemplate(title='登入確認', text='帳號:{}\n密碼:{}\n請確定是否正確'.format(t[0], t[1]), actions=[PostbackTemplateAction(label='確認無誤', text='登入', data='Login')]))
             line_bot_api.reply_message(event.reply_token, buttons_template)
 
-        # line_bot_api.reply_message(event.reply_token, TextSendMessage(text='帳號:{}\n密碼:{}\n正在嘗試登入麥當勞  \n(●’ω`●）'.format(t[0], t[1])))
-        # MC_Status, MC_Token = login_MC()
-        # if MC_Status == '登入成功' and MC_Token != '':
-        #     line_bot_api.push_message(user_id, TextSendMessage(text= MC_Status + " *\(^_^)/* "))
-        #     Database_Counter_Increase()
-        #     Count = Database_Counter_GetCount()
-        #     doc = {
-        #         'Token' + Count: MC_Token
-        #     }
-        #     doc2 = {
-        #         'UserID': user_id
-        #     }
-        #     doc3 = {
-        #         'Token': MC_Token
-        #     }
-        #     doc_ref = db.collection("Line_User").document('Info')
-        #     doc2_ref = db.collection("MD_Token").document(MC_Token)
-        #     doc3_ref = db.collection("Check").document(user_id)
-        #     doc_ref.update(doc)
-        #     doc2_ref.set(doc2)
-        #     doc3_ref.set(doc3)
-        #     line_bot_api.push_message(user_id, TextSendMessage(text='我知道喇~\n每天準時晚上12點幫你抽\nヽ(‘ ∇‘ )ノ'))
-        # else:
-        #     line_bot_api.push_message(user_id, TextSendMessage(text='錯誤請重新登入\n 〒.〒 '))
 
 
 if __name__ == "__main__":
