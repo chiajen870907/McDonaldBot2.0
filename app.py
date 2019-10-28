@@ -323,10 +323,10 @@ def Auto_Coupon_Lottery():
         Account = McDonald(Token_List[i])
         url = Account.Lottery()[1]
         message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
-        Message2 = TextSendMessage(text='抽獎訊息測試')
+        Message2 = TextSendMessage(text='恭喜你獲得~')
         line_bot_api.push_message(PushID, Message2)
         line_bot_api.push_message(PushID, message)
-
+    print("OK")
 
 
 # 處理訊息
