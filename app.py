@@ -287,8 +287,8 @@ def McDonald_Get_StickerList():
     Sticker_List = Account.Sticker_List()
     Sticker_List = re.sub("[/'()]", "", str(Sticker_List))
     Sticker_List_result = Sticker_List.split(',')
-    print(Sticker_List_result)
-    print(result)
+    #print(Sticker_List_result)
+    #print(result)
     return Sticker_List_result
 
 
@@ -351,7 +351,8 @@ def handle_message(event):
 
         elif event.message.text == '我的優惠卷':
             URLS_List = McDonald_Get_CouponList()
-            if URLS_List == 0:
+            print('URLS_List'+ URLS_List)
+            if URLS_List == []:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='o_O ||\n你沒有任何優惠卷ㅇㅁㅇ'))
             else:
                 URLS_Items = len(URLS_List)
