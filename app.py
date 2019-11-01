@@ -1,16 +1,20 @@
-from flask import Flask, request, abort
-from linebot import (LineBotApi, WebhookHandler)
 from linebot.exceptions import (InvalidSignatureError)
+from linebot import (LineBotApi, WebhookHandler)
 from linebot.models import *
-import firebase_admin
-import os
-import re
-import hashlib
-import requests
-import random
+
+from flask import Flask, request, abort
 from datetime import datetime
+
 from firebase_admin import credentials
 from firebase_admin import firestore
+
+import firebase_admin
+import requests
+import hashlib
+import random
+import os
+import re
+
 from McDonald import McDonald
 
 
@@ -20,12 +24,12 @@ app = Flask(__name__)
 line_bot_api = LineBotApi('i3MY/ddSyAqnc9JG/Sbce2EH7N1A48HRWE1NCokvL3w00hNGZPVud1buRLuwkSL9rP8860UKkQTo3h2flGoSijgeZ/LvaepXs/t4x/T/X39BZuJ/wBrS9O43luJDHSa4Tl7OMcuy4TYBuo2nLbiv4AdB04t89/1O/w1cDnyilFU=')
 # Channel Secret
 handler = WebhookHandler('22a4d312cd87888ee4ae3e8c79b989ea')
-# 引用私密金鑰
-cred = credentials.Certificate('/app/service-account.json')
+# private_key
+private_key = credentials.Certificate('/app/service-account.json')
 
 
 # 初始化firebase，注意不能重複初始化
-firebase_admin.initialize_app(cred)
+firebase_admin.initialize_app(private_key)
 # 初始化firestore
 db = firestore.client()
 
@@ -188,8 +192,8 @@ def handle_postback(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=MC_Status + '\n 〒.〒 '))
 
 
-def Database_Read_Data(Read_path):
-    doc_ref = db.document(Read_path)
+def Database_Read_Data(path):
+    doc_ref = db.document(path)
     doc = doc_ref.get()
     Read_result = doc.to_dict()
     return Read_result
@@ -237,14 +241,12 @@ def Database_Check_UserID():
         Path_ID = ("MD_Token/" + GetToken[i])
         result = Database_Read_Data(Path_ID)
         result_ID = re.search(user_id, str(result))
-        #print('result_ID', result_ID)
         if result_ID is None:
             UserID_Exists = 0
-            # ('CantFind')
+            #  NotExist
         else:
             UserID_Exists = 1
-            #re.search(user_id, result)
-            # ('Find_UserID')
+            #  Exist
         return UserID_Exists
 
 
@@ -277,13 +279,13 @@ def McDonald_Get_CouponList():
     return URLS_List
 
 
-def Request_Coupon_Lottery():
+def Manual_Coupon_Lottery():
     result = McDonald_Get_State()
     Account = McDonald(result)
     Get_Coupon, url = Account.Lottery()
     temp = url.split('/')[3]
     Filename = temp.split('.')[0]
-    if db.collection('Coupons').document(Filename).get().exists == False:
+    if not db.collection('Coupons').document(Filename).get().exists:
         doc = {'Title': Get_Coupon}
         doc_ref = db.collection("Coupons").document(Filename)
         doc_ref.set(doc)
@@ -309,7 +311,6 @@ def Auto_Coupon_Lottery():
             doc = {'Title': title}
             doc_ref = db.collection("Coupons").document(Filename)
             doc_ref.set(doc)
-            #不存在
         message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
         Message2 = TextSendMessage(text='每日抽獎~恭喜你獲得~')
         line_bot_api.push_message(PushID, Message2)
@@ -337,7 +338,6 @@ def Auto_Sticker_Lottery():
                 doc = {'Title': title}
                 doc_ref = db.collection("Coupons").document(Filename)
                 doc_ref.set(doc)
-                #不存在
             message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
             Message2 = TextSendMessage(text='歡樂貼自動抽獎~~恭喜你獲得~')
             line_bot_api.push_message(PushID, Message2)
@@ -352,13 +352,12 @@ def handle_message(event):
     user_id = event.source.user_id
     # ----------------Login-----------------------
     if db.collection('Check').document(user_id).get().exists:
-        # print('存在')
         if event.message.text == '我的歡樂貼':
             result = McDonald_Get_StickerList()
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='目前擁有歡樂貼:{}\n月底即將到期歡樂貼:{}'.format(result[0], result[1])))
 
         elif event.message.text == '抽獎':
-            url = Request_Coupon_Lottery()[1]
+            url = Manual_Coupon_Lottery()[1]
             message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷',text='我的優惠卷',data='action=buy&itemid=1')),]))
             line_bot_api.reply_message(event.reply_token, message)
 
