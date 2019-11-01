@@ -12,7 +12,6 @@ from datetime import datetime
 from firebase_admin import credentials
 from firebase_admin import firestore
 from McDonald import McDonald
-import json
 
 
 app = Flask(__name__)
@@ -138,10 +137,9 @@ def login_MC():
     Password = t[1]
     # Login and get the imformation
     Account = Mask(Username, Password)
-    list = Account.Login()
-    # Print the results
-    MC_Status = (list['rm'])
-    MC_Token = (list['results']['member_info']['access_token'])
+    info = Account.Login()
+    MC_Status = (info['rm'])
+    MC_Token = (info['results']['member_info']['access_token'])
     return MC_Status, MC_Token
 
 # --------------------------
@@ -165,19 +163,7 @@ def callback():
 @handler.add(PostbackEvent)
 def handle_postback(event):
     temp = event.postback.data
-    if temp == 'datetime_postback':
-        global Set_Time
-        Set_Time = event.postback.params['time']
-        #print(Set_Time)
-        line_bot_api.reply_message(
-            event.reply_token, TextSendMessage(text='我知道喇~~\n每天' + event.postback.params['time'] + '準時幫你抽\n （〜^∇^)〜'))
-        doc = {
-            'Time': Set_Time
-        }
-        doc_ref = db.collection("Line_User").document(user_id)
-        doc_ref.update(doc)
-        #print(Set_Time)
-    elif temp == 'Login' and db.collection('Check').document(user_id).get().exists == False:
+    if temp == 'Login' and db.collection('Check').document(user_id).get().exists == False:
         MC_Status, MC_Token = login_MC()
         if MC_Status == '登入成功' and MC_Token != '':
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=MC_Status + '\n每天準時晚上12點幫你抽\nヽ(‘ ∇‘ )ノ'))
@@ -224,17 +210,6 @@ def Database_Counter_Increase():
     }
     doc_ref = db.collection("Line_User").document('Counter')
     doc_ref.set(doc)
-
-
-def Database_Counter_Decrease():
-    Count = Database_Counter_GetCount()
-    Count = Count - 1
-    doc = {
-        'Count': Count
-    }
-    doc_ref = db.collection("Line_User").document('Counter')
-    doc_ref.set(doc)
-    # print(Count_Index)
 
 
 def Database_Get_Token():
@@ -330,29 +305,53 @@ def Auto_Coupon_Lottery():
         title, url = Account.Lottery()
         temp = url.split('/')[3]
         Filename = temp.split('.')[0]
-        if db.collection('Coupons').document(Filename).get().exists == False:
+        if not db.collection('Coupons').document(Filename).get().exists:
             doc = {'Title': title}
             doc_ref = db.collection("Coupons").document(Filename)
             doc_ref.set(doc)
             #不存在
         message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
-        Message2 = TextSendMessage(text='恭喜你獲得~')
+        Message2 = TextSendMessage(text='每日抽獎~恭喜你獲得~')
         line_bot_api.push_message(PushID, Message2)
         line_bot_api.push_message(PushID, message)
 
-    print("OK")
 
+def Auto_Sticker_Lottery():
+    Token_List = Database_Get_Token()
+    Count = Database_Counter_GetCount()
+
+    for i in range(Count):
+        path_ID = ("MD_Token/" + Token_List[i])
+        ref = db.document(path_ID)
+        doc = ref.get()
+        PushID = str(doc.to_dict())
+        PushID = re.sub("[{} \' :]", "", str(PushID))
+        PushID = PushID.replace('UserID', '')
+        Account = McDonald(Token_List[i])
+        result = McDonald_Get_StickerList()
+        if result[0] >= 6:
+            title, url = Account.Sticker_lottery
+            temp = url.split('/')[3]
+            Filename = temp.split('.')[0]
+            if not db.collection('Coupons').document(Filename).get().exists:
+                doc = {'Title': title}
+                doc_ref = db.collection("Coupons").document(Filename)
+                doc_ref.set(doc)
+                #不存在
+            message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
+            Message2 = TextSendMessage(text='歡樂貼自動抽獎~~恭喜你獲得~')
+            line_bot_api.push_message(PushID, Message2)
+            line_bot_api.push_message(PushID, message)
+    print("OK")
 
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    # message = TextSendMessage(text=event.message.text)
-    # line_bot_api.reply_message(event.reply_token, message)
     global user_id
     global t
     user_id = event.source.user_id
     # ----------------Login-----------------------
-    if db.collection('Check').document(user_id).get().exists == True:
+    if db.collection('Check').document(user_id).get().exists:
         # print('存在')
         if event.message.text == '我的歡樂貼':
             result = McDonald_Get_StickerList()
@@ -369,8 +368,6 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='o_O ||\n你沒有任何優惠卷ㅇㅁㅇ'))
             else:
                 URLS_Items = len(URLS_List)
-                # print(URLS_Items)
-                # print(URLS_List)
                 if URLS_Items == 1:
                     message = TemplateSendMessage(
                         alt_text='圖片訊息',
@@ -594,9 +591,10 @@ def handle_message(event):
                     )
                     line_bot_api.reply_message(event.reply_token, message)
 
-        elif event.message.text == '測試':
+        elif event.message.text == '手動測試-1':
             Auto_Coupon_Lottery()
-
+        elif event.message.text == '手動測試-2':
+            Auto_Sticker_Lottery()
         else:
             Random_type = random.randint(1, 5)
             if Random_type == 1:
@@ -610,7 +608,6 @@ def handle_message(event):
             elif Random_type == 5:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='看我施展魔法 \n(∩｀-´)⊃━炎炎炎炎炎'))
 
-
     else:
         temp = event.message.text
         if temp != '登入':
@@ -619,9 +616,8 @@ def handle_message(event):
             t = temp.split('/')
             if len(t) > 2:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='多打了斜線哦  Σ( ° △ °|||)'))
-            buttons_template = TemplateSendMessage(alt_text='Template', template=ButtonsTemplate(title='登入確認', text='帳號:{}\n密碼:{}\n請確定是否正確'.format(t[0], t[1]), actions=[PostbackTemplateAction(label='確認無誤', text='登入', data='Login')]))
-            line_bot_api.reply_message(event.reply_token, buttons_template)
-
+            Login_message = TemplateSendMessage(alt_text='Template', template=ButtonsTemplate(title='登入確認', text='帳號:{}\n密碼:{}\n請確定是否正確'.format(t[0], t[1]), actions=[PostbackTemplateAction(label='確認無誤', text='登入', data='Login')]))
+            line_bot_api.reply_message(event.reply_token, Login_message)
 
 
 if __name__ == "__main__":

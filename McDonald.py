@@ -1,7 +1,7 @@
-import re, os
+import re
 import requests
 from datetime import datetime, timedelta
-from urllib.request import urlretrieve
+
 
 
 class McDonald(object):
@@ -45,9 +45,6 @@ class McDonald(object):
         if 'coupon' in self.respones['results']:
             result = self.respones['results']['coupon']['object_info']['title']
             url = self.respones['results']['coupon']['object_info']['image']['url']
-            # if not os.path.isfile('/app/%s.jpg' % id):
-            #     local = os.path.join('/app/%s.jpg' % id)  # 檔案儲存位置 /app/
-            #     urlretrieve(url, local)
         else:
             result = self.respones['results']['sticker']['object_info']['title']
             url = self.respones['results']['sticker']['object_info']['image']['url']
@@ -70,19 +67,9 @@ class McDonald(object):
 
             # Status code is 1 also redeem_end_datetime is not yet
             if status == 1 and redeem_end_datetime - datetime.now() > timedelta():
-                # coupon = self.respones['results']['coupons'][value]['object_info']['title']
-                # id = self.respones['results']['coupons'][value]['coupon_id']
                 url = self.respones['results']['coupons'][value]['object_info']['image']['url']
                 self.urls.append(url)
-                # coupon = self.Re(coupon)
-                # self.coupons.append(coupon + '剩餘:' + str((redeem_end_datetime - datetime.now()).days))
 
-                # if not os.path.isfile('D:\\%s.jpg' % id):
-                #     local = os.path.join('D:\\%s.jpg' % id)  # 檔案儲存位置 /app/
-                #     urlretrieve(url, local)
-
-        # Return coupon list
-        # return self.coupons, url, redeem_end_datetime
         return self.urls
 
         # Return coupon list
@@ -111,12 +98,8 @@ class McDonald(object):
 
     # Request to get a sticker lottery
     def Sticker_lottery(self):
-        self.Sticker_List() # Get the stickers imformation
+        self.Sticker_List() # Get the stickers information
         sticker_ids = []    # Sticker ids list
-
-        # Print the results of stickers imformation
-        # print('----- Sticker Imformation -----')
-        # print('Total : %d , Expire stickers : %d\n\n' % (self.stickers, self.expire_stickers))
 
         # If sticker number less than 6 , exit
         if self.stickers < 6:
@@ -124,11 +107,7 @@ class McDonald(object):
 
         # Make sure the user want to get a lottery
         else:
-            # bool = input('Make sure you want to get a lottery ? (y/n) ')
-
-            # If bool is yes , get a lottery
-            # if bool == 'y' or bool == 'yes':
-                # Get the 6 sticker ids
+            # Get the 6 sticker ids
             for value in range(6):
                 sticker_ids.append(self.respones['results']['stickers'][value]['sticker_id'])
 
@@ -137,14 +116,12 @@ class McDonald(object):
 
             # Get a sticker lottery
             self.respones = requests.post('https://api1.mcddailyapp.com/sticker/redeem', json=self.json).text
-            self.respones = eval(self.respones) # Convert string to dictionary
+            self.respones = eval(self.respones)  # Convert string to dictionary
 
-            # Print the results of coupon imformation
-            coupon = self.respones['results']['coupon']['object_info']['title']
-            coupon = self.Re(coupon)
-            # print('You win a coupon !\n')
-            # print(coupon)
-            return self.coupon
+            # Return the results of coupon information
+            result = self.respones['results']['coupon']['object_info']['title']
+            url = self.respones['results']['coupon']['object_info']['image']['url']
+            return self.Re(result), url
 
     # Clear some characters are matched by Regular Expression
     def Re(self, coupon):
