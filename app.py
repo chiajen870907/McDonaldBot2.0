@@ -328,8 +328,8 @@ def Auto_Sticker_Lottery():
         PushID = re.sub("[{} \' :]", "", str(PushID))
         PushID = PushID.replace('UserID', '')
         Account = McDonald(Token_List[i])
-        result = int(McDonald_Get_StickerList())
-        if result[0] >= 6:
+        result = McDonald_Get_StickerList()
+        if int(result[0]) >= 6:
             title, url = Account.Sticker_lottery
             temp = url.split('/')[3]
             Filename = temp.split('.')[0]
