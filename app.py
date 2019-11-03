@@ -349,7 +349,6 @@ def handle_message(event):
     global user_id
     global t
     user_id = event.source.user_id
-    displayName = event.source.displayName
     print(displayName)
     # ----------------Login-----------------------
     if db.collection('Check').document(user_id).get().exists:
