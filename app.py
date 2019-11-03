@@ -303,7 +303,7 @@ def Auto_Coupon_Lottery():
         PushID = re.sub("[{} \' :]", "", str(PushID))
         PushID = PushID.replace('UserID', '')
         print(PushID)
-        print(Token_List[i] + i)
+        print(Token_List[i])
         Account = McDonald(Token_List[i])
         title, url = Account.Lottery()
         temp = url.split('/')[3]
