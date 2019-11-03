@@ -598,7 +598,7 @@ def handle_message(event):
         elif event.message.text == '手動測試-2':
             Auto_Sticker_Lottery()
         elif event.message.text == "測試3":
-            result = Database_Counter_GetCount()
+            result = Database_Get_Token()
             print(result)
 
         else:
