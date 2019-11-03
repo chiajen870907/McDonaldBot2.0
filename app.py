@@ -220,9 +220,9 @@ def Database_Get_Token():
     Path = 'Line_User/Info'
     Count = Database_Counter_GetCount()
     result = Database_Read_Data(Path)
+    print(result)
     Index = re.sub("[{} \' :]", "", str(result))
-    nCount_Index = Count
-    for i in range(nCount_Index):
+    for i in range(Count):
         Index = Index.replace('Token' + str(i), '')
     GetToken = Index.split(',')
     return GetToken
@@ -366,7 +366,7 @@ def handle_message(event):
 
         elif event.message.text == '我的優惠卷':
             URLS_List = McDonald_Get_CouponList()
-            if URLS_List == []:
+            if not URLS_List:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='o_O ||\n你沒有任何優惠卷ㅇㅁㅇ'))
             else:
                 URLS_Items = len(URLS_List)
