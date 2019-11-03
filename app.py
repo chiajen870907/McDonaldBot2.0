@@ -229,15 +229,14 @@ def Database_Get_Token():
 
 
 def Database_Check_UserID():
-    Count_Index = Database_Counter_GetCount()
+    Count = Database_Counter_GetCount()
     Path = 'Line_User/Info'
     result = Database_Read_Data(Path)
     Index = re.sub("[{} \' :]", "", str(result))
-    nCount_Index = Count_Index + 1
-    for i in range(nCount_Index):
+    for i in range(Count):
         Index = Index.replace('Token' + str(i), '')
     GetToken = Index.split(',')
-    for i in range(int(Count_Index)):
+    for i in range(int(Count)):
         Path_ID = ("MD_Token/" + GetToken[i])
         result = Database_Read_Data(Path_ID)
         result_ID = re.search(user_id, str(result))
