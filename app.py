@@ -598,8 +598,8 @@ def handle_message(event):
         elif event.message.text == '手動測試-2':
             Auto_Sticker_Lottery()
         elif event.message.text == "測試3":
-            int = Database_Counter_GetCount()
-            line_bot_api.reply_message('Uea249350320c7cd2401b3667ed9abdc3',TextSendMessage(text=int))
+            result = Database_Counter_GetCount()
+            print(result)
 
         else:
             Random_type = random.randint(1, 5)
