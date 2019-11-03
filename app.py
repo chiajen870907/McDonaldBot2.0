@@ -294,7 +294,7 @@ def Manual_Coupon_Lottery():
 def Auto_Coupon_Lottery():
     Token_List = Database_Get_Token()
     Count = Database_Counter_GetCount()
-
+    print(Count)
     for i in range(Count):
         path_ID = ("MD_Token/" + Token_List[i])
         ref = db.document(path_ID)
@@ -304,6 +304,7 @@ def Auto_Coupon_Lottery():
         PushID = PushID.replace('UserID', '')
         print(PushID)
         print(Token_List[i])
+        print(int(i))
         Account = McDonald(Token_List[i])
         title, url = Account.Lottery()
         temp = url.split('/')[3]
