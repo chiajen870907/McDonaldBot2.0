@@ -13,7 +13,7 @@ import requests
 import hashlib
 import random
 import os
-import re
+
 
 from McDonald import McDonald
 
@@ -139,7 +139,7 @@ class Mask(object):
 def login_MC():
     Username = t[0]
     Password = t[1]
-    # Login and get the imformation
+    # Login and get the information
     Account = Mask(Username, Password)
     info = Account.Login()
     MC_Status = (info['rm'])
@@ -225,44 +225,11 @@ def Database_Get_Token():
     return Token
 
 
-
-# def Database_Check_UserID():
-#
-#     Count = Database_Counter_GetCount()
-#     Path = 'Line_User/Info'
-#     result = Database_Read_Data(Path)
-#     Index = re.sub("[{} \' :]", "", str(result))
-#     for i in range(Count):
-#         Index = Index.replace('Token' + str(i), '')
-#     GetToken = Index.split(',')
-#     for i in range(int(Count)):
-#         Path_ID = ("MD_Token/" + GetToken[i])
-#         result = Database_Read_Data(Path_ID)
-#         result_ID = re.search(user_id, str(result))
-#         if result_ID is None:
-#             UserID_Exists = 0
-#             #  NotExist
-#         else:
-#             UserID_Exists = 1
-#             #  Exist
-#         return UserID_Exists
-
-
 def McDonald_Get_State():
     Path = 'Check/' + user_id
     result = Database_Read_Data(Path)
 
     return result['Token']
-
-
-# def McDonald_Get_StickerList():
-#     result = McDonald_Get_State()
-#     Account = McDonald(result)
-#     Sticker_List = Account.Sticker_List()
-#     Sticker_List = re.sub("[/'()]", "", str(Sticker_List))
-#     Sticker_List_result = Sticker_List.split(',')
-#
-#     return Sticker_List_result
 
 
 def McDonald_Get_CouponList():
@@ -309,10 +276,10 @@ def Auto_Coupon_Lottery():
 
         message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
         Message2 = TextSendMessage(text='每日抽獎~恭喜你獲得~')
-        line_bot_api.push_message('Uea249350320c7cd2401b3667ed9abdc3', Message2)
-        line_bot_api.push_message('Uea249350320c7cd2401b3667ed9abdc3', message)
-        # line_bot_api.push_message(doc['UserID'], Message2)
-        # line_bot_api.push_message(doc['UserID'], message)
+
+        line_bot_api.push_message(doc['UserID'], Message2)
+        line_bot_api.push_message(doc['UserID'], message)
+    print('Auto_Coupon_Lottery OK')
 
 
 def Auto_Sticker_Lottery():
@@ -341,9 +308,9 @@ def Auto_Sticker_Lottery():
             message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
             Message2 = TextSendMessage(text='歡樂貼自動抽獎~~恭喜你獲得~')
 
-            line_bot_api.push_message('Uea249350320c7cd2401b3667ed9abdc3', Message2)
-            line_bot_api.push_message('Uea249350320c7cd2401b3667ed9abdc3', message)
-    print("OK")
+            line_bot_api.push_message(doc['UserID'], Message2)
+            line_bot_api.push_message(doc['UserID'], message)
+    print('Auto_Sticker_Lottery OK')
 
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
