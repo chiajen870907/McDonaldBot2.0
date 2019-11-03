@@ -221,7 +221,7 @@ def Database_Get_Token():
     Count = Database_Counter_GetCount()
     result = Database_Read_Data(Path)
     print(type(result))
-    print(dict['Token10'])
+    print(result['Token10'])
     Index = re.sub("[{} \' :]", "", str(result))
     for i in range(Count):
         Index = Index.replace('Token' + str(i), '')
