@@ -314,25 +314,26 @@ def Auto_Coupon_Lottery():
         ref = db.document(path_ID)
         doc = ref.get()
         print('doc', type(doc))
+        print(doc)
         # PushID = str(doc.to_dict())
         # PushID = re.sub("[{} \' :]", "", str(PushID))
         # PushID = PushID.replace('UserID', '')
 
-        # print(PushID)
-        print(Token_List[i])
-        print(int(i))
-        Account = McDonald(Token_List[i])
-        title, url = Account.Lottery()
-        temp = url.split('/')[3]
-        Filename = temp.split('.')[0]
-        if not db.collection('Coupons').document(Filename).get().exists:
-            doc = {'Title': title}
-            doc_ref = db.collection("Coupons").document(Filename)
-            doc_ref.set(doc)
-        message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
-        Message2 = TextSendMessage(text='每日抽獎~恭喜你獲得~')
-        line_bot_api.push_message('Uea249350320c7cd2401b3667ed9abdc3', Message2)
-        line_bot_api.push_message('Uea249350320c7cd2401b3667ed9abdc3', message)
+        # # print(PushID)
+        # print(Token_List[i])
+        # print(int(i))
+        # Account = McDonald(Token_List[i])
+        # title, url = Account.Lottery()
+        # temp = url.split('/')[3]
+        # Filename = temp.split('.')[0]
+        # if not db.collection('Coupons').document(Filename).get().exists:
+        #     doc = {'Title': title}
+        #     doc_ref = db.collection("Coupons").document(Filename)
+        #     doc_ref.set(doc)
+        # message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
+        # Message2 = TextSendMessage(text='每日抽獎~恭喜你獲得~')
+        # line_bot_api.push_message('Uea249350320c7cd2401b3667ed9abdc3', Message2)
+        # line_bot_api.push_message('Uea249350320c7cd2401b3667ed9abdc3', message)
 
 
 def Auto_Sticker_Lottery():
