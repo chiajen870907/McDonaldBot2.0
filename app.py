@@ -313,12 +313,12 @@ def Auto_Coupon_Lottery():
         path_ID = ("MD_Token/" + Token_List[i])
         ref = db.document(path_ID)
         doc = ref.get()
-        PushID = doc['UserID']
+        print('doc', type(doc))
         # PushID = str(doc.to_dict())
         # PushID = re.sub("[{} \' :]", "", str(PushID))
         # PushID = PushID.replace('UserID', '')
-        
-        print(PushID)
+
+        # print(PushID)
         print(Token_List[i])
         print(int(i))
         Account = McDonald(Token_List[i])
