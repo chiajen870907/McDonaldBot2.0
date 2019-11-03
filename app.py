@@ -302,6 +302,8 @@ def Auto_Coupon_Lottery():
         PushID = str(doc.to_dict())
         PushID = re.sub("[{} \' :]", "", str(PushID))
         PushID = PushID.replace('UserID', '')
+        print(PushID)
+        print(Token_List[i])
         Account = McDonald(Token_List[i])
         title, url = Account.Lottery()
         temp = url.split('/')[3]
@@ -328,8 +330,9 @@ def Auto_Sticker_Lottery():
         PushID = re.sub("[{} \' :]", "", str(PushID))
         PushID = PushID.replace('UserID', '')
         Account = McDonald(Token_List[i])
-        result = McDonald_Get_StickerList()
-        if int(result[0]) >= 6:
+
+        result_coupon = McDonald_Get_StickerList()
+        if int(result_coupon[0]) >= 6:
             title, url = Account.Sticker_lottery
             temp = url.split('/')[3]
             Filename = temp.split('.')[0]
@@ -339,7 +342,6 @@ def Auto_Sticker_Lottery():
                 doc_ref.set(doc)
             message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
             Message2 = TextSendMessage(text='歡樂貼自動抽獎~~恭喜你獲得~')
-            print(PushID)
             line_bot_api.push_message(PushID, Message2)
             line_bot_api.push_message(PushID, message)
     print("OK")
