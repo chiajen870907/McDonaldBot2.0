@@ -264,8 +264,7 @@ def McDonald_Get_StickerList():
     Sticker_List = Account.Sticker_List()
     Sticker_List = re.sub("[/'()]", "", str(Sticker_List))
     Sticker_List_result = Sticker_List.split(',')
-    #print(Sticker_List_result)
-    #print(result)
+
     return Sticker_List_result
 
 
@@ -350,6 +349,8 @@ def handle_message(event):
     global user_id
     global t
     user_id = event.source.user_id
+    displayName = event.source.displayName
+    print(displayName)
     # ----------------Login-----------------------
     if db.collection('Check').document(user_id).get().exists:
         if event.message.text == '我的歡樂貼':

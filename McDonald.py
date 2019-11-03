@@ -43,14 +43,14 @@ class McDonald(object):
 
         # Check the return value of lottery
         if 'coupon' in self.respones['results']:
-            result = self.respones['results']['coupon']['object_info']['title']
+            Lottery_result = self.respones['results']['coupon']['object_info']['title']
             url = self.respones['results']['coupon']['object_info']['image']['url']
         else:
-            result = self.respones['results']['sticker']['object_info']['title']
+            Lottery_result = self.respones['results']['sticker']['object_info']['title']
             url = self.respones['results']['sticker']['object_info']['image']['url']
 
         # Return the result of lottery
-        return self.Re(result), url
+        return self.Re(Lottery_result), url
 
     # Get the coupon list
     def Coupon_List(self):
