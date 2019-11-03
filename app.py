@@ -194,17 +194,14 @@ def handle_postback(event):
 
 def Database_Read_Data(path):
     doc_ref = db.document(path)
-    doc = doc_ref.get()
-    Read_result = doc.to_dict()
+    Read_result = doc_ref.get().to_dict()
     return Read_result
 
 
 def Database_Counter_GetCount():
     Path = 'Line_User/Counter'
     result = Database_Read_Data(Path)
-    print(type(result))
-    result = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）:{} Count]", "", str(result))
-    return int(result)
+    return int(result['Count'])
 
 
 def Database_Counter_Increase():
@@ -223,57 +220,49 @@ def Database_Get_Token():
     Count = Database_Counter_GetCount()
     result = Database_Read_Data(Path)
     Token = []
-    for i in range(Count):
+    for i in range(Count+1):
         Token.append(result['Token' + str(i)])
     return Token
 
-    # print(type(result))
-    # print(result['Token10'])
-    # Index = re.sub("[{} \' :]", "", str(result))
-    # for i in range(Count):
-    #     Index = Index.replace('Token' + str(i), '')
-    # GetToken = Index.split(',')
-    # return GetToken
 
 
-def Database_Check_UserID():
-
-    Count = Database_Counter_GetCount()
-    Path = 'Line_User/Info'
-    result = Database_Read_Data(Path)
-    Index = re.sub("[{} \' :]", "", str(result))
-    for i in range(Count):
-        Index = Index.replace('Token' + str(i), '')
-    GetToken = Index.split(',')
-    for i in range(int(Count)):
-        Path_ID = ("MD_Token/" + GetToken[i])
-        result = Database_Read_Data(Path_ID)
-        result_ID = re.search(user_id, str(result))
-        if result_ID is None:
-            UserID_Exists = 0
-            #  NotExist
-        else:
-            UserID_Exists = 1
-            #  Exist
-        return UserID_Exists
+# def Database_Check_UserID():
+#
+#     Count = Database_Counter_GetCount()
+#     Path = 'Line_User/Info'
+#     result = Database_Read_Data(Path)
+#     Index = re.sub("[{} \' :]", "", str(result))
+#     for i in range(Count):
+#         Index = Index.replace('Token' + str(i), '')
+#     GetToken = Index.split(',')
+#     for i in range(int(Count)):
+#         Path_ID = ("MD_Token/" + GetToken[i])
+#         result = Database_Read_Data(Path_ID)
+#         result_ID = re.search(user_id, str(result))
+#         if result_ID is None:
+#             UserID_Exists = 0
+#             #  NotExist
+#         else:
+#             UserID_Exists = 1
+#             #  Exist
+#         return UserID_Exists
 
 
 def McDonald_Get_State():
     Path = 'Check/' + user_id
     result = Database_Read_Data(Path)
-    result = re.sub("[{} \' :]", "", str(result))
-    result = result.replace('Token', '')
-    return result
+
+    return result['Token']
 
 
-def McDonald_Get_StickerList():
-    result = McDonald_Get_State()
-    Account = McDonald(result)
-    Sticker_List = Account.Sticker_List()
-    Sticker_List = re.sub("[/'()]", "", str(Sticker_List))
-    Sticker_List_result = Sticker_List.split(',')
-
-    return Sticker_List_result
+# def McDonald_Get_StickerList():
+#     result = McDonald_Get_State()
+#     Account = McDonald(result)
+#     Sticker_List = Account.Sticker_List()
+#     Sticker_List = re.sub("[/'()]", "", str(Sticker_List))
+#     Sticker_List_result = Sticker_List.split(',')
+#
+#     return Sticker_List_result
 
 
 def McDonald_Get_CouponList():
@@ -301,67 +290,59 @@ def Manual_Coupon_Lottery():
 
 def Auto_Coupon_Lottery():
     Count = Database_Counter_GetCount()
-    # for i in range(Count):
-    #
-    #
-    #
-    #
-    #
     Token_List = Database_Get_Token()
 
-    for i in range(Count):
+    for i in range(Count+1):
         path_ID = ("MD_Token/" + Token_List[i])
         ref = db.document(path_ID)
-        doc = ref.get()
-        print('doc', type(doc))
-        print(doc)
-        # PushID = str(doc.to_dict())
-        # PushID = re.sub("[{} \' :]", "", str(PushID))
-        # PushID = PushID.replace('UserID', '')
+        doc = ref.get().to_dict()
 
-        # # print(PushID)
-        # print(Token_List[i])
-        # print(int(i))
-        # Account = McDonald(Token_List[i])
-        # title, url = Account.Lottery()
-        # temp = url.split('/')[3]
-        # Filename = temp.split('.')[0]
-        # if not db.collection('Coupons').document(Filename).get().exists:
-        #     doc = {'Title': title}
-        #     doc_ref = db.collection("Coupons").document(Filename)
-        #     doc_ref.set(doc)
-        # message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
-        # Message2 = TextSendMessage(text='每日抽獎~恭喜你獲得~')
-        # line_bot_api.push_message('Uea249350320c7cd2401b3667ed9abdc3', Message2)
-        # line_bot_api.push_message('Uea249350320c7cd2401b3667ed9abdc3', message)
+        Account = McDonald(Token_List[i])
+        title, url = Account.Lottery()
+        temp = url.split('/')[3]
+        Filename = temp.split('.')[0]
+
+        if not db.collection('Coupons').document(Filename).get().exists:
+            doc = {'Title': title}
+            doc_ref = db.collection("Coupons").document(Filename)
+            doc_ref.set(doc)
+
+        message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
+        Message2 = TextSendMessage(text='每日抽獎~恭喜你獲得~')
+        line_bot_api.push_message('Uea249350320c7cd2401b3667ed9abdc3', Message2)
+        line_bot_api.push_message('Uea249350320c7cd2401b3667ed9abdc3', message)
+        # line_bot_api.push_message(doc['UserID'], Message2)
+        # line_bot_api.push_message(doc['UserID'], message)
 
 
 def Auto_Sticker_Lottery():
     Token_List = Database_Get_Token()
     Count = Database_Counter_GetCount()
 
-    for i in range(Count):
+    for i in range(Count+1):
         path_ID = ("MD_Token/" + Token_List[i])
         ref = db.document(path_ID)
-        doc = ref.get()
-        PushID = str(doc.to_dict())
-        PushID = re.sub("[{} \' :]", "", str(PushID))
-        PushID = PushID.replace('UserID', '')
-        Account = McDonald(Token_List[i])
+        doc = ref.get().to_dict()
 
-        result_coupon = McDonald_Get_StickerList()
-        if int(result_coupon[0]) >= 6:
+        result = McDonald_Get_State()
+        Account = McDonald(result)
+        Sticker_List = Account.Sticker_List()
+
+        if int(Sticker_List[0]) >= 6:
             title, url = Account.Sticker_lottery
             temp = url.split('/')[3]
             Filename = temp.split('.')[0]
+
             if not db.collection('Coupons').document(Filename).get().exists:
                 doc = {'Title': title}
                 doc_ref = db.collection("Coupons").document(Filename)
                 doc_ref.set(doc)
+
             message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
             Message2 = TextSendMessage(text='歡樂貼自動抽獎~~恭喜你獲得~')
-            line_bot_api.push_message(PushID, Message2)
-            line_bot_api.push_message(PushID, message)
+
+            line_bot_api.push_message('Uea249350320c7cd2401b3667ed9abdc3', Message2)
+            line_bot_api.push_message('Uea249350320c7cd2401b3667ed9abdc3', message)
     print("OK")
 
 # 處理訊息
@@ -373,8 +354,10 @@ def handle_message(event):
     # ----------------Login-----------------------
     if db.collection('Check').document(user_id).get().exists:
         if event.message.text == '我的歡樂貼':
-            result = McDonald_Get_StickerList()
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='目前擁有歡樂貼:{}\n月底即將到期歡樂貼:{}'.format(result[0], result[1])))
+            result = McDonald_Get_State()
+            Account = McDonald(result)
+            Sticker_List = Account.Sticker_List()
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='目前擁有歡樂貼:{}\n月底即將到期歡樂貼:{}'.format(Sticker_List[0], Sticker_List[1])))
 
         elif event.message.text == '抽獎':
             url = Manual_Coupon_Lottery()[1]
