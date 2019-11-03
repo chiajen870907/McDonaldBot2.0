@@ -221,7 +221,7 @@ def Database_Get_Token():
     Count = Database_Counter_GetCount()
     result = Database_Read_Data(Path)
     Index = re.sub("[{} \' :]", "", str(result))
-    nCount_Index = Count + 1
+    nCount_Index = Count
     for i in range(nCount_Index):
         Index = Index.replace('Token' + str(i), '')
     GetToken = Index.split(',')
@@ -597,6 +597,10 @@ def handle_message(event):
             Auto_Coupon_Lottery()
         elif event.message.text == '手動測試-2':
             Auto_Sticker_Lottery()
+        elif event.message.text == "測試3":
+            int = Database_Counter_GetCount()
+            line_bot_api.reply_message('Uea249350320c7cd2401b3667ed9abdc3',TextSendMessage(text=int))
+
         else:
             Random_type = random.randint(1, 5)
             if Random_type == 1:
