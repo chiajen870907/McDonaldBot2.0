@@ -202,6 +202,7 @@ def Database_Read_Data(path):
 def Database_Counter_GetCount():
     Path = 'Line_User/Counter'
     result = Database_Read_Data(Path)
+    print(type(result))
     result = re.sub("[\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）:{} Count]", "", str(result))
     return int(result)
 
@@ -217,19 +218,26 @@ def Database_Counter_Increase():
 
 
 def Database_Get_Token():
+
     Path = 'Line_User/Info'
     Count = Database_Counter_GetCount()
     result = Database_Read_Data(Path)
-    print(type(result))
-    print(result['Token10'])
-    Index = re.sub("[{} \' :]", "", str(result))
+    Token = []
     for i in range(Count):
-        Index = Index.replace('Token' + str(i), '')
-    GetToken = Index.split(',')
-    return GetToken
+        Token.append(result['Token' + str(i)])
+    return Token
+
+    # print(type(result))
+    # print(result['Token10'])
+    # Index = re.sub("[{} \' :]", "", str(result))
+    # for i in range(Count):
+    #     Index = Index.replace('Token' + str(i), '')
+    # GetToken = Index.split(',')
+    # return GetToken
 
 
 def Database_Check_UserID():
+
     Count = Database_Counter_GetCount()
     Path = 'Line_User/Info'
     result = Database_Read_Data(Path)
@@ -292,16 +300,24 @@ def Manual_Coupon_Lottery():
 
 
 def Auto_Coupon_Lottery():
-    Token_List = Database_Get_Token()
     Count = Database_Counter_GetCount()
-    print(Count)
+    # for i in range(Count):
+    #
+    #
+    #
+    #
+    #
+    Token_List = Database_Get_Token()
+
     for i in range(Count):
         path_ID = ("MD_Token/" + Token_List[i])
         ref = db.document(path_ID)
         doc = ref.get()
-        PushID = str(doc.to_dict())
-        PushID = re.sub("[{} \' :]", "", str(PushID))
-        PushID = PushID.replace('UserID', '')
+        PushID = doc['UserID']
+        # PushID = str(doc.to_dict())
+        # PushID = re.sub("[{} \' :]", "", str(PushID))
+        # PushID = PushID.replace('UserID', '')
+        
         print(PushID)
         print(Token_List[i])
         print(int(i))
