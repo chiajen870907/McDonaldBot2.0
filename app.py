@@ -220,10 +220,12 @@ def Database_Get_Token():
     Path = 'Line_User/Info'
     Count = Database_Counter_GetCount()
     result = Database_Read_Data(Path)
-    print(result)
+    print(type(result))
+
     Index = re.sub("[{} \' :]", "", str(result))
     for i in range(Count):
         Index = Index.replace('Token' + str(i), '')
+        print(type(Index))
     GetToken = Index.split(',')
     return GetToken
 
@@ -598,7 +600,6 @@ def handle_message(event):
             Auto_Sticker_Lottery()
         elif event.message.text == "測試3":
             result = Database_Get_Token()
-            print(result)
 
         else:
             Random_type = random.randint(1, 5)
