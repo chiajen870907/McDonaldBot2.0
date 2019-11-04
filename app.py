@@ -264,7 +264,9 @@ def Auto_Coupon_Lottery():
         ref = db.document(path_ID)
         doc = ref.get().to_dict()
 
-        Account = McDonald(Token_List[i])
+        result = McDonald_Get_State()
+        Account = McDonald(result)
+        # Account = McDonald(Token_List[i])
         title, url = Account.Lottery()
         temp = url.split('/')[3]
         Filename = temp.split('.')[0]
