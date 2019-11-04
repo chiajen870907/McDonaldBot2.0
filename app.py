@@ -264,9 +264,7 @@ def Auto_Coupon_Lottery():
         ref = db.document(path_ID)
         doc = ref.get().to_dict()
 
-        result = McDonald_Get_State()
-        Account = McDonald(result)
-        # Account = McDonald(Token_List[i])
+        Account = McDonald(Token_List[i])
         title, url = Account.Lottery()
         temp = url.split('/')[3]
         Filename = temp.split('.')[0]
@@ -293,14 +291,12 @@ def Auto_Sticker_Lottery():
         ref = db.document(path_ID)
         doc = ref.get().to_dict()
 
-        result = McDonald_Get_State()
-        Account = McDonald(result)
+        Account = McDonald(Token_List[i])
         Sticker_List = Account.Sticker_List()
-        print('ID ',doc['UserID'],'List' ,Sticker_List[0])
 
         if int(Sticker_List[0]) >= 6:
 
-            title, url = Account.Sticker_lottery
+            title, url = Account.Sticker_lottery()
             temp = url.split('/')[3]
             Filename = temp.split('.')[0]
 
