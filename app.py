@@ -294,8 +294,10 @@ def Auto_Sticker_Lottery():
         result = McDonald_Get_State()
         Account = McDonald(result)
         Sticker_List = Account.Sticker_List()
+        print('ID ',doc['UserID'],'List' ,Sticker_List[0])
 
         if int(Sticker_List[0]) >= 6:
+
             title, url = Account.Sticker_lottery
             temp = url.split('/')[3]
             Filename = temp.split('.')[0]
