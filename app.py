@@ -232,8 +232,10 @@ def Database_Check_UserState(ID):
 
 
 def McDonald_Get_CouponList():
-    Account = McDonald(Database_Check_UserState(user_id)[1])
-    print('Account:', Account)
+    print('Line244 UserID', user_id)
+    token = Database_Check_UserState(user_id)[1]
+    print('Line244 UserID', token)
+    Account = McDonald(token)
     URLS_List = Account.Coupon_List()
     return URLS_List
 
@@ -241,7 +243,6 @@ def McDonald_Get_CouponList():
 def McDonald_Get_StickerList():
     print('Line241 UserID', user_id)
     Account = McDonald(Database_Check_UserState(user_id)[1])
-    print('Line244 UserID', user_id)
     Sticker_List = Account.Sticker_List()
     return Sticker_List
 
