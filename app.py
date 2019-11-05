@@ -249,14 +249,14 @@ def McDonald_Get_StickerList():
 
 def McDonald_ManualLottery_Coupon():
     Account = McDonald(Database_Check_UserState()[1])
-    Get_Coupon, url = Account.Lottery()
+    title, url = Account.Lottery()
     temp = url.split('/')[3]
     Filename = temp.split('.')[0]
-    if not db.collection('Coupons').document(Filename).get().exists:
-        doc = {'Title': Get_Coupon}
-        doc_ref = db.collection("Coupons").document(Filename)
+    if not db.collection('Coupons').document(title).get().exists:
+        doc = {'Title': Filename}
+        doc_ref = db.collection("Coupons").document(title)
         doc_ref.set(doc)
-    return Get_Coupon, url
+    return title, url
 
 
 def McDonald_AutoLottery_Coupon():
@@ -273,9 +273,9 @@ def McDonald_AutoLottery_Coupon():
         temp = url.split('/')[3]
         Filename = temp.split('.')[0]
 
-        if not db.collection('Coupons').document(Filename).get().exists:
-            doc = {'Title': title}
-            doc_ref = db.collection("Coupons").document(Filename)
+        if not db.collection('Coupons').document(title).get().exists:
+            doc = {'Title': Filename}
+            doc_ref = db.collection("Coupons").document(title)
             doc_ref.set(doc)
 
         message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
@@ -303,9 +303,9 @@ def McDonald_AutoLottery_Sticker():
             temp = url.split('/')[3]
             Filename = temp.split('.')[0]
 
-            if not db.collection('Coupons').document(Filename).get().exists:
-                doc = {'Title': title}
-                doc_ref = db.collection("Coupons").document(Filename)
+            if not db.collection('Coupons').document(title).get().exists:
+                doc = {'ID': Filename}
+                doc_ref = db.collection("Coupons").document(title)
                 doc_ref.set(doc)
 
             message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
