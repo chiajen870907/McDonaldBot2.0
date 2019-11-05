@@ -14,9 +14,7 @@ import hashlib
 import random
 import os
 
-
 from McDonald import McDonald
-
 
 app = Flask(__name__)
 
@@ -27,11 +25,11 @@ handler = WebhookHandler('22a4d312cd87888ee4ae3e8c79b989ea')
 # private_key
 private_key = credentials.Certificate('/app/service-account.json')
 
-
 # 初始化firebase，注意不能重複初始化
 firebase_admin.initialize_app(private_key)
 # 初始化firestore
 db = firestore.client()
+
 
 # McDonald------------------
 
@@ -41,19 +39,19 @@ class Mask(object):
 
     def __init__(self, account, password):
         super(Mask, self).__init__()
-        self.paramString = account + password                              # Just Username + Password
-        self.account = account                                             # Username
-        self.password = password                                           # Password
-        self.access_token = ""                                             # Token
-        self.str1 = datetime.strftime(datetime.now(), '%Y/%m/%d %H:%M:%S') # Device Time
-        self.str2 = '2.2.0'                                                # App Version
-        self.str3 = datetime.strftime(datetime.now(), '%Y%m%d%H%M%S')      # Call time
-        self.ModelId = 'MIX 3'                                             # Model ID
-        self.OsVersion = '9'                                               # Android OS Version
-        self.Platform = 'Android'                                          # Platform
-        self.DeviceUuid = 'device_uuid'                                    # Device Uuid
-        self.OrderNo = self.DeviceUuid + self.str3                         # Order No
-        self.cardNo = 'cardNo'                                             # Card NO
+        self.paramString = account + password  # Just Username + Password
+        self.account = account  # Username
+        self.password = password  # Password
+        self.access_token = ""  # Token
+        self.str1 = datetime.strftime(datetime.now(), '%Y/%m/%d %H:%M:%S')  # Device Time
+        self.str2 = '2.2.0'  # App Version
+        self.str3 = datetime.strftime(datetime.now(), '%Y%m%d%H%M%S')  # Call time
+        self.ModelId = 'MIX 3'  # Model ID
+        self.OsVersion = '9'  # Android OS Version
+        self.Platform = 'Android'  # Platform
+        self.DeviceUuid = 'device_uuid'  # Device Uuid
+        self.OrderNo = self.DeviceUuid + self.str3  # Order No
+        self.cardNo = 'cardNo'  # Card NO
 
     def Login(self):
         # Mask = MD5('Mc' + OrderNo + Platform + OsVersion + ModelId + DeviceUuid + str1 + str2 + paramString + 'Donalds')
@@ -72,17 +70,17 @@ class Mask(object):
 
         # Form data
         json = {
-            "account" : self.account,
+            "account": self.account,
             "password": self.password,
-            "OrderNo" : self.OrderNo,
-            "mask"    : mask.hexdigest(),
+            "OrderNo": self.OrderNo,
+            "mask": mask.hexdigest(),
             "source_info": {
                 "app_version": self.str2,
                 "device_time": self.str1,
                 "device_uuid": self.DeviceUuid,
-                "model_id"   : self.ModelId,
-                "os_version" : self.OsVersion,
-                "platform"   : self.Platform,
+                "model_id": self.ModelId,
+                "os_version": self.OsVersion,
+                "platform": self.Platform,
             }
         }
         headers = {
@@ -100,7 +98,7 @@ class Mask(object):
         response = eval(response)
 
         # Get the token
-        self.access_token =  response['results']['member_info']['access_token']
+        self.access_token = response['results']['member_info']['access_token']
 
         # Return the dictionary type of response
         return response
@@ -118,13 +116,12 @@ class Mask(object):
 
         # From data
         json = {
-            "OrderNo"     : self.OrderNo,
+            "OrderNo": self.OrderNo,
             "access_token": self.access_token,
-            "callTime"    : self.str3,
-            "cardNo"      : self.cardNo,
-            "mask"        : mask.hexdigest(),
+            "callTime": self.str3,
+            "cardNo": self.cardNo,
+            "mask": mask.hexdigest(),
         }
-
 
         # Get the response
         response = requests.post('https://api.mcddaily.com.tw/queryBonus', json=json).text
@@ -146,6 +143,7 @@ def login_MC():
     MC_Token = (info['results']['member_info']['access_token'])
     return MC_Status, MC_Token
 
+
 # --------------------------
 
 # 監聽所有來自 /callback 的 Post Request
@@ -163,31 +161,29 @@ def callback():
         abort(400)
     return 'OK'
 
+
 # 等待伺服器回傳資料
 @handler.add(PostbackEvent)
 def handle_postback(event):
     temp = event.postback.data
-    if temp == 'Login' and db.collection('Check').document(user_id).get().exists == False:
+    if temp == 'Login':
         MC_Status, MC_Token = login_MC()
         if MC_Status == '登入成功' and MC_Token != '':
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=MC_Status + '\n每天準時晚上12點幫你抽\nヽ(‘ ∇‘ )ノ'))
-            Database_Counter_Increase()
-            Count = Database_Counter_GetCount()
+            Database_Increase_Counter()
+            Count = Database_Get_Counter()
             doc = {
                 'Token' + str(Count): MC_Token
             }
             doc2 = {
-                'UserID': user_id
+                MC_Token : user_id
             }
-            doc3 = {
-                'Token': MC_Token
-            }
+
             doc_ref = db.collection("Line_User").document('Info')
-            doc2_ref = db.collection("MD_Token").document(MC_Token)
-            doc3_ref = db.collection("Check").document(user_id)
+            doc2_ref = db.collection("Check").document('Token')
             doc_ref.update(doc)
-            doc2_ref.set(doc2)
-            doc3_ref.set(doc3)
+            doc2_ref.update(doc2)
+
         else:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=MC_Status + '\n 〒.〒 '))
 
@@ -198,14 +194,14 @@ def Database_Read_Data(path):
     return Read_result
 
 
-def Database_Counter_GetCount():
+def Database_Get_Counter():
     Path = 'Line_User/Counter'
     result = Database_Read_Data(Path)
     return int(result['Count'])
 
 
-def Database_Counter_Increase():
-    Count = Database_Counter_GetCount()
+def Database_Increase_Counter():
+    Count = Database_Get_Counter()
     Count = Count + 1
     doc = {
         'Count': Count
@@ -214,37 +210,42 @@ def Database_Counter_Increase():
     doc_ref.set(doc)
 
 
-def Database_Get_Token():
-
+def Database_Get_TokenList():
     Path = 'Line_User/Info'
-    Count = Database_Counter_GetCount()
+    Count = Database_Get_Counter()
     result = Database_Read_Data(Path)
     Token = []
-    for i in range(Count+1):
+    for i in range(Count + 1):
         Token.append(result['Token' + str(i)])
     return Token
 
 
-def McDonald_Get_State():
-    Path = 'Check/' + user_id
-    result = Database_Read_Data(Path)
-
-    return result['Token']
+def Database_Check_UserState(UserID):
+    for i in range(Database_Get_Counter()+1):
+        try:
+            token = list(Database_Read_Data('Check/Token').keys())[list(Database_Read_Data('Check/Token').values()).index(UserID)]
+            user_exist = True
+            break
+        except ValueError:
+            user_exist = False
+            token = ''
+    return user_exist, token
 
 
 def McDonald_Get_CouponList():
-
-    result = McDonald_Get_State()
-    Account = McDonald(result)
+    Account = McDonald(Database_Check_UserState()[1])
     URLS_List = Account.Coupon_List()
-    # Coupon_List = re.sub("[\s+\.\!\/_$%^*(+\"\']+|[+——！。？、~@#￥%……&*（):{}\[\] ]", "", str(Coupon_List))
-    # Coupon_List = Coupon_List.replace(',', "\n")
     return URLS_List
 
 
-def Manual_Coupon_Lottery():
-    result = McDonald_Get_State()
-    Account = McDonald(result)
+def McDonald_Get_StickerList():
+    Account = McDonald(Database_Check_UserState()[1])
+    Sticker_List = Account.Sticker_List()
+    return Sticker_List
+
+
+def McDonald_ManualLottery_Coupon():
+    Account = McDonald(Database_Check_UserState()[1])
     Get_Coupon, url = Account.Lottery()
     temp = url.split('/')[3]
     Filename = temp.split('.')[0]
@@ -255,11 +256,11 @@ def Manual_Coupon_Lottery():
     return Get_Coupon, url
 
 
-def Auto_Coupon_Lottery():
-    Count = Database_Counter_GetCount()
-    Token_List = Database_Get_Token()
+def McDonald_AutoLottery_Coupon():
+    Count = Database_Get_Counter()
+    Token_List = Database_Get_TokenList()
 
-    for i in range(Count+1):
+    for i in range(Count + 1):
         path_ID = ("MD_Token/" + Token_List[i])
         ref = db.document(path_ID)
         doc = ref.get().to_dict()
@@ -274,19 +275,21 @@ def Auto_Coupon_Lottery():
             doc_ref = db.collection("Coupons").document(Filename)
             doc_ref.set(doc)
 
-        message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
+        message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[
+            ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',
+                                                                             data='action=buy&itemid=1')), ]))
         Message2 = TextSendMessage(text='每日抽獎~恭喜你獲得~')
 
         line_bot_api.push_message(doc['UserID'], Message2)
         line_bot_api.push_message(doc['UserID'], message)
-    print('Auto_Coupon_Lottery OK')
+    print('McDonald_AutoLottery_Coupon OK')
 
 
-def Auto_Sticker_Lottery():
-    Token_List = Database_Get_Token()
-    Count = Database_Counter_GetCount()
+def McDonald_AutoLottery_Sticker():
+    Token_List = Database_Get_TokenList()
+    Count = Database_Get_Counter()
 
-    for i in range(Count+1):
+    for i in range(Count + 1):
         path_ID = ("MD_Token/" + Token_List[i])
         ref = db.document(path_ID)
         doc = ref.get().to_dict()
@@ -305,12 +308,15 @@ def Auto_Sticker_Lottery():
                 doc_ref = db.collection("Coupons").document(Filename)
                 doc_ref.set(doc)
 
-            message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
+            message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[
+                ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',
+                                                                                 data='action=buy&itemid=1')), ]))
             Message2 = TextSendMessage(text='歡樂貼自動抽獎~~恭喜你獲得~')
 
             line_bot_api.push_message(doc['UserID'], Message2)
             line_bot_api.push_message(doc['UserID'], message)
-    print('Auto_Sticker_Lottery OK')
+    print('McDonald_AutoLottery_Sticker OK')
+
 
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
@@ -319,16 +325,15 @@ def handle_message(event):
     global t
     user_id = event.source.user_id
     # ----------------Login-----------------------
-    if db.collection('Check').document(user_id).get().exists:
+    if Database_Check_UserState(user_id)[0]:
         if event.message.text == '我的歡樂貼':
-            result = McDonald_Get_State()
-            Account = McDonald(result)
-            Sticker_List = Account.Sticker_List()
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='目前擁有歡樂貼:{}\n月底即將到期歡樂貼:{}'.format(Sticker_List[0], Sticker_List[1])))
+            StickerList = McDonald_Get_StickerList()
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(
+                text='目前擁有歡樂貼:{}\n月底即將到期歡樂貼:{}'.format(StickerList[0], StickerList[1])))
 
         elif event.message.text == '抽獎':
-            url = Manual_Coupon_Lottery()[1]
-            message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷',text='我的優惠卷',data='action=buy&itemid=1')),]))
+            url = McDonald_ManualLottery_Coupon()[1]
+            message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷', data='action=buy&itemid=1')), ]))
             line_bot_api.reply_message(event.reply_token, message)
 
         elif event.message.text == '我的優惠卷':
@@ -561,11 +566,11 @@ def handle_message(event):
                     line_bot_api.reply_message(event.reply_token, message)
 
         elif event.message.text == '手動測試-1':
-            Auto_Coupon_Lottery()
+            McDonald_AutoLottery_Coupon()
         elif event.message.text == '手動測試-2':
-            Auto_Sticker_Lottery()
+            McDonald_AutoLottery_Sticker()
         elif event.message.text == "測試3":
-            result = Database_Get_Token()
+            result = Database_Get_TokenList()
 
         else:
             Random_type = random.randint(1, 5)
@@ -574,7 +579,7 @@ def handle_message(event):
             elif Random_type == 2:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='說不定輸入【我的歡樂貼】會有事情發生呢 \n(ノ^o^)ノ'))
             elif Random_type == 3:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='【抽獎】是未知神秘指令 \nლ(｀∀´ლ) '))
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text='輸入神秘指令【抽獎】會有怪事發生呢\nლ(｀∀´ლ) '))
             elif Random_type == 4:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='我好累，不想工作。\n罷工拉 \n(-。-;'))
             elif Random_type == 5:
@@ -595,12 +600,3 @@ def handle_message(event):
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
-
-
-
-
-
-
-
-
-
