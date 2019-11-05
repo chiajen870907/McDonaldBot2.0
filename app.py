@@ -218,11 +218,13 @@ def Database_Get_TokenList():
     return Token
 
 
-def Database_Check_UserState(ID):
-    for i in range(Database_Get_Counter()+1):
+def Database_Check_UserState(UserID):
+    Count = Database_Get_Counter()
+    for i in range(Count+1):
         try:
-            token = list(Database_Read_Data('Check/Token').keys())[list(Database_Read_Data('Check/Token').values()).index(ID)]
-            print('Line225 Token', token)
+            token = list(Database_Read_Data('Check/Token').keys())[list(Database_Read_Data('Check/Token').values()).index(UserID)]
+            print(UserID)
+            print(token)
             user_exist = True
             break
         except ValueError:
@@ -234,7 +236,7 @@ def Database_Check_UserState(ID):
 def McDonald_Get_CouponList():
     print('Line244 UserID', user_id)
     token = Database_Check_UserState(user_id)[1]
-    print('Line244 UserID', token)
+    print('Line244 token', token)
     Account = McDonald(token)
     URLS_List = Account.Coupon_List()
     return URLS_List
