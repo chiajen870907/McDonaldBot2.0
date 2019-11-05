@@ -243,7 +243,7 @@ def McDonald_Get_StickerList():
 
 
 def McDonald_ManualLottery_Coupon():
-    Account = McDonald(Database_Check_UserState()[1])
+    Account = McDonald(Database_Check_UserState(user_id)[1])
     Get_Coupon, url = Account.Lottery()
     temp = url.split('/')[3]
     Filename = temp.split('.')[0]
