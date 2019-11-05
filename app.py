@@ -218,10 +218,11 @@ def Database_Get_TokenList():
     return Token
 
 
-def Database_Check_UserState(UserID):
+def Database_Check_UserState(ID):
     for i in range(Database_Get_Counter()+1):
         try:
-            token = list(Database_Read_Data('Check/Token').keys())[list(Database_Read_Data('Check/Token').values()).index(UserID)]
+            token = list(Database_Read_Data('Check/Token').keys())[list(Database_Read_Data('Check/Token').values()).index(ID)]
+            print('Line225 Token', token)
             user_exist = True
             break
         except ValueError:
@@ -238,8 +239,8 @@ def McDonald_Get_CouponList():
 
 
 def McDonald_Get_StickerList():
+    print('Line241 UserID', user_id)
     Account = McDonald(Database_Check_UserState(user_id)[1])
-    print('Account:', Account)
     Sticker_List = Account.Sticker_List()
     return Sticker_List
 
@@ -321,7 +322,6 @@ def handle_message(event):
     user_id = event.source.user_id
     # ----------------Login-----------------------
     if Database_Check_UserState(user_id)[0]:
-        print('Line322 Userid ',user_id)
         if event.message.text == '我的歡樂貼':
             StickerList = McDonald_Get_StickerList()
             line_bot_api.reply_message(event.reply_token, TextSendMessage(
