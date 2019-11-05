@@ -231,13 +231,13 @@ def Database_Check_UserState(UserID):
 
 
 def McDonald_Get_CouponList():
-    Account = McDonald(Database_Check_UserState()[1])
+    Account = McDonald(Database_Check_UserState(user_id)[1])
     URLS_List = Account.Coupon_List()
     return URLS_List
 
 
 def McDonald_Get_StickerList():
-    Account = McDonald(Database_Check_UserState()[1])
+    Account = McDonald(Database_Check_UserState(user_id)[1])
     Sticker_List = Account.Sticker_List()
     return Sticker_List
 
