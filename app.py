@@ -562,8 +562,7 @@ def handle_message(event):
             McDonald_AutoLottery_Coupon()
         elif event.message.text == '手動測試-2':
             McDonald_AutoLottery_Sticker()
-        elif event.message.text == "測試3":
-            result = Database_Get_TokenList()
+
 
         else:
             Random_type = random.randint(1, 5)
