@@ -174,7 +174,7 @@ def handle_postback(event):
                 'Token' + str(Count): MC_Token
             }
             doc2 = {
-                MC_Token : user_id
+                MC_Token: user_id
             }
 
             doc_ref = db.collection("Line_User").document('Info')
@@ -232,12 +232,14 @@ def Database_Check_UserState(UserID):
 
 def McDonald_Get_CouponList():
     Account = McDonald(Database_Check_UserState(user_id)[1])
+    print('Account:', Account)
     URLS_List = Account.Coupon_List()
     return URLS_List
 
 
 def McDonald_Get_StickerList():
     Account = McDonald(Database_Check_UserState(user_id)[1])
+    print('Account:', Account)
     Sticker_List = Account.Sticker_List()
     return Sticker_List
 
@@ -319,6 +321,7 @@ def handle_message(event):
     user_id = event.source.user_id
     # ----------------Login-----------------------
     if Database_Check_UserState(user_id)[0]:
+        print('Line322 Userid ',user_id)
         if event.message.text == '我的歡樂貼':
             StickerList = McDonald_Get_StickerList()
             line_bot_api.reply_message(event.reply_token, TextSendMessage(
@@ -563,7 +566,6 @@ def handle_message(event):
         elif event.message.text == '手動測試-2':
             McDonald_AutoLottery_Sticker()
 
-
         else:
             Random_type = random.randint(1, 5)
             if Random_type == 1:
@@ -589,13 +591,6 @@ def handle_message(event):
                 else:
                     Login_message = TemplateSendMessage(alt_text='Template', template=ButtonsTemplate(title='登入確認', text='帳號:{}\n密碼:{}'.format(account[0], account[1]), actions=[PostbackTemplateAction(label='按此登入', text='登入', data='Login')]))
                     line_bot_api.reply_message(event.reply_token, Login_message)
-
-
-            # elif len(t) > 2:
-            #     line_bot_api.reply_message(event.reply_token, TextSendMessage(text='多打了斜線哦  Σ( ° △ °|||)'))
-            # else:
-            # Login_message = TemplateSendMessage(alt_text='Template', template=ButtonsTemplate(title='登入確認', text='帳號:{}\n密碼:{}\n請確定是否正確'.format(t[0], t[1]), actions=[PostbackTemplateAction(label='確認無誤', text='登入', data='Login')]))
-            # line_bot_api.reply_message(event.reply_token, Login_message)
 
 
 if __name__ == "__main__":
