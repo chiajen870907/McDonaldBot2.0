@@ -225,7 +225,6 @@ def Database_Check_UserState():
         try:
 
             token = list(result.keys())[list(result.values()).index(user_id)]
-            print(UserID)
             print(token)
             user_exist = True
             break
