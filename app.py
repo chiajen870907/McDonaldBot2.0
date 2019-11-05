@@ -218,11 +218,13 @@ def Database_Get_TokenList():
     return Token
 
 
-def Database_Check_UserState(UserID):
+def Database_Check_UserState():
     Count = Database_Get_Counter()
+    result = Database_Read_Data('Check/Token')
     for i in range(Count+1):
         try:
-            token = list(Database_Read_Data('Check/Token').keys())[list(Database_Read_Data('Check/Token').values()).index(UserID)]
+
+            token = list(result.keys())[list(result.values()).index(user_id)]
             print(UserID)
             print(token)
             user_exist = True
@@ -234,23 +236,20 @@ def Database_Check_UserState(UserID):
 
 
 def McDonald_Get_CouponList():
-    print('Line244 UserID', user_id)
-    token = Database_Check_UserState(user_id)[1]
-    print('Line244 token', token)
+    token = Database_Check_UserState()[1]
     Account = McDonald(token)
     URLS_List = Account.Coupon_List()
     return URLS_List
 
 
 def McDonald_Get_StickerList():
-    print('Line241 UserID', user_id)
-    Account = McDonald(Database_Check_UserState(user_id)[1])
+    Account = McDonald(Database_Check_UserState()[1])
     Sticker_List = Account.Sticker_List()
     return Sticker_List
 
 
 def McDonald_ManualLottery_Coupon():
-    Account = McDonald(Database_Check_UserState(user_id)[1])
+    Account = McDonald(Database_Check_UserState()[1])
     Get_Coupon, url = Account.Lottery()
     temp = url.split('/')[3]
     Filename = temp.split('.')[0]
@@ -269,7 +268,7 @@ def McDonald_AutoLottery_Coupon():
 
     for i in range(Count + 1):
         userid = doc[Token_List[i]]
-        token = Database_Check_UserState(userid)[1]
+        token = Database_Check_UserState()[1]
         Account = McDonald(token)
         title, url = Account.Lottery()
         temp = url.split('/')[3]
@@ -296,7 +295,7 @@ def McDonald_AutoLottery_Sticker():
 
     for i in range(Count + 1):
         userid = doc[Token_List[i]]
-        token = Database_Check_UserState(userid)[1]
+        token = Database_Check_UserState()[1]
         Account = McDonald(token)
         Sticker_List = Account.Sticker_List()
 
@@ -326,7 +325,7 @@ def handle_message(event):
     user_id = event.source.user_id
     print('Line324 ID', user_id)
     # ----------------Login-----------------------
-    if Database_Check_UserState(user_id)[0]:
+    if Database_Check_UserState()[0]:
         print('Line326 ID', user_id)
         if event.message.text == '我的歡樂貼':
             StickerList = McDonald_Get_StickerList()
