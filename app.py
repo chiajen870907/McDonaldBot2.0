@@ -257,13 +257,13 @@ def McDonald_ManualLottery_Coupon():
 def McDonald_AutoLottery_Coupon():
     Count = Database_Get_Counter()
     Token_List = Database_Get_TokenList()
+    ref = db.document('Check/Token')
+    doc = ref.get().to_dict()
 
     for i in range(Count + 1):
-        path_ID = ("MD_Token/" + Token_List[i])
-        ref = db.document(path_ID)
-        doc = ref.get().to_dict()
-
-        Account = McDonald(Token_List[i])
+        userid = doc[Token_List[i]]
+        token = Database_Check_UserState(userid)[1]
+        Account = McDonald(token)
         title, url = Account.Lottery()
         temp = url.split('/')[3]
         Filename = temp.split('.')[0]
@@ -273,30 +273,27 @@ def McDonald_AutoLottery_Coupon():
             doc_ref = db.collection("Coupons").document(Filename)
             doc_ref.set(doc)
 
-        message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[
-            ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',
-                                                                             data='action=buy&itemid=1')), ]))
+        message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
         Message2 = TextSendMessage(text='每日抽獎~恭喜你獲得~')
 
-        line_bot_api.push_message(doc['UserID'], Message2)
-        line_bot_api.push_message(doc['UserID'], message)
+        line_bot_api.push_message(userid, Message2)
+        line_bot_api.push_message(userid, message)
     print('McDonald_AutoLottery_Coupon OK')
 
 
 def McDonald_AutoLottery_Sticker():
-    Token_List = Database_Get_TokenList()
     Count = Database_Get_Counter()
+    Token_List = Database_Get_TokenList()
+    ref = db.document('Check/Token')
+    doc = ref.get().to_dict()
 
     for i in range(Count + 1):
-        path_ID = ("MD_Token/" + Token_List[i])
-        ref = db.document(path_ID)
-        doc = ref.get().to_dict()
-
-        Account = McDonald(Token_List[i])
+        userid = doc[Token_List[i]]
+        token = Database_Check_UserState(userid)[1]
+        Account = McDonald(token)
         Sticker_List = Account.Sticker_List()
 
         if int(Sticker_List[0]) >= 6:
-
             title, url = Account.Sticker_lottery()
             temp = url.split('/')[3]
             Filename = temp.split('.')[0]
@@ -306,13 +303,11 @@ def McDonald_AutoLottery_Sticker():
                 doc_ref = db.collection("Coupons").document(Filename)
                 doc_ref.set(doc)
 
-            message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[
-                ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',
-                                                                                 data='action=buy&itemid=1')), ]))
+            message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
             Message2 = TextSendMessage(text='歡樂貼自動抽獎~~恭喜你獲得~')
 
-            line_bot_api.push_message(doc['UserID'], Message2)
-            line_bot_api.push_message(doc['UserID'], message)
+            line_bot_api.push_message(userid, Message2)
+            line_bot_api.push_message(userid, message)
     print('McDonald_AutoLottery_Sticker OK')
 
 
@@ -593,7 +588,7 @@ def handle_message(event):
                 if len(account) > 2:
                     line_bot_api.reply_message(event.reply_token, TextSendMessage(text='多打了斜線哦  Σ( ° △ °|||)'))
                 else:
-                    Login_message = TemplateSendMessage(alt_text='Template', template=ButtonsTemplate(title='登入確認', text='帳號:{}\n密碼:{}\n登入'.format(account[0], account[1]), actions=[PostbackTemplateAction(label='確認無誤', text='登入', data='Login')]))
+                    Login_message = TemplateSendMessage(alt_text='Template', template=ButtonsTemplate(title='登入確認', text='帳號:{}\n密碼:{}'.format(account[0], account[1]), actions=[PostbackTemplateAction(label='按此登入', text='登入', data='Login')]))
                     line_bot_api.reply_message(event.reply_token, Login_message)
 
 
