@@ -31,6 +31,7 @@ firebase_admin.initialize_app(private_key)
 db = firestore.client()
 
 
+
 # McDonald------------------
 
 
@@ -134,11 +135,8 @@ class Mask(object):
 
 
 def login_MC():
-    Username = t[0]
-    Password = t[1]
     # Login and get the information
-    Account = Mask(Username, Password)
-    info = Account.Login()
+    info = (Mask(account[0], account[1])).Login()
     MC_Status = (info['rm'])
     MC_Token = (info['results']['member_info']['access_token'])
     return MC_Status, MC_Token
@@ -322,7 +320,7 @@ def McDonald_AutoLottery_Sticker():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     global user_id
-    global t
+    global account
     user_id = event.source.user_id
     # ----------------Login-----------------------
     if Database_Check_UserState(user_id)[0]:
@@ -590,13 +588,14 @@ def handle_message(event):
         if temp != '登入':
             if '/' not in temp:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text='注意!!少了斜線(/)  Σ( ° △ °|||)'))
-
             else:
-                if len(temp.split('/')) > 2:
+                account = temp.split('/')
+                if len(account) > 2:
                     line_bot_api.reply_message(event.reply_token, TextSendMessage(text='多打了斜線哦  Σ( ° △ °|||)'))
                 else:
-                    Login_message = TemplateSendMessage(alt_text='Template', template=ButtonsTemplate(title='登入確認', text='帳號:{}\n密碼:{}\n請確定是否正確'.format(temp.split('/')[0], temp.split('/')[1]), actions=[PostbackTemplateAction(label='確認無誤', text='登入', data='Login')]))
+                    Login_message = TemplateSendMessage(alt_text='Template', template=ButtonsTemplate(title='登入確認', text='帳號:{}\n密碼:{}\n登入'.format(account[0], account[1]), actions=[PostbackTemplateAction(label='確認無誤', text='登入', data='Login')]))
                     line_bot_api.reply_message(event.reply_token, Login_message)
+
 
             # elif len(t) > 2:
             #     line_bot_api.reply_message(event.reply_token, TextSendMessage(text='多打了斜線哦  Σ( ° △ °|||)'))
