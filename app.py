@@ -253,7 +253,7 @@ def McDonald_ManualLottery_Coupon():
     temp = url.split('/')[3]
     Filename = temp.split('.')[0]
     if not db.collection('Coupons').document(title).get().exists:
-        doc = {'Title': Filename}
+        doc = {'ID': Filename}
         doc_ref = db.collection("Coupons").document(title)
         doc_ref.set(doc)
     return title, url
@@ -274,7 +274,7 @@ def McDonald_AutoLottery_Coupon():
         Filename = temp.split('.')[0]
 
         if not db.collection('Coupons').document(title).get().exists:
-            doc = {'Title': Filename}
+            doc = {'ID': Filename}
             doc_ref = db.collection("Coupons").document(title)
             doc_ref.set(doc)
 
