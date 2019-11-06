@@ -12,6 +12,7 @@ import firebase_admin
 import requests
 import hashlib
 import random
+import time
 import os
 
 from McDonald import McDonald
@@ -235,6 +236,19 @@ def Database_Check_UserState():
     return user_exist, token
 
 
+def Database_Get_UserToken(userid):
+    Count = Database_Get_Counter()
+    result = Database_Read_Data('Check/Token')
+    for i in range(Count+1):
+        try:
+            token = list(result.keys())[list(result.values()).index(userid)]
+            break
+        except ValueError:
+            token = ''
+    return token
+
+
+
 def McDonald_Get_CouponList():
     Account = McDonald(Database_Check_UserState()[1])
     URLS_List = Account.Coupon_List()
@@ -267,7 +281,8 @@ def McDonald_AutoLottery_Coupon():
 
     for i in range(Count + 1):
         userid = doc[Token_List[i]]
-        token = Database_Check_UserState()[1]
+        token = Database_Get_UserToken(userid)
+        print(userid,token)
         Account = McDonald(token)
         title, url = Account.Lottery()
         temp = url.split('/')[3]
@@ -283,6 +298,7 @@ def McDonald_AutoLottery_Coupon():
 
         line_bot_api.push_message(userid, Message2)
         line_bot_api.push_message(userid, message)
+        time.sleep(1)
     print('McDonald_AutoLottery_Coupon OK')
 
 
@@ -294,7 +310,7 @@ def McDonald_AutoLottery_Sticker():
 
     for i in range(Count + 1):
         userid = doc[Token_List[i]]
-        token = Database_Check_UserState()[1]
+        token = Database_Get_UserToken(userid)
         Account = McDonald(token)
         Sticker_List = Account.Sticker_List()
 
@@ -313,8 +329,8 @@ def McDonald_AutoLottery_Sticker():
 
             line_bot_api.push_message(userid, Message2)
             line_bot_api.push_message(userid, message)
+            time.sleep(1)
     print('McDonald_AutoLottery_Sticker OK')
-
 
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
