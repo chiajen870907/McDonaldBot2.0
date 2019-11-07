@@ -31,7 +31,7 @@ firebase_admin.initialize_app(private_key)
 # 初始化firestore
 db = firestore.client()
 
-#---------------------Global
+# Global
 user_id = None
 account = None
 
@@ -174,17 +174,17 @@ def handle_postback(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=MC_Status + '\n每天準時晚上12點幫你抽\nヽ(‘ ∇‘ )ノ'))
             Database_Increase_Counter()
             Count = Database_Get_Counter()
-            doc = {
+            doc_text = {
                 'Token' + str(Count): MC_Token
             }
-            doc2 = {
+            doc2_text = {
                 MC_Token: user_id
             }
 
             doc_ref = db.collection("Line_User").document('Info')
             doc2_ref = db.collection("Check").document('Token')
-            doc_ref.update(doc)
-            doc2_ref.update(doc2)
+            doc_ref.update(doc_text)
+            doc2_ref.update(doc2_text)
 
         else:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=MC_Status + '\n 〒.〒 '))
@@ -192,8 +192,8 @@ def handle_postback(event):
 
 def Database_Read_Data(path):
     doc_ref = db.document(path)
-    Read_result = doc_ref.get().to_dict()
-    return Read_result
+    result = doc_ref.get().to_dict()
+    return result
 
 
 def Database_Get_Counter():
@@ -205,11 +205,11 @@ def Database_Get_Counter():
 def Database_Increase_Counter():
     Count = Database_Get_Counter()
     Count = Count + 1
-    doc = {
+    doc_text = {
         'Count': Count
     }
     doc_ref = db.collection("Line_User").document('Counter')
-    doc_ref.set(doc)
+    doc_ref.set(doc_text)
 
 
 def Database_Get_TokenList():
@@ -248,7 +248,6 @@ def Database_Get_UserToken(userid):
     return token
 
 
-
 def McDonald_Get_CouponList():
     Account = McDonald(Database_Check_UserState()[1])
     URLS_List = Account.Coupon_List()
@@ -267,9 +266,9 @@ def McDonald_ManualLottery_Coupon():
     temp = url.split('/')[3]
     Filename = temp.split('.')[0]
     if not db.collection('Coupons').document(title).get().exists:
-        doc = {'ID': Filename}
+        doc_text = {'ID': Filename}
         doc_ref = db.collection("Coupons").document(title)
-        doc_ref.set(doc)
+        doc_ref.set(doc_text)
     return title, url
 
 
@@ -277,28 +276,28 @@ def McDonald_AutoLottery_Coupon():
     Count = Database_Get_Counter()
     Token_List = Database_Get_TokenList()
     ref = db.document('Check/Token')
-    doc = ref.get().to_dict()
+    doc_token = ref.get().to_dict()
 
     for i in range(Count + 1):
-        userid = doc[Token_List[i]]
+        time.sleep(1)
+        userid = doc_token[Token_List[i]]
         token = Database_Get_UserToken(userid)
-        print(userid,token)
         Account = McDonald(token)
+        print(userid,token)
         title, url = Account.Lottery()
         temp = url.split('/')[3]
         Filename = temp.split('.')[0]
+        if not Filename == 'ccrotbJmNrxfvvc7iYXZ':
+            if not db.collection('Coupons').document(title).get().exists:
+                doc_text = {'ID': Filename}
+                doc_ref = db.collection("Coupons").document(title)
+                doc_ref.set(doc_text)
 
-        if not db.collection('Coupons').document(title).get().exists:
-            doc = {'ID': Filename}
-            doc_ref = db.collection("Coupons").document(title)
-            doc_ref.set(doc)
+            message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
+            Message2 = TextSendMessage(text='每日抽獎~恭喜你獲得~')
 
-        message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
-        Message2 = TextSendMessage(text='每日抽獎~恭喜你獲得~')
-
-        line_bot_api.push_message(userid, Message2)
-        line_bot_api.push_message(userid, message)
-        time.sleep(1)
+            line_bot_api.push_message(userid, Message2)
+            line_bot_api.push_message(userid, message)
     print('McDonald_AutoLottery_Coupon OK')
 
 
@@ -306,10 +305,11 @@ def McDonald_AutoLottery_Sticker():
     Count = Database_Get_Counter()
     Token_List = Database_Get_TokenList()
     ref = db.document('Check/Token')
-    doc = ref.get().to_dict()
+    doc_token = ref.get().to_dict()
 
     for i in range(Count + 1):
-        userid = doc[Token_List[i]]
+        time.sleep(1)
+        userid = doc_token[Token_List[i]]
         token = Database_Get_UserToken(userid)
         Account = McDonald(token)
         Sticker_List = Account.Sticker_List()
@@ -320,16 +320,15 @@ def McDonald_AutoLottery_Sticker():
             Filename = temp.split('.')[0]
 
             if not db.collection('Coupons').document(title).get().exists:
-                doc = {'ID': Filename}
+                doc_text = {'ID': Filename}
                 doc_ref = db.collection("Coupons").document(title)
-                doc_ref.set(doc)
+                doc_ref.set(doc_text)
 
             message = TemplateSendMessage(alt_text='圖片訊息', template=ImageCarouselTemplate(columns=[ImageCarouselColumn(image_url=url, action=PostbackTemplateAction(label='查看我的優惠卷', text='我的優惠卷',data='action=buy&itemid=1')), ]))
             Message2 = TextSendMessage(text='歡樂貼自動抽獎~~恭喜你獲得~')
 
             line_bot_api.push_message(userid, Message2)
             line_bot_api.push_message(userid, message)
-            time.sleep(1)
     print('McDonald_AutoLottery_Sticker OK')
 
 # 處理訊息
