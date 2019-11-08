@@ -32,7 +32,7 @@ firebase_admin.initialize_app(private_key)
 db = firestore.client()
 
 # Global
-user_id = None
+LINE_USER_ID = None
 account = None
 
 
@@ -178,7 +178,7 @@ def handle_postback(event):
                 'Token' + str(Count): MC_Token
             }
             doc2_text = {
-                MC_Token: user_id
+                MC_Token: LINE_USER_ID
             }
 
             doc_ref = db.collection("Line_User").document('Info')
@@ -243,19 +243,19 @@ def Database_Get_UserToken(User_ID):
 
 
 def McDonald_Get_CouponList():
-    Account = McDonald(Database_Check_UserState(user_id)[1])
+    Account = McDonald(Database_Check_UserState(LINE_USER_ID)[1])
     URLS_List = Account.Coupon_List()
     return URLS_List
 
 
 def McDonald_Get_StickerList():
-    Account = McDonald(Database_Check_UserState(user_id)[1])
+    Account = McDonald(Database_Check_UserState(LINE_USER_ID)[1])
     Sticker_List = Account.Sticker_List()
     return Sticker_List
 
 
 def McDonald_ManualLottery_Coupon():
-    Account = McDonald(Database_Check_UserState(user_id)[1])
+    Account = McDonald(Database_Check_UserState(LINE_USER_ID)[1])
     title, url = Account.Lottery()
     temp = url.split('/')[3]
     Filename = temp.split('.')[0]
@@ -329,11 +329,11 @@ def McDonald_AutoLottery_Sticker():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    global user_id
+    global LINE_USER_ID
     global account
-    user_id = event.source.user_id
+    LINE_USER_ID = event.source.LINE_USER_ID
     # ----------------Login-----------------------
-    if Database_Check_UserState(user_id)[0]:
+    if Database_Check_UserState(LINE_USER_ID)[0]:
         if event.message.text == '我的歡樂貼':
             StickerList = McDonald_Get_StickerList()
             line_bot_api.reply_message(event.reply_token, TextSendMessage(
