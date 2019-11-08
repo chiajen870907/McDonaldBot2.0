@@ -230,7 +230,7 @@ def Database_Check_UserState():
     except ValueError:
         user_exist = False
         token = ''
-    return user_exist
+    return user_exist,token
 
 
 def Database_Get_UserToken(User_ID):
