@@ -243,19 +243,19 @@ def Database_Get_UserToken(User_ID):
 
 
 def McDonald_Get_CouponList():
-    Account = McDonald(Database_Get_UserToken())
+    Account = McDonald(Database_Get_UserToken(user_id))
     URLS_List = Account.Coupon_List()
     return URLS_List
 
 
 def McDonald_Get_StickerList():
-    Account = McDonald(Database_Get_UserToken())
+    Account = McDonald(Database_Get_UserToken(user_id))
     Sticker_List = Account.Sticker_List()
     return Sticker_List
 
 
 def McDonald_ManualLottery_Coupon():
-    Account = McDonald(Database_Get_UserToken())
+    Account = McDonald(Database_Get_UserToken(user_id))
     title, url = Account.Lottery()
     temp = url.split('/')[3]
     Filename = temp.split('.')[0]
