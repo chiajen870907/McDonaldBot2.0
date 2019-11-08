@@ -331,7 +331,7 @@ def McDonald_AutoLottery_Sticker():
 def handle_message(event):
     global LINE_USER_ID
     global account
-    LINE_USER_ID = event.source.LINE_USER_ID
+    LINE_USER_ID = event.source.user_id
     # ----------------Login-----------------------
     if Database_Check_UserState(LINE_USER_ID)[0]:
         if event.message.text == '我的歡樂貼':
