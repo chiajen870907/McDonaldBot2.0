@@ -222,15 +222,15 @@ def Database_Get_TokenList():
     return Token
 
 
-def Database_Check_UserState():
+def Database_Check_UserState(userid):
     result = Database_Read_Data('Check/Token')
     try:
-        token = list(result.keys())[list(result.values()).index(user_id)]
+        token = list(result.keys())[list(result.values()).index(userid)]
         user_exist = True
     except ValueError:
         user_exist = False
         token = ''
-    return user_exist,token
+    return user_exist, token
 
 
 def Database_Get_UserToken(User_ID):
@@ -243,19 +243,19 @@ def Database_Get_UserToken(User_ID):
 
 
 def McDonald_Get_CouponList():
-    Account = McDonald(Database_Get_UserToken(user_id))
+    Account = McDonald(Database_Check_UserState(user_id)[1])
     URLS_List = Account.Coupon_List()
     return URLS_List
 
 
 def McDonald_Get_StickerList():
-    Account = McDonald(Database_Get_UserToken(user_id))
+    Account = McDonald(Database_Check_UserState(user_id)[1])
     Sticker_List = Account.Sticker_List()
     return Sticker_List
 
 
 def McDonald_ManualLottery_Coupon():
-    Account = McDonald(Database_Get_UserToken(user_id))
+    Account = McDonald(Database_Check_UserState(user_id)[1])
     title, url = Account.Lottery()
     temp = url.split('/')[3]
     Filename = temp.split('.')[0]
@@ -275,7 +275,7 @@ def McDonald_AutoLottery_Coupon():
     for i in range(Count + 1):
         time.sleep(1)
         userid = doc_token[Token_List[i]]
-        token = Database_Get_UserToken(userid)
+        token = Database_Check_UserState(userid)[1]
         Account = McDonald(token)
         print(userid,token)
         title, url = Account.Lottery()
@@ -304,7 +304,7 @@ def McDonald_AutoLottery_Sticker():
     for i in range(Count + 1):
         time.sleep(1)
         userid = doc_token[Token_List[i]]
-        token = Database_Get_UserToken(userid)
+        token = Database_Check_UserState(userid)[1]
         Account = McDonald(token)
         Sticker_List = Account.Sticker_List()
 
