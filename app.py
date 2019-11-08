@@ -333,7 +333,7 @@ def handle_message(event):
     global account
     user_id = event.source.user_id
     # ----------------Login-----------------------
-    if Database_Check_UserState()[0]:
+    if Database_Check_UserState(user_id)[0]:
         if event.message.text == '我的歡樂貼':
             StickerList = McDonald_Get_StickerList()
             line_bot_api.reply_message(event.reply_token, TextSendMessage(
