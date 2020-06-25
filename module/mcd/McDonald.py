@@ -2,8 +2,6 @@ import re
 import requests
 from datetime import datetime, timedelta
 
-
-
 class McDonald(object):
     """docstring for McDonald."""
 
@@ -28,6 +26,8 @@ class McDonald(object):
         self.respones = ""
         self.coupons = []
         self.urls = []
+        self.title = []
+        self.redeem_end_datetime=[]
         self.stickers = 0
         self.expire_stickers = 0
 
@@ -54,6 +54,7 @@ class McDonald(object):
 
     # Get the coupon list
     def Coupon_List(self):
+        temp = []
         # Request to get the coupon list
         self.respones = requests.post('https://api1.mcddailyapp.com/coupon/get_list', json=self.json).text
         count = self.respones.count('coupon_id')  # Count the number of coupons
@@ -68,18 +69,23 @@ class McDonald(object):
             # Status code is 1 also redeem_end_datetime is not yet
             if status == 1 and redeem_end_datetime - datetime.now() > timedelta():
                 url = self.respones['results']['coupons'][value]['object_info']['image']['url']
-                self.urls.append(url)
+                title = self.respones['results']['coupons'][value]['object_info']['title']
+                redeem_end_datetime = self.respones['results']['coupons'][value]['object_info']['redeem_end_datetime']
 
-        return self.urls
+                self.urls.append(url)
+                self.title.append(title)
+                self.redeem_end_datetime.append(redeem_end_datetime)
+
+        return self.urls,self.title,self.redeem_end_datetime
 
         # Return coupon list
-        return self.coupons
+        #return self.coupons
 
     # Get the sticker list
     def Sticker_List(self):
         # Initializing the expired stickers again is a safe way to avoid the repeat addition
         self.expire_stickers = 0
-
+        self.expire_datetime = 0
         # Request to get the sticker list
         self.respones = requests.post('https://api1.mcddailyapp.com/sticker/get_list', json=self.json).text
         self.stickers = self.respones.count('歡樂貼') # Count the number of stickers

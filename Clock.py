@@ -1,12 +1,11 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
-from app import McDonald_AutoLottery_Coupon
-from app import McDonald_AutoLottery_Sticker
+from .app import auto_lottery
 
 sched = BlockingScheduler()
+
 @sched.scheduled_job('cron', hour=0, minute=5)
 def scheduled_job():
-    McDonald_AutoLottery_Coupon()
-    McDonald_AutoLottery_Sticker()
+    auto_lottery()
 
 
 sched.start()
