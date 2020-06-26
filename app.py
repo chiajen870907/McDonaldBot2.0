@@ -215,13 +215,27 @@ def handle_message(event):
             message = TextSendMessage(text='目前僅開放給初次登入用，暫無相關設定功能，預計之後更新加入')
             line_bot_api.reply_message(event.reply_token, message)
 
+        elif event.message.text == '教學':
+            message = TextSendMessage(text='很抱歉網站規劃中')
+            line_bot_api.reply_message(event.reply_token, message)
         else:
             text_list = ['你可以試試輸入【優惠券】 \n(・∀・)','說不定輸入【歡樂貼】會有事情發生呢 \n(ノ^o^)ノ','輸入神秘指令【抽獎】會有怪事發生呢\nლ(｀∀´ლ) ','我好累，不想工作。\n罷工拉 \n(-。-;','看我施展魔法 \n(∩｀-´)⊃━炎炎炎炎炎']
             message = TextSendMessage(text=choice(text_list))
             line_bot_api.reply_message(event.reply_token, message)
     else:
-        message = res.flex_message_account()
-        line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text='訊息',contents=message))
+        if event.message.text == '教學':
+            message = TextSendMessage(text='很抱歉網站規劃中')
+            line_bot_api.reply_message(event.reply_token, message)
+
+        elif event.message.text =='帳號設定':
+            message = res.flex_message_account()
+            line_bot_api.reply_message(event.reply_token, FlexSendMessage(alt_text='訊息', contents=message))
+
+        else:
+            message = TextSendMessage(text='需要先行設定帳號，至圖文選單內點選【帳號設定】')
+            line_bot_api.reply_message(event.reply_token, message)
+
+
 
 
 def login_MC(username,password):
