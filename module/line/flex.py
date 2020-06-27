@@ -7,8 +7,6 @@ class Line:
         self.modle = {"type": "carousel", "contents": []}
         self.content_list = []
 
-
-
     def flex_message_coupon(self,url,title,datetime):
         for index in range(len(url)):
             content = {
@@ -110,7 +108,6 @@ class Line:
         self.modle['contents'] = self.content_list
         return self.modle
 
-
     def flex_message_sticker(self, stickers, expire_stickers):
         content = {
             "type": "bubble",
@@ -199,7 +196,6 @@ class Line:
             }
         }
         return content
-
 
     def flex_message_lottery(self,url,type):
         content = {

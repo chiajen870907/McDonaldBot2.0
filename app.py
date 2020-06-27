@@ -218,6 +218,10 @@ def handle_message(event):
         elif event.message.text == '教學':
             message = TextSendMessage(text='很抱歉網站規劃中')
             line_bot_api.reply_message(event.reply_token, message)
+
+        elif event.source.user_id=='Uea249350320c7cd2401b3667ed9abdc3' and event.message.text == 'auto':
+            auto_lottery()
+
         else:
             text_list = ['你可以試試輸入【優惠券】 \n(・∀・)','說不定輸入【歡樂貼】會有事情發生呢 \n(ノ^o^)ノ','輸入神秘指令【抽獎】會有怪事發生呢\nლ(｀∀´ლ) ','我好累，不想工作。\n罷工拉 \n(-。-;','看我施展魔法 \n(∩｀-´)⊃━炎炎炎炎炎']
             message = TextSendMessage(text=choice(text_list))
@@ -245,7 +249,6 @@ def login_MC(username,password):
     MC_Token = (info['results']['member_info']['access_token'])
     return MC_Status, MC_Token
 
-
 def auto_lottery():
     print('Start Auto Lottery')
     md = mcd.MCDHelper()
@@ -256,10 +259,11 @@ def auto_lottery():
         token = doc.to_dict()['mc_token']
         print(f'User:{id} Token{token}')
         _, url = md.get_lottery(token)
-        if(url.split('/')[3] == 'ccrotbJmNrxfvvc7iYXZ.jpg'):
+        if(url.split('/')[3] != 'ccrotbJmNrxfvvc7iYXZ.jpg'):
             message = res.flex_message_lottery(url, type='自動抽')
             line_bot_api.push_message(id,FlexSendMessage(alt_text='訊息', contents=message))
-
+        else:
+            print()
 
 
 if __name__ == "__main__":

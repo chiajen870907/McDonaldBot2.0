@@ -77,7 +77,8 @@ function registerButtonHandlers() {
                         title: '註冊成功！',
                         text: '帳號已成功註冊！'
                     });
-                    // liff.closeWindow();
+                    setTimeout(function(){liff.closeWindow();},1000);
+                    //
                     // setTimeout(liff.closeWindow(), 1700);
                 } else {
                     init();
