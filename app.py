@@ -134,8 +134,6 @@ md = mcd.MCDHelper()
 
 
 #From web
-
-
 @app.route('/')
 def index():
     return render_template("index.html")
@@ -178,9 +176,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     ret = db.get_check_exists(event.source.user_id)
-
     if ret:
-
         if event.message.text == '歡樂貼':
             stickers , exprice_stickers = md.get_sircketlist(ret['mc_token'])
             print(stickers,exprice_stickers)
