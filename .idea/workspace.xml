@@ -19,23 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90c87167-b4d8-47e4-a470-9e442930dcf7" name="Default Changelist" comment="Add Code">
-      <change afterPath="$PROJECT_DIR$/module/db/DB_Firebase.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/module/db/key/service-account.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/module/line/flex.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/module/mcd/mcd.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Css/reset.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/Scripts/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/McDonaldBot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/McDonaldBot.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Clock.py" beforeDir="false" afterPath="$PROJECT_DIR$/Clock.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/McDonald.py" beforeDir="false" afterPath="$PROJECT_DIR$/module/mcd/McDonald.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-account.json" beforeDir="false" />
-    </list>
+    <list default="true" id="90c87167-b4d8-47e4-a470-9e442930dcf7" name="Default Changelist" comment="Add Code" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -315,6 +299,7 @@
       <workItem from="1591906435453" duration="9826000" />
       <workItem from="1591982921152" duration="7846000" />
       <workItem from="1592055050033" duration="14325000" />
+      <workItem from="1593225376039" duration="594000" />
     </task>
     <servers />
   </component>
@@ -383,23 +368,23 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/mcdonald_bot_line$mcd.coverage" NAME="mcd Coverage Results" MODIFIED="1591910843881" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/module/mcd" />
-    <SUITE FILE_PATH="coverage/mcdonald_bot_line$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1592069611495" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/McDonaldBot$mask__1_.coverage" NAME="mask (1) Coverage Results" MODIFIED="1564912688241" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../McDonald-s-APP-master" />
-    <SUITE FILE_PATH="coverage/mcdonald_bot_line$Flask__test_py_.coverage" NAME="Flask (test.py) Coverage Results" MODIFIED="1591907677639" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/McDonaldBot$Clock.coverage" NAME="Clock Coverage Results" MODIFIED="1572591450575" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/McDonaldBot$mask.coverage" NAME="mask Coverage Results" MODIFIED="1564672486277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/McDonaldBot$TEST.coverage" NAME="TEST Coverage Results" MODIFIED="1564711265848" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/firebase_admin" />
-    <SUITE FILE_PATH="coverage/mcdonald_bot_line$BD_Firebase.coverage" NAME="BD_Firebase Coverage Results" MODIFIED="1591783358882" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/McDonaldBot$McDonald.coverage" NAME="McDonald Coverage Results" MODIFIED="1564912098550" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/mcdonald_bot_line$Flask.coverage" NAME="Flask Coverage Results" MODIFIED="1591807337864" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/mcdonald_bot_line$JS.coverage" NAME="JS Coverage Results" MODIFIED="1591815884688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/McDonaldBot$TEST__1_.coverage" NAME="TEST (1) Coverage Results" MODIFIED="1564912714947" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/mcdonald_bot_line$Flask__test_py_.coverage" NAME="Flask (test.py) Coverage Results" MODIFIED="1591907677639" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/McDonaldBot$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1573654750686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/mcdonald_bot_line$BD_Firebase.coverage" NAME="BD_Firebase Coverage Results" MODIFIED="1591783358882" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/McDonaldBot$example.coverage" NAME="example Coverage Results" MODIFIED="1564915207744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/McDonald-s-APP-master" />
+    <SUITE FILE_PATH="coverage/McDonaldBot$McDonald.coverage" NAME="McDonald Coverage Results" MODIFIED="1564912098550" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/mcdonald_bot_line$JS.coverage" NAME="JS Coverage Results" MODIFIED="1591815884688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/McDonaldBot$mask__1_.coverage" NAME="mask (1) Coverage Results" MODIFIED="1564912688241" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/McDonald-s-APP-master" />
+    <SUITE FILE_PATH="coverage/mcdonald_bot_line$test.coverage" NAME="test Coverage Results" MODIFIED="1591992441823" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/McDonaldBot$test.coverage" NAME="test Coverage Results" MODIFIED="1564836303225" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/mcdonald_bot_line$message.coverage" NAME="message Coverage Results" MODIFIED="1591987744760" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/module/line" />
     <SUITE FILE_PATH="coverage/mcdonald_bot_line$DB_Firebase.coverage" NAME="DB_Firebase Coverage Results" MODIFIED="1592064911575" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/module/db" />
-    <SUITE FILE_PATH="coverage/McDonaldBot$test.coverage" NAME="test Coverage Results" MODIFIED="1564836303225" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/McDonaldBot$example.coverage" NAME="example Coverage Results" MODIFIED="1564915207744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../McDonald-s-APP-master" />
-    <SUITE FILE_PATH="coverage/mcdonald_bot_line$test.coverage" NAME="test Coverage Results" MODIFIED="1591992441823" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/McDonaldBot$TEST.coverage" NAME="TEST Coverage Results" MODIFIED="1564711265848" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/firebase_admin" />
+    <SUITE FILE_PATH="coverage/mcdonald_bot_line$Flask.coverage" NAME="Flask Coverage Results" MODIFIED="1591807337864" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/McDonaldBot$TEST__1_.coverage" NAME="TEST (1) Coverage Results" MODIFIED="1564912714947" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/mcdonald_bot_line$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1592069611495" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/McDonaldBot$mask.coverage" NAME="mask Coverage Results" MODIFIED="1564672486277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/mcdonald_bot_line$mcd.coverage" NAME="mcd Coverage Results" MODIFIED="1591910843881" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/module/mcd" />
   </component>
 </project>

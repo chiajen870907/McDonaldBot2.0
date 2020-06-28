@@ -129,8 +129,8 @@ handler = WebhookHandler('22a4d312cd87888ee4ae3e8c79b989ea')
 app.debug = True
 
 db = DB_Firebase.DBHelper()
-
-
+res = flex.Line()
+md = mcd.MCDHelper()
 
 
 #From web
@@ -178,9 +178,8 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     ret = db.get_check_exists(event.source.user_id)
-    res = flex.Line()
+
     if ret:
-        md = mcd.MCDHelper()
 
         if event.message.text == '歡樂貼':
             stickers , exprice_stickers = md.get_sircketlist(ret['mc_token'])
@@ -251,8 +250,8 @@ def login_MC(username,password):
 
 def auto_lottery():
     print('Start Auto Lottery')
-    md = mcd.MCDHelper()
-    res = flex.Line()
+    # md = mcd.MCDHelper()
+    # res = flex.Line()
     docs = db.get_allusers()
     for doc in docs:
         id = doc.id
