@@ -129,9 +129,9 @@ handler = WebhookHandler('22a4d312cd87888ee4ae3e8c79b989ea')
 app.debug = True
 
 db = DB_Firebase.DBHelper()
-res = flex.Line()
+
 md = mcd.MCDHelper()
-print(f'初始化完成 : {res} & {md}')
+print(f'初始化完成 : {res}')
 
 
 #From web
@@ -176,6 +176,7 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    res = flex.Line()
     ret = db.get_check_exists(event.source.user_id)
     if ret:
         if event.message.text == '歡樂貼':
@@ -248,7 +249,7 @@ def login_MC(username,password):
 def auto_lottery():
     print('Start Auto Lottery')
     # md = mcd.MCDHelper()
-    # res = flex.Line()
+    res = flex.Line()
     docs = db.get_allusers()
     for doc in docs:
         id = doc.id
