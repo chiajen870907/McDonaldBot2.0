@@ -131,7 +131,7 @@ app.debug = True
 db = DB_Firebase.DBHelper()
 
 md = mcd.MCDHelper()
-print(f'初始化完成 : {res}')
+
 
 
 #From web
