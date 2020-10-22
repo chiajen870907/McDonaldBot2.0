@@ -3,8 +3,8 @@ from firebase_admin import firestore
 import firebase_admin
 
 # Private_key
-#private_key = credentials.Certificate("./module/db/key/service-account.json")
-private_key = credentials.Certificate("/app/module/db/key/service-account.json")
+#private_key = credentials.Certificate("./module/db/service-account.json")
+private_key = credentials.Certificate("./service-account.json")
 
 
 # 初始化firebase
